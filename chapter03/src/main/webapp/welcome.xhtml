@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/templates/default_template.xhtml">
+    <ui:define name="head">
+        <!-- Test contents Comment Head-->
+    </ui:define>
+
+    <ui:define name="leftPan">
+        <ui:include src="pages/categories.xhtml"/>
+    </ui:define>
+
+    <ui:define name="bodyContent">
+        <h:form id="centerForm">
+            <p:panel header="Menu Card" style="width: 99%; border: none;" id="menuItemContiner">
+                <p:dataGrid value="#{menuItemController.menuItems}" var="menus" style="border: none;" columns="3">
+                    <p:panel styleClass="order-box">
+                        <p:panelGrid columns="1" columnClasses="aligns">
+                            <p:columnGroup>
+                                <h:outputText value="#{menus.id}"/>
+                                <h:outputText value="#{menus.name}"/>
+                                <h:outputText value="#{menus.categoryId}"/>
+                            </p:columnGroup>
+                            <p:columnGroup>
+                                <p:commandButton value="Favorite" update=":leftPanForm:accord:favorites"
+                                                 actionListener="#{menuItemController.addToFavorite(menus.id)}"/>
+                                <p:commandButton value="Add" update=":rightPanForm"
+                                                 actionListener="#{menuItemController.addLineItem(menus.id, menus.displayName, menus.price)}"/>
+                                <p:spacer/>
+                            </p:columnGroup>
+                        </p:panelGrid>
+                    </p:panel>
+                </p:dataGrid>
+            </p:panel>
+        </h:form>
+    </ui:define>
+    <ui:define name="rightPan">
+        <h:form id="rightPanForm" prependId="false">
+            <p:panelGrid columns="1" style="width: 100%;" columnClasses="nobord" id="dtTik">
+                <p:dataTable value="#{menuItemController.lineItems}" var="cats" style="border: none;" rowIndexVar="x">
+                    <p:column>
+                        #{x+1}
+                    </p:column>
+                    <p:column>
+                        #{cats.displayName}
+                    </p:column>
+                    <p:column>
+                        #{cats.quantity}
+                    </p:column>
+                    <p:column>
+                        #{cats.price}
+                    </p:column>
+                    <p:columnGroup type="footer">
+                        <p:row>
+                            <p:column colspan="3" footerText="Totals:"
+                                      style="text-align:right"/>
+                            <p:column footerText="#{menuItemController.lineTotal}$"/>
+                        </p:row>
+                    </p:columnGroup>
+                </p:dataTable>
+                <p:commandButton value="Checkout" id="chkBtn"/>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

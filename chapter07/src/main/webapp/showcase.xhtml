@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="templates/store_template.xhtml">
+    <ui:define name="head">
+    </ui:define>
+    <ui:define name="bodyContent">
+        <h:form id="centerForm">
+            <p:fieldset style="margin: 0 auto; text-align: center; text-align: -webkit-center;">
+                <p:panel styleClass="twoCols center_align" style="float: center;">
+                    <p class="center_align">
+                        <p:media value="#{movieController.selectedMovie.movieUrl}"
+                                 width="420" height="315"
+                                 player="flash"
+                                 rendered="#{movieController.selectedMovie.movieType == 'YOUTUBE'}"/>
+
+                        <p:media value="#{movieController.selectedMovie.movieUrl}"
+                                 width="420" height="315"
+                                 rendered="#{movieController.selectedMovie.movieType == 'QUICKTIME'}">
+                            <f:param name="autoPlay" value="false"/>
+                        </p:media>
+                    </p>
+                    <p:commandButton value="back" action="welcome.jsf"/>
+                </p:panel>
+            </p:fieldset>
+            <p:fieldset>
+                <p:panel styleClass="twoCols center_align" style="float: center;">
+                    <p:outputLabel value="Title">
+                        #{movieController.selectedMovie.title}
+                    </p:outputLabel>
+
+                    <p>
+                        #{movieController.selectedMovie.description}
+                    </p>
+
+                    <div style="float: right;">
+                        <p:rating value="#{movieController.selectedMovie.rating}"/>
+                    </div>
+                </p:panel>
+            </p:fieldset>
+            <p:fieldset legend="Comments" id="commentId">
+                <p:dataList value="#{movieController.allCommentsByMovie}" var="cmt">
+                    <time class="comment-date">#{cmt.createDate}</time>
+                    <h2>#{cmt.user.firstName}</h2>
+
+                    <p>
+                        #{cmt.comment}
+                    </p>
+                </p:dataList>
+                <p:panel rendered="#{userController.loggedIn}">
+                    <p:inputTextarea value="#{movieController.comment}"/>
+                    <p:commandButton value="Submit"
+                                     update="commentId"
+                                     actionListener="#{movieController.saveOrUpdateComment(userController.userNow)}"/>
+                </p:panel>
+
+            </p:fieldset>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

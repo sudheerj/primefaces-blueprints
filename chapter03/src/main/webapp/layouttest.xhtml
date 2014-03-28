@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Toggle Layout(PrimeFaces)</title>
+    <script type="text/javascript">
+        var hiddenFlag = false;
+
+        function closeOpen() {
+            hiddenFlag = !hiddenFlag;
+            var switherId_1 = $("#switherId_1");
+            if (hiddenFlag) {
+                myLayout.close('north');
+                myLayout.close('west');
+                myLayout.close('east');
+                myLayout.close('south');
+                switherId_1.html("[R1]");
+                switherId_1.attr("title", "Restore Window");
+            } else {
+                myLayout.open('north');
+                myLayout.open('west');
+                myLayout.open('east');
+                myLayout.open('south');
+                switherId_1.html("[M1]");
+                switherId_1.attr("title", "Maximize Window");
+            }
+        }
+
+        function hideShow() {
+            hiddenFlag = !hiddenFlag;
+            var switherId_2 = $("#switherId_2");
+            if (hiddenFlag) {
+                myLayout.hide('north');
+                myLayout.hide('west');
+                myLayout.hide('east');
+                myLayout.hide('south');
+                switherId_2.html("[R2]");
+                switherId_2.attr("title", "Restore Window");
+            } else {
+                myLayout.show('north');
+                myLayout.show('west');
+                myLayout.show('east');
+                myLayout.show('south');
+                switherId_2.html("[M2]");
+                switherId_2.attr("title", "Maximize Window");
+            }
+        }
+    </script>
+</h:head>
+
+<h:body>
+
+    <p:layout id="container" fullPage="true" widgetVar="myLayout">
+        <p:layoutUnit id="banner" position="north" size="100" resizable="true">
+            north
+        </p:layoutUnit>
+
+        <p:layoutUnit id="sidebar" position="west" size="1000" resizable="true">
+            west
+        </p:layoutUnit>
+
+        <p:layoutUnit id="content" position="center">
+            <h:form id="changeLayoutForm">
+                <div style="position:absolute; top:8px; right:8px;">
+                    <a id="switherId_1" href="javascript:void(0)" onclick="closeOpen()" title="Maximize Window">[M1]</a>
+                    <a id="switherId_2" href="javascript:void(0)" onclick="hideShow()" title="Maximize Window">[M2]</a>
+                </div>
+            </h:form>
+            CENTER(PrimeFaces)
+        </p:layoutUnit>
+
+        <p:layoutUnit id="sidebar2" position="east" size="600" resizable="true">
+            east
+        </p:layoutUnit>
+
+        <p:layoutUnit id="footer" position="south" size="50" resizable="true">
+            south
+        </p:layoutUnit>
+    </p:layout>
+</h:body>
+
+</html>

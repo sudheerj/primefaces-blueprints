@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.packt.pf.blueprints</groupId>
+    <artifactId>primefaces-blueprints</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>PrimeFaces Blueprint's</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.7</java.version>
+        <primefaces.version>4.0</primefaces.version>
+        <primefaces.ext.version>1.1.0</primefaces.ext.version>
+        <jsf.version>2.2.4</jsf.version>
+        <log4j.version>1.2.17</log4j.version>
+        <jetty.version>8.1.3.v20120416</jetty.version>
+        <themes.version>1.0.10</themes.version>
+        <junit.version>4.11</junit.version>
+        <mysql.version>5.1.26</mysql.version>
+        <slf4j.version>1.7.5</slf4j.version>
+    </properties>
+
+    <modules>
+        <module>support-pac</module>
+        <module>chapter01</module>
+        <module>chapter02</module>
+        <module>chapter03</module>
+        <module>chapter04</module>
+        <module>chapter05</module>
+        <module>chapter06</module>
+        <module>chapter07</module>
+    </modules>
+    <repositories>
+        <repository>
+            <id>JBoss repository</id>
+            <url>http://repository.jboss.com/maven2/</url>
+        </repository>
+        <repository>
+            <id>prime-repo</id>
+            <name>PrimeFaces Maven Repository</name>
+            <url>http://repository.primefaces.org</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+</project>

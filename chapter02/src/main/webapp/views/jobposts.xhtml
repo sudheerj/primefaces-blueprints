@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/masterTemplate.xhtml">
+	<ui:define name="content">
+		<h:form id="postsform">
+			<p:dataTable var="post" value="#{jobPostsController.jobslist}">
+				<p:column headerText="Company">
+					<h:outputText value="#{post.company}" />
+				</p:column>
+
+				<p:column headerText="Domain Technology">
+					<h:outputText value="#{post.domain}" />
+				</p:column>
+
+				<p:column headerText="Experience">
+					<h:outputText value="#{post.experience}" />
+				</p:column>
+
+				<p:column headerText="Job Position">
+					<h:outputText value="#{post.position}" />
+				</p:column>
+				
+				<p:column headerText="Job Location">
+					<h:outputText value="#{post.location}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

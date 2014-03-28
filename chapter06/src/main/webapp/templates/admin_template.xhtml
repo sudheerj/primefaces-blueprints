@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions">
+<f:view contentType="text/html" locale="en">
+    <pe:head title="PrimeFaces">
+        <f:facet name="first">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta http-equiv="pragma" content="no-cache"/>
+            <meta http-equiv="cache-control" content="no-cache"/>
+            <meta http-equiv="expires" content="0"/>
+        </f:facet>
+
+        <ui:insert name="head"/>
+        <f:facet name="last">
+            <h:outputStylesheet library="css" name="styles.css" value="default"/>
+        </f:facet>
+    </pe:head>
+
+    <h:body>
+        <p:layout>
+            <p:layoutUnit position="center">
+                <div id="menubar">
+                    <ui:insert name="menubars">
+                        <h:form>
+                            <p:menubar>
+                                <p:menuitem value="Dashboard" url="/pages/storeadmin.jsf" icon="ui-icon-home"/>
+                                <p:submenu label="Store Management">
+                                    <p:menuitem value="Products" url="/pages/products.jsf"/>
+                                    <p:menuitem value="Category" url="/pages/categories.jsf"/>
+                                    <p:menuitem value="Discount" url="/pages/discounts.jsf"/>
+                                </p:submenu>
+                                <p:submenu label="Order Management">
+                                    <p:menuitem value="Process Order"/>
+                                </p:submenu>
+                                <p:menuitem label="Logout"/>
+                            </p:menubar>
+                        </h:form>
+                    </ui:insert>
+                </div>
+                <p:panel style="min-height: 200px;">
+                    <ui:insert name="bodyContent"/>
+                </p:panel>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+
+</f:view>
+</html>

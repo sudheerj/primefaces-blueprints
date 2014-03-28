@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/masterTemplate.xhtml">
+	<ui:define name="content">
+		<h:form id="adminform">
+			<p:tabView id="tabView">
+
+				<p:tab id="tab1" title="Configurations">
+					<p:accordionPanel>
+						<p:tab title="AboutUS">
+							<h:panelGrid id="aboutusgrid" columns="2" cellpadding="10">
+								<p:graphicImage value="/resources/images/aboutus.png"
+									width="100" height="100" />
+								<h:outputText  value="#{adminController.aboutus}" />
+							</h:panelGrid>
+							<p:selectBooleanButton value="#{adminController.aboutusflag}"
+								onLabel="Save" offLabel="Edit" onIcon="ui-icon-check"
+								offIcon="ui-icon-check">
+								<p:ajax process="@this,aboutpanel,aboutusgrid" update="aboutpanel,aboutusgrid"
+									listener="#{adminController.aboutusAction}" />
+							</p:selectBooleanButton>
+							<p:outputPanel id="aboutpanel">
+								<p:editor id="editor1" value="#{adminController.aboutus}"
+									rendered="#{adminController.aboutusflag}" width="500" />
+							</p:outputPanel>
+						</p:tab>
+						<p:tab title="ContactUS">
+							<h:panelGrid id="contactusgrid" columns="2" cellpadding="10">
+								<p:graphicImage value="/resources/images/help.png"
+									width="100" height="100" />
+								<h:outputText value="#{adminController.contactus}" />
+							</h:panelGrid>
+							<p:selectBooleanButton value="#{adminController.contactusflag}"
+								onLabel="Save" offLabel="Edit" onIcon="ui-icon-check"
+								offIcon="ui-icon-check">
+								<p:ajax process="@this,contactusgrid,contactpanel" update="contactpanel,contactusgrid"
+									listener="#{adminController.contactusAction}" />
+							</p:selectBooleanButton>
+							<p:outputPanel id="contactpanel">
+								<p:editor id="editor2" value="#{adminController.contactus}"
+									rendered="#{adminController.contactusflag}" width="500" />
+							</p:outputPanel>
+						</p:tab>
+						<p:tab title="Disclaimer">
+							<h:panelGrid id="disclaimergrid" columns="2" cellpadding="10">
+								<p:graphicImage value="/resources/images/disclaimer.png"
+									width="100" height="100" />
+								<h:outputText value="#{adminController.disclaimer}" />
+							</h:panelGrid>
+							<p:selectBooleanButton value="#{adminController.disclaimerflag}"
+								onLabel="Save" offLabel="Edit" onIcon="ui-icon-check"
+								offIcon="ui-icon-check">
+								<p:ajax process="@this,disclaimerpanel,disclaimergrid" update="disclaimerpanel,disclaimergrid" 
+									listener="#{adminController.disclaimerAction}" />
+							</p:selectBooleanButton>
+							<p:outputPanel id="disclaimerpanel">
+								<p:editor id="editor3" value="#{adminController.disclaimer}"
+									rendered="#{adminController.disclaimerflag}" width="500" />
+							</p:outputPanel>
+						</p:tab>
+					</p:accordionPanel>
+				</p:tab>
+
+				<p:tab id="tab2" title="View employees">
+					<p:dataTable var="employee" value="#{adminController.employeelist}">
+						<p:column headerText="FirstName">
+							<h:outputText value="#{employee.firstname}" />
+						</p:column>
+
+						<p:column headerText="LastName">
+							<h:outputText value="#{employee.lastname}" />
+						</p:column>
+
+						<p:column headerText="Sex">
+							<h:outputText value="#{employee.sex}" />
+						</p:column>
+
+						<p:column headerText="Country">
+							<h:outputText value="#{employee.country}" />
+						</p:column>
+
+						<p:column headerText="City">
+							<h:outputText value="#{employee.city}" />
+						</p:column>
+
+						<p:column headerText="Company">
+							<h:outputText value="#{employee.company}" />
+						</p:column>
+					</p:dataTable>
+				</p:tab>
+			</p:tabView>
+		</h:form>
+	</ui:define>
+</ui:composition>

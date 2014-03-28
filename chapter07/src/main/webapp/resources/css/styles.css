@@ -1,0 +1,106 @@
+h1, h2 {
+    font-weight: normal;
+    font-family: "Trebuchet MS", Arial;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3)
+}
+
+h1 {
+    font-size: 1.6em
+}
+
+h2, h3 {
+    margin: 5px 0
+}
+
+h2 {
+    font-size: 1.3em
+}
+
+h2.main {
+    font-size: 1.9em;
+    font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)
+}
+
+h3 {
+    font-size: 1.1em;
+    font-family: "Trebuchet MS", Arial;
+    font-weight: bold
+}
+
+.twoCols {
+    float: left;
+    width: 50%
+}
+
+#cols {
+    float: left;
+    width: 385px;
+    margin-left: -385px
+}
+
+#col1, #col2 {
+    width: 170px;
+    margin: 2px 5px 15px;
+    padding: 3px 3px 6px;
+    text-align: left;
+    background: #1e0c0a;
+    background: -moz-linear-gradient(top, rgb(255, 128, 111) 0, rgb(36, 9, 12) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(255, 128, 111)), color-stop(100%, rgb(36, 9, 12)));
+    background: -webkit-linear-gradient(top, rgb(255, 128, 111) 0, rgb(36, 9, 12) 100%);
+    background: -o-linear-gradient(top, rgb(255, 128, 111) 0, rgb(36, 9, 12) 100%);
+    background: -ms-linear-gradient(top, rgb(255, 128, 111) 0, rgb(36, 9, 12) 100%);
+    background: linear-gradient(top, rgb(255, 128, 111) 0, rgb(36, 9, 12) 100%);
+    -moz-border-radius-topleft: 20px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 20px;
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-radius: 20px 3px 20px 3px;
+    border-radius: 20px 3px 20px 3px;
+    border: 1px solid #555;
+    -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2)
+}
+
+#col2 p {
+    text-align: center
+}
+
+#col2 {
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 20px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 20px;
+    -webkit-border-radius: 3px 20px 3px 20px;
+    border-radius: 3px 20px 3px 20px;
+    padding: 3px 5px 6px;
+    display: block
+}
+
+#col1 a {
+    display: block
+}
+
+#col1 h2, #col2 h2, #cloud h2 {
+    text-align: center
+}
+
+#tip a {
+    display: inline;
+    text-decoration: underline
+}
+
+#extra {
+    clear: left
+}
+
+.center_align {
+    margin: 0 auto;
+    text-align: -webkit-center;
+}
+
+.comment-date {
+    color: #d0d962;
+    font-size: 10px;
+}

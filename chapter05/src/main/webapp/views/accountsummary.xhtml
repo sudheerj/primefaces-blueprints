@@ -1,0 +1,178 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/masterTemplate.xhtml">
+	<ui:define name="content">
+		<h:form id="accountform">
+
+			<!-- <p:contextMenu for="cars">
+				<p:menuitem value="View Advisor List" update="display"
+					icon="ui-icon-search" oncomplete="PF('$advisorprofile').show()" />
+				<p:menuitem value="account Profile" update="cars"
+					icon="ui-icon-close" actionListener="#{accountSummaryController.deleteCar}" />
+				<p:menuitem value="Delete account" update="cars" icon="ui-icon-close"
+					actionListener="#{accountSummaryController.deleteCar}" />
+			</p:contextMenu> -->
+
+			<p:dataTable id="dataTable" var="account"
+				value="#{accountSummaryController.accountsInfo}" paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<f:facet name="header">
+            Account Summary
+        </f:facet>
+				
+				<p:column sortBy="investorName" filterBy="investorName"
+					id="investorName">
+					<f:facet name="header">
+						<h:outputText value="Investor Name" />
+					</f:facet>
+					<h:outputText value="#{account.investorName}" />
+				</p:column>
+
+
+				<p:column sortBy="registeredAccholderName" filterBy="registeredAccholderName"
+					id="registeredAccholderName">
+					<f:facet name="header">
+						<h:outputText value="Registered Accountholder Name" />
+					</f:facet>
+					<h:outputText value="#{account.registeredAccholderName}" />
+				</p:column>
+
+				<p:column sortBy="accountNumber" filterBy="accountNumber"
+					id="accountNumber">
+					<f:facet name="header">
+						<h:outputText value="accountNumber" />
+					</f:facet>
+					<h:outputText value="#{account.accountNumber}" />
+				</p:column>
+
+				<p:column sortBy="accountType" filterBy="accountType" id="accountType">
+					<f:facet name="header">
+						<h:outputText value="accountType" />
+					</f:facet>
+					<h:outputText value="#{account.accountType}" />
+				</p:column>
+
+				<p:column sortBy="status" filterBy="status"
+					id="status">
+					<f:facet name="header">
+						<h:outputText value="status" />
+					</f:facet>
+					<h:outputText value="#{account.status}" />
+				</p:column>
+
+
+				<p:column sortBy="registrationDate" filterBy="registrationDate"
+					id="registrationDate">
+					<f:facet name="header">
+						<h:outputText value="registrationDate" />
+					</f:facet>
+					<h:outputText value="#{account.registrationDate}" />
+				</p:column>
+
+				<p:column sortBy="openDate" filterBy="openDate"
+					id="openDate">
+					<f:facet name="header">
+						<h:outputText value="accountNumber" />
+					</f:facet>
+					<h:outputText value="#{account.openDate}" />
+				</p:column>
+
+				<p:column sortBy="closeDate" filterBy="closeDate" id="closeDate">
+					<f:facet name="header">
+						<h:outputText value="closeDate" />
+					</f:facet>
+					<h:outputText value="#{account.closeDate}" />
+				</p:column>
+				
+				<p:column sortBy="jointAccount" filterBy="jointAccount" id="jointAccount">
+					<f:facet name="header">
+						<h:outputText value="jointAccount" />
+					</f:facet>
+					<h:outputText value="#{account.jointAccount}" />
+				</p:column>
+				
+				<p:column sortBy="balanceUS" filterBy="balanceUS" id="balanceUS">
+					<f:facet name="header">
+						<h:outputText value="balanceUS" />
+					</f:facet>
+					<h:outputText value="#{account.balanceUS}" />
+				</p:column>
+				
+				<p:column sortBy="balanceUK" filterBy="balanceUK" id="balanceUK">
+					<f:facet name="header">
+						<h:outputText value="balanceUK" />
+					</f:facet>
+					<h:outputText value="#{account.balanceUK}" />
+				</p:column>
+
+			</p:dataTable>
+
+
+		</h:form>
+		<!-- <p:dialog id="accountprofile" header="account Profile"
+			widgetVar="$accountprofile" modal="true" resizable="false">
+			<h:form id="accountprofileform">
+
+				<p:messages id="messages"></p:messages>
+				<h:panelGrid columns="4" cellpadding="5">
+					<h:outputLabel for="firstname" value="Firstname:" />
+					<p:inputText value="#{accountSummaryController.accountobj.firstname}"
+						id="firstname" required="true"
+						requiredMessage="Firstname cannot be empty" label="username">
+					</p:inputText>
+					<p:watermark for="firstname" value="Enter firstname" />
+
+					<h:outputLabel for="lastname" value="Lastname:" />
+					<p:inputText value="#{accountSummaryController.accountobj.lastname}"
+						id="lastname" required="true"
+						requiredMessage="Firstname cannot be empty" label="username">
+					</p:inputText>
+					<p:watermark for="lastname" value="Enter lastname" />
+
+					<h:outputLabel for="address1" value="Address1:" />
+					<p:inputText value="#{accountSummaryController.accountobj.address1}"
+						id="address1" required="true"
+						requiredMessage="Address cannot be empty" label="Address">
+					</p:inputText>
+					<p:watermark for="address1" value="Enter address" />
+
+					<h:outputLabel for="address2" value="Address2:" />
+					<p:inputText value="#{accountSummaryController.accountobj.address2}"
+						id="address2" label="Address">
+					</p:inputText>
+					<p:watermark for="address2" value="Enter address" />
+
+					<h:outputLabel for="country" value="Country:" />
+					<p:password value="#{accountSummaryController.accountobj.country}"
+						id="country" label="country" />
+					<p:watermark for="country" value="Enter Country" />
+
+					<h:outputLabel for="city" value="City:" />
+					<p:password value="#{accountSummaryController.accountobj.city}" id="city"
+						label="City" />
+					<p:watermark for="city" value="Enter City" />
+
+					<h:outputLabel for="contactnumber" value="Contact Number:" />
+					<p:password value="#{accountSummaryController.accountobj.contactnumber}"
+						id="contactnumber" label="Contact Number" />
+					<p:watermark for="contactnumber" value="Enter Contact number" />
+
+					<h:outputLabel for="postalcode" value="Postal Code:" />
+					<p:password value="#{accountSummaryController.accountobj.postalcode}"
+						id="postalcode" label="Postal Code" />
+					<p:watermark for="postalcode" value="Enter Postal Code" />
+
+					<f:facet name="footer">
+						<p:commandButton id="update" value="Save"
+							update="accountprofileform"
+							actionListener="#{accountSummaryController.updateaccountProfile}" />
+					</f:facet>
+				</h:panelGrid>
+			</h:form>
+		</p:dialog> -->
+	</ui:define>
+</ui:composition>

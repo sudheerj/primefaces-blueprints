@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view contentType="text/html">
+    <h:form id="leftPanForm">
+        <p:accordionPanel id="accord">
+            <p:tab title="Categories">
+                <p:dataGrid value="#{menuItemController.categories}" var="cats" style="border: none;">
+                    <p:commandLink style="a:link { text-decoration:none; }"
+                                   update=":centerForm:menuItemContiner"
+                                   actionListener="#{menuItemController.findAllMenuItemsForCategory(cats.id)}">
+                        <p:panel>
+                            <h:outputText value="#{cats.id}"/><br/>
+                            <h:outputText value="#{cats.name}"/>
+                        </p:panel>
+                    </p:commandLink>
+                </p:dataGrid>
+            </p:tab>
+            <p:tab>
+                <f:facet name="title">
+                    <h:panelGrid columns="2" width="100%">
+                        <h:outputText value="Favorite Items"/>
+                        <p:commandButton icon="ui-icon-extlink" iconPos="center"
+                                         update=":centerForm:menuItemContiner"
+                                         actionListener="#{menuItemController.loadFavorites}"
+                                         style="float: right;"/>
+                    </h:panelGrid>
+                </f:facet>
+                <p:outputPanel id="favorites">
+                    <p:dataGrid value="#{menuItemController.favoriteItems}" var="mens" id="favoriteFormContiner">
+                        <p:panel>
+                            <h:outputText value="#{mens.id}"/><br/>
+                            <h:outputText value="#{mens.name}"/>
+                        </p:panel>
+                    </p:dataGrid>
+                </p:outputPanel>
+            </p:tab>
+        </p:accordionPanel>
+    </h:form>
+</f:view>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="templates/store_template.xhtml">
+    <ui:define name="header">
+
+    </ui:define>
+    <ui:define name="bodyContent">
+        <h:form id="form">
+            <p:growl id="messages" showDetail="true"/>
+
+            <p:schedule id="schedule" value="#{scheduleController.eventModel}"
+                        widgetVar="myschedule"
+                        rendered="#{userController.loggedIn}">
+
+                <p:ajax event="dateSelect" listener="#{scheduleController.onDateSelect}" update="eventDetails"
+                        oncomplete="PF('eventDialog').show()"/>
+                <p:ajax event="eventSelect" listener="#{scheduleController.onEventSelect}" update="eventDetails"
+                        oncomplete="PF('eventDialog').show()"/>
+                <p:ajax event="eventMove" listener="#{scheduleController.onEventMove}" update="messages"/>
+                <p:ajax event="eventResize" listener="#{scheduleController.onEventResize}" update="messages"/>
+
+            </p:schedule>
+
+            <p:schedule id="readSchedule" value="#{scheduleController.eventModel}"
+                        rendered="#{ not userController.loggedIn}"/>
+
+
+            <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip" closeOnEscape="true">
+                <h:inputText value="#{scheduleController.event.data}" converter="javax.faces.Long"/>
+                <h:panelGrid id="eventDetails" columns="2">
+
+                    <h:outputLabel for="title" value="Title:"/>
+                    <p:inputText id="title" value="#{scheduleController.event.title}" required="true"/>
+
+                    <h:outputLabel for="from" value="From:"/>
+                    <p:calendar id="from" value="#{scheduleController.event.startDate}" pattern="d/M/yyyy"/>
+
+                    <h:outputLabel for="to" value="To:"/>
+                    <p:calendar id="to" value="#{scheduleController.event.endDate}" pattern="d/M/yyyy"/>
+
+                    <h:outputLabel for="allDay" value="All Day:"/>
+                    <h:selectBooleanCheckbox id="allDay" value="#{scheduleController.event.allDay}"/>
+
+                    <p:commandButton type="reset" value="Reset"/>
+                    <p:commandButton id="addButton" value="Save" actionListener="#{scheduleController.addEvent}"
+                                     oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
+                </h:panelGrid>
+            </p:dialog>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>

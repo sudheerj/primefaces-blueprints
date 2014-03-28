@@ -1,0 +1,50 @@
+///Employee table
+DROP TABLE IF EXISTS `blueprintsdb`.`employee`;
+CREATE TABLE  `blueprintsdb`.`employee` (
+  `userid` VARCHAR(20) NOT NULL UNIQUE,
+  `firstname` VARCHAR(30) NOT NULL,
+  `lastname` VARCHAR(30),
+  `dob` VARCHAR(20),
+  `sex` VARCHAR(1),
+  `maritalstatus` VARCHAR(7),
+  `address` VARCHAR(100),
+  `country` VARCHAR(20),
+  `city` VARCHAR(20),
+  `phone` VARCHAR(30),
+  `postalcode` VARCHAR(20),
+  `email` VARCHAR(30),
+  `university` VARCHAR(30) NOT NULL,
+  `qualification` VARCHAR(10),
+  `percentage` VARCHAR(5),
+  `profession` VARCHAR(20) NOT NULL,
+  `experience` double NOT NULL,
+  `company` VARCHAR(30) NOT NULL,
+  `currentpack` double NOT NULL,
+  `expectedpack` double NOT NULL,
+  `joineddate` VARCHAR(20),
+  `frameworks` VARCHAR(50) NOT NULL,
+  `dbs` VARCHAR(50),
+  `servers` VARCHAR(50),
+  `ides` VARCHAR(50),`password` VARCHAR(50) NOT NULL,PRIMARY KEY (`userid`))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  ////////////////
+  //Jobposts table
+  DROP TABLE IF EXISTS `blueprintsdb`.`jobposts`;
+  CREATE TABLE  `blueprintsdb`.`jobposts` (
+  `company` VARCHAR(30) NOT NULL,
+  `domain` VARCHAR(10),
+  `experience` VARCHAR(20),
+  `position` VARCHAR(20),
+  `location` VARCHAR(20))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('TechSoft','java','5','senior developer','uk');
+  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('EuroSoft','java','10','architect','us');
+  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('AsianSoft','java','11','architect','germany');
+  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('AmericanSoft','java','6','software engineer','uk');
+  /////////////////
+  CREATE TABLE  `blueprintsdb`.`adminconfig` (
+  `adminID` VARCHAR(30) NOT NULL,
+  `aboutus` text,
+  `contactus` text,
+  `disclaimer` text)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  INSERT INTO blueprintsdb.adminconfig(adminID,aboutus,contactus,disclaimer)VALUES('admin','This employee registration application is used to register the new employees to apply the jobs','The employee hub site,packt team,UK','All copy rights reserved for packt publishing');
+  ////////////////
+INSERT INTO blueprintsdb.employee(userid,firstname,lastname,dob,sex,maritalstatus,address,country,city,phone,postalcode,email,university,qualification,percentage,profession,experience,company,currentpack,expectedpack,joineddate,frameworks,dbs,servers,ides,password)VALUES('111','john','smith','14/12/1986','m','married','AK apartements','US','NewYork','22335566','1666555','john.smith@gmail.com','Harward','MS','89','Software',8,'Tech Fast',15,20,'06/06/2006','jsf','oracle','websphere','eclipse','');

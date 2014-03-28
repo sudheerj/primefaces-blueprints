@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<p:panel>
+	<div style="height: 130px">
+		<h:form id="headerForm">
+			<p:graphicImage value="/resources/images/logo/logo.png" width="250"
+				height="95" />
+			<p:carousel itemStyleClass="carItem" pageLinks="4"
+				style="margin-top:-10px;margin-left:17%" autoPlayInterval="4000"
+				numVisible="1" effect="easeInStrong" circular="true">
+				<p:graphicImage value="/resources/images/gallery/post1.jpg"
+					width="350" height="100" />
+				<p:graphicImage value="/resources/images/gallery/post2.jpg"
+					width="350" height="100" />
+				<p:graphicImage value="/resources/images/gallery/post3.jpg"
+					width="350" height="100" />
+			</p:carousel>
+			<p:outputPanel style="float:right"
+				rendered="#{view.viewId != '/views/login.xhtml'}">
+				<h:commandLink action="/views/login.xhtml?faces-redirect=true">
+					<p:graphicImage value="/resources/images/logout.png" />
+				</h:commandLink>
+			</p:outputPanel>
+		</h:form>
+	</div>
+</p:panel>
+
+</html>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<!-- test -->
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Login</title>
+    <h:outputStylesheet>
+        html, body {
+            height: 100%;
+            width: 100%;
+            background: rgb(180, 221, 180); /* Old browsers */
+            /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+            background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNiNGRkYjQiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxNyUiIHN0b3AtY29sb3I9IiM4M2M3ODMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIzMyUiIHN0b3AtY29sb3I9IiM1MmIxNTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2NyUiIHN0b3AtY29sb3I9IiMwMDhhMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI4MyUiIHN0b3AtY29sb3I9IiMwMDU3MDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAyNDAwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+            background: -moz-radial-gradient(center, ellipse cover, rgba(180, 221, 180, 1) 0%, rgba(131, 199, 131, 1) 17%, rgba(82, 177, 82, 1) 33%, rgba(0, 138, 0, 1) 67%, rgba(0, 87, 0, 1) 83%, rgba(0, 36, 0, 1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(180, 221, 180, 1)), color-stop(17%, rgba(131, 199, 131, 1)), color-stop(33%, rgba(82, 177, 82, 1)), color-stop(67%, rgba(0, 138, 0, 1)), color-stop(83%, rgba(0, 87, 0, 1)), color-stop(100%, rgba(0, 36, 0, 1))); /* Chrome,Safari4+ */
+            background: -webkit-radial-gradient(center, ellipse cover, rgba(180, 221, 180, 1) 0%, rgba(131, 199, 131, 1) 17%, rgba(82, 177, 82, 1) 33%, rgba(0, 138, 0, 1) 67%, rgba(0, 87, 0, 1) 83%, rgba(0, 36, 0, 1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-radial-gradient(center, ellipse cover, rgba(180, 221, 180, 1) 0%, rgba(131, 199, 131, 1) 17%, rgba(82, 177, 82, 1) 33%, rgba(0, 138, 0, 1) 67%, rgba(0, 87, 0, 1) 83%, rgba(0, 36, 0, 1) 100%); /* Opera 12+ */
+            background: -ms-radial-gradient(center, ellipse cover, rgba(180, 221, 180, 1) 0%, rgba(131, 199, 131, 1) 17%, rgba(82, 177, 82, 1) 33%, rgba(0, 138, 0, 1) 67%, rgba(0, 87, 0, 1) 83%, rgba(0, 36, 0, 1) 100%); /* IE10+ */
+            background: radial-gradient(ellipse at center, rgba(180, 221, 180, 1) 0%, rgba(131, 199, 131, 1) 17%, rgba(82, 177, 82, 1) 33%, rgba(0, 138, 0, 1) 67%, rgba(0, 87, 0, 1) 83%, rgba(0, 36, 0, 1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b4ddb4', endColorstr='#002400', GradientType=1); /* IE6-8 fallback on horizontal gradient */
+
+        }
+    </h:outputStylesheet>
+</h:head>
+<h:body onload="document.getElementById('j_username').focus()">
+    <div id="content" title="User Login">
+        <h:form id="login" prependId="false">
+            <p:dialog header="User Login"
+                      id="dialog"
+                      modal="true"
+                      closable="false"
+                      position="center"
+                      widgetVar="modalLogin"
+                      showEffect="slide"
+                      draggable="false"
+                      resizable="false"
+                      visible="true">
+                <h:panelGrid id="loginBox" columns="2" cellpadding="3"
+                             style="margin: 0 auto; border: 0px; padding-top: 20px;">
+                    <h:outputLabel for="j_username" value="Username "/>
+                    <h:outputLabel for="j_password" value="Password "/>
+                    <p:keyboard id="j_username" required="true" widgetVar="usernameKeyBoard"
+                                value="#{userController.username}"
+                                onfocus="$('#keypad-div').css( 'z-index', 9999 );"/>
+                    <p:keyboard id="j_password" required="true" password="true"
+                                value="#{userController.password}"
+                                onblur="$('#keypad-div').css( 'z-index', 9999 );"/>
+                    <p:commandButton id="loginBtn" value="Login" ajax="false" action="#{userController.loginMeIn()}"/>
+                    <p:message for="loginBtn"/>
+
+                    <p:commandButton value="Register" action="/userRegistration.jsf?faces-redirect=true"
+                                     actionListener="#{userController.prepareAddNewUser}"/>
+                    <p:commandButton value="Cancel" action="/welcome.jsf?faces-redirect=true"/>
+                    <p:defaultCommand target="loginBtn"/>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+    </div>
+</h:body>
+</html>

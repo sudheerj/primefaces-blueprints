@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="templates/store_template.xhtml">
+<ui:define name="head">
+    <h:outputScript>
+        function handleDrop(event, ui) {
+        var droppedCar = ui.draggable;
+        droppedCar.fadeOut('fast');
+        }
+    </h:outputScript>
+</ui:define>
+<ui:define name="leftPan">
+    <h:form>
+        <p:dataGrid value="#{productController.categories}" var="cats" style="border: none;">
+            <p:commandLink style="a:link { text-decoration:none; }"
+                           update=":centerForm:itemContiner"
+                           actionListener="#{storeController.populateProductForCategory(cats)}">
+                <p:panel>
+                    <h:outputText value="#{cats.id}"/><br/>
+                    <h:outputText value="#{cats.name}"/>
+                </p:panel>
+            </p:commandLink>
+        </p:dataGrid>
+    </h:form>
+</ui:define>
+<ui:define name="bodyContent">
+    <h:form id="centerForm">
+        <p:fieldset id="itemContiner">
+            <p:dataGrid id="availableProducts" var="item"
+                        value="#{storeController.products}" columns="3">
+
+                <p:column>
+
+                    <p:panel id="pnl" header="#{item.name}" style="text-align:center">
+                        <h:panelGrid columns="1" style="width:100%">
+                            #{item.price}
+                        </h:panelGrid>
+                        <p:commandButton value="Add to Cart" update=":centerForm:dropArea"
+                                         action="#{storeController.addToCart(item)}"/>
+                    </p:panel>
+
+                    <p:draggable for="pnl" revert="true"
+                                 handle=".ui-panel-titlebar" stack=".ui-panel"/>
+
+                </p:column>
+
+            </p:dataGrid>
+        </p:fieldset>
+
+        <p:fieldset id="selectedProducts" style="margin-top:20px">
+
+            <p:outputPanel id="dropArea">
+                <h:outputText value="Shopping Cart"
+                              rendered="#{empty storeController.cartProducts}"
+                              style="font-size:24px;"/>
+
+                <p:dataTable var="prod" value="#{storeController.cartProducts}"
+                             rendered="#{not empty storeController.cartProducts}">
+
+                    <p:column headerText="Name">
+                        <h:outputText value="#{prod.name}"/>
+                    </p:column>
+                    <p:column headerText="Quantity">
+                        <h:outputText value="1"/>
+                    </p:column>
+                    <p:column headerText="Price">
+                        <h:outputText value="#{prod.price}"/>
+                    </p:column>
+
+                    <p:columnGroup type="footer">
+                        <p:row>
+                            <p:column colspan="2" footerText="Totals:"
+                                      style="text-align:right"/>
+                            <p:column footerText="#{storeController.stringTotal}$"/>
+                        </p:row>
+                    </p:columnGroup>
+                </p:dataTable>
+                <p:commandButton value="Checkout" id="checkBtn"
+                                 rendered="#{not empty storeController.cartProducts}"/>
+                <p:overlayPanel id="checkoutNow" for="checkBtn" hideEffect="fade" widgetVar="$checkoutNow">
+                    <h:form>
+                        <p:wizard flowListener="#{storeController.onFlowProcess}">
+                            <p:tab id="personal" title="Personal">
+                                <p:panel header="Personal Details">
+                                    <h:messages errorClass="error"/>
+                                    <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
+                                        <h:outputText value="Firstname: *"/>
+                                        <p:inputText required="true" label="Firstname"
+                                                     value="#{storeController.order.firstName}"/>
+
+                                        <h:outputText value="Lastname: *"/>
+                                        <p:inputText required="true" label="Lastname"
+                                                     value="#{storeController.order.lastName}"/>
+
+                                        <h:outputText value="Age: "/>
+                                        <p:inputText value="#{storeController.order.age}"/>
+
+                                        <h:outputText value="Skip to last: "/>
+                                        <h:selectBooleanCheckbox value="#{storeController.skip}"/>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+
+                            <p:tab id="address" title="Address">
+                                <p:panel header="Adress Details">
+
+                                    <h:messages errorClass="error"/>
+
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Street: "/>
+                                        <p:inputText value="#{storeController.order.street}"/>
+
+                                        <h:outputText value="Postal Code: "/>
+                                        <p:inputText value="#{storeController.order.postalCode}"/>
+
+                                        <h:outputText value="City: "/>
+                                        <p:inputText value="#{storeController.order.city}"/>
+
+                                        <h:outputText value="Skip to last: "/>
+                                        <h:selectBooleanCheckbox value="#{storeController.skip}"/>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+
+                            <p:tab id="contact" title="Contact">
+                                <p:panel header="Contact Information">
+
+                                    <h:messages errorClass="error"/>
+
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Email: *"/>
+                                        <p:inputText required="true" label="Email"
+                                                     value="#{storeController.order.email}"/>
+
+                                        <h:outputText value="Phone: "/>
+                                        <p:inputText value="#{storeController.order.phone}"/>
+
+                                        <h:outputText value="Additional Info: "/>
+                                        <p:inputText value="#{storeController.order.info}"/>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+
+                            <p:tab id="confirm" title="Confirmation">
+                                <p:panel header="Confirmation">
+
+                                    <h:panelGrid id="confirmation" columns="6">
+                                        <h:outputText value="Firstname: "/>
+                                        <h:outputText styleClass="outputLabel"
+                                                      value="#{storeController.order.firstName}"/>
+
+                                        <h:outputText value="Lastname: "/>
+                                        <h:outputText styleClass="outputLabel"
+                                                      value="#{storeController.order.lastName}"/>
+
+                                        <h:outputText value="Age: "/>
+                                        <h:outputText styleClass="outputLabel"
+                                                      value="#{storeController.order.age}"/>>
+
+                                        <h:outputText value="Street: "/>
+                                        <h:outputText styleClass="outputLabel"
+                                                      value="#{storeController.order.street}"/>
+
+                                        <h:outputText value="Postal Code: "/>
+                                        <h:outputText styleClass="outputLabel"
+                                                      value="#{storeController.order.postalCode}"/>
+
+                                        <h:outputText value="City: "/>
+                                        <h:outputText styleClass="outputLabel"
+                                                      value="#{storeController.order.city}"/>
+
+                                        <h:outputText value="Email: "/>
+                                        <h:outputText styleClass="outputLabel"
+                                                      value="#{storeController.order.email}"/>
+
+                                        <h:outputText value="Phone "/>
+                                        <h:outputText styleClass="outputLabel"
+                                                      value="#{storeController.order.phone}"/>
+
+                                        <h:outputText value="Info: "/>
+                                        <h:outputText styleClass="outputLabel"
+                                                      value="#{storeController.order.info}"/>
+
+                                        <h:outputText/>
+                                        <h:outputText/>
+                                    </h:panelGrid>
+
+                                    <p:commandButton value="Submit" action="#{storeController.checkoutOrder}"
+                                                     oncomplete="PF('$checkoutNow').hide();"
+                                                     update=":centerForm:dropArea"/>
+                                    <p:commandButton value="Cancel" oncomplete="PF('$checkoutNow').hide();"/>
+
+                                </p:panel>
+                            </p:tab>
+
+                        </p:wizard>
+
+                    </h:form>
+                </p:overlayPanel>
+            </p:outputPanel>
+
+        </p:fieldset>
+
+        <p:droppable for="selectedProducts" tolerance="touch"
+                     activeStyleClass="ui-state-highlight"
+                     datasource="availableProducts" onDrop="handleDrop">
+            <p:ajax listener="#{storeController.onProdDrop}"
+                    update="dropArea :centerForm:availableProducts"/>
+        </p:droppable>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

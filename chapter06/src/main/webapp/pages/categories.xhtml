@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/templates/admin_template.xhtml">
+    <ui:define name="bodyContent">
+        <p:dialog id="itemDetail" widgetVar="$itemDetail"
+                  hideEffect="explode" appendTo="@(body)"
+                  resizable="false" draggable="false"
+                  closeOnEscape="true">
+            <h:form>
+                <h:inputHidden value="#{productController.category.id}"/>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Id"/>  #{productController.category.id}
+                    <p:outputLabel value="Category Name"/>
+                    <p:inputText label="Category Name" value="#{productController.category.name}"
+                                 placeholder="Category Name"/>
+                    <p:outputLabel value="Parent Id"/>
+                    <p:selectOneMenu value="#{productController.category.parentId}" effect="fold"
+                                     converter="javax.faces.Long">
+                        <f:selectItem itemLabel="Select One" itemValue="0"/>
+                        <f:selectItems value="#{productController.categories}" var="cats"
+                                       itemLabel="#{cats.id}" itemValue="#{cats.id}"/>
+                    </p:selectOneMenu>
+                    <p:commandButton value="Submit" ajax="true"
+                                     update=":categor:cateTable"
+                                     action="#{productController.updateCategory}"
+                                     oncomplete="PF('$itemDetail').hide()"/>
+                </p:panelGrid>
+            </h:form>
+
+        </p:dialog>
+        <h:form id="categor">
+            <p:commandButton icon="ui-icon-plus" id="addItemBtn" value="AddNew Category"
+                             actionListener="#{productController.addNewCategory}"
+                             update=":itemDetail" ajax="true"
+                             oncomplete="PF('$itemDetail').show()"/>
+
+            <p:dataTable value="#{productController.categories}" var="cat" id="cateTable">
+                <p:column headerText="Category Id">
+                    <h:outputText value="#{cat.id}"/>
+                </p:column>
+                <p:column headerText="Category Name">
+                    <h:outputText value="#{cat.name}"/>
+                </p:column>
+                <p:column headerText="Parent Id">
+                    <h:outputText value="#{cat.parentId}"/>
+                </p:column>
+                <p:column headerText="Action" style="text-align: center">
+                    <p:commandButton icon="ui-icon-minus" id="delItemBtn"
+                                     actionListener="#{productController.removeCategory(cat.id)}"
+                                     update=":categor:cateTable"/>
+                    <p:commandButton icon="ui-icon-pencil" id="editItemBtn"
+                                     actionListener="#{productController.changeCategory(cat)}"
+                                     update=":itemDetail"
+                                     oncomplete="PF('$itemDetail').show()"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>

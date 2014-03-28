@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="templates/store_template.xhtml">
+    <ui:define name="head">
+    </ui:define>
+    <ui:define name="bodyContent">
+        <h:form id="centerForm">
+            <p:panelGrid columns="1" style="width: 100%;">
+                <p:panel style="text-align: center; border: none;">
+                    <ui:repeat value="#{movieController.movies}" var="movs">
+                        <p:commandLink style="a:link { text-decoration:none; }"
+                                       actionListener="#{movieController.setSelectedMovie(movs)}"
+                                       action="showcase.jsf?faces-redirect=true">
+
+                            <div id="col1" class="twoCols">
+                                <h2>#{movs.title}</h2>
+                                <hr/>
+                                <h2>Alphabetic List</h2>
+
+                                <p style="text-align: center;">
+                                    <p:graphicImage library="images" name="#{movs.image}" style="width: 90%;"/>
+                                    <strong>Euler angels</strong>
+                                </p>
+                                <hr/>
+                                <h2>Description</h2>
+
+                                <div id="tip">
+                                    <p>#{movs.description}</p>
+                                </div>
+                            </div>
+                        </p:commandLink>
+                    </ui:repeat>
+                </p:panel>
+                <p:panel style=" text-align: center; border: none;">
+                    <p:ring id="custom" value="#{movieController.movies}" var="favs" styleClass="li {height:200px;}">
+                        <p:graphicImage library="images" name="#{favs.image}" width="130px"/>
+                    </p:ring>
+                </p:panel>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

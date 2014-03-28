@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+<f:view contentType="text/html">
+	<h:head >
+		<f:facet name="first">
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<meta http-equiv="pragma" content="no-cache" />
+			<meta http-equiv="cache-control" content="no-cache" />
+			<meta http-equiv="expires" content="0" />
+		</f:facet>
+	</h:head>
+	<h:body>
+			<div id="header">
+				<ui:insert name="header">
+					<ui:include src="/templates/common/header.xhtml" />
+				</ui:insert>
+			</div>
+
+			<div id="content">
+				<ui:insert name="content">
+					  <ui:include src="/templates/common/content.xhtml" />
+				</ui:insert>
+			</div>
+
+			<div id="footer">
+				<ui:insert name="footer">
+					<ui:include src="/templates/common/footer.xhtml" />
+				</ui:insert>
+			</div>
+			<p:ajaxStatus onstart="PF('statusDialog').show();"
+				onsuccess="PF('statusDialog').hide();" />
+			<p:dialog modal="true" widgetVar="statusDialog"
+				draggable="false" closable="false">
+				<p:graphicImage value="/resources/images/process/ajax-loader.gif" />
+			</p:dialog>
+	</h:body>
+	</f:view>
+</html>

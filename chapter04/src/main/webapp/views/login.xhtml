@@ -1,0 +1,90 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/masterTemplate.xhtml">
+	<ui:define name="content">
+		<h:form id="loginform">
+			<p:panel style="width:30%;height:30%;margin-left:35%">
+				<p:messages id="login"></p:messages>
+				<h:panelGrid columns="3" cellpadding="5">
+					<h:outputLabel for="username" value="Username:" />
+					<p:inputText value="#{loginController.username}" id="username"
+						required="true" requiredMessage="Username cannot be empty"
+						validatorMessage="The length of the username exist between 3 and 8 chapters"
+						label="username">
+						<f:validateLength minimum="3" maximum="8" />
+					</p:inputText>
+					<p:watermark for="username" value="Enter username" />
+
+					<h:outputLabel for="password" value="Password:" />
+					<p:keyboard value="#{loginController.password}" id="password"
+						required="true" requiredMessage="Password cannot be empty"
+						password="true" />
+					<p:watermark for="password" value="Enter password" />
+
+					<h:outputText></h:outputText>
+					<p:commandButton id="loginButton" value="#{msg['login.login']}"
+						update="login" style="float:right"
+						action="#{loginController.validateUser}" ajax="false" />
+					<f:facet name="footer">
+						<h:panelGrid columns="3" style="margin-left:30%">
+							<p:outputPanel id="register">
+								<p:commandLink value="#{msg['login.register']}" ajax="false"
+									immediate="true" action="registrationform?faces-redirect=true"></p:commandLink>
+							</p:outputPanel>
+							<p:spacer width="10" />
+							<p:commandLink value="#{msg['login.changpasswd']}"
+								onclick="$changepwd.show();"></p:commandLink>
+						</h:panelGrid>
+					</f:facet>
+
+				</h:panelGrid>
+
+			</p:panel>
+		</h:form>
+		<p:dialog id="changepwd" header="Change Password"
+			widgetVar="$changepwd" modal="true" resizable="false">
+			<h:form id="changepwdform">
+
+				<p:messages id="changepass"></p:messages>
+				<h:panelGrid columns="3" cellpadding="5">
+					<h:outputLabel for="userid" value="Username:" />
+					<p:inputText value="#{loginController.username}" id="userid"
+						required="true" requiredMessage="Username cannot be empty"
+						validatorMessage="The length of the username should exist between 3 and 8 chapters"
+						label="username">
+						<f:validateLength minimum="3" maximum="8" />
+					</p:inputText>
+					<p:watermark for="userid" value="Enter username" />
+
+					<h:outputLabel for="oldpassword" value="Old password:" />
+					<p:password value="#{loginController.password}" id="oldpassword"
+						required="true" requiredMessage="Password cannot be empty"
+						label="password" />
+					<p:watermark for="oldpassword" value="Enter old password" />
+
+					<h:outputLabel for="newpassword" value="New password:" />
+					<p:password value="#{loginController.newpassword}" id="newpassword"
+						required="true" requiredMessage="New password cannot be empty"
+						label="newpassword" />
+					<p:watermark for="newpassword" value="Enter new password" />
+					
+					<h:outputLabel for="confirmpassword" value="Confirm password:" />
+					<p:password value="#{loginController.newpassword}"
+						id="confirmpassword" required="true"
+						requiredMessage="Confirm password cannot be empty"
+						label="confirmpassword" />
+					<p:watermark for="confirmpassword" value="Enter confirm password" />
+					
+					<f:facet name="footer">
+						<p:commandButton id="changepassword" value="Submit"
+							update="changepass"
+							actionListener="#{loginController.changepassword}" />
+					</f:facet>
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>

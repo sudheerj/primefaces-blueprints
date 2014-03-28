@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/templates/admin_template.xhtml">
+    <ui:define name="bodyContent">
+        <p:dialog id="itemDetail" widgetVar="$itemDetail"
+                  hideEffect="explode" appendTo="@(body)"
+                  resizable="false" draggable="false"
+                  closeOnEscape="true">
+            <h:form>
+                <h:inputHidden value="#{productController.product.id}"/>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Id"/>  #{productController.product.id}
+                    <p:outputLabel value="Product Name"/>
+                    <p:inputText label="Product Name" value="#{productController.product.name}"
+                                 placeholder="Product Name"/>
+                    <p:outputLabel value="Price"/>
+                    <p:inputText label="Price" value="#{productController.product.price}" placeholder="Price"/>
+
+                    <p:outputLabel value="Category"/>
+                    <p:selectOneMenu value="#{productController.categoryId}" effect="fold">
+                        <f:selectItem itemLabel="Select One" itemValue="0"/>
+                        <f:selectItems value="#{productController.categories}" var="cats"
+                                       itemLabel="#{cats.id}" itemValue="#{cats.id}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="Description"/>
+                    <p:inputTextarea value="#{productController.product.description}"/>
+
+                    <p:commandButton value="Submit" ajax="true"
+                                     update=":categor:cateTable"
+                                     action="#{productController.updateProduct}"
+                                     oncomplete="PF('$itemDetail').hide()"/>
+                </p:panelGrid>
+            </h:form>
+
+        </p:dialog>
+        <h:form id="categor">
+            <p:commandButton icon="ui-icon-plus" id="addItemBtn" value="AddNew Product"
+                             actionListener="#{productController.addNewProduct}"
+                             update=":itemDetail" ajax="true"
+                             oncomplete="PF('$itemDetail').show()"/>
+
+            <p:dataTable value="#{productController.products}" var="prod" id="cateTable">
+                <p:column headerText="Product Id" style="text-align: left;">
+                    #{prod.id} <p:rowToggler/>
+                </p:column>
+                <p:column headerText="Name">
+                    #{prod.name}
+                </p:column>
+                <p:column headerText="Price">
+                    #{prod.price}
+                </p:column>
+                <p:column headerText="Category">
+                    #{prod.category.name}
+                </p:column>
+                <p:column headerText="Action" style="text-align: center">
+                    <p:commandButton icon="ui-icon-minus" id="delItemBtn"
+                                     actionListener="#{productController.removeProduct(prod.id)}"
+                                     update=":categor:cateTable"/>
+                    <p:commandButton icon="ui-icon-pencil" id="editItemBtn"
+                                     actionListener="#{productController.changeProduct(prod)}"
+                                     update=":itemDetail"
+                                     oncomplete="PF('$itemDetail').show()"/>
+                </p:column>
+                <p:rowExpansion>
+                    <h:outputText value="#{prod.description}" styleClass="rowExpansion"/>
+                </p:rowExpansion>
+            </p:dataTable>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>

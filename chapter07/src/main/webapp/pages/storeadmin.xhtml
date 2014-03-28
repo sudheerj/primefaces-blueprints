@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/templates/admin_template.xhtml">
+    <ui:define name="bodyContent">
+        <h:form id="ordersFrm">
+            <p:panel header="Open Orders">
+                <p:dataTable value="#{productController.orders}" var="ord" id="orderTable"
+                             editable="true" editMode="cell">
+                    <p:column headerText="Order Id" style="text-align: left;">
+                        #{ord.id} <p:rowToggler/>
+                    </p:column>
+                    <p:column headerText="Created Date">
+                        <h:outputText value="#{ord.createDate}"/>
+                    </p:column>
+                    <p:column headerText="Order Total">
+                        <h:outputText value="#{ord.total}"/>
+                    </p:column>
+                    <p:column headerText="Order Status">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{ord.status}"/></f:facet>
+                            <f:facet name="input">
+                                <h:selectOneMenu value="#{ord.status}" style="width:100%"
+                                                 valueChangeListener="#{productController.changeOrder}">
+                                    <f:selectItems value="#{productController.statusTypes}" var="sts" itemLabel="#{sts}"
+                                                   itemValue="#{sts}"/>
+                                </h:selectOneMenu>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:rowExpansion>
+                        <h:outputText value="#{ord.orderDetails}" styleClass="rowExpansion"/>
+                    </p:rowExpansion>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>

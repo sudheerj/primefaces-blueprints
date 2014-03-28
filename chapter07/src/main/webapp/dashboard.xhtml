@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="templates/store_template.xhtml">
+    <ui:define name="header">
+
+    </ui:define>
+    <ui:define name="bodyContent">
+        <h:form id="centerForm">
+            <p:dataTable value="#{userController.allMyMovies}" var="movs" styleClass="twoCols center_align"
+                         style="float: center;">
+                <f:facet name="header">
+                    <p:commandButton value="Add New" action="addvideo.jsf" actionListener="#{movieController}"/>
+                </f:facet>
+                <p:column headerText="Title">
+                    <h:outputText value="#{movs.title}"/>
+                </p:column>
+
+                <p:column headerText="Image">
+                    <p style="text-align: center;">
+                        <p:graphicImage library="images" name="#{movs.image}" style="width: 90%;"/>
+                    </p>
+                </p:column>
+
+                <p:column headerText="Description">
+                    <p>#{movs.description}</p>
+                </p:column>
+
+                <p:column headerText="Action">
+                    <p:commandButton actionListener="#{movieController.setSelectedMovie(movs)}" title="Edit"
+                                     icon="ui-icon-pencil"/>
+                    <p:commandButton actionListener="#{movieController}" title="Edit" icon="ui-icon-close"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Add New" action="addvideo.jsf" actionListener="#{movieController}"/>
+                </f:facet>
+            </p:dataTable>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

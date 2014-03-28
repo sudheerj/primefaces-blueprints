@@ -1,0 +1,52 @@
+///Service center table
+DROP TABLE IF EXISTS `blueprintsdb`.`servicecenter`;
+CREATE TABLE  `blueprintsdb`.`servicecenter` (
+   id INT NOT NULL auto_increment,
+  `dealertinnumber` VARCHAR(20) NOT NULL UNIQUE,
+  `dealerfirstname` VARCHAR(30),
+  `dealerlastname` VARCHAR(30),
+  `branchname` VARCHAR(20),
+  `dor` VARCHAR(10),
+  `pan` VARCHAR(15),
+  `status` VARCHAR(10),
+  `noofadvisors` INT,
+  `address1` VARCHAR(100),
+  `address2` VARCHAR(100),
+  `country` VARCHAR(20),
+  `city` VARCHAR(20),
+  `contactnumber` VARCHAR(30) NOT NULL,
+  `postalcode` VARCHAR(10),
+  PRIMARY KEY (`id`))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('111','John','smith','california','02/02/2002','AFME009','ACTIVE','30','Jackson road','Near Techno Towers','US','California','222 333 999','3333-33-99');
+  INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('222','Manki','John','Newyork','02/07/2007','AFGG023','ACTIVE','13','Millers road','Near Reliance Towers','US','Washington','222 444 555','2232-33-22');
+  INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('333','Jim','Rock','Washington','02/12/2002','AFTT002','ACTIVE','32','Mega mart road','Near Jonhson Apartments','US','Newyork','222 333 999','3344-33-11');
+  INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('444','Ricky','Authorton','Newjersy','05/02/2005','AFME019','ACTIVE','10','James road','Near Techno Schools','US','Newyork','111 222 999','3333-33-99');
+  INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('555','Tom','Terrin','viyanna','09/02/2006','FFME003','ACTIVE','40','WD road','Near Mailer Stock','US','Alabama','124 242 233','3333-11-99');
+  INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('666','Van','Gosling','Chester','06/06/2002','HHME019','ACTIVE','70','Supreme road','Near Central park','US','Chestor','222 333 999','3223-33-99');
+  INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('777','Meta','Sorug','Marion','08/08/2007','AFYY001','ACTIVE','20','SMT road','Near Jackson Mall','US','Columbia','222 333 999','1111-33-55');
+  INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('888','Nicky','Boyy','Salem','02/05/2009','AFME009','ACTIVE','70','SKS road','Near Assembly hall','US','Cafifornia','222 444 999','3331-33-44');
+  INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('999','Aldon','Thomson','Alabama','10/02/2001','AFME109','ACTIVE','60','Halton road','Near Harward','US','Michigan','299 555 999','1433-33-34');
+  INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('1000','Dayn','smith','california','04/04/2012','AFFF009','ACTIVE','50','Jack road','MTS Train Stop','US','Nebraska','211 666 999','2222-33-23');
+  		
+  ////////////////
+  //Jobposts table
+  DROP TABLE IF EXISTS `blueprintsdb`.`jobposts`;
+  CREATE TABLE  `blueprintsdb`.`jobposts` (
+  `company` VARCHAR(30) NOT NULL,
+  `domain` VARCHAR(10),
+  `experience` VARCHAR(20),
+  `position` VARCHAR(20),
+  `location` VARCHAR(20))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('TechSoft','java','5','senior developer','uk');
+  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('EuroSoft','java','10','architect','us');
+  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('AsianSoft','java','11','architect','germany');
+  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('AmericanSoft','java','6','software engineer','uk');
+  /////////////////
+  CREATE TABLE  `blueprintsdb`.`adminconfig` (
+  `adminID` VARCHAR(30) NOT NULL,
+  `aboutus` text,
+  `contactus` text,
+  `disclaimer` text)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  INSERT INTO blueprintsdb.adminconfig(adminID,aboutus,contactus,disclaimer)VALUES('admin','This employee registration application is used to register the new employees to apply the jobs','The employee hub site,packt team,UK','All copy rights reserved for packt publishing');
+  ////////////////
+INSERT INTO blueprintsdb.employee(userid,firstname,lastname,dob,sex,maritalstatus,address,country,city,phone,postalcode,email,university,qualification,percentage,profession,experience,company,currentpack,expectedpack,joineddate,frameworks,dbs,servers,ides,password)VALUES('111','john','smith','14/12/1986','m','married','AK apartements','US','NewYork','22335566','1666555','john.smith@gmail.com','Harward','MS','89','Software',8,'Tech Fast',15,20,'06/06/2006','jsf','oracle','websphere','eclipse','');

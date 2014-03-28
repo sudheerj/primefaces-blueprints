@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="templates/store_template.xhtml">
+    <ui:define name="head">
+    </ui:define>
+    <ui:define name="bodyContent">
+        <p:panel header="User Registration">
+            <h:form id="centerForm">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+                <p:fieldset rendered="#{not userController.loggedIn}"
+                            style="margin: 0 auto; text-align: center; text-align: -webkit-center;">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="txtFname" value="FirstName"/>
+                        <p:inputText id="txtFname" value="#{userController.user.firstName}"/>
+
+                        <p:outputLabel for="txtLname" value="LastName"/>
+                        <p:inputText id="txtLname" value="#{userController.user.lastName}"/>
+
+                        <p:outputLabel for="txtemail" value="Email"/>
+                        <p:inputText id="txtemail" value="#{userController.user.email}"/>
+
+                        <p:graphicImage id="ppict" value="/photocam/#{userController.user.avatar}.png"/>
+
+                        <p:commandButton id="TakePicture" value="TakePicture" onclick="PF('picFrame').show();"
+                                         type="button"/>
+
+                        <p:outputLabel for="txtUname" value="UserName"/>
+                        <p:inputText id="txtUname" value="#{userController.user.username}"/>
+
+                        <p:outputLabel for="txtpasswd" value="Password"/>
+                        <h:inputSecret id="txtpasswd" value="#{userController.user.password}"/>
+
+                        <p:outputLabel for="captcha" value="Captcha"/>
+                        <p:captcha id="captcha"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Submit" ajax="false"
+                                     actionListener="#{userController.submit}"/>
+                </p:fieldset>
+                <p:dialog id="picFrame" header="Take Picture" widgetVar="picFrame" closeOnEscape="true"
+                          appendTo="@(body)" draggable="false" position="center" resizable="false">
+                    <p:photoCam widgetVar="pc" listener="#{userController.oncapture}" update="ppict"/>
+                    <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"
+                                     oncomplete="PF('pc').capture()"
+                                     onsuccess="PF('picFrame').close();"/>
+                </p:dialog>
+            </h:form>
+        </p:panel>
+
+    </ui:define>
+</ui:composition>
+</html>

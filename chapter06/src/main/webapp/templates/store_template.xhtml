@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+<f:view contentType="text/html" locale="en">
+    <pe:head title="PrimeFaces">
+        <f:facet name="first">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta http-equiv="pragma" content="no-cache"/>
+            <meta http-equiv="cache-control" content="no-cache"/>
+            <meta http-equiv="expires" content="0"/>
+        </f:facet>
+
+        <ui:insert name="head"/>
+        <f:facet name="last">
+            <h:outputStylesheet library="css" name="styles.css" value="default"/>
+        </f:facet>
+    </pe:head>
+
+    <h:body>
+        <p:layout widgetVar="layoutit" fullPage="true">
+            <p:layoutUnit position="west" collapsible="true" resizable="true" closable="true">
+                <ui:insert name="leftPan"/>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <ui:insert name="bodyContent"/>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+
+</f:view>
+</html>
