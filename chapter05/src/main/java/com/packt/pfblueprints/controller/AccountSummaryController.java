@@ -8,10 +8,12 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
 
@@ -150,6 +152,13 @@ public class AccountSummaryController implements Serializable{
 		}else{
 			pieChartFlag=false;
 		}
+	}
+	
+	public String storeSelectedAccount(){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("accountNumber", accountobj.getAccountNumber());
+		return "investmentsummary.xhtml?faces-redirect=true";
 	}
 
 	public List<AccountSummary> getAccountsInfo() {

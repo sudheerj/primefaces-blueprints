@@ -7,13 +7,16 @@
 	<ui:define name="content">
 		<h:form id="accountform">
 
-
+			<p:contextMenu for="accountsummary">
+				<p:menuitem value="Investment Summary"  icon="ui-icon-search" action="#{accountSummaryController.storeSelectedAccount}"/>
+			</p:contextMenu>
 
 			<p:dataTable id="accountsummary" var="account"
 				value="#{accountSummaryController.accountsInfo}" paginator="true"
 				rows="10" paginatorPosition="bottom"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15">
+				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}"  
+                 selection="#{accountSummaryController.accountobj}" selectionMode="single">
 				<f:facet name="header">
                   Account Summary
                 </f:facet>

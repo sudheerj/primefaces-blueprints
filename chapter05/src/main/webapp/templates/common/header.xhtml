@@ -5,9 +5,10 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+
+<h:form id="headerForm">
 <p:panel>
 	<div style="height: 130px">
-		<h:form id="headerForm">
 			<p:graphicImage value="/resources/images/logo/logo.png" width="250"
 				height="95" />
 			<p:carousel itemStyleClass="carItem" pageLinks="4"
@@ -26,8 +27,12 @@
 					<p:graphicImage value="/resources/images/logout.png" />
 				</h:commandLink>
 			</p:outputPanel>
-		</h:form>
 	</div>
 </p:panel>
-
+<p:megaMenu > 
+<p:menuitem value="Account Summary |" url="accountsummary.xhtml"></p:menuitem>
+<p:menuitem value="Investment Summary |" url="investmentsummary.xhtml"></p:menuitem>
+<p:menuitem value="Transaction Summary |" url="Transactionsummary.xhtml"></p:menuitem>
+</p:megaMenu>
+</h:form>
 </html>
