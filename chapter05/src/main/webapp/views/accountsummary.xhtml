@@ -11,12 +11,12 @@
 
 			<p:dataTable id="accountsummary" var="account"
 				value="#{accountSummaryController.accountsInfo}" paginator="true"
-				rows="10"
+				rows="10" paginatorPosition="bottom"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
-            Account Summary
-        </f:facet>
+                  Account Summary
+                </f:facet>
 
 				<p:column sortBy="investorName" filterBy="investorName"
 					id="investorName">
@@ -30,7 +30,7 @@
 				<p:column sortBy="registeredAccholderName"
 					filterBy="registeredAccholderName" id="registeredAccholderName">
 					<f:facet name="header">
-						<h:outputText value="Registered Accountholder Name" />
+						<h:outputText value="Accountholder Name" />
 					</f:facet>
 					<h:outputText value="#{account.registeredAccholderName}" />
 				</p:column>
@@ -59,44 +59,42 @@
 				</p:column>
 
 
-				<p:column sortBy="registrationDate" filterBy="registrationDate"
-					id="registrationDate">
+				<p:column sortBy="registrationDate" id="registrationDate">
 					<f:facet name="header">
 						<h:outputText value="registrationDate" />
 					</f:facet>
 					<h:outputText value="#{account.registrationDate}" />
 				</p:column>
 
-				<p:column sortBy="openDate" filterBy="openDate" id="openDate">
+				<p:column sortBy="openDate" id="openDate">
 					<f:facet name="header">
-						<h:outputText value="accountNumber" />
+						<h:outputText value="OpenDate" />
 					</f:facet>
 					<h:outputText value="#{account.openDate}" />
 				</p:column>
 
-				<p:column sortBy="closeDate" filterBy="closeDate" id="closeDate">
+				<p:column sortBy="closeDate" id="closeDate">
 					<f:facet name="header">
 						<h:outputText value="closeDate" />
 					</f:facet>
 					<h:outputText value="#{account.closeDate}" />
 				</p:column>
 
-				<p:column sortBy="jointAccount" filterBy="jointAccount"
-					id="jointAccount">
+				<p:column sortBy="jointAccount" id="jointAccount">
 					<f:facet name="header">
 						<h:outputText value="jointAccount" />
 					</f:facet>
 					<h:outputText value="#{account.jointAccount}" />
 				</p:column>
 
-				<p:column sortBy="balanceUS" filterBy="balanceUS" id="balanceUS">
+				<p:column sortBy="balanceUS" id="balanceUS">
 					<f:facet name="header">
 						<h:outputText value="balanceUS" />
 					</f:facet>
 					<h:outputText value="#{account.balanceUS}" />
 				</p:column>
 
-				<p:column sortBy="balanceUK" filterBy="balanceUK" id="balanceUK">
+				<p:column sortBy="balanceUK" id="balanceUK">
 					<f:facet name="header">
 						<h:outputText value="balanceUK" />
 					</f:facet>
@@ -130,33 +128,91 @@
 						fileName="AccountSummary" />
 				</h:commandLink>
 			</p:panel>
-			<p:panel header="Charts">
-				<h:panelGrid columns="2">
-					<p:pieChart id="sample"
-						value="#{accountSummaryController.pieModelUS}" legendPosition="w"
-						title="USD Marketvalue" style="width:400px;height:300px" />
+			<p:panel header="Charts" id="accsummarycharts">
+				<h:panelGrid columns="3">
+					<h:panelGrid columns="2" style="margin-left:150px"
+						rendered="#{accountSummaryController.pieChartFlag}">
+						<p:pieChart id="pieUS" widgetVar="$pieUS"
+							value="#{accountSummaryController.pieModelUS}" legendPosition="w"
+							title="USD Marketvalue" style="width:400px;height:300px"
+							showDataLabels="true" />
 
-					<p:pieChart id="custom"
-						value="#{accountSummaryController.pieModelUK}" legendPosition="e"
-						fill="false" showDataLabels="true" title="UK Marketvalue"
-						style="width:400px;height:300px" sliceMargin="5" diameter="150" />
+						<p:pieChart id="pieUK" widgetVar="$pieUK"
+							value="#{accountSummaryController.pieModelUK}" legendPosition="e"
+							fill="false" showDataLabels="true" title="UK Marketvalue"
+							style="width:400px;height:300px" sliceMargin="5" diameter="150" />
+
+					</h:panelGrid>
+					<h:panelGrid columns="2" style="margin-left:150px"
+						rendered="#{!accountSummaryController.pieChartFlag}">
+						<p:barChart id="barChart" widgetVar="$barChart"
+							value="#{accountSummaryController.categoryModel}"
+							legendPosition="w" title="Marketvalue"
+							style="width:400px;height:300px" showDataLabels="true" />
+						<p:spacer width="400" height="300"></p:spacer>
+
+					</h:panelGrid>
+					<p:spacer width="50"></p:spacer>
+					<p:outputPanel style="margin-top: -100px">
+						<h:outputText value="Select chart type " />
+						<p:selectOneMenu value="#{accountSummaryController.type}">
+							<p:ajax event="change"
+								listener="#{accountSummaryController.changeOption}"
+								update="accsummarycharts"></p:ajax>
+							<f:selectItem itemLabel="Pie Chart" itemValue="1" />
+							<f:selectItem itemLabel="Bar Chart" itemValue="2" />
+						</p:selectOneMenu>
+					</p:outputPanel>
 				</h:panelGrid>
+				<p:outputPanel rendered="#{accountSummaryController.pieChartFlag}">
+					<p:commandButton value="ExportUSreport " icon="ui-icon-extlink"
+						ajax="false" onclick="exportPieChart()"
+						actionListener="#{accountSummaryController.piechartUSBase64Str}">
+						<p:fileDownload value="#{accountSummaryController.file1}" />
+					</p:commandButton>
+					<p:commandButton value="ExportUKreport " icon="ui-icon-extlink"
+						ajax="false" onclick="exportPieChart()"
+						actionListener="#{accountSummaryController.piechartUKBase64Str}">
+						<p:fileDownload value="#{accountSummaryController.file2}" />
+					</p:commandButton>
+				</p:outputPanel>
+				<p:outputPanel rendered="#{!accountSummaryController.pieChartFlag}">
+					<p:commandButton value="ExportBarChart" icon="ui-icon-extlink"
+						ajax="false" onclick="exportBarChart()"
+						actionListener="#{accountSummaryController.barchartBase64Str}">
+						<p:fileDownload value="#{accountSummaryController.file3}" />
+					</p:commandButton>
+				</p:outputPanel>
 			</p:panel>
-			<p:commandButton type="button" value="Export" icon="ui-icon-extlink"
-				onclick="exportChart()" actionListener="#{accountSummaryController.submittedBase64Str}" />
 
-			<h:inputHidden id="pie1" value="#{accountSummaryController.base64Str1}" />
-			<h:inputHidden id="pie2" value="#{accountSummaryController.base64Str2}" />
-<script>  
-function exportChart() {  
-     // exportAsImage() will return a base64 png encoded string
-        var img1 = chart.exportAsImage();
-        var img2 = chart.exportAsImage();
-        document.getElementById('form:pie1').value = img1.src;  
-        document.getElementById('form:pie2').value = img2.src;  
-} 
-</script>
+
+			<h:inputHidden id="pie1"
+				value="#{accountSummaryController.base64Str1}" />
+			<h:inputHidden id="pie2"
+				value="#{accountSummaryController.base64Str2}" />
+			<h:inputHidden id="bar1"
+				value="#{accountSummaryController.base64Str3}" />
+
+
+			<script>
+				function exportPieChart() {
+					// exportAsImage() will return a base64 png encoded string
+					var img1 = PF('$pieUS').exportAsImage();
+					var img2 = PF('$pieUK').exportAsImage();
+					document.getElementById('accountform:pie1').value = img1.src;
+					document.getElementById('accountform:pie2').value = img2.src;
+				}
+				function exportBarChart() {
+					// exportAsImage() will return a base64 png encoded string
+					var img1 = PF('$barChart').exportAsImage();
+					document.getElementById('accountform:barChart').value = img1.src;
+				}
+			</script>
 		</h:form>
-
+		<p:dialog widgetVar="dlg" showEffect="fade" modal="true"
+			header="Chart as an Image">
+			<p:outputPanel id="output" layout="block"
+				style="width:500px;height:300px" />
+		</p:dialog>
 	</ui:define>
 </ui:composition>

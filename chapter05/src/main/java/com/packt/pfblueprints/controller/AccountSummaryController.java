@@ -4,8 +4,8 @@ import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +13,20 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.imageio.ImageIO;
 
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
+
+import javax.servlet.ServletContext;
 
 import com.packt.pfblueprints.dao.AccountSummaryDAO;
 import com.packt.pfblueprints.model.AccountSummary;
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
+import org.apache.commons.codec.binary.Base64;
 
 @ManagedBean
 @ViewScoped
@@ -37,14 +42,24 @@ public class AccountSummaryController implements Serializable{
 	AccountSummaryDAO dao = new AccountSummaryDAO();
 	private PieChartModel pieModelUS;
 	private PieChartModel pieModelUK;
+	private CartesianChartModel categoryModel;
 	private String base64Str1;
 	private String base64Str2;
+	private String base64Str3;
+	private StreamedContent file1;
+	private StreamedContent file2;
+	private StreamedContent file3;
+	private Boolean pieChartFlag=true;
+	ServletContext servletContext = (ServletContext) FacesContext
+     	    .getCurrentInstance().getExternalContext().getContext();
+    private Integer type;
 	
 	@PostConstruct
 	public void init() { 
 		
 		accountsInfo=dao.getAllAccounts();
 		createPieModel();
+		createCategoryModel();
 		
 	}
 	
@@ -58,35 +73,84 @@ public class AccountSummaryController implements Serializable{
         }
     }
 	
-	public void submittedBase64Str(ActionEvent event){
-	   
+	private void createCategoryModel() {  
+        categoryModel = new CartesianChartModel();
+        
+        ChartSeries balanceUS = new ChartSeries();
+        ChartSeries balanceUK = new ChartSeries();
+  
+        for(AccountSummary obj:accountsInfo){
+        	balanceUS.set(obj.getAccountType(),new Double(obj.getBalanceUS()));
+        	balanceUK.set(obj.getAccountType(),new Double(obj.getBalanceUK()));
+        }
+        
+          
+        balanceUS.setLabel("US_Balance");  
+        balanceUK.setLabel("UK_Balance");  
+  
+        categoryModel.addSeries(balanceUS);  
+        categoryModel.addSeries(balanceUK);  
+    }  
+	
+	public void piechartUSBase64Str(){
+		 
+		 InputStream stream1 = servletContext.getResourceAsStream("/images/pie1.png");
+		 file1 = new DefaultStreamedContent(stream1, "image/png", "US_Piechart.png");
 	    if(base64Str1.split(",").length > 1){
 	        String encoded = base64Str1.split(",")[1];
-	        byte[] decoded = Base64.decode(encoded);
+	        byte[] decoded = Base64.decodeBase64(encoded);
 	        // Write to a .png file
 	        try {
 	            RenderedImage renderedImage = ImageIO.read(new ByteArrayInputStream(decoded));
-	            ImageIO.write(renderedImage, "png", new File(ServletContext().getRealPath("relative/path/to/your/file"))); // use a proper path & file name here.
+	            ImageIO.write(renderedImage, "png", new File(servletContext.getRealPath("images/pie1.png"))); 
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
 	    }
+	   
+	}
+	
+	public void piechartUKBase64Str(){
+		 InputStream stream2 = servletContext.getResourceAsStream("/images/pie2.png");
+		 file2 = new DefaultStreamedContent(stream2, "image/png", "Uk_Piechart.png");
+		
 	    if(base64Str2.split(",").length > 1){
 	        String encoded = base64Str2.split(",")[1];
-	        byte[] decoded = Base64.decode(encoded);
+	        byte[] decoded = Base64.decodeBase64(encoded);
 	        // Write to a .png file
 	        try {
 	            RenderedImage renderedImage = ImageIO.read(new ByteArrayInputStream(decoded));
-	            ImageIO.write(renderedImage, "png", new File("C:\\out.png")); // use a proper path & file name here.
+	            ImageIO.write(renderedImage, "png", new File(servletContext.getRealPath("images/pie2.png"))); 
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
 	    }
 	}
 	
-	/*public void deleteDealer(){
-		accountsInfo=dao.deleteDealer(accountobj);
-	}*/
+	public void barchartBase64Str(){
+		 InputStream stream2 = servletContext.getResourceAsStream("/images/bar.png");
+		 file3 = new DefaultStreamedContent(stream2, "image/png", "BarChart.png");
+		
+	    if(base64Str3.split(",").length > 1){
+	        String encoded = base64Str3.split(",")[1];
+	        byte[] decoded = Base64.decodeBase64(encoded);
+	        // Write to a .png file
+	        try {
+	            RenderedImage renderedImage = ImageIO.read(new ByteArrayInputStream(decoded));
+	            ImageIO.write(renderedImage, "png", new File(servletContext.getRealPath("images/bar.png"))); 
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
+	
+	public void changeOption(){
+		if(type==1){
+			pieChartFlag=true;	
+		}else{
+			pieChartFlag=false;
+		}
+	}
 
 	public List<AccountSummary> getAccountsInfo() {
 		return accountsInfo;
@@ -137,7 +201,61 @@ public class AccountSummaryController implements Serializable{
 		this.base64Str2 = base64Str2;
 	}
 
-	
+	public StreamedContent getFile1() {
+		return file1;
+	}
+
+	public void setFile1(StreamedContent file1) {
+		this.file1 = file1;
+	}
+
+	public StreamedContent getFile2() {
+		return file2;
+	}
+
+	public void setFile2(StreamedContent file2) {
+		this.file2 = file2;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	public CartesianChartModel getCategoryModel() {
+		return categoryModel;
+	}
+
+	public void setCategoryModel(CartesianChartModel categoryModel) {
+		this.categoryModel = categoryModel;
+	}
+
+	public String getBase64Str3() {
+		return base64Str3;
+	}
+
+	public void setBase64Str3(String base64Str3) {
+		this.base64Str3 = base64Str3;
+	}
+
+	public StreamedContent getFile3() {
+		return file3;
+	}
+
+	public void setFile3(StreamedContent file3) {
+		this.file3 = file3;
+	}
+
+	public Boolean getPieChartFlag() {
+		return pieChartFlag;
+	}
+
+	public void setPieChartFlag(Boolean pieChartFlag) {
+		this.pieChartFlag = pieChartFlag;
+	}
 
 	
 }
