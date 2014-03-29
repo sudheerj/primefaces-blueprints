@@ -7,7 +7,7 @@
   </context-param>
   <context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>lightness</param-value>
+		<param-value>ui-lightness</param-value>
 	</context-param>
   <welcome-file-list>
     <welcome-file>views/login.xhtml</welcome-file>

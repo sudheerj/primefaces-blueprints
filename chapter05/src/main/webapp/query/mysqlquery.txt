@@ -17,15 +17,32 @@ CREATE TABLE  `blueprintsdb`.`investorslist` (
   INSERT INTO blueprintsdb.investorslist(username,password)VALUES('investor09','investor09');
   INSERT INTO blueprintsdb.investorslist(username,password)VALUES('investor10','investor10');
   
-  `dealerlastname` VARCHAR(30),
-  `branchname` VARCHAR(20),
-  `dor` VARCHAR(10),
-  `pan` VARCHAR(15),
-  `status` VARCHAR(10),
-  `noofadvisors` INT,
-  `address1` VARCHAR(100),
-  `address2` VARCHAR(100),
-  `country` VARCHAR(20),
+  CREATE TABLE  `blueprintsdb`.`AccountSummary` (
+   id INT NOT NULL auto_increment,
+  `investorName` VARCHAR(20),
+  `registeredAccholderName` VARCHAR(20),
+  `accountNumber` VARCHAR(10),
+  `accountType` VARCHAR(10),
+  `status` VARCHAR(7),
+  `registrationDate` VARCHAR(10),
+  `openDate` VARCHAR(10),
+  `closeDate` VARCHAR(10),
+  `jointAccount` VARCHAR(5),
+  `balanceUS` VARCHAR(10),
+  `balanceUK` VARCHAR(10),
+  PRIMARY KEY (`id`))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  
+  INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100001','CASH','Active','02/02/2002','04/04/2002','09/09/2013','YES','22999','16993');
+  INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100002','CASH','Active','12/02/2002','04/04/2002','09/09/2013','YES','88484','74747');
+  INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100003','RRSP','Pending','02/02/2000','04/04/2002','09/09/2013','NO','30493','25493');
+  INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100004','RRSP','Active','07/12/2001','04/04/2002','09/09/2013','YES','57575','49595');
+  INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100005','RESP','Active','02/02/2002','04/04/2002','09/09/2013','YES','8474','6045');
+  INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100006','CASH','Active','12/02/2003','04/04/2004','09/09/2013','YES','93933','89595');
+  INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100007','TFSA','closed','06/02/2002','04/12/2002','09/09/2013','NO','22999','19993');
+  INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100008','CASH','Active','02/09/2006','04/04/2007','09/09/2013','YES','66755','56755');
+  INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100009','CASH','Active','11/04/2002','04/11/2002','09/09/2013','YES','88766','77868');
+  INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100010','CASH','closed','02/02/2002','04/04/2002','09/09/2013','NO','76767','67676');
+  
   `city` VARCHAR(20),
   `contactnumber` VARCHAR(30) NOT NULL,
   `postalcode` VARCHAR(10),

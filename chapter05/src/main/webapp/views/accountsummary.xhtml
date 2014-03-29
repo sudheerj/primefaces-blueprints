@@ -7,23 +7,17 @@
 	<ui:define name="content">
 		<h:form id="accountform">
 
-			<!-- <p:contextMenu for="cars">
-				<p:menuitem value="View Advisor List" update="display"
-					icon="ui-icon-search" oncomplete="PF('$advisorprofile').show()" />
-				<p:menuitem value="account Profile" update="cars"
-					icon="ui-icon-close" actionListener="#{accountSummaryController.deleteCar}" />
-				<p:menuitem value="Delete account" update="cars" icon="ui-icon-close"
-					actionListener="#{accountSummaryController.deleteCar}" />
-			</p:contextMenu> -->
 
-			<p:dataTable id="dataTable" var="account"
-				value="#{accountSummaryController.accountsInfo}" paginator="true" rows="10"
+
+			<p:dataTable id="accountsummary" var="account"
+				value="#{accountSummaryController.accountsInfo}" paginator="true"
+				rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
             Account Summary
         </f:facet>
-				
+
 				<p:column sortBy="investorName" filterBy="investorName"
 					id="investorName">
 					<f:facet name="header">
@@ -33,8 +27,8 @@
 				</p:column>
 
 
-				<p:column sortBy="registeredAccholderName" filterBy="registeredAccholderName"
-					id="registeredAccholderName">
+				<p:column sortBy="registeredAccholderName"
+					filterBy="registeredAccholderName" id="registeredAccholderName">
 					<f:facet name="header">
 						<h:outputText value="Registered Accountholder Name" />
 					</f:facet>
@@ -49,15 +43,15 @@
 					<h:outputText value="#{account.accountNumber}" />
 				</p:column>
 
-				<p:column sortBy="accountType" filterBy="accountType" id="accountType">
+				<p:column sortBy="accountType" filterBy="accountType"
+					id="accountType">
 					<f:facet name="header">
 						<h:outputText value="accountType" />
 					</f:facet>
 					<h:outputText value="#{account.accountType}" />
 				</p:column>
 
-				<p:column sortBy="status" filterBy="status"
-					id="status">
+				<p:column sortBy="status" filterBy="status" id="status">
 					<f:facet name="header">
 						<h:outputText value="status" />
 					</f:facet>
@@ -73,8 +67,7 @@
 					<h:outputText value="#{account.registrationDate}" />
 				</p:column>
 
-				<p:column sortBy="openDate" filterBy="openDate"
-					id="openDate">
+				<p:column sortBy="openDate" filterBy="openDate" id="openDate">
 					<f:facet name="header">
 						<h:outputText value="accountNumber" />
 					</f:facet>
@@ -87,21 +80,22 @@
 					</f:facet>
 					<h:outputText value="#{account.closeDate}" />
 				</p:column>
-				
-				<p:column sortBy="jointAccount" filterBy="jointAccount" id="jointAccount">
+
+				<p:column sortBy="jointAccount" filterBy="jointAccount"
+					id="jointAccount">
 					<f:facet name="header">
 						<h:outputText value="jointAccount" />
 					</f:facet>
 					<h:outputText value="#{account.jointAccount}" />
 				</p:column>
-				
+
 				<p:column sortBy="balanceUS" filterBy="balanceUS" id="balanceUS">
 					<f:facet name="header">
 						<h:outputText value="balanceUS" />
 					</f:facet>
 					<h:outputText value="#{account.balanceUS}" />
 				</p:column>
-				
+
 				<p:column sortBy="balanceUK" filterBy="balanceUK" id="balanceUK">
 					<f:facet name="header">
 						<h:outputText value="balanceUK" />
@@ -111,68 +105,58 @@
 
 			</p:dataTable>
 
+			<p:panel header="Export All Data">
+				<h:commandLink>
+					<p:graphicImage value="/images/excel.png" />
+					<p:dataExporter type="xls" target="accountsummary"
+						fileName="AccountSummary" />
+				</h:commandLink>
 
-		</h:form>
-		<!-- <p:dialog id="accountprofile" header="account Profile"
-			widgetVar="$accountprofile" modal="true" resizable="false">
-			<h:form id="accountprofileform">
+				<h:commandLink>
+					<p:graphicImage value="/images/pdf.png" />
+					<p:dataExporter type="pdf" target="accountsummary"
+						fileName="AccountSummary" />
+				</h:commandLink>
 
-				<p:messages id="messages"></p:messages>
-				<h:panelGrid columns="4" cellpadding="5">
-					<h:outputLabel for="firstname" value="Firstname:" />
-					<p:inputText value="#{accountSummaryController.accountobj.firstname}"
-						id="firstname" required="true"
-						requiredMessage="Firstname cannot be empty" label="username">
-					</p:inputText>
-					<p:watermark for="firstname" value="Enter firstname" />
+				<h:commandLink>
+					<p:graphicImage value="/images/csv.png" />
+					<p:dataExporter type="csv" target="accountsummary"
+						fileName="AccountSummary" />
+				</h:commandLink>
 
-					<h:outputLabel for="lastname" value="Lastname:" />
-					<p:inputText value="#{accountSummaryController.accountobj.lastname}"
-						id="lastname" required="true"
-						requiredMessage="Firstname cannot be empty" label="username">
-					</p:inputText>
-					<p:watermark for="lastname" value="Enter lastname" />
+				<h:commandLink>
+					<p:graphicImage value="/images/xml.png" />
+					<p:dataExporter type="xml" target="accountsummary"
+						fileName="AccountSummary" />
+				</h:commandLink>
+			</p:panel>
+			<p:panel header="Charts">
+				<h:panelGrid columns="2">
+					<p:pieChart id="sample"
+						value="#{accountSummaryController.pieModelUS}" legendPosition="w"
+						title="USD Marketvalue" style="width:400px;height:300px" />
 
-					<h:outputLabel for="address1" value="Address1:" />
-					<p:inputText value="#{accountSummaryController.accountobj.address1}"
-						id="address1" required="true"
-						requiredMessage="Address cannot be empty" label="Address">
-					</p:inputText>
-					<p:watermark for="address1" value="Enter address" />
-
-					<h:outputLabel for="address2" value="Address2:" />
-					<p:inputText value="#{accountSummaryController.accountobj.address2}"
-						id="address2" label="Address">
-					</p:inputText>
-					<p:watermark for="address2" value="Enter address" />
-
-					<h:outputLabel for="country" value="Country:" />
-					<p:password value="#{accountSummaryController.accountobj.country}"
-						id="country" label="country" />
-					<p:watermark for="country" value="Enter Country" />
-
-					<h:outputLabel for="city" value="City:" />
-					<p:password value="#{accountSummaryController.accountobj.city}" id="city"
-						label="City" />
-					<p:watermark for="city" value="Enter City" />
-
-					<h:outputLabel for="contactnumber" value="Contact Number:" />
-					<p:password value="#{accountSummaryController.accountobj.contactnumber}"
-						id="contactnumber" label="Contact Number" />
-					<p:watermark for="contactnumber" value="Enter Contact number" />
-
-					<h:outputLabel for="postalcode" value="Postal Code:" />
-					<p:password value="#{accountSummaryController.accountobj.postalcode}"
-						id="postalcode" label="Postal Code" />
-					<p:watermark for="postalcode" value="Enter Postal Code" />
-
-					<f:facet name="footer">
-						<p:commandButton id="update" value="Save"
-							update="accountprofileform"
-							actionListener="#{accountSummaryController.updateaccountProfile}" />
-					</f:facet>
+					<p:pieChart id="custom"
+						value="#{accountSummaryController.pieModelUK}" legendPosition="e"
+						fill="false" showDataLabels="true" title="UK Marketvalue"
+						style="width:400px;height:300px" sliceMargin="5" diameter="150" />
 				</h:panelGrid>
-			</h:form>
-		</p:dialog> -->
+			</p:panel>
+			<p:commandButton type="button" value="Export" icon="ui-icon-extlink"
+				onclick="exportChart()" actionListener="#{accountSummaryController.submittedBase64Str}" />
+
+			<h:inputHidden id="pie1" value="#{accountSummaryController.base64Str1}" />
+			<h:inputHidden id="pie2" value="#{accountSummaryController.base64Str2}" />
+<script>  
+function exportChart() {  
+     // exportAsImage() will return a base64 png encoded string
+        var img1 = chart.exportAsImage();
+        var img2 = chart.exportAsImage();
+        document.getElementById('form:pie1').value = img1.src;  
+        document.getElementById('form:pie2').value = img2.src;  
+} 
+</script>
+		</h:form>
+
 	</ui:define>
 </ui:composition>

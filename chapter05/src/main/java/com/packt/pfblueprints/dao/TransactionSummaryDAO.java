@@ -10,7 +10,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import com.packt.pfblueprints.model.ServiceCenter;
+import com.packt.pfblueprints.model.TransactionSummary;
+
 
 public class TransactionSummaryDAO {
 
@@ -34,12 +35,12 @@ public class TransactionSummaryDAO {
 	}
 
 
-	public List<TransactionSummary> getAllDealers() {
+	public List<TransactionSummary> getAllTransactions() {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query queryResult = session.createQuery("from TransactionSummary");
-		List<ServiceCenter> allTransactions = queryResult.list();
+		List<TransactionSummary> allTransactions = queryResult.list();
 		session.getTransaction().commit();
 		return allTransactions;
 

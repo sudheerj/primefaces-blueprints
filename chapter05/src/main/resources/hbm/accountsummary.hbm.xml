@@ -4,7 +4,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-  <class name="com.packt.pfblueprints.model.ServiceCenter" table="servicecenter">
+  <class name="com.packt.pfblueprints.model.AccountSummary" table="accountsummary">
    <id name="id" type="int" column="ID" >
    <generator class="increment"/>
   </id>

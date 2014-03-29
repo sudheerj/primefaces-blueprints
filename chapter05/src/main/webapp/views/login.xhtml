@@ -22,7 +22,7 @@
 					<p:password value="#{loginController.password}" id="password"
 						required="true" requiredMessage="Password cannot be empty"/>
 					<p:watermark for="password" value="Enter password" />
-
+					<h:outputText/>
 					<p:commandButton id="loginButton" value="Login"
 						update="login" style="float:right"
 						action="#{loginController.validateUser}" ajax="false" />
@@ -31,47 +31,6 @@
 
 			</p:panel>
 		</h:form>
-		<!-- <p:dialog id="changepwd" header="Change Password"
-			widgetVar="$changepwd" modal="true" resizable="false">
-			<h:form id="changepwdform">
-
-				<p:messages id="changepass"></p:messages>
-				<h:panelGrid columns="3" cellpadding="5">
-					<h:outputLabel for="userid" value="Username:" />
-					<p:inputText value="#{loginController.username}" id="userid"
-						required="true" requiredMessage="Username cannot be empty"
-						validatorMessage="The length of the username should exist between 3 and 8 chapters"
-						label="username">
-						<f:validateLength minimum="3" maximum="8" />
-					</p:inputText>
-					<p:watermark for="userid" value="Enter username" />
-
-					<h:outputLabel for="oldpassword" value="Old password:" />
-					<p:password value="#{loginController.password}" id="oldpassword"
-						required="true" requiredMessage="Password cannot be empty"
-						label="password" />
-					<p:watermark for="oldpassword" value="Enter old password" />
-
-					<h:outputLabel for="newpassword" value="New password:" />
-					<p:password value="#{loginController.newpassword}" id="newpassword"
-						required="true" requiredMessage="New password cannot be empty"
-						label="newpassword" />
-					<p:watermark for="newpassword" value="Enter new password" />
-					
-					<h:outputLabel for="confirmpassword" value="Confirm password:" />
-					<p:password value="#{loginController.newpassword}"
-						id="confirmpassword" required="true"
-						requiredMessage="Confirm password cannot be empty"
-						label="confirmpassword" />
-					<p:watermark for="confirmpassword" value="Enter confirm password" />
-					
-					<f:facet name="footer">
-						<p:commandButton id="changepassword" value="Submit"
-							update="changepass"
-							actionListener="#{loginController.changepassword}" />
-					</f:facet>
-				</h:panelGrid>
-			</h:form>
-		</p:dialog> -->
+		
 	</ui:define>
 </ui:composition>

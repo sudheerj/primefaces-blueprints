@@ -10,7 +10,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import com.packt.pfblueprints.model.Dealer;
+import com.packt.pfblueprints.model.InvestmentSummary;
+
 
 public class InvestmentSummaryDAO {
 
@@ -39,7 +40,7 @@ public class InvestmentSummaryDAO {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query queryResult = session.createQuery("from InvestmentSummary");
-		List<Dealer> allInvestments = queryResult.list();
+		List<InvestmentSummary> allInvestments = queryResult.list();
 		session.getTransaction().commit();
 		return allInvestments;
 

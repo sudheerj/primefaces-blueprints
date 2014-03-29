@@ -1,6 +1,7 @@
 package com.packt.pfblueprints.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class TransactionSummary implements Serializable{
 
@@ -9,21 +10,17 @@ public class TransactionSummary implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
-	private String dealerfirstname;
-	private String dealerlastname;
-	private String dealertinnumber;
-	private String branchname;
-	private String dor;
-	private String noofadvisors;
-	private String pan;
+	private String fundname;
+	private String transactionid;
+	private String transactiontype;
+	private Date transactiondate;
+	private String paymenttype;
 	private String status;
-	private String address1;
-	private String address2;
-	private String country;
-	private String city;
-	private String contactnumber;
-	private String postalcode;
-	
+	private String transctionunitprice;
+	private String transactionunits;
+	private String grossamount;
+	private String deductions;
+	private String netamount;
 	
 	public int getId() {
 		return id;
@@ -31,47 +28,30 @@ public class TransactionSummary implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDealerfirstname() {
-		return dealerfirstname;
+	public String getFundname() {
+		return fundname;
 	}
-	public void setDealerfirstname(String dealerfirstname) {
-		this.dealerfirstname = dealerfirstname;
+	public void setFundname(String fundname) {
+		this.fundname = fundname;
 	}
-	public String getDealerlastname() {
-		return dealerlastname;
+	
+	public String getTransactionid() {
+		return transactionid;
 	}
-	public void setDealerlastname(String dealerlastname) {
-		this.dealerlastname = dealerlastname;
+	public void setTransactionid(String transactionid) {
+		this.transactionid = transactionid;
 	}
-	public String getDealertinnumber() {
-		return dealertinnumber;
+	public String getTransactiontype() {
+		return transactiontype;
 	}
-	public void setDealertinnumber(String dealertinnumber) {
-		this.dealertinnumber = dealertinnumber;
+	public void setTransactiontype(String transactiontype) {
+		this.transactiontype = transactiontype;
 	}
-	public String getBranchname() {
-		return branchname;
+	public Date getTransactiondate() {
+		return transactiondate;
 	}
-	public void setBranchname(String branchname) {
-		this.branchname = branchname;
-	}
-	public String getDor() {
-		return dor;
-	}
-	public void setDor(String dor) {
-		this.dor = dor;
-	}
-	public String getNoofadvisors() {
-		return noofadvisors;
-	}
-	public void setNoofadvisors(String noofadvisors) {
-		this.noofadvisors = noofadvisors;
-	}
-	public String getPan() {
-		return pan;
-	}
-	public void setPan(String pan) {
-		this.pan = pan;
+	public void setTransactiondate(Date transactiondate) {
+		this.transactiondate = transactiondate;
 	}
 	public String getStatus() {
 		return status;
@@ -79,43 +59,42 @@ public class TransactionSummary implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getAddress1() {
-		return address1;
+	public String getTransctionunitprice() {
+		return transctionunitprice;
 	}
-	public void setAddress1(String address1) {
-		this.address1 = address1;
+	public void setTransctionunitprice(String transctionunitprice) {
+		this.transctionunitprice = transctionunitprice;
 	}
-	public String getAddress2() {
-		return address2;
+	public String getTransactionunits() {
+		return transactionunits;
 	}
-	public void setAddress2(String address2) {
-		this.address2 = address2;
+	public void setTransactionunits(String transactionunits) {
+		this.transactionunits = transactionunits;
 	}
-	public String getCountry() {
-		return country;
+	public String getGrossamount() {
+		return grossamount;
 	}
-	public void setCountry(String country) {
-		this.country = country;
+	public void setGrossamount(String grossamount) {
+		this.grossamount = grossamount;
 	}
-	public String getCity() {
-		return city;
+	public String getDeductions() {
+		return deductions;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setDeductions(String deductions) {
+		this.deductions = deductions;
 	}
-	public String getContactnumber() {
-		return contactnumber;
+	public String getNetamount() {
+		return netamount;
 	}
-	public void setContactnumber(String contactnumber) {
-		this.contactnumber = contactnumber;
+	public void setNetamount(String netamount) {
+		this.netamount = netamount;
 	}
-	public String getPostalcode() {
-		return postalcode;
+	public String getPaymenttype() {
+		return paymenttype;
 	}
-	public void setPostalcode(String postalcode) {
-		this.postalcode = postalcode;
+	public void setPaymenttype(String paymenttype) {
+		this.paymenttype = paymenttype;
 	}
 	
 	
-
 }

@@ -13,6 +13,9 @@
   <property name="show_sql">true</property>
   <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
   <!-- Mapping files -->
+  <mapping resource="hbm/investorslist.hbm.xml"/>
   <mapping resource="hbm/accountsummary.hbm.xml"/>
+  <mapping resource="hbm/investmentsummary.hbm.xml"/>
+  <mapping resource="hbm/transactionsummary.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>

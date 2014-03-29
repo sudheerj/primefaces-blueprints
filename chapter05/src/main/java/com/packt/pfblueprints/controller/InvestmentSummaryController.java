@@ -10,49 +10,52 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import com.packt.pfblueprints.dao.dealerDAO;
-import com.packt.pfblueprints.model.Dealer;
+import com.packt.pfblueprints.dao.InvestmentSummaryDAO;
+import com.packt.pfblueprints.model.InvestmentSummary;
+
 
 @ManagedBean
 @ViewScoped
-public class InvestmentController implements Serializable{
+public class InvestmentSummaryController implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Dealer> dealerInfo=new ArrayList<Dealer>();
+	private List<InvestmentSummary> investmentsInfo=new ArrayList<InvestmentSummary>();
 	
-	private Dealer dealerobj=new Dealer();
-	DealerDAO dao = new DealerDAO();
+	//private Dealer dealerobj=new Dealer();
+	InvestmentSummaryDAO dao = new InvestmentSummaryDAO();
 	
 	@PostConstruct
 	public void init() { 
 		
-		dealerInfo=dao.getAllDealers();
+		investmentsInfo=dao.getAllInvestments();
 		FacesContext.getCurrentInstance().renderResponse();
 		
 	}
-	
-	public void deleteDealer(){
-		dealerInfo=dao.deleteDealer(dealerobj);
+
+	public List<InvestmentSummary> getInvestmentsInfo() {
+		return investmentsInfo;
 	}
 
-	public dealer getDealerobj() {
+	public void setInvestmentsInfo(List<InvestmentSummary> investmentsInfo) {
+		this.investmentsInfo = investmentsInfo;
+	}
+	
+	/*public void deleteDealer(){
+		dealerInfo=dao.deleteDealer(dealerobj);
+	}
+*/
+	/*public dealer getDealerobj() {
 		return dealerobj;
 	}
 
 	public void setDealerobj(Dealer dealerobj) {
 		this.dealerobj = dealerobj;
-	}
+	}*/
 
-	public List<Dealer> getDealerInfo() {
-		return dealerInfo;
-	}
-
-	public void setdealerInfo(List<dealer> dealerInfo) {
-		this.dealerInfo = dealerInfo;
-	}
+	
 	
 
 }

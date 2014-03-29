@@ -10,7 +10,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import com.packt.pfblueprints.model.ServiceCenter;
+import com.packt.pfblueprints.model.AccountSummary;
+
 
 public class AccountSummaryDAO {
 

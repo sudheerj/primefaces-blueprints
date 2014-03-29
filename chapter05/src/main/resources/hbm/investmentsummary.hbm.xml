@@ -4,52 +4,37 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-  <class name="com.packt.pfblueprints.model.Dealer" table="dealer">
+  <class name="com.packt.pfblueprints.model.InvestmentSummary" table="investmentsummary">
    <id name="id" type="int" column="ID" >
    <generator class="increment"/>
   </id>
 
-  <property name="dealerfirstname">
-    <column name="dealerfirstname" />
+  <property name="fundname">
+    <column name="fundname" />
   </property>
-  <property name="dealerlastname">
-    <column name="dealerlastname" />
+  <property name="investmentManager">
+    <column name="investmentManager" />
   </property>
-  <property name="dealertinnumber">
-    <column name="dealertinnumber"/>
+  <property name="marketingCompany">
+    <column name="marketingCompany"/>
   </property>
-  <property name="branchname">
-    <column name="branchname" />
+  <property name="avgUnitPrice">
+    <column name="avgUnitPrice" />
   </property>
-  <property name="dor">
-    <column name="dor"/>
+  <property name="marketValue1">
+    <column name="marketValue1"/>
   </property>
-  <property name="noofadvisors">
-    <column name="noofadvisors" />
+  <property name="marketValue2">
+    <column name="marketValue2" />
   </property>
-  <property name="pan">
-    <column name="pan"/>
+  <property name="marketValue3">
+    <column name="marketValue3"/>
   </property>
-   <property name="status">
-    <column name="status"/>
+  <property name="marketValue4">
+    <column name="marketValue4" />
   </property>
-  <property name="address1">
-    <column name="address1" />
-  </property>
-  <property name="address2">
-    <column name="address2"/>
-  </property>
-  <property name="country">
-    <column name="country" />
-  </property>
-  <property name="city">
-    <column name="city"/>
-  </property>
-  <property name="contactnumber">
-    <column name="contactnumber" />
-  </property>
-  <property name="postalcode">
-    <column name="postalcode"/>
+  <property name="marketValue5">
+    <column name="marketValue5" />
   </property>
   
  </class>

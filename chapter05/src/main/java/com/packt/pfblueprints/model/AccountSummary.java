@@ -20,6 +20,8 @@ public class AccountSummary implements Serializable{
 	private Boolean jointAccount;
 	private String balanceUS;
 	private String balanceUK;
+	
+	
 	public int getId() {
 		return id;
 	}

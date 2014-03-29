@@ -1,20 +1,19 @@
 package com.packt.pfblueprints.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
+import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
-import com.packt.pfblueprints.dao.Configuration;
-import com.packt.pfblueprints.dao.HibernateException;
-import com.packt.pfblueprints.dao.Session;
-import com.packt.pfblueprints.dao.SessionFactory;
-import com.packt.pfblueprints.dao.StandardServiceRegistryBuilder;
+import com.packt.pfblueprints.model.InvestorsList;
+
+
 
 public class LoginDAO {
 
@@ -35,7 +34,7 @@ public class LoginDAO {
 	
 
 	public LoginDAO() throws SQLException {
-		this.super();
+		super();
 
 	}
 
@@ -45,22 +44,19 @@ public class LoginDAO {
 			sessionFactory = configureSessionFactory();
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
-			String query = "select * from investorslist  where username='" + userid + "' and password='" + password + "'";
-		    Query query = session.createQuery(query);
-		    int count= query.list();
+			String query = "from InvestorsList  where username='" + userid + "' and password='" + password + "'";
+		    Query queryobj = session.createQuery(query);
+		    List<InvestorsList> list=queryobj.list();
+		    int count=0;
+		    if(list!=null){
+		    count= list.size();
+		    }
 		    session.getTransaction().commit();
-			int count = 0;
-			while (resultSet.next()) {
-				count++;
-			}
 			if (count > 0) {
 				return true;
 			} else {
 				return false;
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 
