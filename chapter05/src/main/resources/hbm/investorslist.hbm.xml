@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="com.packt.pfblueprints.model.InvestorsList" table="investorslist">
+   <id name="id" type="int" column="ID" >
+   <generator class="increment"/>
+  </id>
+
+  <property name="username">
+    <column name="username" />
+  </property>
+  <property name="password">
+    <column name="password" />
+  </property>
+  
+ </class>
+</hibernate-mapping>
