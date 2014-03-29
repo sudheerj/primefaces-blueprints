@@ -5,135 +5,150 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/templates/masterTemplate.xhtml">
 	<ui:define name="content">
-		<h:form id="dealerform">
+		<h:form id="investmentform">
 
-			<p:contextMenu for="cars">
-				<p:menuitem value="View Advisor List" update="display"
-					icon="ui-icon-search" oncomplete="PF('$advisorprofile').show()" />
-				<p:menuitem value="Dealer Profile" update="cars"
-					icon="ui-icon-close" actionListener="#{dealerController.deleteAdvisor}" />
-				<p:menuitem value="Delete Dealer" update="cars" icon="ui-icon-close"
-					actionListener="#{dealerController.deleteAdvisor}" />
+			<p:contextMenu for="investmentsummary">
+				<p:menuitem value="Transaction Summary" icon="ui-icon-search" action="#{accountSummaryController.storeSelectedInvestornum}" />
 			</p:contextMenu>
 
-			<p:dataTable id="dataTable" var="dealer"
-				value="#{dealerController.dealerInfo}" paginator="true" rows="10"
+			<p:dataTable id="investmentsummary" var="investment"
+				value="#{investmentSummaryController.investmentsInfo}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15">
+				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}"  
+                 selection="#{investmentSummaryController.investmentobj}" selectionMode="single">
 				<f:facet name="header">
             Advisor Information
         </f:facet>
-				<p:column style="width:2%">
-					<p:rowToggler />
-				</p:column>
-				<p:column sortBy="dealernumber" filterBy="dealernumber"
-					id="dealernumber">
+				
+				<p:column sortBy="fundname" filterBy="fundname"
+					id="fundname">
 					<f:facet name="header">
-						<h:outputText value="Dealer Number" />
+						<h:outputText value="Fund Name" />
 					</f:facet>
-					<h:outputText value="#{dealer.dealernumber}" />
+					<h:outputText value="#{investment.fundname}" />
 				</p:column>
-
-
-				<p:column sortBy="advisorname" filterBy="advisorname"
-					id="dealername">
+				<p:column sortBy="investmentNumber" filterBy="investmentNumber"
+					id="investmentNumber">
 					<f:facet name="header">
-						<h:outputText value="Advisor Name" />
+						<h:outputText value="Investment Number" />
 					</f:facet>
-					<h:outputText value="#{dealer.dealername}" />
+					<h:outputText value="#{investment.investmentNumber}" />
 				</p:column>
 
-				<p:column sortBy="advisornumber" filterBy="advisornumber"
-					id="advisornumber">
+				<p:column sortBy="investmentManager" filterBy="investmentManager"
+					id="investmentManager">
 					<f:facet name="header">
-						<h:outputText value="Advisor Number" />
+						<h:outputText value="Investment Manager" />
 					</f:facet>
-					<h:outputText value="#{dealer.advisornumber}" />
+					<h:outputText value="#{investment.investmentManager}" />
 				</p:column>
 
-				<p:column sortBy="status" filterBy="status" id="status">
+				<p:column sortBy="marketingCompany" filterBy="marketingCompany"
+					id="marketingCompany">
 					<f:facet name="header">
-						<h:outputText value="Status" />
+						<h:outputText value="Marketing Company" />
 					</f:facet>
-					<h:outputText value="#{dealer.status}" />
+					<h:outputText value="#{investment.marketingCompany}" />
 				</p:column>
 
-				<p:rowExpansion>
-					<p:dataList value="#{dealer.progressStatus}" var="progress"
-						paginator="true" rows="5"
-						paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15" type="none">  
-   							 Year:#{progress.year},Profite percentage: #{progress.percentage} 
-						<br />
-					</p:dataList>
-
-
-				</p:rowExpansion>
-
+				<p:column sortBy="avgUnitPrice" filterBy="avgUnitPrice" id="avgUnitPrice">
+					<f:facet name="header">
+						<h:outputText value="Average UnitPrice" />
+					</f:facet>
+					<h:outputText value="#{investment.avgUnitPrice}" />
+				</p:column>
+				
+				<p:column sortBy="marketValue1" filterBy="marketValue1" id="marketValue1">
+					<f:facet name="header">
+						<h:outputText value="marketValue1" />
+					</f:facet>
+					<h:outputText value="#{investment.marketValue1}" />
+				</p:column>
+				
+				<p:column sortBy="marketValue1" filterBy="marketValue1" id="marketValue1">
+					<f:facet name="header">
+						<h:outputText value="marketValue1" />
+					</f:facet>
+					<h:outputText value="#{investment.marketValue1}" />
+				</p:column>
+				
+				<p:column sortBy="marketValue1" filterBy="marketValue1" id="marketValue1">
+					<f:facet name="header">
+						<h:outputText value="marketValue1" />
+					</f:facet>
+					<h:outputText value="#{investment.marketValue3}" />
+				</p:column>
+				
+				<p:column sortBy="marketValue4" filterBy="marketValue4" id="marketValue4">
+					<f:facet name="header">
+						<h:outputText value="marketValue1" />
+					</f:facet>
+					<h:outputText value="#{investment.marketValue4}" />
+				</p:column>
+				
 			</p:dataTable>
 
-
 		</h:form>
-		<p:dialog id="dealerprofile" header="Dealer Profile"
-			widgetVar="$dealerprofile" modal="true" resizable="false">
-			<h:form id="dealerprofileform">
+		<!-- <p:dialog id="investmentprofile" header="investment Profile"
+			widgetVar="$investmentprofile" modal="true" resizable="false">
+			<h:form id="investmentprofileform">
 
 				<p:messages id="messages"></p:messages>
 				<h:panelGrid columns="4" cellpadding="5">
 					<h:outputLabel for="firstname" value="Firstname:" />
-					<p:inputText value="#{dealerController.dealerobj.firstname}"
+					<p:inputText value="#{investmentSummaryController.investmentobj.firstname}"
 						id="firstname" required="true"
 						requiredMessage="Firstname cannot be empty" label="username">
 					</p:inputText>
 					<p:watermark for="firstname" value="Enter firstname" />
 
 					<h:outputLabel for="lastname" value="Lastname:" />
-					<p:inputText value="#{dealerController.dealerobj.lastname}"
+					<p:inputText value="#{investmentSummaryController.investmentobj.lastname}"
 						id="lastname" required="true"
 						requiredMessage="Firstname cannot be empty" label="username">
 					</p:inputText>
 					<p:watermark for="lastname" value="Enter lastname" />
 
 					<h:outputLabel for="address1" value="Address1:" />
-					<p:inputText value="#{dealerController.dealerobj.address1}"
+					<p:inputText value="#{investmentSummaryController.investmentobj.address1}"
 						id="address1" required="true"
 						requiredMessage="Address cannot be empty" label="Address">
 					</p:inputText>
 					<p:watermark for="address1" value="Enter address" />
 
 					<h:outputLabel for="address2" value="Address2:" />
-					<p:inputText value="#{dealerController.dealerobj.address2}"
+					<p:inputText value="#{investmentSummaryController.investmentobj.address2}"
 						id="address2" label="Address">
 					</p:inputText>
 					<p:watermark for="address2" value="Enter address" />
 
 					<h:outputLabel for="country" value="Country:" />
-					<p:password value="#{dealerController.dealerobj.country}"
+					<p:password value="#{investmentSummaryController.investmentobj.country}"
 						id="country" label="country" />
 					<p:watermark for="country" value="Enter Country" />
 
 					<h:outputLabel for="city" value="City:" />
-					<p:password value="#{dealerController.dealerobj.city}" id="city"
+					<p:password value="#{investmentSummaryController.investmentobj.city}" id="city"
 						label="City" />
 					<p:watermark for="city" value="Enter City" />
 
 					<h:outputLabel for="contactnumber" value="Contact Number:" />
-					<p:password value="#{dealerController.dealerobj.contactnumber}"
+					<p:password value="#{investmentSummaryController.investmentobj.contactnumber}"
 						id="contactnumber" label="Contact Number" />
 					<p:watermark for="contactnumber" value="Enter Contact number" />
 
 					<h:outputLabel for="postalcode" value="Postal Code:" />
-					<p:password value="#{dealerController.dealerobj.postalcode}"
+					<p:password value="#{investmentSummaryController.investmentobj.postalcode}"
 						id="postalcode" label="Postal Code" />
 					<p:watermark for="postalcode" value="Enter Postal Code" />
 
 					<f:facet name="footer">
 						<p:commandButton id="update" value="Save"
-							update="dealerprofileform"
-							actionListener="#{dealerController.updateDealerProfile}" />
+							update="investmentprofileform"
+							actionListener="#{investmentSummaryController.updateinvestmentProfile}" />
 					</f:facet>
 				</h:panelGrid>
 			</h:form>
-		</p:dialog>
+		</p:dialog> -->
 	</ui:define>
 </ui:composition>

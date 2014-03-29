@@ -12,6 +12,9 @@
   <property name="fundname">
     <column name="fundname" />
   </property>
+  <property name="investmentNumber">
+    <column name="investmentNumber" />
+  </property>
   <property name="investmentManager">
     <column name="investmentManager" />
   </property>
