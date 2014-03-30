@@ -3,6 +3,7 @@ package com.packt.pfblueprints.controller;
 import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -26,8 +27,11 @@ import org.primefaces.model.chart.PieChartModel;
 import javax.servlet.ServletContext;
 
 import com.lowagie.text.BadElementException;
+import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
+import com.lowagie.text.FontFactory;
 import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
@@ -41,6 +45,15 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.ClientAnchor;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Drawing;
+import org.apache.poi.ss.usermodel.Picture;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.util.IOUtils;
 
 @ManagedBean
 @ViewScoped
@@ -177,7 +190,7 @@ public class AccountSummaryController implements Serializable{
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		sessionMap.put("accountNumber", "");
-		return "investmentsummary.xhtml?faces-redirect=true";
+		return "accountsummary.xhtml?faces-redirect=true";
 	}
 	
 	
@@ -188,20 +201,63 @@ public class AccountSummaryController implements Serializable{
 	  
 	    ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();  
 	    String logo = servletContext.getRealPath("") + File.separator +"resources" + File.separator + "images" + File.separator +"logo" + File.separator + "logo.png";  
-	  
-	    pdf.add(Image.getInstance(logo));  
+	    Image image=Image.getInstance(logo);
+	    image.scaleAbsolute(100f, 50f);
+	    pdf.add(image); 
+	    // add a couple of blank lines
+        pdf.add( Chunk.NEWLINE );
+        pdf.add( Chunk.NEWLINE );
+	    Font fontbold = FontFactory.getFont("Times-Roman", 16, Font.BOLD);
+	    fontbold.setColor(55, 55, 55);;
+	    pdf.add(new Paragraph("Account Summary",fontbold));
+	    // add a couple of blank lines
+	    pdf.add( Chunk.NEWLINE );
+	    pdf.add( Chunk.NEWLINE );
 	}  
 	
 	public void postProcessPDF(Object document) throws IOException, BadElementException, DocumentException {  
-		 Document pdf = (Document) document;  
-		 pdf.open();   
-		 pdf.add(new Paragraph("Disclaimer"));
+		 Document pdf = (Document) document; 
+		 pdf.add( Chunk.NEWLINE );
+		 Font fontbold = FontFactory.getFont("Times-Roman", 14, Font.BOLD);
+		 pdf.add(new Paragraph("Disclaimer",fontbold));
+		 pdf.add( Chunk.NEWLINE );
 		 pdf.add(new Paragraph("The information contained in this website is for information purposes only, and does not constitute, nor is it intended to constitute, the provision of financial product advice."));
 		 pdf.add(new Paragraph("This website is intended to track the investor account summary information,investments and transaction in a partcular period of time. "));
 	}  
 	
-	public void preProcessXLS(Object document) {  
-	   
+	public void preProcessXLS(Object document) throws IOException {  
+		 //create a new workbook
+	    Workbook wb = new HSSFWorkbook(); //or new HSSFWorkbook();
+
+	    //add picture data to this workbook.
+	    InputStream is = new FileInputStream("/resources/images/logo/logo.png");
+	    byte[] bytes = IOUtils.toByteArray(is);
+	    int pictureIdx = wb.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
+	    is.close();
+
+	    CreationHelper helper = wb.getCreationHelper();
+
+	    //create sheet
+	    Sheet sheet = wb.createSheet();
+
+	    // Create the drawing patriarch.  This is the top level container for all shapes. 
+	    Drawing drawing = sheet.createDrawingPatriarch();
+
+	    //add a picture shape
+	    ClientAnchor anchor = helper.createClientAnchor();
+	    //set top-left corner of the picture,
+	    //subsequent call of Picture#resize() will operate relative to it
+	    anchor.setCol1(3);
+	    anchor.setRow1(2);
+	    Picture pict = drawing.createPicture(anchor, pictureIdx);
+
+	    //auto-size picture relative to its top-left corner
+	    pict.resize();
+	    
+	    Row row = sheet.createRow((short)5);
+	    // Create a cell and put a value in it.
+	    Cell cell = row.createCell(0);
+	    cell.setCellValue("Account Summary");
 	}  
 	
 	public void postProcessXLS(Object document) {  

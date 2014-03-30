@@ -8,25 +8,28 @@
 		<h:form id="investmentform">
 
 			<p:contextMenu for="investmentsummary">
-				<p:menuitem value="Transaction Summary" icon="ui-icon-search" action="#{investmentSummaryController.storeSelectedInvestornum}" />
+				<p:menuitem value="Transaction Summary" icon="ui-icon-search"
+					action="#{investmentSummaryController.storeSelectedInvestornum}" />
 			</p:contextMenu>
 
 			<p:dataTable id="investmentsummary" var="investment"
-				value="#{investmentSummaryController.investmentsInfo}" paginator="true" rows="5"
+				value="#{investmentSummaryController.investmentsInfo}"
+				paginator="true" rows="5"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" rowKey="#{investment.id}"  
-                 selection="#{investmentSummaryController.investmentobj}" selectionMode="single">
+				rowsPerPageTemplate="5,10,15" rowKey="#{investment.id}"
+				selection="#{investmentSummaryController.investmentobj}"
+				selectionMode="single">
 				<f:facet name="header">
              	Investment Summary
         		</f:facet>
-				
-				<p:column sortBy="fundname" filterBy="fundname"
-					id="fundname">
+
+				<p:column sortBy="fundname" filterBy="fundname" id="fundname">
 					<f:facet name="header">
 						<h:outputText value="Fund Name" />
 					</f:facet>
 					<h:outputText value="#{investment.fundname}" />
 				</p:column>
+
 				<p:column sortBy="investmentNumber" filterBy="investmentNumber"
 					id="investmentNumber">
 					<f:facet name="header">
@@ -51,51 +54,85 @@
 					<h:outputText value="#{investment.marketingCompany}" />
 				</p:column>
 
-				<p:column sortBy="avgUnitPrice" filterBy="avgUnitPrice" id="avgUnitPrice">
+				<p:column sortBy="avgUnitPrice" filterBy="avgUnitPrice"
+					id="avgUnitPrice">
 					<f:facet name="header">
 						<h:outputText value="Average UnitPrice" />
 					</f:facet>
 					<h:outputText value="#{investment.avgUnitPrice}" />
 				</p:column>
-				
-				<p:column sortBy="marketValue1"  id="marketValue1">
+
+				<p:column sortBy="marketValue1" id="marketValue1">
 					<f:facet name="header">
 						<h:outputText value="Market Value(1st Time Period)" />
 					</f:facet>
 					<h:outputText value="#{investment.marketValue1}" />
 				</p:column>
-				
-				<p:column sortBy="marketValue2"  id="marketValue2">
+
+				<p:column sortBy="marketValue2" id="marketValue2">
 					<f:facet name="header">
 						<h:outputText value="Market Value(2nd Time Period)" />
 					</f:facet>
 					<h:outputText value="#{investment.marketValue2}" />
 				</p:column>
-				
-				<p:column sortBy="marketValue3"  id="marketValue3">
+
+				<p:column sortBy="marketValue3" id="marketValue3">
 					<f:facet name="header">
 						<h:outputText value="Market Value(3rd Time Period)" />
 					</f:facet>
 					<h:outputText value="#{investment.marketValue3}" />
 				</p:column>
-				
-				<p:column sortBy="marketValue4"  id="marketValue4">
+
+				<p:column sortBy="marketValue4" id="marketValue4">
 					<f:facet name="header">
 						<h:outputText value="Market Value(4th Time Period)" />
 					</f:facet>
 					<h:outputText value="#{investment.marketValue4}" />
 				</p:column>
-				
-				<p:column sortBy="marketValue5"  id="marketValue5">
+
+				<p:column sortBy="marketValue5" id="marketValue5">
 					<f:facet name="header">
 						<h:outputText value="Market Value(5th Time Period)" />
 					</f:facet>
 					<h:outputText value="#{investment.marketValue5}" />
 				</p:column>
-				
-			</p:dataTable>
 
+			</p:dataTable>
+			<p:panel header="Export All Data">
+				<h:commandLink>
+					<p:graphicImage value="/images/excel.png" />
+					<p:dataExporter type="xls" target="investmentsummary"
+						preProcessor="#{investmentSummaryController.preProcessXLS}"
+						postProcessor="#{investmentSummaryController.postProcessXLS}"
+						fileName="InvestmentSummary" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/images/pdf.png" />
+					<p:dataExporter type="pdf" target="investmentsummary"
+						preProcessor="#{investmentSummaryController.preProcessPDF}"
+						postProcessor="#{investmentSummaryController.postProcessPDF}"
+						fileName="InvestmentSummary" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/images/csv.png" />
+					<p:dataExporter type="csv" target="investmentsummary"
+						fileName="InvestmentSummary" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/images/xml.png" />
+					<p:dataExporter type="xml" target="investmentsummary"
+						fileName="InvestmentSummary" />
+				</h:commandLink>
+			</p:panel>
+			<p:panel header="Investement Summary Charts" id="invsummarycharts">
+				<p:lineChart id="linear" value="#{investmentSummaryController.linearModel}"
+					legendPosition="e" title="Linear Chart" 
+					style="height:300px" /> 
+			</p:panel>
 		</h:form>
-		
+
 	</ui:define>
 </ui:composition>

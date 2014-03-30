@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import com.packt.pfblueprints.dao.TransactionSummaryDAO;
@@ -35,6 +37,13 @@ public class TransactionSummaryController implements Serializable{
 		
 	}
 
+	public String displayTransactions(){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("investmentNumber", "");
+		return "accountsummary.xhtml?faces-redirect=true";
+	}
+	
 	public List<TransactionSummary> getTransactionsInfo() {
 		return transactionsInfo;
 	}
