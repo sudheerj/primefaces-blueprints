@@ -5,147 +5,91 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/templates/masterTemplate.xhtml">
 	<ui:define name="content">
-		<h:form id="dealerform">
-
-			<p:contextMenu for="cars">
-				<p:menuitem value="View Advisor List" update="display"
-					icon="ui-icon-search" oncomplete="PF('$advisorprofile').show()" />
-				<p:menuitem value="Dealer Profile" update="dealerinfo" />
-				<p:menuitem value="Delete Dealer" update="dealerinfo"
-					icon="ui-icon-close"
-					actionListener="#{dealerController.deleteDealer}" />
-			</p:contextMenu>
-
-			<p:dataTable id="dealerinfo" var="dealer"
-				value="#{dealerController.dealerInfo}" paginator="true" rows="10"
+		<h:form id="transactionform">
+		
+			<p:dataTable id="transactionsummary" var="transaction"
+				value="#{transactionSummaryController.transactionsInfo}" paginator="true" rows="5"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
-            Dealer Information
-        </f:facet>
-				<p:column style="width:2%">
-					<p:rowToggler />
-				</p:column>
-				<p:column sortBy="dealernumber" filterBy="dealernumber"
-					id="dealernumber">
+                Transaction Summary
+       		    </f:facet>
+				
+				<p:column sortBy="transactionid" filterBy="transactionid"
+					id="transactionid">
 					<f:facet name="header">
-						<h:outputText value="Dealer Number" />
+						<h:outputText value="TransactionID" />
 					</f:facet>
-					<h:outputText value="#{dealer.dealernumber}" />
+					<h:outputText value="#{transaction.transactionid}" />
 				</p:column>
 
 
-				<p:column sortBy="advisorname" filterBy="advisorname"
-					id="dealername">
+				<p:column sortBy="transactiontype" filterBy="transactiontype"
+					id="transactiontype">
 					<f:facet name="header">
-						<h:outputText value="Advisor Name" />
+						<h:outputText value="Transaction Type" />
 					</f:facet>
-					<h:outputText value="#{dealer.dealername}" />
+					<h:outputText value="#{transaction.transactiontype}" />
 				</p:column>
 
-				<p:column sortBy="advisornumber" filterBy="advisornumber"
-					id="advisornumber">
+				<p:column sortBy="transactiondate" filterBy="transactiondate"
+					id="transactiondate">
 					<f:facet name="header">
-						<h:outputText value="Advisor Number" />
+						<h:outputText value="Transaction Date" />
 					</f:facet>
-					<h:outputText value="#{dealer.advisornumber}" />
+					<h:outputText value="#{transaction.transactiondate}" />
 				</p:column>
-			    <p:column sortBy="branch" filterBy="status" id="branch">
+			    <p:column sortBy="paymenttype" filterBy="paymenttype" id="paymenttype">
 					<f:facet name="header">
-						<h:outputText value="branch" />
+						<h:outputText value="Payment Type" />
 					</f:facet>
-					<h:outputText value="#{dealer.branch}" />
-				</p:column>
-				<p:column sortBy="dor" filterBy="dor" id="dor">
-					<f:facet name="header">
-						<h:outputText value="Date of registration" />
-					</f:facet>
-					<h:outputText value="#{dealer.dor}" />
+					<h:outputText value="#{transaction.paymenttype}" />
 				</p:column>
                 
 				<p:column sortBy="status" filterBy="status" id="status">
 					<f:facet name="header">
 						<h:outputText value="Status" />
 					</f:facet>
-					<h:outputText value="#{dealer.status}" />
+					<h:outputText value="#{transaction.status}" />
 				</p:column>
-
-				<p:rowExpansion>
-					<p:dataList value="#{dealer.progressStatus}" var="progress"
-						paginator="true" rows="5"
-						paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15" type="none">  
-   							 Year:#{progress.year},Profite percentage: #{progress.percentage} 
-						<br />
-					</p:dataList>
-
-
-				</p:rowExpansion>
-
+				
+				<p:column sortBy="transactionunitprice"  id="transactionunitprice">
+					<f:facet name="header">
+						<h:outputText value="Transaction Unitprice" />
+					</f:facet>
+					<h:outputText value="#{transaction.transactionunitprice}" />
+				</p:column>
+				
+				<p:column sortBy="transactionunits" id="transactionunits">
+					<f:facet name="header">
+						<h:outputText value="Transaction Units" />
+					</f:facet>
+					<h:outputText value="#{transaction.transactionunits}" />
+				</p:column>
+				<p:column sortBy="grossamount" id="grossamount">
+					<f:facet name="header">
+						<h:outputText value="Grossamount" />
+					</f:facet>
+					<h:outputText value="#{transaction.grossamount}" />
+				</p:column>
+				
+				<p:column sortBy="deductions"  id="deductions">
+					<f:facet name="header">
+						<h:outputText value="Deductions" />
+					</f:facet>
+					<h:outputText value="#{transaction.deductions}" />
+				</p:column>
+				
+				<p:column sortBy="netamount" id="netamount">
+					<f:facet name="header">
+						<h:outputText value="Net Amount" />
+					</f:facet>
+					<h:outputText value="#{transaction.netamount}" />
+				</p:column>
+				
 			</p:dataTable>
 
-
 		</h:form>
-		<p:dialog id="dealerprofile" header="Dealer Profile"
-			widgetVar="$dealerprofile" modal="true" resizable="false">
-			<h:form id="dealerprofileform">
-
-				<p:messages id="messages"></p:messages>
-				<h:panelGrid columns="4" cellpadding="5">
-					<h:outputLabel for="firstname" value="Firstname:" />
-					<p:inputText value="#{dealerController.dealerobj.firstname}"
-						id="firstname" required="true"
-						requiredMessage="Firstname cannot be empty" label="username">
-					</p:inputText>
-					<p:watermark for="firstname" value="Enter firstname" />
-
-					<h:outputLabel for="lastname" value="Lastname:" />
-					<p:inputText value="#{dealerController.dealerobj.lastname}"
-						id="lastname" required="true"
-						requiredMessage="Firstname cannot be empty" label="username">
-					</p:inputText>
-					<p:watermark for="lastname" value="Enter lastname" />
-
-					<h:outputLabel for="address1" value="Address1:" />
-					<p:inputText value="#{dealerController.dealerobj.address1}"
-						id="address1" required="true"
-						requiredMessage="Address cannot be empty" label="Address">
-					</p:inputText>
-					<p:watermark for="address1" value="Enter address" />
-
-					<h:outputLabel for="address2" value="Address2:" />
-					<p:inputText value="#{dealerController.dealerobj.address2}"
-						id="address2" label="Address">
-					</p:inputText>
-					<p:watermark for="address2" value="Enter address" />
-
-					<h:outputLabel for="country" value="Country:" />
-					<p:password value="#{dealerController.dealerobj.country}"
-						id="country" label="country" />
-					<p:watermark for="country" value="Enter Country" />
-
-					<h:outputLabel for="city" value="City:" />
-					<p:password value="#{dealerController.dealerobj.city}" id="city"
-						label="City" />
-					<p:watermark for="city" value="Enter City" />
-
-					<h:outputLabel for="contactnumber" value="Contact Number:" />
-					<p:password value="#{dealerController.dealerobj.contactnumber}"
-						id="contactnumber" label="Contact Number" />
-					<p:watermark for="contactnumber" value="Enter Contact number" />
-
-					<h:outputLabel for="postalcode" value="Postal Code:" />
-					<p:password value="#{dealerController.dealerobj.postalcode}"
-						id="postalcode" label="Postal Code" />
-					<p:watermark for="postalcode" value="Enter Postal Code" />
-
-					<f:facet name="footer">
-						<p:commandButton id="update" value="Save"
-							update="dealerprofileform"
-							actionListener="#{dealerController.updateDealerProfile}" />
-					</f:facet>
-				</h:panelGrid>
-			</h:form>
-		</p:dialog>
+		
 	</ui:define>
 </ui:composition>

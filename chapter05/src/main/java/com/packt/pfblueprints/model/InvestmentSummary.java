@@ -9,11 +9,13 @@ public class InvestmentSummary implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
+	private String accountNumber;
 	private String fundname;
+	private String investmentNumber;
 	private String investmentManager;
 	private String marketingCompany;
 	private String avgUnitPrice;
-	private Double  marketValue1;
+	private Double marketValue1;
 	private Double marketValue2;
 	private Double marketValue3;
 	private Double marketValue4;
@@ -24,11 +26,25 @@ public class InvestmentSummary implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
 	public String getFundname() {
 		return fundname;
 	}
 	public void setFundname(String fundname) {
 		this.fundname = fundname;
+	}
+	
+	public String getInvestmentNumber() {
+		return investmentNumber;
+	}
+	public void setInvestmentNumber(String investmentNumber) {
+		this.investmentNumber = investmentNumber;
 	}
 	public String getInvestmentManager() {
 		return investmentManager;

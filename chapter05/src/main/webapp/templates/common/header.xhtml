@@ -29,10 +29,12 @@
 			</p:outputPanel>
 	</div>
 </p:panel>
+<p:outputPanel rendered="#{view.viewId != '/views/login.xhtml'}">
 <p:megaMenu > 
-<p:menuitem value="Account Summary |" url="accountsummary.xhtml"></p:menuitem>
-<p:menuitem value="Investment Summary |" url="investmentsummary.xhtml"></p:menuitem>
-<p:menuitem value="Transaction Summary |" url="Transactionsummary.xhtml"></p:menuitem>
+<p:menuitem value="Account Summary |" action="#{accountSummaryController.displayAllAccounts}" ></p:menuitem>
+<p:menuitem value="Investment Summary |" action="#{investmentSummaryController.displayAllInvestments}" ></p:menuitem>
+<p:menuitem value="Transaction Summary |" action="#{transactionSummaryController.displayAllTransactions}" ></p:menuitem>
 </p:megaMenu>
+</p:outputPanel>
 </h:form>
 </html>

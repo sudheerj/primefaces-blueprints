@@ -43,6 +43,116 @@ CREATE TABLE  `blueprintsdb`.`investorslist` (
   INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100009','CASH','Active','11/04/2002','04/11/2002','09/09/2013','YES','88766','77868');
   INSERT INTO blueprintsdb.accountsummary(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Beckham','100010','CASH','closed','02/02/2002','04/04/2002','09/09/2013','NO','76767','67676');
   
+  
+  
+  CREATE TABLE  `blueprintsdb`.`InvestmentSummary` (
+   id INT NOT NULL auto_increment,
+  `accountNumber` VARCHAR(10), 
+  `fundname` VARCHAR(20),
+  `investmentNumber` VARCHAR(10),
+  `investmentManager` VARCHAR(20),
+  `marketingCompany` VARCHAR(20),
+  `avgUnitPrice` VARCHAR(10),
+  `marketValue1` VARCHAR(10),
+  `marketValue2` VARCHAR(10),
+  `marketValue3` VARCHAR(10),
+  `marketValue4` VARCHAR(10),
+  `marketValue5` VARCHAR(10),
+  PRIMARY KEY (`id`))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100001','Moderate Balanced Fund','111','BlackRock','US savings and retirements','10','2000','1000','1200','2200','2500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100001','Capital Research management LLC','112','Quantitative management associates','UK Fidelity markets','7','1000','1100','1200','1200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100001','Money market Fund','113','AIS capital management','German Prudentials','5','500','800','400','1100','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100001','Aggressive balanced fund','114','Active passive funds','NationWide','8','1300','1000','1200','2200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100001','conservative Balanced Fund','115','BlackRock','LIC retirements','13','200','1000','1200','2200','2700');
+  
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100002','Moderate Balanced Fund','111','BlackRock','US savings and retirements','10','2000','1000','1200','2200','2500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100002','Capital Research management LLC','112','Quantitative management associates','UK Fidelity markets','7','1000','1100','1200','1200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100002','Money market Fund','113','AIS capital management','German Prudentials','5','500','800','400','1100','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100002','Aggressive balanced fund','114','Active passive funds','NationWide','8','1300','1000','1200','2200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100002','conservative Balanced Fund','115','BlackRock','LIC retirements','13','200','1000','1200','2200','2700');
+  
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100003','Moderate Balanced Fund','111','BlackRock','US savings and retirements','10','2000','1000','1200','2200','2500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100003','Capital Research management LLC','112','Quantitative management associates','UK Fidelity markets','7','1000','1100','1200','1200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100003','Money market Fund','113','AIS capital management','German Prudentials','5','500','800','400','1100','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100003','Aggressive balanced fund','114','Active passive funds','NationWide','8','1300','1000','1200','2200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100003','conservative Balanced Fund','115','BlackRock','LIC retirements','13','200','1000','1200','2200','2700');
+  
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100004','Moderate Balanced Fund','111','BlackRock','US savings and retirements','10','2000','1000','1200','2200','2500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100004','Capital Research management LLC','112','Quantitative management associates','UK Fidelity markets','7','1000','1100','1200','1200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100004','Money market Fund','113','AIS capital management','German Prudentials','5','500','800','400','1100','1500');
+  
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100005','Aggressive balanced fund','114','Active passive funds','NationWide','8','1300','1000','1200','2200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100005','conservative Balanced Fund','115','BlackRock','LIC retirements','13','200','1000','1200','2200','2700');
+  
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100006','Moderate Balanced Fund','111','BlackRock','US savings and retirements','10','2000','1000','1200','2200','2500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100006','Capital Research management LLC','112','Quantitative management associates','UK Fidelity markets','7','1000','1100','1200','1200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100007','Money market Fund','113','AIS capital management','German Prudentials','5','500','800','400','1100','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100007','Aggressive balanced fund','114','Active passive funds','NationWide','8','1300','1000','1200','2200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100008','conservative Balanced Fund','115','BlackRock','LIC retirements','13','200','1000','1200','2200','2700');
+  
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100009','Moderate Balanced Fund','111','BlackRock','US savings and retirements','10','2000','1000','1200','2200','2500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('100009','Capital Research management LLC','112','Quantitative management associates','UK Fidelity markets','7','1000','1100','1200','1200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('1000010','Money market Fund','113','AIS capital management','German Prudentials','5','500','800','400','1100','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('1000010','Aggressive balanced fund','114','Active passive funds','NationWide','8','1300','1000','1200','2200','1500');
+  INSERT INTO blueprintsdb.investmentsummary(accountNumber,fundname,investmentNumber,investmentManager,marketingCompany,avgUnitPrice,marketValue1,marketValue2,marketValue3,marketValue4,marketValue5)VALUES('1000011','conservative Balanced Fund','115','BlackRock','LIC retirements','13','200','1000','1200','2200','2700');
+  
+
+  
+  
+  
+  
+  CREATE TABLE  `blueprintsdb`.`TransactionSummary` (
+   id INT NOT NULL auto_increment,
+  `investmentNumber` VARCHAR(10),
+  `transactionid` VARCHAR(10),
+  `transactiontype` VARCHAR(20),
+  `transactiondate` VARCHAR(10),
+  `paymenttype` VARCHAR(20),
+  `status` VARCHAR(10),
+  `transactionunitprice` VARCHAR(10),
+  `transactionunits` VARCHAR(10),
+  `grossamount` VARCHAR(10),
+  `deductions` VARCHAR(5),
+  `netamount` VARCHAR(10),
+  PRIMARY KEY (`id`))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  
+  
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('111','11','Sell','03/03/2007','CREDIT_CARD','Active','200','10','2000','0','2000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('111','12','BUY','11/02/2005','CREDIT_CARD','Closed','2000','10','20000','1000','19000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('111','13','Sell','06/03/2008','CUSTOMER_ACCOUNT','Active','500','50','25000','5000','20000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('111','14','TransferIn','03/05/2007','CHECK','Pending','600','20','12000','400','11600');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('111','15','TransferOut','01/01/2006','CREDIT_CARD','Active','100','50','5000','300','4700');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('112','16','Sell','03/03/2007','CREDIT_CARD','Active','200','10','2000','0','2000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('112','17','BUY','11/02/2005','CREDIT_CARD','Closed','2000','10','20000','1000','19000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('112','18','Sell','06/03/2008','CUSTOMER_ACCOUNT','Active','500','50','25000','5000','20000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('113','19','TransferIn','03/05/2007','CHECK','Pending','600','20','12000','400','11600');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('113','20','TransferOut','01/01/2006','CREDIT_CARD','Active','100','50','5000','300','4700');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('114','21','Sell','03/03/2007','CREDIT_CARD','Active','200','10','2000','0','2000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('114','22','BUY','11/02/2005','CREDIT_CARD','Closed','2000','10','20000','1000','19000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('114','23','Sell','06/03/2008','CUSTOMER_ACCOUNT','Active','500','50','25000','5000','20000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('115','24','TransferIn','03/05/2007','CHECK','Pending','600','20','12000','400','11600');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('115','25','TransferOut','01/01/2006','CREDIT_CARD','Active','100','50','5000','300','4700'); 
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('115','26','Sell','03/03/2007','CREDIT_CARD','Active','200','10','2000','0','2000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('116','27','BUY','11/02/2005','CREDIT_CARD','Closed','2000','10','20000','1000','19000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('116','28','Sell','06/03/2008','CUSTOMER_ACCOUNT','Active','500','50','25000','5000','20000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('116','29','TransferIn','03/05/2007','CHECK','Pending','600','20','12000','400','11600');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('117','30','TransferOut','01/01/2006','CREDIT_CARD','Active','100','50','5000','300','4700'); 
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('117','31','Sell','03/03/2007','CREDIT_CARD','Active','200','10','2000','0','2000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('118','32','BUY','11/02/2005','CREDIT_CARD','Closed','2000','10','20000','1000','19000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('118','33','Sell','06/03/2008','CUSTOMER_ACCOUNT','Active','500','50','25000','5000','20000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('118','34','TransferIn','03/05/2007','CHECK','Pending','600','20','12000','400','11600');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('119','35','TransferOut','01/01/2006','CREDIT_CARD','Active','100','50','5000','300','4700'); 
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('119','36','Sell','03/03/2007','CREDIT_CARD','Active','200','10','2000','0','2000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('119','37','BUY','11/02/2005','CREDIT_CARD','Closed','2000','10','20000','1000','19000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('119','38','Sell','06/03/2008','CUSTOMER_ACCOUNT','Active','500','50','25000','5000','20000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('120','39','TransferIn','03/05/2007','CHECK','Pending','600','20','12000','400','11600');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('121','40','TransferOut','01/01/2006','CREDIT_CARD','Active','100','50','5000','300','4700'); 
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('122','41','Sell','03/03/2007','CREDIT_CARD','Active','200','10','2000','0','2000');
+  INSERT INTO blueprintsdb.transactionsummary(investmentNumber,transactionid,transactiontype,transactiondate,paymenttype,status,transactionunitprice,transactionunits,grossamount,deductions,netamount)VALUES('123','41','Sell','03/03/2007','CREDIT_CARD','Active','200','10','2000','0','2000');
+  
+  
+  
   `city` VARCHAR(20),
   `contactnumber` VARCHAR(30) NOT NULL,
   `postalcode` VARCHAR(10),

@@ -8,9 +8,14 @@
    <id name="id" type="int" column="ID" >
    <generator class="increment"/>
   </id>
-
+  <property name="accountNumber">
+    <column name="accountNumber" />
+  </property>
   <property name="fundname">
     <column name="fundname" />
+  </property>
+  <property name="investmentNumber">
+    <column name="investmentNumber" />
   </property>
   <property name="investmentManager">
     <column name="investmentManager" />

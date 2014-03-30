@@ -2,6 +2,10 @@ package com.packt.pfblueprints.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -16,6 +20,7 @@ import com.packt.pfblueprints.model.TransactionSummary;
 public class TransactionSummaryDAO {
 
 	private  SessionFactory sessionFactory;
+	private  String investmentNumber;
 
 	private  SessionFactory configureSessionFactory()
 			throws HibernateException {
@@ -32,6 +37,9 @@ public class TransactionSummaryDAO {
 	public TransactionSummaryDAO() {
 		super();
 		// TODO Auto-generated constructor stub
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		investmentNumber=(String) sessionMap.get("investmentNumber");
 	}
 
 
@@ -39,7 +47,13 @@ public class TransactionSummaryDAO {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Query queryResult = session.createQuery("from TransactionSummary");
+		Query queryResult=null;
+		if(investmentNumber!=""){
+		queryResult = session.createQuery("from TransactionSummary where investmentNumber = :invNum");
+		queryResult.setParameter("invNum", investmentNumber);
+		}else{
+	    queryResult = session.createQuery("from TransactionSummary");	
+		}
 		List<TransactionSummary> allTransactions = queryResult.list();
 		session.getTransaction().commit();
 		return allTransactions;

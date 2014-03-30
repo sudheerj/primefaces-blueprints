@@ -4,44 +4,44 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-  <class name="com.packt.pfblueprints.model.TransactionSummary" table="transactionsummary">
-   <id name="id" type="int" column="ID" >
-   <generator class="increment"/>
-  </id>
+	<class name="com.packt.pfblueprints.model.TransactionSummary"
+		table="transactionsummary">
+		<id name="id" type="int" column="ID">
+			<generator class="increment" />
+		</id>
+		<property name="investmentNumber">
+			<column name="investmentNumber" />
+		</property>
+		<property name="transactionid">
+			<column name="transactionid" />
+		</property>
+		<property name="transactiontype">
+			<column name="transactiontype" />
+		</property>
+		<property name="transactiondate">
+			<column name="transactiondate" />
+		</property>
+		<property name="paymenttype">
+			<column name="paymenttype" />
+		</property>
+		<property name="status">
+			<column name="status" />
+		</property>
+		<property name="transactionunitprice">
+			<column name="transactionunitprice" />
+		</property>
+		<property name="transactionunits">
+			<column name="transactionunits" />
+		</property>
+		<property name="grossamount">
+			<column name="grossamount" />
+		</property>
+		<property name="deductions">
+			<column name="deductions" />
+		</property>
+		<property name="netamount">
+			<column name="netamount" />
+		</property>
 
-  <property name="fundname">
-    <column name="fundname" />
-  </property>
-  <property name="transactionid">
-    <column name="transactionid" />
-  </property>
-  <property name="transactiontype">
-    <column name="transactiontype"/>
-  </property>
-  <property name="transactiondate">
-    <column name="transactiondate" />
-  </property>
-  <property name="paymenttype">
-    <column name="paymenttype"/>
-  </property>
-   <property name="status">
-    <column name="status"/>
-  </property>
-  <property name="transctionunitprice">
-    <column name="transctionunitprice" />
-  </property>
-  <property name="transactionunits">
-    <column name="transactionunits"/>
-  </property>
-  <property name="grossamount">
-    <column name="grossamount" />
-  </property>
-  <property name="deductions">
-    <column name="deductions"/>
-  </property>
-  <property name="netamount">
-    <column name="netamount" />
-  </property>
- 
- </class>
+	</class>
 </hibernate-mapping>
