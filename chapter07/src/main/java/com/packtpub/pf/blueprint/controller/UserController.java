@@ -63,7 +63,10 @@ public class UserController implements Serializable {
         us.setPassword("admin");
         us.setFirstName("Ram");
         us.setLastName("Pillai");
-        ds.addOrUpdateEntity(us);
+        User ut = ds.validateUser("admin", "admin");
+        if(ut == null){
+            ds.addOrUpdateEntity(us);
+        }
     }
 
     Object request = FacesContext.getCurrentInstance().getExternalContext().getRequest();

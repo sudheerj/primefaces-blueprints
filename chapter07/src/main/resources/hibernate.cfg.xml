@@ -4,6 +4,7 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+        <property name="hibernate.archive.autodetection">class</property>
 
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
@@ -17,7 +18,7 @@
         <property name="hibernate.connection.autocommit">true</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.hbm2ddl.import_files">classpath:import.sql</property>
 
         <property name="hibernate.current_session_context_class">
@@ -29,6 +30,7 @@
         <mapping class="com.packtpub.pf.blueprint.persistence.entity.Comment"/>
         <mapping class="com.packtpub.pf.blueprint.persistence.entity.Movie"/>
         <mapping class="com.packtpub.pf.blueprint.persistence.entity.MovieSchedule"/>
+        <mapping class="com.packtpub.pf.blueprint.persistence.entity.Location"/>
 
     </session-factory>
 </hibernate-configuration>

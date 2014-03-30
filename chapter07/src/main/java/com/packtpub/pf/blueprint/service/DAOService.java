@@ -2,6 +2,7 @@ package com.packtpub.pf.blueprint.service;
 
 import com.packtpub.pf.blueprint.persistence.HibernateUtil;
 import com.packtpub.pf.blueprint.persistence.entity.Comment;
+import com.packtpub.pf.blueprint.persistence.entity.Location;
 import com.packtpub.pf.blueprint.persistence.entity.Movie;
 import com.packtpub.pf.blueprint.persistence.entity.User;
 import org.apache.log4j.Logger;
@@ -39,6 +40,15 @@ public class DAOService {
         getSession().close();
         _log.info("Listed Successfully....");
         return user;
+    }
+
+    public List<Location> getAllLocations(){
+        org.hibernate.Transaction tx = getSession().beginTransaction();
+        List list = getSession().createCriteria(Location.class).list();
+        tx.commit();
+        getSession().close();
+        _log.info("Listed Successfully....");
+        return list;
     }
 
     public void addOrUpdateEntity(Object o) {

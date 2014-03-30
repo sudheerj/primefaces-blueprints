@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 @ManagedBean
 @SessionScoped
-public class MovieController {
+public class MovieController  implements Serializable {
     private static final Logger _log = Logger.getLogger(UserController.class);
 
     @Setter
@@ -84,6 +85,14 @@ public class MovieController {
     @Getter
     @Setter
     private Movie movie;
+
+    public MovieType[] getMovieTypes(){
+        return MovieType.values();
+    }
+
+    public void deleteMovie(Movie mov){
+
+    }
 
     public List<Movie> getFavoriteMovies() {
         List<Movie> mvs = new ArrayList<>();

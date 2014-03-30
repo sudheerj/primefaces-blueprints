@@ -34,6 +34,7 @@ public class User implements java.io.Serializable {
     @Temporal(TemporalType.DATE)
     private Date createDate;
 
+    @Column(unique = true)
     private String username;
     private String password;
 
