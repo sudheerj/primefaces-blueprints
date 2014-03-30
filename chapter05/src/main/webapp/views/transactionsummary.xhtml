@@ -8,7 +8,7 @@
 		<h:form id="transactionform">
 		
 			<p:dataTable id="transactionsummary" var="transaction"
-				value="#{transactionSummaryController.transactionInfo}" paginator="true" rows="10"
+				value="#{transactionSummaryController.transactionsInfo}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
@@ -53,11 +53,11 @@
 					<h:outputText value="#{transaction.status}" />
 				</p:column>
 				
-				<p:column sortBy="transctionunitprice" filterBy="transctionunitprice" id="transctionunitprice">
+				<p:column sortBy="transactionunitprice" filterBy="transactionunitprice" id="transactionunitprice">
 					<f:facet name="header">
-						<h:outputText value="Transction Unitprice" />
+						<h:outputText value="Transaction Unitprice" />
 					</f:facet>
-					<h:outputText value="#{transaction.transctionunitprice}" />
+					<h:outputText value="#{transaction.transactionunitprice}" />
 				</p:column>
 				
 				<p:column sortBy="transactionunits" filterBy="transactionunits" id="transactionunits">

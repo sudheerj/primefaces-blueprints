@@ -10,13 +10,13 @@ public class TransactionSummary implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
-	private String fundname;
+	private String investmentNumber;
 	private String transactionid;
 	private String transactiontype;
-	private Date transactiondate;
+	private String transactiondate;
 	private String paymenttype;
 	private String status;
-	private String transctionunitprice;
+	private String transactionunitprice;
 	private String transactionunits;
 	private String grossamount;
 	private String deductions;
@@ -28,13 +28,12 @@ public class TransactionSummary implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getFundname() {
-		return fundname;
+	public String getInvestmentNumber() {
+		return investmentNumber;
 	}
-	public void setFundname(String fundname) {
-		this.fundname = fundname;
-	}
-	
+	public void setInvestmentNumber(String investmentNumber) {
+		this.investmentNumber = investmentNumber;
+	}	
 	public String getTransactionid() {
 		return transactionid;
 	}
@@ -47,10 +46,11 @@ public class TransactionSummary implements Serializable{
 	public void setTransactiontype(String transactiontype) {
 		this.transactiontype = transactiontype;
 	}
-	public Date getTransactiondate() {
+	
+	public String getTransactiondate() {
 		return transactiondate;
 	}
-	public void setTransactiondate(Date transactiondate) {
+	public void setTransactiondate(String transactiondate) {
 		this.transactiondate = transactiondate;
 	}
 	public String getStatus() {
@@ -59,11 +59,12 @@ public class TransactionSummary implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getTransctionunitprice() {
-		return transctionunitprice;
+	
+	public String getTransactionunitprice() {
+		return transactionunitprice;
 	}
-	public void setTransctionunitprice(String transctionunitprice) {
-		this.transctionunitprice = transctionunitprice;
+	public void setTransactionunitprice(String transactionunitprice) {
+		this.transactionunitprice = transactionunitprice;
 	}
 	public String getTransactionunits() {
 		return transactionunits;

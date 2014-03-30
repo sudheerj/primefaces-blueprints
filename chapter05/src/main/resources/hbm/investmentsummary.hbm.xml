@@ -8,7 +8,9 @@
    <id name="id" type="int" column="ID" >
    <generator class="increment"/>
   </id>
-
+  <property name="accountNumber">
+    <column name="accountNumber" />
+  </property>
   <property name="fundname">
     <column name="fundname" />
   </property>

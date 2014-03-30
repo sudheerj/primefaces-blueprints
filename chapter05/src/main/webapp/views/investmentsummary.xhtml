@@ -8,17 +8,17 @@
 		<h:form id="investmentform">
 
 			<p:contextMenu for="investmentsummary">
-				<p:menuitem value="Transaction Summary" icon="ui-icon-search" action="#{accountSummaryController.storeSelectedInvestornum}" />
+				<p:menuitem value="Transaction Summary" icon="ui-icon-search" action="#{investmentSummaryController.storeSelectedInvestornum}" />
 			</p:contextMenu>
 
 			<p:dataTable id="investmentsummary" var="investment"
 				value="#{investmentSummaryController.investmentsInfo}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}"  
+				rowsPerPageTemplate="5,10,15" rowKey="#{investment.id}"  
                  selection="#{investmentSummaryController.investmentobj}" selectionMode="single">
 				<f:facet name="header">
-            Advisor Information
-        </f:facet>
+             	Investment Summary
+        		</f:facet>
 				
 				<p:column sortBy="fundname" filterBy="fundname"
 					id="fundname">
@@ -58,97 +58,44 @@
 					<h:outputText value="#{investment.avgUnitPrice}" />
 				</p:column>
 				
-				<p:column sortBy="marketValue1" filterBy="marketValue1" id="marketValue1">
+				<p:column sortBy="marketValue1"  id="marketValue1">
 					<f:facet name="header">
-						<h:outputText value="marketValue1" />
+						<h:outputText value="Market Value(1st Time Period)" />
 					</f:facet>
 					<h:outputText value="#{investment.marketValue1}" />
 				</p:column>
 				
-				<p:column sortBy="marketValue1" filterBy="marketValue1" id="marketValue1">
+				<p:column sortBy="marketValue2"  id="marketValue2">
 					<f:facet name="header">
-						<h:outputText value="marketValue1" />
+						<h:outputText value="Market Value(2nd Time Period)" />
 					</f:facet>
-					<h:outputText value="#{investment.marketValue1}" />
+					<h:outputText value="#{investment.marketValue2}" />
 				</p:column>
 				
-				<p:column sortBy="marketValue1" filterBy="marketValue1" id="marketValue1">
+				<p:column sortBy="marketValue3"  id="marketValue3">
 					<f:facet name="header">
-						<h:outputText value="marketValue1" />
+						<h:outputText value="Market Value(3rd Time Period)" />
 					</f:facet>
 					<h:outputText value="#{investment.marketValue3}" />
 				</p:column>
 				
-				<p:column sortBy="marketValue4" filterBy="marketValue4" id="marketValue4">
+				<p:column sortBy="marketValue4"  id="marketValue4">
 					<f:facet name="header">
-						<h:outputText value="marketValue1" />
+						<h:outputText value="Market Value(4th Time Period)" />
 					</f:facet>
 					<h:outputText value="#{investment.marketValue4}" />
+				</p:column>
+				
+				<p:column sortBy="marketValue5"  id="marketValue5">
+					<f:facet name="header">
+						<h:outputText value="Market Value(5th Time Period)" />
+					</f:facet>
+					<h:outputText value="#{investment.marketValue5}" />
 				</p:column>
 				
 			</p:dataTable>
 
 		</h:form>
-		<!-- <p:dialog id="investmentprofile" header="investment Profile"
-			widgetVar="$investmentprofile" modal="true" resizable="false">
-			<h:form id="investmentprofileform">
-
-				<p:messages id="messages"></p:messages>
-				<h:panelGrid columns="4" cellpadding="5">
-					<h:outputLabel for="firstname" value="Firstname:" />
-					<p:inputText value="#{investmentSummaryController.investmentobj.firstname}"
-						id="firstname" required="true"
-						requiredMessage="Firstname cannot be empty" label="username">
-					</p:inputText>
-					<p:watermark for="firstname" value="Enter firstname" />
-
-					<h:outputLabel for="lastname" value="Lastname:" />
-					<p:inputText value="#{investmentSummaryController.investmentobj.lastname}"
-						id="lastname" required="true"
-						requiredMessage="Firstname cannot be empty" label="username">
-					</p:inputText>
-					<p:watermark for="lastname" value="Enter lastname" />
-
-					<h:outputLabel for="address1" value="Address1:" />
-					<p:inputText value="#{investmentSummaryController.investmentobj.address1}"
-						id="address1" required="true"
-						requiredMessage="Address cannot be empty" label="Address">
-					</p:inputText>
-					<p:watermark for="address1" value="Enter address" />
-
-					<h:outputLabel for="address2" value="Address2:" />
-					<p:inputText value="#{investmentSummaryController.investmentobj.address2}"
-						id="address2" label="Address">
-					</p:inputText>
-					<p:watermark for="address2" value="Enter address" />
-
-					<h:outputLabel for="country" value="Country:" />
-					<p:password value="#{investmentSummaryController.investmentobj.country}"
-						id="country" label="country" />
-					<p:watermark for="country" value="Enter Country" />
-
-					<h:outputLabel for="city" value="City:" />
-					<p:password value="#{investmentSummaryController.investmentobj.city}" id="city"
-						label="City" />
-					<p:watermark for="city" value="Enter City" />
-
-					<h:outputLabel for="contactnumber" value="Contact Number:" />
-					<p:password value="#{investmentSummaryController.investmentobj.contactnumber}"
-						id="contactnumber" label="Contact Number" />
-					<p:watermark for="contactnumber" value="Enter Contact number" />
-
-					<h:outputLabel for="postalcode" value="Postal Code:" />
-					<p:password value="#{investmentSummaryController.investmentobj.postalcode}"
-						id="postalcode" label="Postal Code" />
-					<p:watermark for="postalcode" value="Enter Postal Code" />
-
-					<f:facet name="footer">
-						<p:commandButton id="update" value="Save"
-							update="investmentprofileform"
-							actionListener="#{investmentSummaryController.updateinvestmentProfile}" />
-					</f:facet>
-				</h:panelGrid>
-			</h:form>
-		</p:dialog> -->
+		
 	</ui:define>
 </ui:composition>

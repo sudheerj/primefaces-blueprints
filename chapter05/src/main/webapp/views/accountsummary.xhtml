@@ -109,13 +109,13 @@
 			<p:panel header="Export All Data">
 				<h:commandLink>
 					<p:graphicImage value="/images/excel.png" />
-					<p:dataExporter type="xls" target="accountsummary"
+					<p:dataExporter type="xls" target="accountsummary" preProcessor="#{accountSummaryController.preProcessXLS}" postProcessor="#{accountSummaryController.postProcessXLS}"
 						fileName="AccountSummary" />
 				</h:commandLink>
 
 				<h:commandLink>
 					<p:graphicImage value="/images/pdf.png" />
-					<p:dataExporter type="pdf" target="accountsummary"
+					<p:dataExporter type="pdf" target="accountsummary" preProcessor="#{accountSummaryController.preProcessPDF}" postProcessor="#{accountSummaryController.postProcessPDF}" 
 						fileName="AccountSummary" />
 				</h:commandLink>
 

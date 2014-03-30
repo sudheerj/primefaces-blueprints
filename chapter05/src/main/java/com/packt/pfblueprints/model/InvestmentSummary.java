@@ -9,6 +9,7 @@ public class InvestmentSummary implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
+	private String accountNumber;
 	private String fundname;
 	private String investmentNumber;
 	private String investmentManager;
@@ -24,6 +25,13 @@ public class InvestmentSummary implements Serializable{
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 	public String getFundname() {
 		return fundname;

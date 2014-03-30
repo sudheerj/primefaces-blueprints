@@ -25,10 +25,21 @@ import org.primefaces.model.chart.PieChartModel;
 
 import javax.servlet.ServletContext;
 
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.lowagie.text.PageSize;
 import com.packt.pfblueprints.dao.AccountSummaryDAO;
 import com.packt.pfblueprints.model.AccountSummary;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
 
 @ManagedBean
 @ViewScoped
@@ -160,6 +171,42 @@ public class AccountSummaryController implements Serializable{
 		sessionMap.put("accountNumber", accountobj.getAccountNumber());
 		return "investmentsummary.xhtml?faces-redirect=true";
 	}
+	
+	public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {  
+	    Document pdf = (Document) document;  
+	    pdf.open();  
+	    pdf.setPageSize(PageSize.A4);  
+	  
+	    ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();  
+	    String logo = servletContext.getRealPath("") + File.separator +"resources" + File.separator + "images" + File.separator +"logo" + File.separator + "logo.png";  
+	  
+	    pdf.add(Image.getInstance(logo));  
+	}  
+	
+	public void postProcessPDF(Object document) throws IOException, BadElementException, DocumentException {  
+	     
+	}  
+	
+	public void preProcessXLS(Object document) {  
+	   
+	}  
+	
+	public void postProcessXLS(Object document) {  
+	    HSSFWorkbook wb = (HSSFWorkbook) document;  
+	    HSSFSheet sheet = wb.getSheetAt(0);  
+	    HSSFRow header = sheet.getRow(0);  
+	      
+	    HSSFCellStyle cellStyle = wb.createCellStyle();    
+	    cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);  
+	    cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);  
+	      
+	    for(int i=0; i < header.getPhysicalNumberOfCells();i++) {  
+	        HSSFCell cell = header.getCell(i);  
+	          
+	        cell.setCellStyle(cellStyle);  
+	    }  
+	}  
+	
 
 	public List<AccountSummary> getAccountsInfo() {
 		return accountsInfo;
