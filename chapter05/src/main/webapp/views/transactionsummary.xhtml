@@ -6,15 +6,16 @@
 	template="/templates/masterTemplate.xhtml">
 	<ui:define name="content">
 		<h:form id="transactionform">
-		
+
 			<p:dataTable id="transactionsummary" var="transaction"
-				value="#{transactionSummaryController.transactionsInfo}" paginator="true" rows="5"
+				value="#{transactionSummaryController.transactionsInfo}"
+				paginator="true" rows="5"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
                 Transaction Summary
        		    </f:facet>
-				
+
 				<p:column sortBy="transactionid" filterBy="transactionid"
 					id="transactionid">
 					<f:facet name="header">
@@ -39,27 +40,28 @@
 					</f:facet>
 					<h:outputText value="#{transaction.transactiondate}" />
 				</p:column>
-			    <p:column sortBy="paymenttype" filterBy="paymenttype" id="paymenttype">
+				<p:column sortBy="paymenttype" filterBy="paymenttype"
+					id="paymenttype">
 					<f:facet name="header">
 						<h:outputText value="Payment Type" />
 					</f:facet>
 					<h:outputText value="#{transaction.paymenttype}" />
 				</p:column>
-                
+
 				<p:column sortBy="status" filterBy="status" id="status">
 					<f:facet name="header">
 						<h:outputText value="Status" />
 					</f:facet>
 					<h:outputText value="#{transaction.status}" />
 				</p:column>
-				
-				<p:column sortBy="transactionunitprice"  id="transactionunitprice">
+
+				<p:column sortBy="transactionunitprice" id="transactionunitprice">
 					<f:facet name="header">
 						<h:outputText value="Transaction Unitprice" />
 					</f:facet>
 					<h:outputText value="#{transaction.transactionunitprice}" />
 				</p:column>
-				
+
 				<p:column sortBy="transactionunits" id="transactionunits">
 					<f:facet name="header">
 						<h:outputText value="Transaction Units" />
@@ -72,24 +74,58 @@
 					</f:facet>
 					<h:outputText value="#{transaction.grossamount}" />
 				</p:column>
-				
-				<p:column sortBy="deductions"  id="deductions">
+
+				<p:column sortBy="deductions" id="deductions">
 					<f:facet name="header">
 						<h:outputText value="Deductions" />
 					</f:facet>
 					<h:outputText value="#{transaction.deductions}" />
 				</p:column>
-				
+
 				<p:column sortBy="netamount" id="netamount">
 					<f:facet name="header">
 						<h:outputText value="Net Amount" />
 					</f:facet>
 					<h:outputText value="#{transaction.netamount}" />
 				</p:column>
-				
-			</p:dataTable>
 
+			</p:dataTable>
+			<p:panel header="Export All Data">
+				<h:commandLink>
+					<p:graphicImage value="/images/excel.png" />
+					<p:dataExporter type="xls" target="transactionsummary"
+						preProcessor="#{transactionSummaryController.preProcessXLS}"
+						postProcessor="#{transactionSummaryController.postProcessXLS}"
+						fileName="TransactionSummary" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/images/pdf.png" />
+					<p:dataExporter type="pdf" target="transactionsummary"
+						preProcessor="#{transactionSummaryController.preProcessPDF}"
+						postProcessor="#{transactionSummaryController.postProcessPDF}"
+						fileName="TransactionSummary" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/images/csv.png" />
+					<p:dataExporter type="csv" target="transactionsummary"
+						fileName="TransactionSummary" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/images/xml.png" />
+					<p:dataExporter type="xml" target="transactionsummary"
+						fileName="TransactionSummary" />
+				</h:commandLink>
+			</p:panel>
+			<p:panel header="Transaction Summary Charts" id="trnsummarycharts">
+				<p:donutChart id="custom" value="#{transactionSummaryController.donutModel}"
+					legendPosition="e" sliceMargin="5" showDataLabels="true"
+					dataFormat="value" shadow="false" title="Transaction Summary"
+					style="width:400px;height:300px" />
+			</p:panel>
 		</h:form>
-		
+
 	</ui:define>
 </ui:composition>

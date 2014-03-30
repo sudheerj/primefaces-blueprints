@@ -41,6 +41,7 @@ import com.packt.pfblueprints.model.AccountSummary;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -49,6 +50,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.ClientAnchor;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Drawing;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Picture;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -230,7 +232,7 @@ public class AccountSummaryController implements Serializable{
 	    Workbook wb = new HSSFWorkbook(); //or new HSSFWorkbook();
 
 	    //add picture data to this workbook.
-	    InputStream is = new FileInputStream("/resources/images/logo/logo.png");
+	    InputStream is = new FileInputStream(servletContext.getRealPath("")+"\\resources\\images\\logo\\logo.png");
 	    byte[] bytes = IOUtils.toByteArray(is);
 	    int pictureIdx = wb.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
 	    is.close();
@@ -274,6 +276,32 @@ public class AccountSummaryController implements Serializable{
 	          
 	        cell.setCellStyle(cellStyle);  
 	    }  
+	    
+	    Row row=sheet.createRow((short)sheet.getLastRowNum()+3);
+	    Cell cellDisclaimer = row.createCell(0);
+	    HSSFFont customFont= wb.createFont();
+	    customFont.setFontHeightInPoints((short)10);
+	    customFont.setFontName("Arial");
+	    customFont.setColor(IndexedColors.BLACK.getIndex());
+	    customFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+	    customFont.setItalic(true);
+	    
+	    cellDisclaimer.setCellValue("Disclaimer");
+	    HSSFCellStyle cellStyleDisclaimer = wb.createCellStyle();
+	    cellStyleDisclaimer.setFont(customFont);
+	    cellDisclaimer.setCellStyle(cellStyleDisclaimer);
+	    
+	    Row row1=sheet.createRow(sheet.getLastRowNum()+2);
+	    Cell cellDisclaimerContent1 = row1.createCell(0);
+	    cellDisclaimerContent1.setCellValue("The information contained in this website is for information purposes only, and does not constitute, nor is it intended to constitute, the provision of financial product advice.");
+	    
+	    Row row2=sheet.createRow(sheet.getLastRowNum()+1);
+	    Cell cellDisclaimerContent2 = row2.createCell(0);
+	    cellDisclaimerContent2.setCellValue("This website is intended to track the investor account summary information,investments and transaction in a partcular period of time. ");
+	    
+	    
+	    
+	    
 	}  
 	
 
