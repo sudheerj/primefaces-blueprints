@@ -12,7 +12,7 @@
 			</p:contextMenu>
 
 			<p:dataTable id="investmentsummary" var="investment"
-				value="#{investmentSummaryController.investmentsInfo}" paginator="true" rows="10"
+				value="#{investmentSummaryController.investmentsInfo}" paginator="true" rows="5"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15" rowKey="#{investment.id}"  
                  selection="#{investmentSummaryController.investmentobj}" selectionMode="single">

@@ -45,6 +45,13 @@ public class InvestmentSummaryController implements Serializable{
 		sessionMap.put("investmentNumber", investmentobj.getInvestmentNumber());
 		return "transactionsummary.xhtml?faces-redirect=true";
 	}
+	
+	public String displayAllInvestments(){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("investmentNumber", "");
+		return "transactionsummary.xhtml?faces-redirect=true";
+	}
 
 	public List<InvestmentSummary> getInvestmentsInfo() {
 		return investmentsInfo;

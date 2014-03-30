@@ -30,6 +30,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
+import com.lowagie.text.Paragraph;
 import com.packt.pfblueprints.dao.AccountSummaryDAO;
 import com.packt.pfblueprints.model.AccountSummary;
 
@@ -172,10 +173,18 @@ public class AccountSummaryController implements Serializable{
 		return "investmentsummary.xhtml?faces-redirect=true";
 	}
 	
+	public String displayAllAccounts(){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("accountNumber", "");
+		return "investmentsummary.xhtml?faces-redirect=true";
+	}
+	
+	
 	public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {  
 	    Document pdf = (Document) document;  
 	    pdf.open();  
-	    pdf.setPageSize(PageSize.A4);  
+	    pdf.setPageSize(PageSize.A3);  
 	  
 	    ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();  
 	    String logo = servletContext.getRealPath("") + File.separator +"resources" + File.separator + "images" + File.separator +"logo" + File.separator + "logo.png";  
@@ -184,7 +193,11 @@ public class AccountSummaryController implements Serializable{
 	}  
 	
 	public void postProcessPDF(Object document) throws IOException, BadElementException, DocumentException {  
-	     
+		 Document pdf = (Document) document;  
+		 pdf.open();   
+		 pdf.add(new Paragraph("Disclaimer"));
+		 pdf.add(new Paragraph("The information contained in this website is for information purposes only, and does not constitute, nor is it intended to constitute, the provision of financial product advice."));
+		 pdf.add(new Paragraph("This website is intended to track the investor account summary information,investments and transaction in a partcular period of time. "));
 	}  
 	
 	public void preProcessXLS(Object document) {  
