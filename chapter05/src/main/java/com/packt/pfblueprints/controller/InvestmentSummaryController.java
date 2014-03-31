@@ -63,7 +63,6 @@ public class InvestmentSummaryController implements Serializable{
 	private InvestmentSummary investmentobj=new InvestmentSummary();
 	private CartesianChartModel linearModel; 
 	
-	//private Dealer dealerobj=new Dealer();
 	InvestmentSummaryDAO dao = new InvestmentSummaryDAO();
 	
 	@PostConstruct

@@ -90,40 +90,56 @@
 				</p:column>
 
 			</p:dataTable>
-			<p:panel header="Export All Data">
+			<p:panel header="Export Transactions Information">
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+					<h:outputLabel value="Export Options: " for="options" />
+					<p:selectOneRadio id="options"
+						value="#{transactionSummaryController.optionValue}"
+						label="Export Options:">
+						<f:selectItem itemLabel="Export All" itemValue="1" />
+						<f:selectItem itemLabel="Export PageOnly" itemValue="2" />
+						<p:ajax event="change" update="exportOptions"
+							listener="#{transactionSummaryController.changeExportOption}" />
+					</p:selectOneRadio>
+				</h:panelGrid>
+				<p:separator ></p:separator>
+				<p:outputPanel id="exportOptions">
 				<h:commandLink>
 					<p:graphicImage value="/images/excel.png" />
 					<p:dataExporter type="xls" target="transactionsummary"
-						preProcessor="#{transactionSummaryController.preProcessXLS}"
 						postProcessor="#{transactionSummaryController.postProcessXLS}"
-						fileName="TransactionSummary" />
+						fileName="TransactionSummary" pageOnly="#{transactionSummaryController.pageOnly}" />
 				</h:commandLink>
 
 				<h:commandLink>
 					<p:graphicImage value="/images/pdf.png" />
 					<p:dataExporter type="pdf" target="transactionsummary"
 						preProcessor="#{transactionSummaryController.preProcessPDF}"
-						postProcessor="#{transactionSummaryController.postProcessPDF}"
+						postProcessor="#{transactionSummaryController.postProcessPDF}" pageOnly="#{transactionSummaryController.pageOnly}"
 						fileName="TransactionSummary" />
 				</h:commandLink>
 
 				<h:commandLink>
 					<p:graphicImage value="/images/csv.png" />
 					<p:dataExporter type="csv" target="transactionsummary"
-						fileName="TransactionSummary" />
+						fileName="TransactionSummary" pageOnly="#{transactionSummaryController.pageOnly}" />
 				</h:commandLink>
 
 				<h:commandLink>
 					<p:graphicImage value="/images/xml.png" />
 					<p:dataExporter type="xml" target="transactionsummary"
-						fileName="TransactionSummary" />
+						fileName="TransactionSummary" pageOnly="#{transactionSummaryController.pageOnly}" />
 				</h:commandLink>
+				</p:outputPanel>
 			</p:panel>
-			<p:panel header="Transaction Summary Charts" id="trnsummarycharts">
-				<p:donutChart id="custom" value="#{transactionSummaryController.donutModel}"
+			<p:panel header="Transaction Summary Charts" id="trnsummarycharts" >
+			<p:outputPanel style="margin-left:30%">
+				<p:donutChart id="custom"
+					value="#{transactionSummaryController.donutModel}"
 					legendPosition="e" sliceMargin="5" showDataLabels="true"
 					dataFormat="value" shadow="false" title="Transaction Summary"
 					style="width:400px;height:300px" />
+			</p:outputPanel>
 			</p:panel>
 		</h:form>
 

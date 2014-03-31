@@ -193,7 +193,7 @@
 				value="#{accountSummaryController.base64Str1}" />
 			<h:inputHidden id="pie2"
 				value="#{accountSummaryController.base64Str2}" />
-			<h:inputHidden id="bar1"
+			<h:inputHidden id="bar"
 				value="#{accountSummaryController.base64Str3}" />
 
 
@@ -208,7 +208,7 @@
 				function exportBarChart() {
 					// exportAsImage() will return a base64 png encoded string
 					var img1 = PF('$barChart').exportAsImage();
-					document.getElementById('accountform:barChart').value = img1.src;
+					document.getElementById('accountform:bar').value = img1.src;
 				}
 			</script>
 		</h:form>

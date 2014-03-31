@@ -53,6 +53,8 @@ public class TransactionSummaryController implements Serializable {
 	private TransactionSummary transactionobj = new TransactionSummary();
 	TransactionSummaryDAO dao = new TransactionSummaryDAO();
 	private DonutChartModel donutModel;
+	private Integer optionValue=1;
+	private Boolean pageOnly=false;
 
 	@PostConstruct
 	public void init() {
@@ -178,7 +180,15 @@ public class TransactionSummaryController implements Serializable {
 		donutModel.addCircle(circle1);
 		donutModel.addCircle(circle2);
 		donutModel.addCircle(circle3);
-		donutModel.addCircle(circle3);
+		donutModel.addCircle(circle4);
+	}
+	
+	public void changeExportOption() {
+		if(optionValue==1){
+			pageOnly=false;
+		}else{
+			pageOnly=true;
+		}
 	}
 
 	public List<TransactionSummary> getTransactionsInfo() {
@@ -196,5 +206,23 @@ public class TransactionSummaryController implements Serializable {
 	public void setDonutModel(DonutChartModel donutModel) {
 		this.donutModel = donutModel;
 	}
+
+	public int getOptionValue() {
+		return optionValue;
+	}
+
+	public void setOptionValue(int optionValue) {
+		this.optionValue = optionValue;
+	}
+
+	public Boolean getPageOnly() {
+		return pageOnly;
+	}
+
+	public void setPageOnly(Boolean pageOnly) {
+		this.pageOnly = pageOnly;
+	}
+	
+	
 	
 }
