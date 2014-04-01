@@ -102,45 +102,65 @@
 							listener="#{transactionSummaryController.changeExportOption}" />
 					</p:selectOneRadio>
 				</h:panelGrid>
-				<p:separator ></p:separator>
+				<p:separator></p:separator>
 				<p:outputPanel id="exportOptions">
-				<h:commandLink>
-					<p:graphicImage value="/images/excel.png" />
-					<p:dataExporter type="xls" target="transactionsummary"
-						postProcessor="#{transactionSummaryController.postProcessXLS}"
-						fileName="TransactionSummary" pageOnly="#{transactionSummaryController.pageOnly}" />
-				</h:commandLink>
+					<h:commandLink>
+						<p:graphicImage value="/images/excel.png" />
+						<p:dataExporter type="xls" target="transactionsummary"
+							postProcessor="#{transactionSummaryController.postProcessXLS}"
+							fileName="TransactionSummary"
+							pageOnly="#{transactionSummaryController.pageOnly}" />
+					</h:commandLink>
 
-				<h:commandLink>
-					<p:graphicImage value="/images/pdf.png" />
-					<p:dataExporter type="pdf" target="transactionsummary"
-						preProcessor="#{transactionSummaryController.preProcessPDF}"
-						postProcessor="#{transactionSummaryController.postProcessPDF}" pageOnly="#{transactionSummaryController.pageOnly}"
-						fileName="TransactionSummary" />
-				</h:commandLink>
+					<h:commandLink>
+						<p:graphicImage value="/images/pdf.png" />
+						<p:dataExporter type="pdf" target="transactionsummary"
+							preProcessor="#{transactionSummaryController.preProcessPDF}"
+							postProcessor="#{transactionSummaryController.postProcessPDF}"
+							pageOnly="#{transactionSummaryController.pageOnly}"
+							fileName="TransactionSummary" />
+					</h:commandLink>
 
-				<h:commandLink>
-					<p:graphicImage value="/images/csv.png" />
-					<p:dataExporter type="csv" target="transactionsummary"
-						fileName="TransactionSummary" pageOnly="#{transactionSummaryController.pageOnly}" />
-				</h:commandLink>
+					<h:commandLink>
+						<p:graphicImage value="/images/csv.png" />
+						<p:dataExporter type="csv" target="transactionsummary"
+							fileName="TransactionSummary"
+							pageOnly="#{transactionSummaryController.pageOnly}" />
+					</h:commandLink>
 
-				<h:commandLink>
-					<p:graphicImage value="/images/xml.png" />
-					<p:dataExporter type="xml" target="transactionsummary"
-						fileName="TransactionSummary" pageOnly="#{transactionSummaryController.pageOnly}" />
-				</h:commandLink>
+					<h:commandLink>
+						<p:graphicImage value="/images/xml.png" />
+						<p:dataExporter type="xml" target="transactionsummary"
+							fileName="TransactionSummary"
+							pageOnly="#{transactionSummaryController.pageOnly}" />
+					</h:commandLink>
 				</p:outputPanel>
 			</p:panel>
-			<p:panel header="Transaction Summary Charts" id="trnsummarycharts" >
-			<p:outputPanel style="margin-left:30%">
-				<p:donutChart id="custom"
-					value="#{transactionSummaryController.donutModel}"
-					legendPosition="e" sliceMargin="5" showDataLabels="true"
-					dataFormat="value" shadow="false" title="Transaction Summary"
-					style="width:400px;height:300px" />
-			</p:outputPanel>
+			<p:panel header="Transaction Summary Charts" id="trnsummarycharts">
+				<p:outputPanel style="margin-left:30%">
+					<p:donutChart id="donutChart" widgetVar="$donutChart"
+						value="#{transactionSummaryController.donutModel}"
+						legendPosition="e" sliceMargin="5" showDataLabels="true"
+						dataFormat="value" shadow="false" title="Transaction Summary"
+						style="width:400px;height:300px" />
+				</p:outputPanel>
+				<p:outputPanel>
+					<p:commandButton value="ExportDonutChart" icon="ui-icon-extlink"
+						ajax="false" onclick="exportDonutChart()"
+						actionListener="#{transactionSummaryController.donutchartBase64Str}">
+						<p:fileDownload value="#{transactionSummaryController.file}" />
+					</p:commandButton>
+				</p:outputPanel>
 			</p:panel>
+			<h:inputHidden id="donut"
+				value="#{transactionSummaryController.base64Str}" />
+			<script>
+				function exportDonutChart() {
+					// exportAsImage() will return a base64 png encoded string
+					var img1 = PF('$donutChart').exportAsImage();
+					document.getElementById('transactionform:donut').value = img1.src;
+				}
+			</script>
 		</h:form>
 
 	</ui:define>

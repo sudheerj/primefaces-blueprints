@@ -1,7 +1,10 @@
 package com.packt.pfblueprints.controller;
 
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,8 +17,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -26,6 +31,8 @@ import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 import org.primefaces.model.chart.DonutChartModel;
 
 import com.lowagie.text.BadElementException;
@@ -50,11 +57,14 @@ public class TransactionSummaryController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<TransactionSummary> transactionsInfo = new ArrayList<TransactionSummary>();
 
-	private TransactionSummary transactionobj = new TransactionSummary();
 	TransactionSummaryDAO dao = new TransactionSummaryDAO();
 	private DonutChartModel donutModel;
 	private Integer optionValue=1;
 	private Boolean pageOnly=false;
+	private String base64Str;
+	private StreamedContent file;
+	ServletContext servletContext = (ServletContext) FacesContext
+     	    .getCurrentInstance().getExternalContext().getContext();
 
 	@PostConstruct
 	public void init() {
@@ -75,7 +85,7 @@ public class TransactionSummaryController implements Serializable {
 			BadElementException, DocumentException {
 		Document pdf = (Document) document;
 		pdf.open();
-		pdf.setPageSize(PageSize.A3);
+		pdf.setPageSize(PageSize.A4);
 
 		ServletContext servletContext = (ServletContext) FacesContext
 				.getCurrentInstance().getExternalContext().getContext();
@@ -159,6 +169,7 @@ public class TransactionSummaryController implements Serializable {
 		Map<String, Number> circle4 = new LinkedHashMap<String, Number>();
 
 		for (TransactionSummary obj : transactionsInfo) {
+			System.out.println("transaction type=="+obj.getTransactiontype());
 			if (obj.getTransactiontype().equalsIgnoreCase("Sell")) {
 				circle1.put(obj.getPaymenttype(),
 						new Integer(obj.getNetamount()));
@@ -168,10 +179,12 @@ public class TransactionSummaryController implements Serializable {
 						new Integer(obj.getNetamount()));
 			}
 			if (obj.getTransactiontype().equalsIgnoreCase("TransferIn")) {
+				System.out.println("circle 3");
 				circle3.put(obj.getPaymenttype(),
 						new Integer(obj.getNetamount()));
 			}
 			if (obj.getTransactiontype().equalsIgnoreCase("TransferOut")) {
+				System.out.println("circle 4");
 				circle4.put(obj.getPaymenttype(),
 						new Integer(obj.getNetamount()));
 			}
@@ -189,6 +202,23 @@ public class TransactionSummaryController implements Serializable {
 		}else{
 			pageOnly=true;
 		}
+	}
+	
+	public void donutchartBase64Str(){
+		 InputStream stream2 = servletContext.getResourceAsStream("/images/donut.png");
+		 file = new DefaultStreamedContent(stream2, "image/png", "DonutChart.png");
+		
+	    if(base64Str.split(",").length > 1){
+	        String encoded = base64Str.split(",")[1];
+	        byte[] decoded = Base64.decodeBase64(encoded);
+	        // Write to a .png file
+	        try {
+	            RenderedImage renderedImage = ImageIO.read(new ByteArrayInputStream(decoded));
+	            ImageIO.write(renderedImage, "png", new File(servletContext.getRealPath("images/donut.png"))); 
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
 	}
 
 	public List<TransactionSummary> getTransactionsInfo() {
@@ -222,7 +252,23 @@ public class TransactionSummaryController implements Serializable {
 	public void setPageOnly(Boolean pageOnly) {
 		this.pageOnly = pageOnly;
 	}
-	
+
+	public String getBase64Str() {
+		return base64Str;
+	}
+
+	public void setBase64Str(String base64Str) {
+		this.base64Str = base64Str;
+	}
+
+	public StreamedContent getFile() {
+		return file;
+	}
+
+	public void setFile(StreamedContent file) {
+		this.file = file;
+	}
+
 	
 	
 }

@@ -1,5 +1,7 @@
 package com.packt.pfblueprints.controller;
 
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,8 +17,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -34,6 +38,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.util.IOUtils;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
@@ -62,6 +68,10 @@ public class InvestmentSummaryController implements Serializable{
 	private List<InvestmentSummary> investmentsInfo=new ArrayList<InvestmentSummary>();
 	private InvestmentSummary investmentobj=new InvestmentSummary();
 	private CartesianChartModel linearModel; 
+	private String base64Str;
+	private StreamedContent file;
+	ServletContext servletContext = (ServletContext) FacesContext
+     	    .getCurrentInstance().getExternalContext().getContext();
 	
 	InvestmentSummaryDAO dao = new InvestmentSummaryDAO();
 	
@@ -175,6 +185,23 @@ public class InvestmentSummaryController implements Serializable{
 		    cellDisclaimerContent2.setCellValue("This website is intended to track the investor account summary information,investments and transaction in a partcular period of time. ");
 		    
 		}  
+		
+		public void linechartBase64Str(){
+			 InputStream stream2 = servletContext.getResourceAsStream("/images/line.png");
+			 file = new DefaultStreamedContent(stream2, "image/png", "LineChart.png");
+			
+		    if(base64Str.split(",").length > 1){
+		        String encoded = base64Str.split(",")[1];
+		        byte[] decoded = Base64.decodeBase64(encoded);
+		        // Write to a .png file
+		        try {
+		            RenderedImage renderedImage = ImageIO.read(new ByteArrayInputStream(decoded));
+		            ImageIO.write(renderedImage, "png", new File(servletContext.getRealPath("images/line.png"))); 
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+		    }
+		}
 	 
 	public List<InvestmentSummary> getInvestmentsInfo() {
 		return investmentsInfo;
@@ -198,6 +225,22 @@ public class InvestmentSummaryController implements Serializable{
 
 	public void setLinearModel(CartesianChartModel linearModel) {
 		this.linearModel = linearModel;
+	}
+
+	public String getBase64Str() {
+		return base64Str;
+	}
+
+	public void setBase64Str(String base64Str) {
+		this.base64Str = base64Str;
+	}
+
+	public StreamedContent getFile() {
+		return file;
+	}
+
+	public void setFile(StreamedContent file) {
+		this.file = file;
 	}
 	
 	
