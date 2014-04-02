@@ -39,7 +39,7 @@
 				</p:column>
 
 				<p:column sortBy="investmentManager" filterBy="investmentManager"
-					id="investmentManager">
+					id="investmentManager" exportable="#{investmentSummaryController.exportInvestmentManager}">
 					<f:facet name="header">
 						<h:outputText value="Investment Manager" />
 					</f:facet>
@@ -47,7 +47,7 @@
 				</p:column>
 
 				<p:column sortBy="marketingCompany" filterBy="marketingCompany"
-					id="marketingCompany">
+					id="marketingCompany" exportable="#{investmentSummaryController.exportMarketingCompany}">
 					<f:facet name="header">
 						<h:outputText value="Marketing Company" />
 					</f:facet>
@@ -55,7 +55,7 @@
 				</p:column>
 
 				<p:column sortBy="avgUnitPrice" filterBy="avgUnitPrice"
-					id="avgUnitPrice">
+					id="avgUnitPrice" exportable="#{investmentSummaryController.exportAvgUnitPrice}">
 					<f:facet name="header">
 						<h:outputText value="Average UnitPrice" />
 					</f:facet>
@@ -98,7 +98,14 @@
 				</p:column>
 
 			</p:dataTable>
-			<p:panel header="Export All Data">
+			<p:panel header="Export Investment Summary">
+				<p:selectCheckboxMenu value="#{investmentSummaryController.selectedColumns}"
+					label="Export columns"  panelStyle="width:220px">
+					<f:selectItems value="#{investmentSummaryController.allcolumns}" />
+					<p:ajax event="change" listener="#{investmentSummaryController.changeOptions}" update="investmentsummary"/>
+				</p:selectCheckboxMenu>
+
+				<p:separator style="margin-bottom:10px" />
 				<h:commandLink>
 					<p:graphicImage value="/images/excel.png" />
 					<p:dataExporter type="xls" target="investmentsummary"
@@ -135,15 +142,15 @@
 				<p:outputPanel>
 					<p:commandButton value="ExportLineChart" icon="ui-icon-extlink"
 						ajax="false" onclick="exportLineChart()"
-						actionListener="#{transactionSummaryController.linechartBase64Str}">
-						<p:fileDownload value="#{transactionSummaryController.file}" />
+						actionListener="#{investmentSummaryController.linechartBase64Str}">
+						<p:fileDownload value="#{investmentSummaryController.file}" />
 					</p:commandButton>
 				</p:outputPanel>
 			</p:panel>
-				<h:inputHidden id="line"
-				value="#{transactionSummaryController.base64Str}" />
+			<h:inputHidden id="line"
+				value="#{investmentSummaryController.base64Str}" />
 			<script>
-				function exportDonutChart() {
+				function exportLineChart() {
 					// exportAsImage() will return a base64 png encoded string
 					var img1 = PF('$linechart').exportAsImage();
 					document.getElementById('investmentform:line').value = img1.src;

@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,13 +75,48 @@ public class InvestmentSummaryController implements Serializable{
      	    .getCurrentInstance().getExternalContext().getContext();
 	
 	InvestmentSummaryDAO dao = new InvestmentSummaryDAO();
+	private List<String> selectedColumns;
+    private Map<String,String> allcolumns;
+    private boolean exportInvestmentManager=false;
+    private boolean exportMarketingCompany=false;
+    private boolean exportAvgUnitPrice=false;
+    
 	
 	@PostConstruct
 	public void init() { 
 		
 		investmentsInfo=dao.getAllInvestments();
 		createLinearModel();
+		exportColumns();
 		
+	}
+	
+	public void exportColumns() {
+		allcolumns = new HashMap<String, String>();
+		allcolumns.put("investmentManager", "investmentManager");
+		allcolumns.put("marketingCompany", "marketingCompany");
+		allcolumns.put("avgUnitPrice", "avgUnitPrice");
+	}
+	
+	public void changeOptions() {
+		for (Map.Entry<String, String> entry : allcolumns.entrySet())
+		{
+			if((entry.getKey()).equalsIgnoreCase("investmentManager")){
+				exportInvestmentManager=true;
+			} else {
+				exportInvestmentManager=false;
+			}
+			if((entry.getKey()).equalsIgnoreCase("marketingCompany")){
+				exportMarketingCompany=true;
+			} else {
+				exportMarketingCompany=false;
+			}
+			if((entry.getKey()).equalsIgnoreCase("avgUnitPrice")){
+				exportAvgUnitPrice=true;
+			} else {
+				exportAvgUnitPrice=false;
+			}
+		}
 	}
 	
 	public String storeSelectedInvestornum(){
@@ -241,6 +277,47 @@ public class InvestmentSummaryController implements Serializable{
 
 	public void setFile(StreamedContent file) {
 		this.file = file;
+	}
+
+	public List<String> getSelectedColumns() {
+		return selectedColumns;
+	}
+
+	public void setSelectedColumns(List<String> selectedColumns) {
+		this.selectedColumns = selectedColumns;
+	}
+
+	public Map<String, String> getAllcolumns() {
+		return allcolumns;
+	}
+
+	public void setAllcolumns(Map<String, String> allcolumns) {
+		this.allcolumns = allcolumns;
+	}
+
+	public boolean isExportInvestmentManager() {
+		return exportInvestmentManager;
+	}
+
+	public void setExportInvestmentManager(boolean exportInvestmentManager) {
+		this.exportInvestmentManager = exportInvestmentManager;
+	}
+
+	
+	public boolean isExportMarketingCompany() {
+		return exportMarketingCompany;
+	}
+
+	public void setExportMarketingCompany(boolean exportMarketingCompany) {
+		this.exportMarketingCompany = exportMarketingCompany;
+	}
+
+	public boolean isExportAvgUnitPrice() {
+		return exportAvgUnitPrice;
+	}
+
+	public void setExportAvgUnitPrice(boolean exportAvgUnitPrice) {
+		this.exportAvgUnitPrice = exportAvgUnitPrice;
 	}
 	
 	
