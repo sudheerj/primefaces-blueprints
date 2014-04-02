@@ -80,6 +80,7 @@ public class InvestmentSummaryController implements Serializable{
     private boolean exportInvestmentManager=false;
     private boolean exportMarketingCompany=false;
     private boolean exportAvgUnitPrice=false;
+    Map<String,InvestmentSummary> chartMap=new HashMap<String,InvestmentSummary>();
     
 	
 	@PostConstruct
@@ -137,7 +138,20 @@ public class InvestmentSummaryController implements Serializable{
 	        linearModel = new CartesianChartModel(); 
 	        
 	        for(InvestmentSummary obj:investmentsInfo){
-	        	 LineChartSeries series = new LineChartSeries();
+	        	if((chartMap.keySet()).contains(obj.getFundname())){
+	        		chartMap.get(obj.getFundname()).setMarketValue1(chartMap.get(obj.getFundname()).getMarketValue1()+obj.getMarketValue1()); ;
+	        		chartMap.get(obj.getFundname()).setMarketValue2(chartMap.get(obj.getFundname()).getMarketValue2()+obj.getMarketValue2()); ;
+	        		chartMap.get(obj.getFundname()).setMarketValue3(chartMap.get(obj.getFundname()).getMarketValue3()+obj.getMarketValue3()); ;
+	        		chartMap.get(obj.getFundname()).setMarketValue4(chartMap.get(obj.getFundname()).getMarketValue4()+obj.getMarketValue4()); ;
+	        		chartMap.get(obj.getFundname()).setMarketValue5(chartMap.get(obj.getFundname()).getMarketValue5()+obj.getMarketValue5()); ;
+	        	} else {
+	        		chartMap.put(obj.getFundname(), obj);
+	        	}
+	        }
+	        for (String key : chartMap.keySet()) {
+	            InvestmentSummary obj = chartMap.get(key);
+	            
+	             LineChartSeries series = new LineChartSeries();
 	        	 series.setLabel(obj.getFundname());  
 	        	 
 	        	 series.set("MarketValue1", obj.getMarketValue1());
@@ -147,6 +161,7 @@ public class InvestmentSummaryController implements Serializable{
 	        	 series.set("MarketValue5", obj.getMarketValue5());
 	        	 
 	        	 linearModel.addSeries(series);
+	        	 
 	        }
 	         
 	    }
