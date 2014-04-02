@@ -1,10 +1,7 @@
 package com.packtpub.pf.blueprint.service;
 
 import com.packtpub.pf.blueprint.persistence.HibernateUtil;
-import com.packtpub.pf.blueprint.persistence.entity.Comment;
-import com.packtpub.pf.blueprint.persistence.entity.Location;
-import com.packtpub.pf.blueprint.persistence.entity.Movie;
-import com.packtpub.pf.blueprint.persistence.entity.User;
+import com.packtpub.pf.blueprint.persistence.entity.*;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -15,6 +12,7 @@ import org.hibernate.criterion.Restrictions;
 
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,7 +59,7 @@ public class DAOService {
         }
     }
 
-    public Object loadEntityById(Class cl, Long id) {
+    public Object loadEntityById(Class<MovieSchedule> cl, Long id) {
         Object o = null;
         if (id != null) {
             org.hibernate.Transaction tx = getSession().beginTransaction();
@@ -109,6 +107,34 @@ public class DAOService {
         getSession().close();
         _log.info("Listed Successfully....");
         return list;
+    }
+
+    public List<String> getTagsStartWith(String chars){
+        List<String> list = new ArrayList<>();
+        org.hibernate.Transaction tx = getSession().beginTransaction();
+        List tags = getSession().createCriteria(Tags.class)
+                .add(Restrictions.ilike("name", chars))
+                .addOrder(Order.asc("name")).list();
+        tx.commit();
+        getSession().close();
+        if(tags != null){
+            for (Tags t: (List<Tags>) tags){
+               list.add(t.getName());
+            }
+        }
+        _log.info("Listed Successfully....");
+        return list;
+    }
+
+    public Tags getTagByName(String name){
+        org.hibernate.Transaction tx = getSession().beginTransaction();
+        Tags tag = (Tags) getSession().createCriteria(Tags.class)
+                .add(Restrictions.eq("name", name).ignoreCase())
+                .uniqueResult();
+        tx.commit();
+        getSession().close();
+        _log.info("Listed Successfully....");
+        return tag;
     }
 
     private Session getSession() {

@@ -51,8 +51,8 @@
                     </p>
                 </p:dataList>
                 <p:panel rendered="#{userController.loggedIn}">
-                    <p:inputTextarea value="#{movieController.comment}"/>
-                    <p:commandButton value="Submit"
+                    <p:inputTextarea value="#{movieController.comment}" cols="80"/>
+                    <p:commandButton value="Submit" style="vertical-align: top; height: 78px;"
                                      update="commentId"
                                      actionListener="#{movieController.saveOrUpdateComment(userController.userNow)}"/>
                 </p:panel>

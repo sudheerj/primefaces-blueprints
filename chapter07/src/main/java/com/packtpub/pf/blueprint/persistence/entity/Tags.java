@@ -3,6 +3,7 @@ package com.packtpub.pf.blueprint.persistence.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,9 +23,22 @@ public class Tags implements java.io.Serializable {
     @GeneratedValue
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
     @ManyToMany(mappedBy = "tags")
-    private Set<Movie> movies;
+    private Set<Movie> movies = new HashSet<>();
+
+    public void addToMovies(Movie mo){
+        this.movies.add(mo);
+    }
+
+    public Tags(String name){
+       this.name = name;
+    }
+
+    public Tags(){
+
+    }
 
 }

@@ -37,6 +37,12 @@
                     <p:inputText label="Movie URL" value="#{movieController.movie.movieUrl}"
                                  placeholder="Movie URL"/>
 
+                    <p:outputLabel value="Tags" for="tags"/>
+                    <p:autoComplete id="tags" multiple="true"
+                            value="#{movieController.selectedTags}"
+                            completeMethod="#{movieController.complete}" />
+
+
                     <p:commandButton value="Submit" ajax="true"
                                      update=":centerForm"
                                      action="#{movieController.addOrUpdateMovie}"

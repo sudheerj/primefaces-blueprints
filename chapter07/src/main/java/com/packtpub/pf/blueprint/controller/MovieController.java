@@ -3,6 +3,7 @@ package com.packtpub.pf.blueprint.controller;
 import com.packtpub.pf.blueprint.MovieType;
 import com.packtpub.pf.blueprint.persistence.entity.Comment;
 import com.packtpub.pf.blueprint.persistence.entity.Movie;
+import com.packtpub.pf.blueprint.persistence.entity.Tags;
 import com.packtpub.pf.blueprint.persistence.entity.User;
 import com.packtpub.pf.blueprint.service.DAOService;
 import lombok.Getter;
@@ -13,9 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -85,6 +84,19 @@ public class MovieController  implements Serializable {
     @Getter
     @Setter
     private Movie movie;
+    @Getter
+    @Setter
+    private List<String> selectedTags;
+
+    public List<String> complete(String query) {
+
+        List<String> result = ds.getTagsStartWith(query);
+        if(result == null || result.isEmpty()){
+            result = new ArrayList<>();
+            result.add(query);
+        }
+       return result;
+    }
 
     public MovieType[] getMovieTypes(){
         return MovieType.values();
@@ -109,6 +121,17 @@ public class MovieController  implements Serializable {
     }
 
     public void addOrUpdateMovie() {
+//        if(selectedTags != null){
+//            for (String tg: selectedTags){
+//                Tags tgs = ds.getTagByName(tg);
+//                if(tgs == null){
+//                    tgs = new Tags(tg);
+//                }
+//                tgs.addToMovies(movie);
+//                ds.addOrUpdateEntity(tgs);
+//            }
+//
+//        }
         ds.addOrUpdateEntity(movie);
     }
 

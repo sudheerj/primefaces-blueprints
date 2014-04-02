@@ -59,4 +59,9 @@ public class Movie {
     private User user;
 
 
+    public void addToTags(Tags t){
+         this.tags.add(t);
+    }
+
+
 }

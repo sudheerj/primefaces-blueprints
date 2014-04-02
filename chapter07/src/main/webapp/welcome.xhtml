@@ -21,7 +21,8 @@
                                 <h2>Alphabetic List</h2>
 
                                 <p style="text-align: center;">
-                                    <p:graphicImage library="images" name="#{movs.image}" style="width: 90%;"/>
+                                    <p:graphicImage library="images" name="#{movs.image}"
+                                                    style="width: 90%;"/>
                                     <strong>Euler angels</strong>
                                 </p>
                                 <hr/>
@@ -35,8 +36,10 @@
                     </ui:repeat>
                 </p:panel>
                 <p:panel style=" text-align: center; border: none;">
-                    <p:ring id="custom" value="#{movieController.movies}" var="favs" styleClass="li {height:200px;}">
-                        <p:graphicImage library="images" name="#{favs.image}" width="130px"/>
+                    <p:ring id="custom" value="#{movieController.movies}"
+                            var="favs" styleClass="li {height:200px;}">
+                        <p:graphicImage library="images" name="#{favs.image}"
+                                        width="130px"/>
                     </p:ring>
                 </p:panel>
             </p:panelGrid>
