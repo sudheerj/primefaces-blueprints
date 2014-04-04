@@ -17,9 +17,12 @@
                 <p:ajax event="overlaySelect" listener="#{locationController.onMarkerSelect}"/>
 
                 <p:gmapInfoWindow>
-                    <p:outputPanel style="text-align:center;display:block;margin:auto:">
-                        <!-- <p:graphicImage value="locationDetail.marker.data}" height="150"/>-->
-                        <h:outputText value="#{locationController.marker.data.toString()}" style="color: black;"/>
+                    <p:outputPanel id="col1" class="twoCols" style="text-align:center;display:block;margin:auto:">
+                        <p>#{locationController.marker.title}</p>
+                        <hr/>
+                        <p>#{locationController.marker.data.toString()}</p>
+                        <hr/>
+                        <h4>#{locationController.marker.latlng.lat}, #{locationController.marker.latlng.lng}</h4>
                     </p:outputPanel>
                 </p:gmapInfoWindow>
             </p:gmap>

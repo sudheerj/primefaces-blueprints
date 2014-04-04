@@ -24,6 +24,7 @@ import javax.faces.event.ActionEvent;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -58,23 +59,25 @@ public class ScheduleController implements Serializable {
         eventModel = new DefaultScheduleModel();
         MovieSchedule ms = new MovieSchedule("New Movie at legassy", today1Pm(), today6Pm(), false, user.getUsername());
         ds.addOrUpdateEntity(ms);
-        eventModel.addEvent(ms.toScheduleEvent());
 
         ms = new MovieSchedule("Champions League Match", previousDay8Pm(), previousDay11Pm(), false, user.getUsername());
         ds.addOrUpdateEntity(ms);
-        eventModel.addEvent(ms.toScheduleEvent());
 
         ms = new MovieSchedule("Birthday Party", today1Pm(), today6Pm(), false, user.getUsername());
         ds.addOrUpdateEntity(ms);
-        eventModel.addEvent(ms.toScheduleEvent());
 
         ms = new MovieSchedule("Breakfast at Tiffanys", nextDay9Am(), nextDay11Am(), false, user.getUsername());
         ds.addOrUpdateEntity(ms);
-        eventModel.addEvent(ms.toScheduleEvent());
 
         ms = new MovieSchedule("Plant the new garden stuff", theDayAfter3Pm(), fourDaysLater3pm(), false, user.getUsername());
         ds.addOrUpdateEntity(ms);
-        eventModel.addEvent(ms.toScheduleEvent());
+
+
+        List<MovieSchedule> msL = ds.getAllEvents();
+
+        for(MovieSchedule e : msL){
+            eventModel.addEvent(e.toScheduleEvent());
+        }
 
     }
 

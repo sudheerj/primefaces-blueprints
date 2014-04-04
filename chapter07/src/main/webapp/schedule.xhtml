@@ -29,7 +29,7 @@
 
 
             <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip" closeOnEscape="true">
-                <h:inputText value="#{scheduleController.event.data}" converter="javax.faces.Long"/>
+                <h:inputHidden value="#{scheduleController.event.data}" converter="javax.faces.Long"/>
                 <h:panelGrid id="eventDetails" columns="2">
 
                     <h:outputLabel for="title" value="Title:"/>
