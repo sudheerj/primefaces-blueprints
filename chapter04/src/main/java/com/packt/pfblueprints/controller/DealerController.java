@@ -10,7 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import com.packt.pfblueprints.dao.dealerDAO;
+import com.packt.pfblueprints.dao.DealerDAO;
 import com.packt.pfblueprints.model.Dealer;
 
 @ManagedBean
@@ -29,18 +29,18 @@ public class DealerController implements Serializable{
 	@PostConstruct
 	public void init() { 
 		
-		dealerInfo=dao.getAllDealers();
+		dealerInfo=dao.getAllAdvisors();
 		FacesContext.getCurrentInstance().renderResponse();
 		
 	}
 	
-	public void deleteDealer(){
+	/* public void deleteDealer(){
 		dealerInfo=dao.deleteDealer(dealerobj);
 	}
 
 	public dealer getDealerobj() {
 		return dealerobj;
-	}
+	} */
 
 	public void setDealerobj(Dealer dealerobj) {
 		this.dealerobj = dealerobj;
@@ -50,7 +50,7 @@ public class DealerController implements Serializable{
 		return dealerInfo;
 	}
 
-	public void setdealerInfo(List<dealer> dealerInfo) {
+	public void setdealerInfo(List<Dealer> dealerInfo) {
 		this.dealerInfo = dealerInfo;
 	}
 	
