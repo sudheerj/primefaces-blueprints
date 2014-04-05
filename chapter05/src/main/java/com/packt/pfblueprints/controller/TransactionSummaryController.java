@@ -169,7 +169,6 @@ public class TransactionSummaryController implements Serializable {
 		Map<String, Number> circle4 = new LinkedHashMap<String, Number>();
 
 		for (TransactionSummary obj : transactionsInfo) {
-			System.out.println("transaction type=="+obj.getTransactiontype());
 			if (obj.getTransactiontype().equalsIgnoreCase("Sell")) {
 				circle1.put(obj.getPaymenttype(),
 						new Integer(obj.getNetamount()));
@@ -179,12 +178,10 @@ public class TransactionSummaryController implements Serializable {
 						new Integer(obj.getNetamount()));
 			}
 			if (obj.getTransactiontype().equalsIgnoreCase("TransferIn")) {
-				System.out.println("circle 3");
 				circle3.put(obj.getPaymenttype(),
 						new Integer(obj.getNetamount()));
 			}
 			if (obj.getTransactiontype().equalsIgnoreCase("TransferOut")) {
-				System.out.println("circle 4");
 				circle4.put(obj.getPaymenttype(),
 						new Integer(obj.getNetamount()));
 			}
@@ -205,8 +202,8 @@ public class TransactionSummaryController implements Serializable {
 	}
 	
 	public void donutchartBase64Str(){
-		 InputStream stream2 = servletContext.getResourceAsStream("/images/donut.png");
-		 file = new DefaultStreamedContent(stream2, "image/png", "DonutChart.png");
+		 InputStream stream = servletContext.getResourceAsStream("/images/donut.png");
+		 file = new DefaultStreamedContent(stream, "image/png", "DonutChart.png");
 		
 	    if(base64Str.split(",").length > 1){
 	        String encoded = base64Str.split(",")[1];

@@ -138,11 +138,11 @@
 			</p:panel>
 			<p:panel header="Transaction Summary Charts" id="trnsummarycharts">
 				<p:outputPanel style="margin-left:30%">
-					<p:donutChart id="donutChart" widgetVar="$donutChart"
+					<p:donutChart id="chart" 
 						value="#{transactionSummaryController.donutModel}"
-						legendPosition="e" sliceMargin="5" showDataLabels="true"
-						dataFormat="value" shadow="false" title="Transaction Summary"
-						style="width:400px;height:300px" />
+						legendPosition="e" sliceMargin="2" showDataLabels="true"
+						dataFormat="percent" shadow="false" title="Transaction Summary"
+						style="width:400px;height:300px" widgetVar="$chart" />
 				</p:outputPanel>
 				<p:outputPanel>
 					<p:commandButton value="ExportDonutChart" icon="ui-icon-extlink"
@@ -154,14 +154,17 @@
 			</p:panel>
 			<h:inputHidden id="donut"
 				value="#{transactionSummaryController.base64Str}" />
-			<script>
-				function exportDonutChart() {
-					// exportAsImage() will return a base64 png encoded string
-					var img1 = PF('$donutChart').exportAsImage();
-					document.getElementById('transactionform:donut').value = img1.src;
-				}
-			</script>
-		</h:form>
 
+		</h:form>
+		<script>
+			function exportDonutChart() {
+				// exportAsImage() will return a base64 png encoded string
+				alert('1111');
+				var img1 = PF('$chart').exportAsImage();
+				alert('2222');
+				document.getElementById('transactionform:donut').value = img1.src;
+				alert('img1.src==' + img1.src);
+			}
+		</script>
 	</ui:define>
 </ui:composition>
