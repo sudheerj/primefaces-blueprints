@@ -10,7 +10,7 @@
 		<param-value>start</param-value>
 	</context-param>
   <welcome-file-list>
-    <welcome-file>views/servicecenterinfo.xhtml</welcome-file>
+    <welcome-file>views/login.xhtml</welcome-file>
   </welcome-file-list>
   <listener>
     <listener-class>

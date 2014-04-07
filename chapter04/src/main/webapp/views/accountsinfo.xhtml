@@ -5,137 +5,105 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/templates/masterTemplate.xhtml">
 	<ui:define name="content">
-		<h:form id="dealerform">
+		<h:form id="accountsform">
 
-			<p:contextMenu for="cars">
-				<p:menuitem value="View Advisor List" update="display"
-					icon="ui-icon-search" oncomplete="PF('$advisorprofile').show()" />
-				<p:menuitem value="Dealer Profile" update="cars"
-					icon="ui-icon-close" actionListener="#{dealerController.deleteCar}" />
-				<p:menuitem value="Delete Dealer" update="cars" icon="ui-icon-close"
-					actionListener="#{dealerController.deleteCar}" />
+			 <p:contextMenu for="accountsummary">
+				<p:menuitem value="View Accounts Details" update="details"
+					icon="ui-icon-search" oncomplete="PF('$accountdetails').show()" />
 			</p:contextMenu>
 
-			<p:dataTable id="dataTable" var="dealer"
-				value="#{dealerController.dealerInfo}" paginator="true" rows="10"
+			<p:dataTable id="accountsummary" var="account"
+				value="#{accountSummaryController.accountsInfo}" paginator="true"
+				rows="5" paginatorPosition="bottom" lazy="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15">
+				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}"  
+                 selection="#{accountSummaryController.accountobj}" selectionMode="single">
 				<f:facet name="header">
-            Advisor Information
-        </f:facet>
-				<p:column style="width:2%">
-					<p:rowToggler />
-				</p:column>
-				<p:column sortBy="dealernumber" filterBy="dealernumber"
-					id="dealernumber">
+                  Account Summary
+                </f:facet>
+
+				<p:column sortBy="investorName" filterBy="investorName"
+					id="investorName">
 					<f:facet name="header">
-						<h:outputText value="Dealer Number" />
+						<h:outputText value="Investor Name" />
 					</f:facet>
-					<h:outputText value="#{dealer.dealernumber}" />
+					<h:outputText value="#{account.investorName}" />
 				</p:column>
 
 
-				<p:column sortBy="advisorname" filterBy="advisorname"
-					id="dealername">
+				<p:column sortBy="registeredAccholderName"
+					filterBy="registeredAccholderName" id="registeredAccholderName">
 					<f:facet name="header">
-						<h:outputText value="Advisor Name" />
+						<h:outputText value="Accountholder Name" />
 					</f:facet>
-					<h:outputText value="#{dealer.dealername}" />
+					<h:outputText value="#{account.registeredAccholderName}" />
 				</p:column>
 
-				<p:column sortBy="advisornumber" filterBy="advisornumber"
-					id="advisornumber">
+				<p:column sortBy="accountNumber" filterBy="accountNumber"
+					id="accountNumber">
 					<f:facet name="header">
-						<h:outputText value="Advisor Number" />
+						<h:outputText value="accountNumber" />
 					</f:facet>
-					<h:outputText value="#{dealer.advisornumber}" />
+					<h:outputText value="#{account.accountNumber}" />
 				</p:column>
 
-				<p:column sortBy="status" filterBy="status" id="status">
+				<p:column sortBy="accountType" filterBy="accountType"
+					id="accountType">
 					<f:facet name="header">
-						<h:outputText value="Status" />
+						<h:outputText value="accountType" />
 					</f:facet>
-					<h:outputText value="#{dealer.status}" />
+					<h:outputText value="#{account.accountType}" />
+				</p:column>
+				
+				<p:column sortBy="balanceUS" id="balanceUS">
+					<f:facet name="header">
+						<h:outputText value="balanceUS" />
+					</f:facet>
+					<h:outputText value="#{account.balanceUS}" />
 				</p:column>
 
-				<p:rowExpansion>
-					<p:dataList value="#{dealer.progressStatus}" var="progress"
-						paginator="true" rows="5"
-						paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15" type="none">  
-   							 Year:#{progress.year},Profite percentage: #{progress.percentage} 
-   						<h:outputText value="#{car.manufacturer}, #{car.year}"
-							style="margin-left:10px" />
-						<br />
-					</p:dataList>
-
-
-				</p:rowExpansion>
+				<p:column sortBy="balanceUK" id="balanceUK">
+					<f:facet name="header">
+						<h:outputText value="balanceUK" />
+					</f:facet>
+					<h:outputText value="#{account.balanceUK}" />
+				</p:column>
 
 			</p:dataTable>
 
 
 		</h:form>
-		<p:dialog id="dealerprofile" header="Dealer Profile"
-			widgetVar="$dealerprofile" modal="true" resizable="false">
-			<h:form id="dealerprofileform">
+		<p:dialog id="accountdetails" header="Account Details"
+			widgetVar="$accountdetails" modal="true" resizable="false">
 
-				<p:messages id="messages"></p:messages>
-				<h:panelGrid columns="4" cellpadding="5">
-					<h:outputLabel for="firstname" value="Firstname:" />
-					<p:inputText value="#{dealerController.dealerobj.firstname}"
-						id="firstname" required="true"
-						requiredMessage="Firstname cannot be empty" label="username">
-					</p:inputText>
-					<p:watermark for="firstname" value="Enter firstname" />
-
-					<h:outputLabel for="lastname" value="Lastname:" />
-					<p:inputText value="#{dealerController.dealerobj.lastname}"
-						id="lastname" required="true"
-						requiredMessage="Firstname cannot be empty" label="username">
-					</p:inputText>
-					<p:watermark for="lastname" value="Enter lastname" />
-
-					<h:outputLabel for="address1" value="Address1:" />
-					<p:inputText value="#{dealerController.dealerobj.address1}"
-						id="address1" required="true"
-						requiredMessage="Address cannot be empty" label="Address">
-					</p:inputText>
-					<p:watermark for="address1" value="Enter address" />
-
-					<h:outputLabel for="address2" value="Address2:" />
-					<p:inputText value="#{dealerController.dealerobj.address2}"
-						id="address2" label="Address">
-					</p:inputText>
-					<p:watermark for="address2" value="Enter address" />
-
-					<h:outputLabel for="country" value="Country:" />
-					<p:password value="#{dealerController.dealerobj.country}"
-						id="country" label="country" />
-					<p:watermark for="country" value="Enter Country" />
-
-					<h:outputLabel for="city" value="City:" />
-					<p:password value="#{dealerController.dealerobj.city}" id="city"
-						label="City" />
-					<p:watermark for="city" value="Enter City" />
-
-					<h:outputLabel for="contactnumber" value="Contact Number:" />
-					<p:password value="#{dealerController.dealerobj.contactnumber}"
-						id="contactnumber" label="Contact Number" />
-					<p:watermark for="contactnumber" value="Enter Contact number" />
-
-					<h:outputLabel for="postalcode" value="Postal Code:" />
-					<p:password value="#{dealerController.dealerobj.postalcode}"
-						id="postalcode" label="Postal Code" />
-					<p:watermark for="postalcode" value="Enter Postal Code" />
-
-					<f:facet name="footer">
-						<p:commandButton id="update" value="Save"
-							update="dealerprofileform"
-							actionListener="#{dealerController.updateDealerProfile}" />
-					</f:facet>
+				<h:panelGrid columns="2" cellpadding="5" id="details">
+					<h:outputLabel for="investername" value="Investorname:" />
+					<h:outputText value="#{accountSummaryController.accountobj.firstname}"
+						id="investername" />
+						<h:outputLabel for="accountnumber" value="Account Number:" />
+					<h:outputText value="#{accountSummaryController.accountobj.accountNumber}"
+						id="investername" />
+						<h:outputLabel for="accounttype" value="Account Type:" />
+					<h:outputText value="#{accountSummaryController.accountobj.accountType}"
+						id="accounttype" />
+						<h:outputLabel for="status" value="Status:" />
+					<h:outputText value="#{accountSummaryController.accountobj.status}"
+						id="status" />
+						
+						<h:outputLabel for="registrationdate" value="Registration Date:" />
+					<h:outputText value="#{accountSummaryController.accountobj.registrationDate}"
+						id="registrationdate" />
+						<h:outputLabel for="opendate" value="Open Date:" />
+					<h:outputText value="#{accountSummaryController.accountobj.openDate}"
+						id="opendate" />
+						<h:outputLabel for="closedate" value="Close Date:" />
+					<h:outputText value="#{accountSummaryController.accountobj.closeDate}"
+						id="closedate" />
+						<h:outputLabel for="jointaccount" value="Joint Account:" />
+					<h:outputText value="#{accountSummaryController.accountobj.jointAccount}"
+						id="jointaccount" />
+					
 				</h:panelGrid>
-			</h:form>
-		</p:dialog>
+		</p:dialog> -->
 	</ui:define>
 </ui:composition>

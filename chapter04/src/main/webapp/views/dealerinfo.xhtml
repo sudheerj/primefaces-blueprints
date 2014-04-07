@@ -7,11 +7,11 @@
 	<ui:define name="content">
 		<h:form id="dealerform">
 
-			<p:contextMenu for="cars">
-				<p:menuitem value="View Advisor List" update="display"
-					icon="ui-icon-search" oncomplete="PF('$advisorprofile').show()" />
-				<p:menuitem value="Dealer Profile" update="dealerinfo" />
-				<p:menuitem value="Delete Dealer" update="dealerinfo"
+			<p:contextMenu for="dealerinfo">
+				<p:menuitem value="View Representatives List"
+					action="advisorinfo.xhtml?faces-redirect=true" icon="ui-icon-search" />
+				<p:menuitem value="Advisor Profile" update="dealerinfo" />
+				<p:menuitem value="Delete Advisor" update="dealerinfo"
 					icon="ui-icon-close"
 					actionListener="#{dealerController.deleteDealer}" />
 			</p:contextMenu>
@@ -21,8 +21,8 @@
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
-            Dealer Information
-        </f:facet>
+           		 Dealer Information
+        		</f:facet>
 				<p:column style="width:2%">
 					<p:rowToggler />
 				</p:column>
@@ -75,7 +75,7 @@
 						paginator="true" rows="5"
 						paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15" type="none">  
-   							 Year:#{progress.year},Profite percentage: #{progress.percentage} 
+   							 Year:#{progress.year},Profit percentage: #{progress.percentage} 
 						<br />
 					</p:dataList>
 

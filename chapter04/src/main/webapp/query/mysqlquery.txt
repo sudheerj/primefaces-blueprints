@@ -17,6 +17,7 @@ CREATE TABLE  `blueprintsdb`.`servicecenter` (
   `contactnumber` VARCHAR(30) NOT NULL,
   `postalcode` VARCHAR(10),
   PRIMARY KEY (`id`))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  
   INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('111','John','smith','california','02/02/2002','AFME009','ACTIVE','30','Jackson road','Near Techno Towers','US','California','222 333 999','3333-33-99');
   INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('222','Manki','John','Newyork','02/07/2007','AFGG023','ACTIVE','13','Millers road','Near Reliance Towers','US','Washington','222 444 555','2232-33-22');
   INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('333','Jim','Rock','Washington','02/12/2002','AFTT002','ACTIVE','32','Mega mart road','Near Jonhson Apartments','US','Newyork','222 333 999','3344-33-11');
@@ -27,26 +28,137 @@ CREATE TABLE  `blueprintsdb`.`servicecenter` (
   INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('888','Nicky','Boyy','Salem','02/05/2009','AFME009','ACTIVE','70','SKS road','Near Assembly hall','US','Cafifornia','222 444 999','3331-33-44');
   INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('999','Aldon','Thomson','Alabama','10/02/2001','AFME109','ACTIVE','60','Halton road','Near Harward','US','Michigan','299 555 999','1433-33-34');
   INSERT INTO blueprintsdb.servicecenter(dealertinnumber,dealerfirstname,dealerlastname,branchname,dor,pan,status,noofadvisors,address1,address2,country,city,contactnumber,postalcode)VALUES('1000','Dayn','smith','california','04/04/2012','AFFF009','ACTIVE','50','Jack road','MTS Train Stop','US','Nebraska','211 666 999','2222-33-23');
-  		
+  
+  DROP TABLE IF EXISTS `blueprintsdb`.`dealer`;
+  CREATE TABLE  `blueprintsdb`.`dealer` (
+   id INT NOT NULL auto_increment,
+  `dealernumber` VARCHAR(20),
+  `advisorname` VARCHAR(30),
+  `advisornumber` VARCHAR(30),
+  `dor` VARCHAR(10),
+  `branch` VARCHAR(15),
+  `status` VARCHAR(10),
+  PRIMARY KEY (`id`))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('111','Edmond','11','02/02/2002','california','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('111','Ricky','12','02/02/2004','california','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('111','Mark','13','02/02/2006','california','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('111','Columnbus','14','02/02/2008','california','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('111','Steyn','15','02/02/2002','california','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('111','Micheal','16','02/02/2004','california','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('111','Bond','17','02/02/2006','california','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('111','Sunny','18','02/02/2008','california','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('111','Bond','19','02/02/2006','california','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('111','Sunny','20','02/02/2008','california','ACTIVE');
+  
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('222','Edmond','11','02/02/2002','Washington','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('222','Ricky','12','02/02/2004','Washington','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('222','Mark','13','02/02/2006','Washington','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('222','Columnbus','14','02/02/2008','Washington','ACTIVE');
+  
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('333','Edmond','11','02/02/2002','Newyork','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('333','Ricky','12','02/02/2004','Newyork','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('333','Mark','13','02/02/2006','Newyork','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('333','Columnbus','14','02/02/2008','Newyork','ACTIVE');
+  
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('444','Edmond','11','02/02/2002','Newyork','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('444','Ricky','12','02/02/2004','Newyork','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('444','Mark','13','02/02/2006','Newyork','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('444','Columnbus','14','02/02/2008','Newyork','ACTIVE');
+  
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('555','Edmond','11','02/02/2002','Alabama','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('555','Ricky','12','02/02/2004','Alabama','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('555','Mark','13','02/02/2006','Alabama','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('555','Columnbus','14','02/02/2008','Alabama','ACTIVE');
+  
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('666','Edmond','11','02/02/2002','Chestor','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('666','Ricky','12','02/02/2004','Chestor','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('666','Mark','13','02/02/2006','Chestor','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('666','Columnbus','14','02/02/2008','Chestor','ACTIVE');
+  
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('777','Edmond','11','02/02/2002','Columbia','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('777','Ricky','12','02/02/2004','Columbia','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('777','Mark','13','02/02/2006','Columbia','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('777','Columnbus','14','02/02/2008','Columbia','ACTIVE');
+  
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('888','Edmond','11','02/02/2002','california','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('888','Ricky','12','02/02/2004','california','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('888','Mark','13','02/02/2006','california','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('888','Columnbus','14','02/02/2008','california','ACTIVE');
+  
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('999','Edmond','11','02/02/2002','Michigan','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('999','Ricky','12','02/02/2004','Michigan','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('999','Mark','13','02/02/2006','Michigan','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('999','Columnbus','14','02/02/2008','Michigan','ACTIVE');
+  
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('1000','Edmond','11','02/02/2002','Nebraska','ACTIVE');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('1000','Ricky','12','02/02/2004','Nebraska','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('1000','Mark','13','02/02/2006','Nebraska','CLOSED');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,dor,branch,status)VALUES('1000','Columnbus','14','02/02/2008','Nebraska','ACTIVE');
+ 
+   DROP TABLE IF EXISTS `blueprintsdb`.`advisor`;
+   CREATE TABLE  `blueprintsdb`.`advisor` (
+   id INT NOT NULL auto_increment,
+   `advisornumber` VARCHAR(10),
+  `repnumber` VARCHAR(10),
+  `repname` VARCHAR(30),
+  `dor` VARCHAR(10),
+  `branch` VARCHAR(15),
+  `status` VARCHAR(10),
+  PRIMARY KEY (`id`))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('11','Edmond','rep11','06/02/2007','Nebraska','ACTIVE');	
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('11','McDonald','rep12','05/02/2005','California','ACTIVE');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('11','Roy','rep13','08/02/2006','California','CLOSED');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('11','Sunny','rep14','06/02/2008','Washington','ACTIVE');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('11','Richy','rep15','06/02/2007','Nebraska','ACTIVE');	
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('11','Smith','rep16','05/02/2005','Newyork','PENDING');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('11','David','rep17','08/02/2006','California','ACTIVE');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('11','Aaron','rep18','06/02/2008','Washington','ACTIVE');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('11','Jack','rep19','11/02/2008','NewJersy','ACTIVE');
+  
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('12','Edmond','rep11','06/02/2007','Nebraska','ACTIVE');	
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('12','McDonald','rep12','05/02/2005','California','ACTIVE');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('12','Roy','rep13','08/02/2006','California','CLOSED');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('12','Micky','rep14','06/02/2007','Nebraska','ACTIVE');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('12','Richard','rep15','08/02/2006','California','CLOSED');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('12','Rose','rep16','06/02/2007','Nebraska','ACTIVE');
+  	
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('13','McDonald','rep11','05/02/2005','California','ACTIVE');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('13','Roy','rep12','08/02/2006','California','CLOSED');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('13','Edmond','rep13','06/02/2007','Nebraska','ACTIVE');	
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('13','Donald','rep14','05/02/2005','California','ACTIVE');
+  
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('14','Roy','rep11','08/02/2006','California','CLOSED');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('14','Edmond','rep12','06/02/2007','Nebraska','ACTIVE');	
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('14','McDonald','rep13','05/02/2005','California','ACTIVE');
+  INSERT INTO blueprintsdb.advisor(advisornumber,repnumber,repname,dor,branch,status)VALUES('14','Troy','rep14','08/02/2006','California','CLOSED');
+  
+  CREATE TABLE  `blueprintsdb`.`accountsinfo` (
+   id INT NOT NULL auto_increment,
+  `investorName` VARCHAR(20),
+  `registeredAccholderName` VARCHAR(20),
+  `accountNumber` VARCHAR(10),
+  `accountType` VARCHAR(10),
+  `status` VARCHAR(7),
+  `registrationDate` VARCHAR(10),
+  `openDate` VARCHAR(10),
+  `closeDate` VARCHAR(10),
+  `jointAccount` VARCHAR(5),
+  `balanceUS` VARCHAR(10),
+  `balanceUK` VARCHAR(10),
+  PRIMARY KEY (`id`))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  
+  INSERT INTO blueprintsdb.accountsinfo(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('John Smith','John Smith','100001','CASH','Active','02/02/2002','04/04/2002','09/09/2013','YES','22999','16993');
+  INSERT INTO blueprintsdb.accountsinfo(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Howard haly','Howard Mitchel','100002','CASH','Active','12/02/2002','04/04/2002','09/09/2013','YES','88484','74747');
+  INSERT INTO blueprintsdb.accountsinfo(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Richard Hardly','Bethlaham','100003','RRSP','Pending','02/02/2000','04/04/2002','09/09/2013','NO','30493','25493');
+  INSERT INTO blueprintsdb.accountsinfo(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Jonathon Thomson','Jonathon Thomson','100004','RRSP','Active','07/12/2001','04/04/2002','09/09/2013','YES','57575','49595');
+  INSERT INTO blueprintsdb.accountsinfo(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Mike Peterson','Mike Peterson','100005','RESP','Active','02/02/2002','04/04/2002','09/09/2013','YES','8474','6045');
+  INSERT INTO blueprintsdb.accountsinfo(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Michael Autherton','Michael Melita','100006','CASH','Active','12/02/2003','04/04/2004','09/09/2013','YES','93933','89595');
+  INSERT INTO blueprintsdb.accountsinfo(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Kate Williams','Kate killy','100007','TFSA','closed','06/02/2002','04/12/2002','09/09/2013','NO','22999','19993');
+  INSERT INTO blueprintsdb.accountsinfo(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Brend Suleman','Brend McCullum','100008','CASH','Active','02/09/2006','04/04/2007','09/09/2013','YES','66755','56755');
+  INSERT INTO blueprintsdb.accountsinfo(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Mathew Williams','Mathew Williams','100009','CASH','Active','11/04/2002','04/11/2002','09/09/2013','YES','88766','77868');
+  INSERT INTO blueprintsdb.accountsinfo(investorName,registeredAccholderName,accountNumber,accountType,status,registrationDate,openDate,closeDate,jointAccount,balanceUS,balanceUK)VALUES('Chris Cains','Beckham','100010','CASH','closed','02/02/2002','04/04/2002','09/09/2013','NO','76767','67676');
+  				
   ////////////////
-  //Jobposts table
-  DROP TABLE IF EXISTS `blueprintsdb`.`jobposts`;
-  CREATE TABLE  `blueprintsdb`.`jobposts` (
-  `company` VARCHAR(30) NOT NULL,
-  `domain` VARCHAR(10),
-  `experience` VARCHAR(20),
-  `position` VARCHAR(20),
-  `location` VARCHAR(20))ENGINE=InnoDB DEFAULT CHARSET=utf8;
-  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('TechSoft','java','5','senior developer','uk');
-  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('EuroSoft','java','10','architect','us');
-  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('AsianSoft','java','11','architect','germany');
-  INSERT INTO blueprintsdb.jobposts(company,domain,experience,position,location)VALUES('AmericanSoft','java','6','software engineer','uk');
-  /////////////////
-  CREATE TABLE  `blueprintsdb`.`adminconfig` (
-  `adminID` VARCHAR(30) NOT NULL,
-  `aboutus` text,
-  `contactus` text,
-  `disclaimer` text)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-  INSERT INTO blueprintsdb.adminconfig(adminID,aboutus,contactus,disclaimer)VALUES('admin','This employee registration application is used to register the new employees to apply the jobs','The employee hub site,packt team,UK','All copy rights reserved for packt publishing');
-  ////////////////
-INSERT INTO blueprintsdb.employee(userid,firstname,lastname,dob,sex,maritalstatus,address,country,city,phone,postalcode,email,university,qualification,percentage,profession,experience,company,currentpack,expectedpack,joineddate,frameworks,dbs,servers,ides,password)VALUES('111','john','smith','14/12/1986','m','married','AK apartements','US','NewYork','22335566','1666555','john.smith@gmail.com','Harward','MS','89','Software',8,'Tech Fast',15,20,'06/06/2006','jsf','oracle','websphere','eclipse','');
+  
