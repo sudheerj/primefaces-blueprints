@@ -7,7 +7,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.bean.ViewScoped;
 import javax.faces.bean.ManagedBean;
 
-import com.packt.pfblueprints.dao.LoginDAO;
+//import com.packt.pfblueprints.dao.LoginDAO;
 
 @ManagedBean
 @ViewScoped
@@ -34,8 +34,8 @@ public class LoginController implements Serializable {
 			return "/views/admin?faces-redirect=true";
 		}
 
-		LoginDAO dao = new LoginDAO();
-		isValidUser = dao.validateUser(username, password);
+		//LoginDAO dao = new LoginDAO();
+		//isValidUser = dao.validateUser(username, password);
 
 		if (isValidUser) {
 			return "/views/jobposts?faces-redirect=true";
@@ -48,7 +48,7 @@ public class LoginController implements Serializable {
 
 	}
 
-	public void changepassword() throws SQLException {
+	/*public void changepassword() throws SQLException {
 		LoginDAO dao = new LoginDAO();
 		boolean confirm = false;
 		confirm = dao.changepassword(username, password, newpassword);
@@ -62,7 +62,7 @@ public class LoginController implements Serializable {
 					"Please try with valid data");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 		}
-	}
+	}*/
 
 	public String getUsername() {
 		return username;

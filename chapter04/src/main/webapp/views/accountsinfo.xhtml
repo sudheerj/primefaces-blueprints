@@ -8,12 +8,12 @@
 		<h:form id="accountsform">
 
 			 <p:contextMenu for="accountsummary">
-				<p:menuitem value="View Accounts Details" update="details"
+				<p:menuitem value="View Accounts Details"
 					icon="ui-icon-search" oncomplete="PF('$accountdetails').show()" />
 			</p:contextMenu>
 
 			<p:dataTable id="accountsummary" var="account"
-				value="#{accountSummaryController.accountsInfo}" paginator="true"
+				value="#{accountSummaryController.lazyAccSummaryDataModel}" paginator="true"
 				rows="5" paginatorPosition="bottom" lazy="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}"  
@@ -77,9 +77,9 @@
 			widgetVar="$accountdetails" modal="true" resizable="false">
 
 				<h:panelGrid columns="2" cellpadding="5" id="details">
-					<h:outputLabel for="investername" value="Investorname:" />
-					<h:outputText value="#{accountSummaryController.accountobj.firstname}"
-						id="investername" />
+					<h:outputLabel for="investorName" value="Investorname:" />
+					<h:outputText value="#{accountSummaryController.accountobj.investorName}"
+						id="investorName" />
 						<h:outputLabel for="accountnumber" value="Account Number:" />
 					<h:outputText value="#{accountSummaryController.accountobj.accountNumber}"
 						id="investername" />

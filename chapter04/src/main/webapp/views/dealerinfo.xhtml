@@ -10,16 +10,13 @@
 			<p:contextMenu for="dealerinfo">
 				<p:menuitem value="View Representatives List"
 					action="advisorinfo.xhtml?faces-redirect=true" icon="ui-icon-search" />
-				<p:menuitem value="Advisor Profile" update="dealerinfo" />
-				<p:menuitem value="Delete Advisor" update="dealerinfo"
-					icon="ui-icon-close"
-					actionListener="#{dealerController.deleteDealer}" />
+				
 			</p:contextMenu>
 
 			<p:dataTable id="dealerinfo" var="dealer"
 				value="#{dealerController.dealerInfo}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15">
+				rowsPerPageTemplate="5,10,15" selection="#{dealerController.dealerobj}" selectionMode="single">
 				<f:facet name="header">
            		 Dealer Information
         		</f:facet>
@@ -36,11 +33,11 @@
 
 
 				<p:column sortBy="advisorname" filterBy="advisorname"
-					id="dealername">
+					id="advisorname">
 					<f:facet name="header">
 						<h:outputText value="Advisor Name" />
 					</f:facet>
-					<h:outputText value="#{dealer.dealername}" />
+					<h:outputText value="#{dealer.advisorname}" />
 				</p:column>
 
 				<p:column sortBy="advisornumber" filterBy="advisornumber"
@@ -86,66 +83,6 @@
 
 
 		</h:form>
-		<p:dialog id="dealerprofile" header="Dealer Profile"
-			widgetVar="$dealerprofile" modal="true" resizable="false">
-			<h:form id="dealerprofileform">
-
-				<p:messages id="messages"></p:messages>
-				<h:panelGrid columns="4" cellpadding="5">
-					<h:outputLabel for="firstname" value="Firstname:" />
-					<p:inputText value="#{dealerController.dealerobj.firstname}"
-						id="firstname" required="true"
-						requiredMessage="Firstname cannot be empty" label="username">
-					</p:inputText>
-					<p:watermark for="firstname" value="Enter firstname" />
-
-					<h:outputLabel for="lastname" value="Lastname:" />
-					<p:inputText value="#{dealerController.dealerobj.lastname}"
-						id="lastname" required="true"
-						requiredMessage="Firstname cannot be empty" label="username">
-					</p:inputText>
-					<p:watermark for="lastname" value="Enter lastname" />
-
-					<h:outputLabel for="address1" value="Address1:" />
-					<p:inputText value="#{dealerController.dealerobj.address1}"
-						id="address1" required="true"
-						requiredMessage="Address cannot be empty" label="Address">
-					</p:inputText>
-					<p:watermark for="address1" value="Enter address" />
-
-					<h:outputLabel for="address2" value="Address2:" />
-					<p:inputText value="#{dealerController.dealerobj.address2}"
-						id="address2" label="Address">
-					</p:inputText>
-					<p:watermark for="address2" value="Enter address" />
-
-					<h:outputLabel for="country" value="Country:" />
-					<p:password value="#{dealerController.dealerobj.country}"
-						id="country" label="country" />
-					<p:watermark for="country" value="Enter Country" />
-
-					<h:outputLabel for="city" value="City:" />
-					<p:password value="#{dealerController.dealerobj.city}" id="city"
-						label="City" />
-					<p:watermark for="city" value="Enter City" />
-
-					<h:outputLabel for="contactnumber" value="Contact Number:" />
-					<p:password value="#{dealerController.dealerobj.contactnumber}"
-						id="contactnumber" label="Contact Number" />
-					<p:watermark for="contactnumber" value="Enter Contact number" />
-
-					<h:outputLabel for="postalcode" value="Postal Code:" />
-					<p:password value="#{dealerController.dealerobj.postalcode}"
-						id="postalcode" label="Postal Code" />
-					<p:watermark for="postalcode" value="Enter Postal Code" />
-
-					<f:facet name="footer">
-						<p:commandButton id="update" value="Save"
-							update="dealerprofileform"
-							actionListener="#{dealerController.updateDealerProfile}" />
-					</f:facet>
-				</h:panelGrid>
-			</h:form>
-		</p:dialog>
+		
 	</ui:define>
 </ui:composition>

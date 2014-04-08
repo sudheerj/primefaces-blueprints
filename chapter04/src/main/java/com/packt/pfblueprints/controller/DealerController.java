@@ -37,10 +37,10 @@ public class DealerController implements Serializable{
 	/* public void deleteDealer(){
 		dealerInfo=dao.deleteDealer(dealerobj);
 	}
-
-	public dealer getDealerobj() {
+*/
+	public Dealer getDealerobj() {
 		return dealerobj;
-	} */
+	} 
 
 	public void setDealerobj(Dealer dealerobj) {
 		this.dealerobj = dealerobj;

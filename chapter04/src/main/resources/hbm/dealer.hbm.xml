@@ -9,48 +9,25 @@
    <generator class="increment"/>
   </id>
 
-  <property name="dealerfirstname">
-    <column name="dealerfirstname" />
+  <property name="dealernumber">
+    <column name="dealernumber" />
   </property>
-  <property name="dealerlastname">
-    <column name="dealerlastname" />
+  <property name="advisorname">
+    <column name="advisorname" />
   </property>
-  <property name="dealertinnumber">
-    <column name="dealertinnumber"/>
+  <property name="advisornumber">
+    <column name="advisornumber"/>
   </property>
-  <property name="branchname">
-    <column name="branchname" />
+  <property name="branch">
+    <column name="branch" />
   </property>
   <property name="dor">
     <column name="dor"/>
   </property>
-  <property name="noofadvisors">
-    <column name="noofadvisors" />
-  </property>
-  <property name="pan">
-    <column name="pan"/>
-  </property>
    <property name="status">
     <column name="status"/>
   </property>
-  <property name="address1">
-    <column name="address1" />
-  </property>
-  <property name="address2">
-    <column name="address2"/>
-  </property>
-  <property name="country">
-    <column name="country" />
-  </property>
-  <property name="city">
-    <column name="city"/>
-  </property>
-  <property name="contactnumber">
-    <column name="contactnumber" />
-  </property>
-  <property name="postalcode">
-    <column name="postalcode"/>
-  </property>
+  
   
  </class>
 </hibernate-mapping>

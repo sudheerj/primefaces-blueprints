@@ -1,6 +1,7 @@
 package com.packt.pfblueprints.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Dealer implements Serializable{
 
@@ -15,6 +16,8 @@ public class Dealer implements Serializable{
 	private String dor;
 	private String branch;
 	private String status;
+	private List<ProgressStatus> progressStatus;
+	
 	
 	public int getId() {
 		return id;
@@ -59,5 +62,38 @@ public class Dealer implements Serializable{
 		this.status = status;
 	}
 	
+	
+	public List<ProgressStatus> getProgressStatus() {
+		return progressStatus;
+	}
+	public void setProgressStatus(List<ProgressStatus> progressStatus) {
+		this.progressStatus = progressStatus;
+	}
+
+
+	class ProgressStatus{
+		private String year;
+		private String percentage;
+		
+		public ProgressStatus(String year, String percentage) {
+			super();
+			this.year = year;
+			this.percentage = percentage;
+		}
+		public String getYear() {
+			return year;
+		}
+		public void setYear(String year) {
+			this.year = year;
+		}
+		public String getPercentage() {
+			return percentage;
+		}
+		public void setPercentage(String percentage) {
+			this.percentage = percentage;
+		}
+		
+		
+	}
 
 }

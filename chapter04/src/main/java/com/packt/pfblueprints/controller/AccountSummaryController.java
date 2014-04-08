@@ -4,33 +4,59 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortOrder;
+
+import com.packt.pfblueprints.dao.AccountsDAO;
 import com.packt.pfblueprints.dao.DealerDAO;
+import com.packt.pfblueprints.model.AccountSummary;
 import com.packt.pfblueprints.model.Dealer;
 
 @ManagedBean
 @ViewScoped
-public class AccountSummaryController implements Serializable{
+public class AccountSummaryController  implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Dealer> dealerInfo=new ArrayList<Dealer>();
+	private List<AccountSummary> accountsInfo=new ArrayList<AccountSummary>();
 	
-	private Dealer dealerobj=new Dealer();
-	DealerDAO dao = new DealerDAO();
+	private AccountSummary accountobj=new AccountSummary();
+	AccountsDAO dao = new AccountsDAO();
+	private LazyDataModel<AccountSummary> lazyAccSummaryDataModel;
 	
 	@PostConstruct
 	public void init() { 
 		
-		dealerInfo=dao.getAllAdvisors();
-		FacesContext.getCurrentInstance().renderResponse();
+		lazyAccSummaryDataModel = new LazyAccountSummaryDataModel(accountsInfo){
+			@Override
+			public List<AccountSummary> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,String> filters) {
+				String sortOrderValue=null;
+				if(sortField==null){
+					sortField="investorName";
+				}
+				if(sortOrder.ASCENDING.equals("A")){
+					sortOrderValue="ASC";
+				}
+				else if(sortOrder.DESCENDING.equals("D")){
+					sortOrderValue="DSC";
+				}
+				else{
+					sortOrderValue="ASC";
+				}
+				
+				accountsInfo=dao.getAllAccounts(first,pageSize,sortField,sortOrderValue,filters);   
+				return accountsInfo;
+			}
+		};
 		
 	}
 	
@@ -42,17 +68,24 @@ public class AccountSummaryController implements Serializable{
 		return dealerobj;
 	} */
 
-	public void setDealerobj(Dealer dealerobj) {
-		this.dealerobj = dealerobj;
+	
+	public LazyDataModel<AccountSummary> getLazyAccSummaryDataModel() {
+		return lazyAccSummaryDataModel;
 	}
 
-	public List<Dealer> getDealerInfo() {
-		return dealerInfo;
-	}
-
-	public void setdealerInfo(List<Dealer> dealerInfo) {
-		this.dealerInfo = dealerInfo;
-	}
 	
 
+	public void setLazyAccSummaryDataModel(LazyDataModel<AccountSummary> lazyAccSummaryDataModel) {
+		this.lazyAccSummaryDataModel = lazyAccSummaryDataModel;
+	}
+
+	public AccountSummary getAccountobj() {
+		return accountobj;
+	}
+
+	public void setAccountobj(AccountSummary accountobj) {
+		this.accountobj = accountobj;
+	}
+	
+	
 }

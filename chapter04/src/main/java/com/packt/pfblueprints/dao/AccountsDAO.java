@@ -2,6 +2,7 @@ package com.packt.pfblueprints.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -10,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import com.packt.pfblueprints.model.AccountSummary;
 import com.packt.pfblueprints.model.Dealer;
 
 public class AccountsDAO {
@@ -34,14 +36,14 @@ public class AccountsDAO {
 	}
 
 
-	public List<Dealer> getAllAdvisors() {
+	public List<AccountSummary> getAllAccounts(int first,int pageSize,String sortField,String sortOrder,Map<String,String> filters) {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Query queryResult = session.createQuery("from Dealer");
-		List<Dealer> allDealers = queryResult.list();
+		Query queryResult = session.createQuery("from AccountSummary WHERE id BETWEEN "+first+" AND "+(first+pageSize-1)+" ORDER BY "+sortField+" "+sortOrder);
+		List<AccountSummary> allAccounts = queryResult.list();
 		session.getTransaction().commit();
-		return allDealers;
+		return allAccounts;
 
 	}
 	public List<Dealer> deleteAdvisor(Dealer object) {
@@ -49,7 +51,7 @@ public class AccountsDAO {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.delete(object);
-		Query queryResult = session.createQuery("from Dealer");
+		Query queryResult = session.createQuery("from AccountSummary");
 		List<Dealer> allDealers = queryResult.list();
 		session.getTransaction().commit();
 		return allDealers;

@@ -38,7 +38,7 @@ public class AdvisorDAO {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Query queryResult = session.createQuery("from Dealer");
+		Query queryResult = session.createQuery("from Advisor");
 		List<Dealer> allDealers = queryResult.list();
 		session.getTransaction().commit();
 		return allDealers;
@@ -49,7 +49,7 @@ public class AdvisorDAO {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.delete(object);
-		Query queryResult = session.createQuery("from Dealer");
+		Query queryResult = session.createQuery("from Advisor");
 		List<Dealer> allDealers = queryResult.list();
 		session.getTransaction().commit();
 		return allDealers;
