@@ -198,8 +198,9 @@ public class AccountSummaryController implements Serializable{
 	
 	public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {  
 	    Document pdf = (Document) document;  
-	    pdf.open();  
-	    pdf.setPageSize(PageSize.A3);  
+	    pdf.setPageSize(PageSize.A3);
+	    pdf.open(); 
+	   // pdf.setPageSize(PageSize.A4);  
 	  
 	    ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();  
 	    String logo = servletContext.getRealPath("") + File.separator +"resources" + File.separator + "images" + File.separator +"logo" + File.separator + "logo.png";  
