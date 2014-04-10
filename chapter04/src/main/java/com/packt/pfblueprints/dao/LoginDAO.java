@@ -11,8 +11,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import com.packt.pfblueprints.model.InvestorsList;
-
 
 
 public class LoginDAO {
@@ -44,9 +42,15 @@ public class LoginDAO {
 			sessionFactory = configureSessionFactory();
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
-			String query = "from InvestorsList  where username='" + userid + "' and password='" + password + "'";
+			String query=null;
+			if(userrole.equalsIgnoreCase("1")){
+		     query = "from Dealer  where dealernumber='" + userid + "' ";
+			}
+			if(userrole.equalsIgnoreCase("2")){
+		     query = "from Advisor  where advisornumber='" + userid + "' ";	
+			}
 		    Query queryobj = session.createQuery(query);
-		    List<InvestorsList> list=queryobj.list();
+		    List<Object> list=queryobj.list();
 		    int count=0;
 		    if(list!=null){
 		    count= list.size();

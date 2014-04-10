@@ -16,14 +16,12 @@
 						<f:selectItem itemLabel="advisor" itemValue="2" />
 						<f:selectItem itemLabel="investor" itemValue="2" />
 					</p:selectOneMenu>
-					</h:outputText>
+					<h:outputText/>
 					
 					<h:outputLabel for="username" value="Username:" />
 					<p:inputText value="#{loginController.username}" id="username"
 						required="true" requiredMessage="Username cannot be empty"
-						validatorMessage="The length of the username exist between 3 and 8 chapters"
 						label="username">
-						<f:validateLength minimum="3" maximum="8" />
 					</p:inputText>
 					<p:watermark for="username" value="Enter username" />
 
@@ -34,9 +32,10 @@
 					<p:watermark for="password" value="Enter password" />
 
 					<h:outputText></h:outputText>
-					<p:commandButton id="loginButton" value="#{msg['login.login']}"
+					<p:commandButton id="loginButton" value="Login"
 						update="login" style="float:right"
 						action="#{loginController.validateUser}" ajax="false" />
+					<h:outputText/>
 
 				</h:panelGrid>
 

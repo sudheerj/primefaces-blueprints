@@ -10,7 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import com.packt.pfblueprints.model.Dealer;
+import com.packt.pfblueprints.model.Advisor;
 
 public class AdvisorDAO {
 
@@ -34,17 +34,17 @@ public class AdvisorDAO {
 	}
 
 
-	public List<Dealer> getAllRepresentatives() {
+	public List<Advisor> getAllRepresentatives() {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query queryResult = session.createQuery("from Advisor");
-		List<Dealer> allDealers = queryResult.list();
+		List<Advisor> allDealers = queryResult.list();
 		session.getTransaction().commit();
 		return allDealers;
 
 	}
-	public List<Dealer> deleteAdvisor(Dealer object) {
+	/*public List<Dealer> deleteAdvisor(Dealer object) {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -54,6 +54,6 @@ public class AdvisorDAO {
 		session.getTransaction().commit();
 		return allDealers;
 
-	}
+	}*/
 
 }

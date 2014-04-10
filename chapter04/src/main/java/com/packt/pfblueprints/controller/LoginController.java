@@ -32,27 +32,24 @@ public class LoginController implements Serializable {
 	public String validateUser() throws SQLException {
 		FacesMessage msg = null;
 		boolean isValidUser = false;
-		/*if (username.equalsIgnoreCase("admin")
-				&& password.equalsIgnoreCase("admin")) {
-			return "/views/admin?faces-redirect=true";
-		}*/
+	    if (username.equalsIgnoreCase("servicecenter") && password.equalsIgnoreCase("servicecenter")) {
+			return "/views/servicecenterinfo?faces-redirect=true";
+		}
+	    if (username.equalsIgnoreCase("accountsummary") && password.equalsIgnoreCase("accountsummary")) {
+			return "/views/accountsinfo?faces-redirect=true";
+		}
 
 		LoginDAO dao = new LoginDAO();
 		isValidUser = dao.validateUser(username, password,userrole);
 
 		if (isValidUser) {
-			if(userrole=="0"){
-				return "/views/servicecenterinfo?faces-redirect=true";
-			}
-			else if(userrole=="1"){
+			 if(userrole=="1"){
 				return "/views/dealerinfo?faces-redirect=true";
 				}
-			else if(userrole=="1"){
+			else {
 				return "/views/advisorinfo?faces-redirect=true";
 				}
-			else{
-				return "/views/accountsinfo?faces-redirect=true";
-			}
+			
 		} else {
 			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
 					"Invalid credentials");

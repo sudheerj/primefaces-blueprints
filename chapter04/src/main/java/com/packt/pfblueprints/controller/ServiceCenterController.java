@@ -30,7 +30,6 @@ public class ServiceCenterController implements Serializable{
 	public void init() { 
 		
 		servicecenterInfo=dao.getAllDealers();
-		FacesContext.getCurrentInstance().renderResponse();
 		
 	}
 	

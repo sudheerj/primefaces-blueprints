@@ -20,7 +20,7 @@
 				value="#{serviceCenterController.servicecenterInfo}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" rowKey="#{servicecenter.dealertinnumber}"  
+				rowsPerPageTemplate="5,10,15" rowKey="#{servicecenter.dealertinnumber}"  paginatorPosition="bottom"
                  selection="#{serviceCenterController.servicecenterobj}" selectionMode="single">
 				<f:facet name="header">
             Service Center Information
