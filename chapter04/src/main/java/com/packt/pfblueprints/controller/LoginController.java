@@ -2,10 +2,13 @@ package com.packt.pfblueprints.controller;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.ViewScoped;
 import javax.faces.bean.ManagedBean;
+
+import com.packt.pfblueprints.dao.LoginDAO;
 
 //import com.packt.pfblueprints.dao.LoginDAO;
 
@@ -20,7 +23,7 @@ public class LoginController implements Serializable {
 
 	private String username;
 	private String password;
-	private String newpassword;
+	private String userrole;
 
 	public LoginController() {
 		super();
@@ -29,16 +32,27 @@ public class LoginController implements Serializable {
 	public String validateUser() throws SQLException {
 		FacesMessage msg = null;
 		boolean isValidUser = false;
-		if (username.equalsIgnoreCase("admin")
+		/*if (username.equalsIgnoreCase("admin")
 				&& password.equalsIgnoreCase("admin")) {
 			return "/views/admin?faces-redirect=true";
-		}
+		}*/
 
-		//LoginDAO dao = new LoginDAO();
-		//isValidUser = dao.validateUser(username, password);
+		LoginDAO dao = new LoginDAO();
+		isValidUser = dao.validateUser(username, password,userrole);
 
 		if (isValidUser) {
-			return "/views/jobposts?faces-redirect=true";
+			if(userrole=="0"){
+				return "/views/servicecenterinfo?faces-redirect=true";
+			}
+			else if(userrole=="1"){
+				return "/views/dealerinfo?faces-redirect=true";
+				}
+			else if(userrole=="1"){
+				return "/views/advisorinfo?faces-redirect=true";
+				}
+			else{
+				return "/views/accountsinfo?faces-redirect=true";
+			}
 		} else {
 			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
 					"Invalid credentials");
@@ -48,21 +62,6 @@ public class LoginController implements Serializable {
 
 	}
 
-	/*public void changepassword() throws SQLException {
-		LoginDAO dao = new LoginDAO();
-		boolean confirm = false;
-		confirm = dao.changepassword(username, password, newpassword);
-
-		if (confirm) {
-			FacesMessage msg = new FacesMessage("change password is successful");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} else {
-			FacesMessage msg = new FacesMessage(
-					"change password is unsuccessful",
-					"Please try with valid data");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
-	}*/
 
 	public String getUsername() {
 		return username;
@@ -80,12 +79,13 @@ public class LoginController implements Serializable {
 		this.password = password;
 	}
 
-	public String getNewpassword() {
-		return newpassword;
+	public String getUserrole() {
+		return userrole;
 	}
 
-	public void setNewpassword(String newpassword) {
-		this.newpassword = newpassword;
+	public void setUserrole(String userrole) {
+		this.userrole = userrole;
 	}
+
 
 }

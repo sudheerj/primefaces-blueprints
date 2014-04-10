@@ -8,14 +8,9 @@
 		<h:form id="advisorform">
 
 			<p:contextMenu for="advisorinfo">
-				<p:menuitem value="View Advisor List" update="display"
-					icon="ui-icon-search" oncomplete="PF('$advisorprofile').show()" />
-				<p:menuitem value="advisor Profile" update="advisors"
-					icon="ui-icon-close"
-					actionListener="#{advisorController.deleteAdvisor}" />
-				<p:menuitem value="Delete advisor" update="advisors"
-					icon="ui-icon-close"
-					actionListener="#{advisorController.deleteAdvisor}" />
+				<p:menuitem value="View AccountSummary"
+					action="advisorinfo.xhtml?faces-redirect=true" icon="ui-icon-search" />
+				
 			</p:contextMenu>
 
 			<p:dataGrid id="advisorinfo" var="advisor" columns="3" rows="9"

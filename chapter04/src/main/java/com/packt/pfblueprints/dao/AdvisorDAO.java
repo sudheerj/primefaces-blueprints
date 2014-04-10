@@ -34,7 +34,7 @@ public class AdvisorDAO {
 	}
 
 
-	public List<Dealer> getAllAdvisors() {
+	public List<Dealer> getAllRepresentatives() {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

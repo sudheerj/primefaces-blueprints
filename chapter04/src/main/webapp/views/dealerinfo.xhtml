@@ -16,7 +16,7 @@
 			<p:dataTable id="dealerinfo" var="dealer"
 				value="#{dealerController.dealerInfo}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" selection="#{dealerController.dealerobj}" selectionMode="single">
+				rowsPerPageTemplate="5,10,15" rowKey="#{dealer.advisornumber}" selection="#{dealerController.dealerobj}" selectionMode="single">
 				<f:facet name="header">
            		 Dealer Information
         		</f:facet>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="com.packt.pfblueprints.model.AccountSummary" table="accountsinfo">
+   <id name="id" type="int" column="ID" >
+   <generator class="increment"/>
+  </id>
+
+  <property name="investorName">
+    <column name="investorName" />
+  </property>
+  <property name="registeredAccholderName">
+    <column name="registeredAccholderName" />
+  </property>
+  <property name="accountNumber">
+    <column name="accountNumber"/>
+  </property>
+  <property name="accountType">
+    <column name="accountType" />
+  </property>
+  <property name="status">
+    <column name="status"/>
+  </property>
+  <property name="registrationDate">
+    <column name="registrationDate" />
+  </property>
+  <property name="openDate">
+    <column name="openDate"/>
+  </property>
+   <property name="closeDate">
+    <column name="closeDate"/>
+  </property>
+  <property name="jointAccount">
+    <column name="jointAccount" />
+  </property>
+  <property name="balanceUS">
+    <column name="balanceUS"/>
+  </property>
+  <property name="balanceUK">
+    <column name="balanceUK" />
+  </property>
+  
+ </class>
+</hibernate-mapping>
