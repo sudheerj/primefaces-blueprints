@@ -8,7 +8,7 @@
 		<h:form id="accountform">
 
 			<p:contextMenu for="accountsummary">
-				<p:menuitem value="Investment Summary"  icon="ui-icon-search" action="#{accountSummaryController.storeSelectedAccount}"/>
+				<p:menuitem value="Investment Summary"  icon="ui-icon-search" action="#{accountSummaryController.storeSelectedAccount}" ajax="false"/>
 			</p:contextMenu>
 
 			<p:dataTable id="accountsummary" var="account"

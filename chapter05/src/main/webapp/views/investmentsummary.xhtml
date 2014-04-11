@@ -9,7 +9,7 @@
 
 			<p:contextMenu for="investmentsummary">
 				<p:menuitem value="Transaction Summary" icon="ui-icon-search"
-					action="#{investmentSummaryController.storeSelectedInvestornum}" />
+					action="#{investmentSummaryController.storeSelectedInvestornum}" ajax="false"/>
 			</p:contextMenu>
 
 			<p:dataTable id="investmentsummary" var="investment"
