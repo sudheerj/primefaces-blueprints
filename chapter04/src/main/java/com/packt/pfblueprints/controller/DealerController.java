@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import com.packt.pfblueprints.dao.DealerDAO;
@@ -30,8 +32,14 @@ public class DealerController implements Serializable{
 	public void init() { 
 		
 		dealerInfo=dao.getAllAdvisors();
-		FacesContext.getCurrentInstance().renderResponse();
 		
+	}
+	
+	public String storeSelectedAdvisor(){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("advisornumber", dealerobj.getAdvisornumber());
+		return "advisorinfo.xhtml?faces-redirect=true";
 	}
 	
 	/* public void deleteDealer(){

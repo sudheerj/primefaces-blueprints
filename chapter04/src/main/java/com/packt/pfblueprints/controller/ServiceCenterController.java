@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import com.packt.pfblueprints.dao.ServiceCenterDAO;
@@ -25,6 +27,7 @@ public class ServiceCenterController implements Serializable{
 	
 	private ServiceCenter servicecenterobj=new ServiceCenter();
 	ServiceCenterDAO dao = new ServiceCenterDAO();
+	private int advisorsCount=0;
 	
 	@PostConstruct
 	public void init() { 
@@ -35,6 +38,21 @@ public class ServiceCenterController implements Serializable{
 	
 	public void deleteDealer(){
 		servicecenterInfo=dao.deleteDealer(servicecenterobj);
+		advisorsCountCalc();
+	}
+	
+	public void advisorsCountCalc(){
+		
+		for(ServiceCenter obj:servicecenterInfo){
+			advisorsCount+=new Integer(obj.getNoofadvisors());
+		}
+	}
+	
+	public String storeSelectedDealer(){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("dealertinnumber", servicecenterobj.getDealertinnumber());
+		return "dealerinfo.xhtml?faces-redirect=true";
 	}
 
 	public ServiceCenter getServicecenterobj() {
@@ -52,6 +70,14 @@ public class ServiceCenterController implements Serializable{
 	public void setServicecenterInfo(List<ServiceCenter> servicecenterInfo) {
 		this.servicecenterInfo = servicecenterInfo;
 	}
-	
 
+	public int getAdvisorsCount() {
+		return advisorsCount;
+	}
+
+	public void setAdvisorsCount(int advisorsCount) {
+		this.advisorsCount = advisorsCount;
+	}
+	
+	
 }

@@ -8,8 +8,8 @@
 		<h:form id="dealerform">
 
 			<p:contextMenu for="dealerinfo">
-				<p:menuitem value="View Representatives List"
-					action="advisorinfo.xhtml?faces-redirect=true" icon="ui-icon-search" />
+				<p:menuitem value="View Representatives List" action="#{dealerController.storeSelectedAdvisor}" ajax="false"
+					 icon="ui-icon-search" />
 				
 			</p:contextMenu>
 

@@ -2,6 +2,10 @@ package com.packt.pfblueprints.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -15,7 +19,8 @@ import com.packt.pfblueprints.model.Dealer;
 public class DealerDAO {
 
 	private  SessionFactory sessionFactory;
-
+	private  String dealerNumber;
+	
 	private  SessionFactory configureSessionFactory()
 			throws HibernateException {
 		Configuration configuration = new Configuration();
@@ -30,6 +35,10 @@ public class DealerDAO {
     
 	public DealerDAO() {
 		super();
+		
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		dealerNumber=(String) sessionMap.get("dealertinnumber");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -38,7 +47,13 @@ public class DealerDAO {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Query queryResult = session.createQuery("from Dealer");
+		Query queryResult=null;
+		if(dealerNumber!=""){
+			queryResult = session.createQuery("from Dealer where dealernumber = :dealerNum");
+			queryResult.setParameter("dealerNum", dealerNumber);
+			}else{
+		    queryResult = session.createQuery("from Dealer");	
+			}
 		List<Dealer> allDealers = queryResult.list();
 		session.getTransaction().commit();
 		return allDealers;

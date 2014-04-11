@@ -8,11 +8,12 @@
 		<h:form id="servicecenterform">
 
 			<p:contextMenu for="servicecenterinfo">
-				<p:menuitem value="View Advisor List"
-					action="dealerinfo.xhtml?faces-redirect=true" icon="ui-icon-search" />
+				<p:menuitem value="View Advisor List" action="#{serviceCenterController.storeSelectedDealer}" ajax="false"
+					 icon="ui-icon-search" />
 				<p:menuitem value="Dealer Profile" update=":dealerprofileform"
 					oncomplete="PF('$dealerprofile').show()" icon="ui-icon-close" />
-				<p:menuitem value="Delete Dealer" icon="ui-icon-close" update="servicecenterinfo"
+				<p:menuitem value="Delete Dealer" icon="ui-icon-close"
+					update="servicecenterinfo"
 					actionListener="#{serviceCenterController.deleteDealer}" />
 			</p:contextMenu>
 
@@ -20,8 +21,10 @@
 				value="#{serviceCenterController.servicecenterInfo}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" rowKey="#{servicecenter.dealertinnumber}"  paginatorPosition="bottom"
-                 selection="#{serviceCenterController.servicecenterobj}" selectionMode="single">
+				rowsPerPageTemplate="5,10,15"
+				rowKey="#{servicecenter.dealertinnumber}" paginatorPosition="bottom"
+				selection="#{serviceCenterController.servicecenterobj}"
+				selectionMode="single">
 				<f:facet name="header">
             Service Center Information
         </f:facet>
@@ -50,7 +53,7 @@
 					<h:outputText value="#{servicecenter.branchname}" />
 				</p:column>
 
-				<p:column sortBy="dor" >
+				<p:column sortBy="dor">
 					<f:facet name="header">
 						<h:outputText value="Date of registration" />
 					</f:facet>
@@ -58,7 +61,7 @@
 				</p:column>
 
 
-				<p:column sortBy="pan" >
+				<p:column sortBy="pan">
 					<f:facet name="header">
 						<h:outputText value="PAN Number" />
 					</f:facet>
@@ -72,13 +75,21 @@
 					<h:outputText value="#{servicecenter.status}" />
 				</p:column>
 
-				<p:column sortBy="noofadvisors" >
+				<p:column sortBy="noofadvisors">
 					<f:facet name="header">
 						<h:outputText value="Number of Advisors" />
 					</f:facet>
 					<h:outputText value="#{servicecenter.noofadvisors}" />
 				</p:column>
+				<p:summaryRow>
+				<p:column colspan="6" style="text-align:right">  
+                <h:outputText value="Total Advisors:"></h:outputText>  
+            	</p:column>
 
+					<p:column>  
+                #{serviceCenterController.advisorsCount}
+            </p:column>
+				</p:summaryRow>
 
 			</p:dataTable>
 
