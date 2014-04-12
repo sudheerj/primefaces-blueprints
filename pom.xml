@@ -19,6 +19,7 @@
         <junit.version>4.11</junit.version>
         <mysql.version>5.1.26</mysql.version>
         <slf4j.version>1.7.5</slf4j.version>
+        <lombok.version>1.12.6</lombok.version>
     </properties>
 
     <modules>
@@ -31,10 +32,18 @@
         <module>chapter06</module>
         <module>chapter07</module>
     </modules>
+
+
     <repositories>
         <repository>
             <id>JBoss repository</id>
             <url>http://repository.jboss.com/maven2/</url>
+        </repository>
+        <!-- JBoss Repository used for hibernate-validator 4.0.0.GA -->
+        <repository>
+            <id>repository.jboss.org</id>
+            <name>JBoss Repository</name>
+            <url>http://repository.jboss.org/maven2/</url>
         </repository>
         <repository>
             <id>prime-repo</id>
@@ -42,5 +51,25 @@
             <url>http://repository.primefaces.org</url>
             <layout>default</layout>
         </repository>
+
+        <!-- Used for some Java EE 6 pieces -->
+        <repository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net Repository for Maven</name>
+            <url>http://download.java.net/maven/2/</url>
+            <layout>default</layout>
+        </repository>
+
+        <repository>
+            <id>thirdparty-releases</id>
+            <name>JBoss Thirdparty Releases</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases</url>
+        </repository>
+
+        <repository>
+            <id>hibernatesqlite-maven</id>
+            <url>https://hibernate-sqlite.googlecode.com/svn/trunk/mavenrepo</url>
+        </repository>
+
     </repositories>
 </project>
