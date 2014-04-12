@@ -35,7 +35,7 @@ public class AdvisorController implements Serializable{
 	}
 	
 	public String navigateAccountSummary(){
-		return "views/accountsInfo.xhtml?faces-redirect=true";
+		return "accountsInfo.xhtml?faces-redirect=true";
 	}
 
 	public List<Advisor> getAdvisorInfo() {

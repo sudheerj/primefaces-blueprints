@@ -16,7 +16,7 @@
 			<p:dataTable id="dealerinfo" var="dealer"
 				value="#{dealerController.dealerInfo}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" rowKey="#{dealer.advisornumber}" selection="#{dealerController.dealerobj}" selectionMode="single">
+				rowsPerPageTemplate="5,10,15" paginatorPosition="bottom" rowKey="#{dealer.advisornumber}" selection="#{dealerController.dealerobj}" selectionMode="single">
 				<f:facet name="header">
            		 Dealer Information
         		</f:facet>
@@ -47,20 +47,20 @@
 					</f:facet>
 					<h:outputText value="#{dealer.advisornumber}" />
 				</p:column>
-			    <p:column sortBy="branch" filterBy="status" id="branch">
+			    <p:column sortBy="branch" id="branch">
 					<f:facet name="header">
 						<h:outputText value="branch" />
 					</f:facet>
 					<h:outputText value="#{dealer.branch}" />
 				</p:column>
-				<p:column sortBy="dor" filterBy="dor" id="dor">
+				<p:column sortBy="dor"  id="dor">
 					<f:facet name="header">
 						<h:outputText value="Date of registration" />
 					</f:facet>
 					<h:outputText value="#{dealer.dor}" />
 				</p:column>
                 
-				<p:column sortBy="status" filterBy="status" id="status">
+				<p:column sortBy="status"  id="status">
 					<f:facet name="header">
 						<h:outputText value="Status" />
 					</f:facet>

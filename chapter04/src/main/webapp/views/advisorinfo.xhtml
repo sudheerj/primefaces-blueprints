@@ -23,17 +23,17 @@
 
 				<p:panel header="#{advisor.repname}" style="text-align:center">
 					<h:panelGrid columns="1" style="width:100%">
-						<p:graphicImage value="/resources/images/reps/rep#{advisor.repnumber}.png" />
+						<p:graphicImage value="/resources/images/reps/#{advisor.repname}.png" />
 						<h:outputText value="#{advisor.repnumber}" />
 						<h:outputText value="#{advisor.advisornumber}" />
 						<h:outputText value="#{advisor.dor}" />
 
-						<p:commandLink 
-							oncomplete="PF('repInfo').show()" title="View Detail">
+						<p:commandLink actionListener="#{advisorController.selectRep(advisor)}"
+							oncomplete="PF('$repInfo').show()" title="View Detail">
 							<h:outputText styleClass="ui-icon ui-icon-search"
 								style="margin:0 auto;" />
 						</p:commandLink>
-						<p:commandLink value="View Account Summary" action="#{advisorController.navigateAccountSummary}"
+						<p:commandLink value="View Account Summary" action="#{advisorController.navigateAccountSummary}" ajax="false"
 							 title="Navigate Account Summary page" />
 					</h:panelGrid>
 				</p:panel>
@@ -45,7 +45,7 @@
 				<h:panelGrid columns="1" cellpadding="5">
 						<h:outputText value="#{advisor.repname}" />
 						<h:outputText value="#{advisor.repnumber}" />
-						<p:graphicImage value="/resources/images/reps/rep#{advisor.repnumber}.jpg" />
+						<p:graphicImage value="/resources/images/reps/#{advisor.repname}.png" />
 						<h:outputText value="#{advisor.advisornumber}" />
 						<h:outputText value="#{advisor.branch}" />
 						<h:outputText value="#{advisor.status}" />
