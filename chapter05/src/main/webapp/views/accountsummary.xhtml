@@ -28,46 +28,46 @@
 					<div style="clear: both" />
 				</f:facet>
 
-				<p:column sortBy="investorName" filterBy="investorName" toggleable="false"
-					id="investorName">
+				<p:column sortBy="investorName" filterBy="investorName"
+					toggleable="false" id="investorName">
 					<f:facet name="header">
 						<h:outputText value="Investor Name" />
 					</f:facet>
 					<h:outputText value="#{account.investorName}" />
 				</p:column>
 
-
-				<p:column sortBy="registeredAccholderName" filterBy="registeredAccholderName" 
-				toggleable="false" id="registeredAccholderName">
+				<p:column sortBy="registeredAccholderName"
+					filterBy="registeredAccholderName" toggleable="false"
+					id="registeredAccholderName">
 					<f:facet name="header">
 						<h:outputText value="Accountholder Name" />
 					</f:facet>
 					<h:outputText value="#{account.registeredAccholderName}" />
 				</p:column>
 
-				<p:column sortBy="accountNumber" filterBy="accountNumber" toggleable="false"
-					id="accountNumber">
+				<p:column sortBy="accountNumber" filterBy="accountNumber"
+					toggleable="false" id="accountNumber">
 					<f:facet name="header">
 						<h:outputText value="accountNumber" />
 					</f:facet>
 					<h:outputText value="#{account.accountNumber}" />
 				</p:column>
 
-				<p:column sortBy="accountType" filterBy="accountType" toggleable="false"
-					id="accountType">
+				<p:column sortBy="accountType" filterBy="accountType"
+					toggleable="false" id="accountType">
 					<f:facet name="header">
 						<h:outputText value="accountType" />
 					</f:facet>
 					<h:outputText value="#{account.accountType}" />
 				</p:column>
 
-				<p:column sortBy="status" filterBy="status" id="status" toggleable="false">
+				<p:column sortBy="status" filterBy="status" id="status"
+					toggleable="false">
 					<f:facet name="header">
 						<h:outputText value="status" />
 					</f:facet>
 					<h:outputText value="#{account.status}" />
 				</p:column>
-
 
 				<p:column sortBy="registrationDate" id="registrationDate">
 					<f:facet name="header">
@@ -110,10 +110,9 @@
 					</f:facet>
 					<h:outputText value="#{account.balanceUK}" />
 				</p:column>
-
 			</p:dataTable>
 
-			<p:panel header="Export All Data">
+			<p:panel header="Export Accounts Data">
 				<h:commandLink>
 					<p:graphicImage value="/images/excel.png" />
 					<p:dataExporter type="xls" target="accountsummary"
@@ -146,19 +145,19 @@
 				<h:panelGrid columns="3">
 					<h:panelGrid columns="2" style="margin-left:150px"
 						rendered="#{accountSummaryController.pieChartFlag}">
-						<p:chart type="pie" id="pieUS" widgetVar="$pieUS" 
-							model="#{accountSummaryController.pieModelUS}" 
-						    style="width:400px;height:300px"/>
+						<p:chart type="pie" id="pieUS" widgetVar="$pieUS"
+							model="#{accountSummaryController.pieModelUS}"
+							style="width:400px;height:300px" />
 						<p:chart type="pie" id="pieUK" widgetVar="$pieUK"
-							model="#{accountSummaryController.pieModelUK}" 
-							style="width:400px;height:300px"/>
+							model="#{accountSummaryController.pieModelUK}"
+							style="width:400px;height:300px" />
 
 					</h:panelGrid>
 					<h:panelGrid columns="2" style="margin-left:150px"
 						rendered="#{!accountSummaryController.pieChartFlag}">
 						<p:chart type="bar" id="barChart" widgetVar="$barChart"
 							model="#{accountSummaryController.categoryModel}"
-							style="width:400px;height:300px"  />
+							style="width:400px;height:300px" />
 						<p:spacer width="400" height="300"></p:spacer>
 
 					</h:panelGrid>

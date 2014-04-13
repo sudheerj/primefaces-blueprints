@@ -22,7 +22,6 @@
 				<f:facet name="header">
              	Investment Summary
         		</f:facet>
-
 				<p:column sortBy="fundname" filterBy="fundname" id="fundname">
 					<f:facet name="header">
 						<h:outputText value="Fund Name" />
@@ -96,7 +95,6 @@
 					</f:facet>
 					<h:outputText value="#{investment.marketValue5}" />
 				</p:column>
-
 			</p:dataTable>
 			<p:panel header="Export Investment Summary">
 				<p:selectCheckboxMenu value="#{investmentSummaryController.selectedColumns}"

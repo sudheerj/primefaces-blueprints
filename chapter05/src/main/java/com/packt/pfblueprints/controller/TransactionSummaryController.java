@@ -51,9 +51,6 @@ import com.packt.pfblueprints.model.TransactionSummary;
 @ViewScoped
 public class TransactionSummaryController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private List<TransactionSummary> transactionsInfo = new ArrayList<TransactionSummary>();
 

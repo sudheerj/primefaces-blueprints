@@ -62,9 +62,6 @@ import org.apache.poi.util.IOUtils;
 @ViewScoped
 public class AccountSummaryController implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private List<AccountSummary> accountsInfo=new ArrayList<AccountSummary>();
 	

@@ -55,11 +55,9 @@ public class InvestmentSummaryDAO {
 		}else{
 	    queryResult = session.createQuery("from InvestmentSummary");	
 		}
-		
 		List<InvestmentSummary> allInvestments = queryResult.list();
 		session.getTransaction().commit();
 		return allInvestments;
-
 	}
 	
 

@@ -63,9 +63,6 @@ import com.packt.pfblueprints.model.InvestmentSummary;
 @ViewScoped
 public class InvestmentSummaryController implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private List<InvestmentSummary> investmentsInfo=new ArrayList<InvestmentSummary>();
 	private InvestmentSummary investmentobj=new InvestmentSummary();

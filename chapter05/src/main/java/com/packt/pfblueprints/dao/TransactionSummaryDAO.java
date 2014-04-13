@@ -57,7 +57,6 @@ public class TransactionSummaryDAO {
 		List<TransactionSummary> allTransactions = queryResult.list();
 		session.getTransaction().commit();
 		return allTransactions;
-
 	}
 	
 }
