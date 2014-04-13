@@ -135,9 +135,8 @@
 				</h:commandLink>
 			</p:panel>
 			<p:panel header="Investement Summary Charts" id="invsummarycharts">
-				<p:lineChart id="linechart" widgetVar="$linechart"
-					value="#{investmentSummaryController.linearModel}" zoom="true"
-					animate="true" legendPosition="e" title="Linear Chart"
+				<p:chart type="line" id="linechart" widgetVar="$linechart"
+					model="#{investmentSummaryController.lineModel}" 
 					style="height:300px" />
 				<p:outputPanel>
 					<p:commandButton value="ExportLineChart" icon="ui-icon-extlink"

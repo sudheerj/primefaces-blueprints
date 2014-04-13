@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
 
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
+import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
@@ -71,7 +72,7 @@ public class AccountSummaryController implements Serializable{
 	AccountSummaryDAO dao = new AccountSummaryDAO();
 	private PieChartModel pieModelUS;
 	private PieChartModel pieModelUK;
-	private CartesianChartModel categoryModel;
+	private BarChartModel categoryModel;
 	private String base64Str1;
 	private String base64Str2;
 	private String base64Str3;
@@ -100,10 +101,22 @@ public class AccountSummaryController implements Serializable{
         	pieModelUS.set(obj.getAccountType(),new Double(obj.getBalanceUS()));
         	pieModelUK.set(obj.getAccountType(),new Double(obj.getBalanceUK()));
         }
+        
+        pieModelUS.setTitle("USD Marketvalue");
+        pieModelUS.setLegendPosition("w");
+        pieModelUS.setShowDataLabels(true);
+        
+        pieModelUK.setTitle("UK Marketvalue");
+        pieModelUK.setLegendPosition("e");
+        pieModelUK.setFill(false);
+        
+        pieModelUK.setShowDataLabels(true);
+        pieModelUK.setSliceMargin(5);
+        //pieModelUK.setDiameter(150);
     }
 	
 	private void createCategoryModel() {  
-        categoryModel = new CartesianChartModel();
+        categoryModel = new BarChartModel();
         
         ChartSeries balanceUS = new ChartSeries();
         ChartSeries balanceUK = new ChartSeries();
@@ -119,6 +132,10 @@ public class AccountSummaryController implements Serializable{
   
         categoryModel.addSeries(balanceUS);  
         categoryModel.addSeries(balanceUK);  
+        
+        categoryModel.setTitle("Marketvalue");
+        categoryModel.setLegendPosition("w");
+        categoryModel.setShowPointLabels(true);
     }  
 	
 	public void piechartUSBase64Str(){
@@ -300,9 +317,6 @@ public class AccountSummaryController implements Serializable{
 	    Cell cellDisclaimerContent2 = row2.createCell(0);
 	    cellDisclaimerContent2.setCellValue("This website is intended to track the investor account summary information,investments and transaction in a partcular period of time. ");
 	    
-	    
-	    
-	    
 	}  
 	
 
@@ -379,11 +393,11 @@ public class AccountSummaryController implements Serializable{
 		this.type = type;
 	}
 
-	public CartesianChartModel getCategoryModel() {
+	public BarChartModel getCategoryModel() {
 		return categoryModel;
 	}
 
-	public void setCategoryModel(CartesianChartModel categoryModel) {
+	public void setCategoryModel(BarChartModel categoryModel) {
 		this.categoryModel = categoryModel;
 	}
 

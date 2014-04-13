@@ -8,20 +8,27 @@
 		<h:form id="accountform">
 
 			<p:contextMenu for="accountsummary">
-				<p:menuitem value="Investment Summary"  icon="ui-icon-search" action="#{accountSummaryController.storeSelectedAccount}" ajax="false"/>
+				<p:menuitem value="Investment Summary" icon="ui-icon-search"
+					action="#{accountSummaryController.storeSelectedAccount}"
+					ajax="false" />
 			</p:contextMenu>
 
 			<p:dataTable id="accountsummary" var="account"
 				value="#{accountSummaryController.accountsInfo}" paginator="true"
 				rows="5" paginatorPosition="bottom"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}"  
-                 selection="#{accountSummaryController.accountobj}" selectionMode="single">
+				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}"
+				selection="#{accountSummaryController.accountobj}"
+				selectionMode="single">
 				<f:facet name="header">
                   Account Summary
-                </f:facet>
+                 <p:commandButton id="toggler" type="button"
+						value="Columns" style="float:right" icon="ui-icon-calculator" />
+					<p:columnToggler datasource="accountsummary" trigger="toggler" />
+					<div style="clear: both" />
+				</f:facet>
 
-				<p:column sortBy="investorName" filterBy="investorName"
+				<p:column sortBy="investorName" filterBy="investorName" toggleable="false"
 					id="investorName">
 					<f:facet name="header">
 						<h:outputText value="Investor Name" />
@@ -30,15 +37,15 @@
 				</p:column>
 
 
-				<p:column sortBy="registeredAccholderName"
-					filterBy="registeredAccholderName" id="registeredAccholderName">
+				<p:column sortBy="registeredAccholderName" filterBy="registeredAccholderName" 
+				toggleable="false" id="registeredAccholderName">
 					<f:facet name="header">
 						<h:outputText value="Accountholder Name" />
 					</f:facet>
 					<h:outputText value="#{account.registeredAccholderName}" />
 				</p:column>
 
-				<p:column sortBy="accountNumber" filterBy="accountNumber"
+				<p:column sortBy="accountNumber" filterBy="accountNumber" toggleable="false"
 					id="accountNumber">
 					<f:facet name="header">
 						<h:outputText value="accountNumber" />
@@ -46,7 +53,7 @@
 					<h:outputText value="#{account.accountNumber}" />
 				</p:column>
 
-				<p:column sortBy="accountType" filterBy="accountType"
+				<p:column sortBy="accountType" filterBy="accountType" toggleable="false"
 					id="accountType">
 					<f:facet name="header">
 						<h:outputText value="accountType" />
@@ -54,7 +61,7 @@
 					<h:outputText value="#{account.accountType}" />
 				</p:column>
 
-				<p:column sortBy="status" filterBy="status" id="status">
+				<p:column sortBy="status" filterBy="status" id="status" toggleable="false">
 					<f:facet name="header">
 						<h:outputText value="status" />
 					</f:facet>
@@ -90,14 +97,14 @@
 					<h:outputText value="#{account.jointAccount}" />
 				</p:column>
 
-				<p:column sortBy="balanceUS" id="balanceUS">
+				<p:column sortBy="balanceUS" id="balanceUS" toggleable="false">
 					<f:facet name="header">
 						<h:outputText value="balanceUS" />
 					</f:facet>
 					<h:outputText value="#{account.balanceUS}" />
 				</p:column>
 
-				<p:column sortBy="balanceUK" id="balanceUK">
+				<p:column sortBy="balanceUK" id="balanceUK" toggleable="false">
 					<f:facet name="header">
 						<h:outputText value="balanceUK" />
 					</f:facet>
@@ -109,13 +116,17 @@
 			<p:panel header="Export All Data">
 				<h:commandLink>
 					<p:graphicImage value="/images/excel.png" />
-					<p:dataExporter type="xls" target="accountsummary" preProcessor="#{accountSummaryController.preProcessXLS}" postProcessor="#{accountSummaryController.postProcessXLS}"
+					<p:dataExporter type="xls" target="accountsummary"
+						preProcessor="#{accountSummaryController.preProcessXLS}"
+						postProcessor="#{accountSummaryController.postProcessXLS}"
 						fileName="AccountSummary" />
 				</h:commandLink>
 
 				<h:commandLink>
 					<p:graphicImage value="/images/pdf.png" />
-					<p:dataExporter type="pdf" target="accountsummary" preProcessor="#{accountSummaryController.preProcessPDF}" postProcessor="#{accountSummaryController.postProcessPDF}" 
+					<p:dataExporter type="pdf" target="accountsummary"
+						preProcessor="#{accountSummaryController.preProcessPDF}"
+						postProcessor="#{accountSummaryController.postProcessPDF}"
 						fileName="AccountSummary" />
 				</h:commandLink>
 
@@ -135,23 +146,19 @@
 				<h:panelGrid columns="3">
 					<h:panelGrid columns="2" style="margin-left:150px"
 						rendered="#{accountSummaryController.pieChartFlag}">
-						<p:pieChart id="pieUS" widgetVar="$pieUS"
-							value="#{accountSummaryController.pieModelUS}" legendPosition="w"
-							title="USD Marketvalue" style="width:400px;height:300px"
-							showDataLabels="true" />
-
-						<p:pieChart id="pieUK" widgetVar="$pieUK"
-							value="#{accountSummaryController.pieModelUK}" legendPosition="e"
-							fill="false" showDataLabels="true" title="UK Marketvalue"
-							style="width:400px;height:300px" sliceMargin="5" diameter="150" />
+						<p:chart type="pie" id="pieUS" widgetVar="$pieUS" 
+							model="#{accountSummaryController.pieModelUS}" 
+						    style="width:400px;height:300px"/>
+						<p:chart type="pie" id="pieUK" widgetVar="$pieUK"
+							model="#{accountSummaryController.pieModelUK}" 
+							style="width:400px;height:300px"/>
 
 					</h:panelGrid>
 					<h:panelGrid columns="2" style="margin-left:150px"
 						rendered="#{!accountSummaryController.pieChartFlag}">
-						<p:barChart id="barChart" widgetVar="$barChart"
-							value="#{accountSummaryController.categoryModel}"
-							legendPosition="w" title="Marketvalue"
-							style="width:400px;height:300px" showDataLabels="true" />
+						<p:chart type="bar" id="barChart" widgetVar="$barChart"
+							model="#{accountSummaryController.categoryModel}"
+							style="width:400px;height:300px"  />
 						<p:spacer width="400" height="300"></p:spacer>
 
 					</h:panelGrid>

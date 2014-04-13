@@ -17,7 +17,6 @@
 						<f:validateLength minimum="4"/>
 					</p:inputText>
 					<p:watermark for="username" value="Enter username" />
-
 					<h:outputLabel for="password" value="Password:" />
 					<p:password value="#{loginController.password}" id="password"
 						required="true" requiredMessage="Password cannot be empty"/>
@@ -26,9 +25,7 @@
 					<p:commandButton id="loginButton" value="Login"
 						update="login" style="float:right"
 						action="#{loginController.validateUser}" ajax="false" />
-
 				</h:panelGrid>
-
 			</p:panel>
 		</h:form>
 		

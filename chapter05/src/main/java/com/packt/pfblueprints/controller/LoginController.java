@@ -28,14 +28,8 @@ public class LoginController implements Serializable {
 	public String validateUser() throws SQLException {
 		FacesMessage msg = null;
 		boolean isValidUser = false;
-		/*if (username.equalsIgnoreCase("admin")
-				&& password.equalsIgnoreCase("admin")) {
-			return "/views/admin?faces-redirect=true";
-		}*/
-
 		LoginDAO dao = new LoginDAO();
 		isValidUser = dao.validateUser(username, password);
-
 		if (isValidUser) {
 			return "/views/accountsummary?faces-redirect=true";
 		} else {
@@ -44,7 +38,6 @@ public class LoginController implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			return null;
 		}
-
 	}
 
 	public String getUsername() {

@@ -191,6 +191,13 @@ public class TransactionSummaryController implements Serializable {
 		donutModel.addCircle(circle2);
 		donutModel.addCircle(circle3);
 		donutModel.addCircle(circle4);
+		
+		donutModel.setTitle("Transaction Summary");
+		donutModel.setLegendPosition("e");
+		donutModel.setSliceMargin(5);
+		donutModel.setShowDataLabels(true);
+		donutModel.setDataFormat("percent");
+		donutModel.setShadow(false);
 	}
 	
 	public void changeExportOption() {

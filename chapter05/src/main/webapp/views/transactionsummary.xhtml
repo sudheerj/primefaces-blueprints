@@ -138,10 +138,8 @@
 			</p:panel>
 			<p:panel header="Transaction Summary Charts" id="trnsummarycharts">
 				<p:outputPanel style="margin-left:30%">
-					<p:donutChart id="chart" 
-						value="#{transactionSummaryController.donutModel}"
-						legendPosition="e" sliceMargin="2" showDataLabels="true"
-						dataFormat="percent" shadow="false" title="Transaction Summary"
+					<p:chart type="donut" id="chart" 
+						model="#{transactionSummaryController.donutModel}"
 						style="width:400px;height:300px" widgetVar="$chart" />
 				</p:outputPanel>
 				<p:outputPanel>
@@ -159,11 +157,8 @@
 		<script>
 			function exportDonutChart() {
 				// exportAsImage() will return a base64 png encoded string
-				alert('1111');
 				var img1 = PF('$chart').exportAsImage();
-				alert('2222');
 				document.getElementById('transactionform:donut').value = img1.src;
-				alert('img1.src==' + img1.src);
 			}
 		</script>
 	</ui:define>

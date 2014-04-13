@@ -42,6 +42,7 @@ import org.apache.poi.util.IOUtils;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.CategoryChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
 import com.lowagie.text.BadElementException;
@@ -68,7 +69,7 @@ public class InvestmentSummaryController implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private List<InvestmentSummary> investmentsInfo=new ArrayList<InvestmentSummary>();
 	private InvestmentSummary investmentobj=new InvestmentSummary();
-	private CartesianChartModel linearModel; 
+	private CartesianChartModel lineModel; 
 	private String base64Str;
 	private StreamedContent file;
 	ServletContext servletContext = (ServletContext) FacesContext
@@ -135,7 +136,7 @@ public class InvestmentSummaryController implements Serializable{
 	}
 
 	 private void createLinearModel() {  
-	        linearModel = new CartesianChartModel(); 
+		 lineModel = new CategoryChartModel(); 
 	        
 	        for(InvestmentSummary obj:investmentsInfo){
 	        	if((chartMap.keySet()).contains(obj.getFundname())){
@@ -160,9 +161,14 @@ public class InvestmentSummaryController implements Serializable{
 	        	 series.set("MarketValue4", obj.getMarketValue4());
 	        	 series.set("MarketValue5", obj.getMarketValue5());
 	        	 
-	        	 linearModel.addSeries(series);
-	        	 
+	        	 lineModel.addSeries(series);
+	        	
 	        }
+	        lineModel.setAnimate(true);
+	        lineModel.setZoom(true);
+	        lineModel.setLegendPosition("e");
+	        lineModel.setTitle("Linear Chart");
+	        lineModel.setShowPointLabels(true);
 	         
 	    }
 	 
@@ -270,12 +276,13 @@ public class InvestmentSummaryController implements Serializable{
 		this.investmentobj = investmentobj;
 	}
 
-	public CartesianChartModel getLinearModel() {
-		return linearModel;
+	
+	public CartesianChartModel getLineModel() {
+		return lineModel;
 	}
 
-	public void setLinearModel(CartesianChartModel linearModel) {
-		this.linearModel = linearModel;
+	public void setLineModel(CartesianChartModel lineModel) {
+		this.lineModel = lineModel;
 	}
 
 	public String getBase64Str() {
