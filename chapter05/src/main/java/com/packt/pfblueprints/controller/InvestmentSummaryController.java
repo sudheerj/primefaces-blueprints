@@ -148,7 +148,6 @@ public class InvestmentSummaryController implements Serializable{
 	        }
 	        for (String key : chartMap.keySet()) {
 	            InvestmentSummary obj = chartMap.get(key);
-	            
 	             LineChartSeries series = new LineChartSeries();
 	        	 series.setLabel(obj.getFundname());  
 	        	 
@@ -159,14 +158,12 @@ public class InvestmentSummaryController implements Serializable{
 	        	 series.set("MarketValue5", obj.getMarketValue5());
 	        	 
 	        	 lineModel.addSeries(series);
-	        	
 	        }
 	        lineModel.setAnimate(true);
 	        lineModel.setZoom(true);
 	        lineModel.setLegendPosition("e");
 	        lineModel.setTitle("Linear Chart");
 	        lineModel.setShowPointLabels(true);
-	         
 	    }
 	 
 	 public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {  

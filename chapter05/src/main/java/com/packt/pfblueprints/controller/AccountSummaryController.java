@@ -214,8 +214,6 @@ public class AccountSummaryController implements Serializable{
 	    Document pdf = (Document) document;  
 	    pdf.setPageSize(PageSize.A3);
 	    pdf.open(); 
-	   // pdf.setPageSize(PageSize.A4);  
-	  
 	    ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();  
 	    String logo = servletContext.getRealPath("") + File.separator +"resources" + File.separator + "images" + File.separator +"logo" + File.separator + "logo.png";  
 	    Image image=Image.getInstance(logo);
@@ -242,46 +240,10 @@ public class AccountSummaryController implements Serializable{
 		 pdf.add(new Paragraph("This website is intended to track the investor account summary information,investments and transaction in a partcular period of time. "));
 	}  
 	
-	public void preProcessXLS(Object document) throws IOException {  
-		 //create a new workbook
-	    Workbook wb = new HSSFWorkbook(); //or new HSSFWorkbook();
-
-	    //add picture data to this workbook.
-	    InputStream is = new FileInputStream(servletContext.getRealPath("")+"\\resources\\images\\logo\\logo.png");
-	    byte[] bytes = IOUtils.toByteArray(is);
-	    int pictureIdx = wb.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
-	    is.close();
-
-	    CreationHelper helper = wb.getCreationHelper();
-
-	    //create sheet
-	    Sheet sheet = wb.createSheet();
-
-	    // Create the drawing patriarch.  This is the top level container for all shapes. 
-	    Drawing drawing = sheet.createDrawingPatriarch();
-
-	    //add a picture shape
-	    ClientAnchor anchor = helper.createClientAnchor();
-	    //set top-left corner of the picture,
-	    //subsequent call of Picture#resize() will operate relative to it
-	    anchor.setCol1(3);
-	    anchor.setRow1(2);
-	    Picture pict = drawing.createPicture(anchor, pictureIdx);
-
-	    //auto-size picture relative to its top-left corner
-	    pict.resize();
-	    
-	    Row row = sheet.createRow((short)5);
-	    // Create a cell and put a value in it.
-	    Cell cell = row.createCell(0);
-	    cell.setCellValue("Account Summary");
-	}  
-	
 	public void postProcessXLS(Object document) {  
 	    HSSFWorkbook wb = (HSSFWorkbook) document;  
 	    HSSFSheet sheet = wb.getSheetAt(0);  
 	    HSSFRow header = sheet.getRow(0);  
-	      
 	    HSSFCellStyle cellStyle = wb.createCellStyle();    
 	    cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);  
 	    cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);  
@@ -291,7 +253,6 @@ public class AccountSummaryController implements Serializable{
 	          
 	        cell.setCellStyle(cellStyle);  
 	    }  
-	    
 	    Row row=sheet.createRow((short)sheet.getLastRowNum()+3);
 	    Cell cellDisclaimer = row.createCell(0);
 	    HSSFFont customFont= wb.createFont();
@@ -308,8 +269,7 @@ public class AccountSummaryController implements Serializable{
 	    
 	    Row row1=sheet.createRow(sheet.getLastRowNum()+2);
 	    Cell cellDisclaimerContent1 = row1.createCell(0);
-	    cellDisclaimerContent1.setCellValue("The information contained in this website is for information purposes only, and does not constitute, nor is it intended to constitute, the provision of financial product advice.");
-	    
+	    cellDisclaimerContent1.setCellValue("The information contained in this website is for information purposes only, and does not constitute, nor is it intended to constitute, the provision of financial product advice.");	    
 	    Row row2=sheet.createRow(sheet.getLastRowNum()+1);
 	    Cell cellDisclaimerContent2 = row2.createCell(0);
 	    cellDisclaimerContent2.setCellValue("This website is intended to track the investor account summary information,investments and transaction in a partcular period of time. ");

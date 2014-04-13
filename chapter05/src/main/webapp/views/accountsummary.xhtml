@@ -116,7 +116,6 @@
 				<h:commandLink>
 					<p:graphicImage value="/images/excel.png" />
 					<p:dataExporter type="xls" target="accountsummary"
-						preProcessor="#{accountSummaryController.preProcessXLS}"
 						postProcessor="#{accountSummaryController.postProcessXLS}"
 						fileName="AccountSummary" />
 				</h:commandLink>
@@ -141,7 +140,7 @@
 						fileName="AccountSummary" />
 				</h:commandLink>
 			</p:panel>
-			<p:panel header="Charts" id="accsummarycharts">
+			<p:panel header="AccountSummary Charts" id="accsummarycharts">
 				<h:panelGrid columns="3">
 					<h:panelGrid columns="2" style="margin-left:150px"
 						rendered="#{accountSummaryController.pieChartFlag}">
@@ -151,7 +150,6 @@
 						<p:chart type="pie" id="pieUK" widgetVar="$pieUK"
 							model="#{accountSummaryController.pieModelUK}"
 							style="width:400px;height:300px" />
-
 					</h:panelGrid>
 					<h:panelGrid columns="2" style="margin-left:150px"
 						rendered="#{!accountSummaryController.pieChartFlag}">
@@ -159,7 +157,6 @@
 							model="#{accountSummaryController.categoryModel}"
 							style="width:400px;height:300px" />
 						<p:spacer width="400" height="300"></p:spacer>
-
 					</h:panelGrid>
 					<p:spacer width="50"></p:spacer>
 					<p:outputPanel style="margin-top: -100px">
@@ -194,14 +191,12 @@
 				</p:outputPanel>
 			</p:panel>
 
-
 			<h:inputHidden id="pie1"
 				value="#{accountSummaryController.base64Str1}" />
 			<h:inputHidden id="pie2"
 				value="#{accountSummaryController.base64Str2}" />
 			<h:inputHidden id="bar"
 				value="#{accountSummaryController.base64Str3}" />
-
 
 			<script>
 				function exportPieChart() {
@@ -218,10 +213,5 @@
 				}
 			</script>
 		</h:form>
-		<p:dialog widgetVar="dlg" showEffect="fade" modal="true"
-			header="Chart as an Image">
-			<p:outputPanel id="output" layout="block"
-				style="width:500px;height:300px" />
-		</p:dialog>
 	</ui:define>
 </ui:composition>
