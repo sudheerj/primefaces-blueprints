@@ -4,21 +4,18 @@ import java.io.Serializable;
 import java.sql.SQLException;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.bean.ViewScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import com.packt.pfblueprints.dao.LoginDAO;
 
-//import com.packt.pfblueprints.dao.LoginDAO;
 
 @ManagedBean
 @ViewScoped
 public class LoginController implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private String username;
@@ -35,7 +32,7 @@ public class LoginController implements Serializable {
 	    if (username.equalsIgnoreCase("servicecenter") && password.equalsIgnoreCase("servicecenter")) {
 			return "/views/servicecenterinfo?faces-redirect=true";
 		}
-	    if (username.equalsIgnoreCase("accountsummary") && password.equalsIgnoreCase("accountsummary")) {
+	    if (username.equalsIgnoreCase("investor") && password.equalsIgnoreCase("investor")) {
 			return "/views/accountsinfo?faces-redirect=true";
 		}
 

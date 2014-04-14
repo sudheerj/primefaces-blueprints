@@ -16,19 +16,19 @@
 					update="servicecenterinfo"
 					actionListener="#{serviceCenterController.deleteDealer}" />
 			</p:contextMenu>
-
+			<p:growl id="messages" showDetail="true" />
 			<p:dataTable id="servicecenterinfo" var="servicecenter"
 				value="#{serviceCenterController.servicecenterInfo}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15"
+				rowsPerPageTemplate="5,10,15" draggableColumns="true" draggableRows="true"
 				rowKey="#{servicecenter.dealertinnumber}" paginatorPosition="bottom" sortMode="multiple"
 				selection="#{serviceCenterController.servicecenterobj}"
 				selectionMode="single">
 				<f:facet name="header">
             Service Center Information
         </f:facet>
-
+				 <p:ajax event="rowReorder" listener="#{serviceCenterController.onRowReorder}" update=":servicecenterform:messages" />
 				<p:column sortBy="dealertinnumber" filterBy="dealertinnumber"
 					id="dealertinnumber">
 					<f:facet name="header">

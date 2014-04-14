@@ -7,10 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
+import org.primefaces.event.ReorderEvent;
 
 import com.packt.pfblueprints.dao.ServiceCenterDAO;
 import com.packt.pfblueprints.model.ServiceCenter;
@@ -52,6 +55,11 @@ public class ServiceCenterController implements Serializable{
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		sessionMap.put("dealertinnumber", servicecenterobj.getDealertinnumber());
 		return "dealerinfo.xhtml?faces-redirect=true";
+	}
+	
+	public void onRowReorder(ReorderEvent event){
+		 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Row Moved", "From: " + event.getFromIndex() + ", To:" + event.getToIndex());
+         FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 	public ServiceCenter getServicecenterobj() {
