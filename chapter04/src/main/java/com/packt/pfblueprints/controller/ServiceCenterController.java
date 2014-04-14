@@ -33,12 +33,11 @@ public class ServiceCenterController implements Serializable{
 	public void init() { 
 		
 		servicecenterInfo=dao.getAllDealers();
-		
+		advisorsCountCalc();
 	}
 	
 	public void deleteDealer(){
 		servicecenterInfo=dao.deleteDealer(servicecenterobj);
-		advisorsCountCalc();
 	}
 	
 	public void advisorsCountCalc(){

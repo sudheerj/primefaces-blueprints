@@ -11,9 +11,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import com.packt.pfblueprints.dao.AdvisorDAO;
-import com.packt.pfblueprints.dao.DealerDAO;
 import com.packt.pfblueprints.model.Advisor;
-import com.packt.pfblueprints.model.Dealer;
 
 @ManagedBean
 @ViewScoped
@@ -35,7 +33,7 @@ public class AdvisorController implements Serializable{
 	}
 	
 	public String navigateAccountSummary(){
-		return "accountsInfo.xhtml?faces-redirect=true";
+		return "accountsinfo.xhtml?faces-redirect=true";
 	}
 
 	public List<Advisor> getAdvisorInfo() {

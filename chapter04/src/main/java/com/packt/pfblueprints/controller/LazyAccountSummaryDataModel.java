@@ -39,7 +39,7 @@ public class LazyAccountSummaryDataModel extends LazyDataModel<AccountSummary> {
     }
  
     @Override
-    public List<AccountSummary> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,String> filters) {
+    public List<AccountSummary> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,Object> filters) {
         List<AccountSummary> data = new ArrayList<AccountSummary>();
  
         //filter
@@ -49,7 +49,7 @@ public class LazyAccountSummaryDataModel extends LazyDataModel<AccountSummary> {
             for(Iterator<String> it = filters.keySet().iterator(); it.hasNext();) {
                 try {
                     String filterProperty = it.next();
-                    String filterValue = filters.get(filterProperty);
+                    String filterValue = filters.get(filterProperty).toString();
                     String fieldValue = String.valueOf(accountSummaryObj.getClass().getField(filterProperty).get(accountSummaryObj));
  
                     if(filterValue == null || fieldValue.startsWith(filterValue)) {

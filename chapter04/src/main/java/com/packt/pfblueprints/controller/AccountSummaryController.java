@@ -38,7 +38,7 @@ public class AccountSummaryController  implements Serializable{
 		
 		lazyAccSummaryDataModel = new LazyAccountSummaryDataModel(accountsInfo){
 			@Override
-			public List<AccountSummary> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,String> filters) {
+			public List<AccountSummary> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,Object> filters) {
 				String sortOrderValue=null;
 				if(sortField==null){
 					sortField="investorName";
