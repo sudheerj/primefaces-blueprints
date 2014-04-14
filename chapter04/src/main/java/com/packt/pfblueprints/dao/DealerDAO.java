@@ -1,6 +1,6 @@
 package com.packt.pfblueprints.dao;
 
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +15,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import com.packt.pfblueprints.model.Dealer;
+import com.packt.pfblueprints.model.ProgressStatus;
 
 public class DealerDAO {
 
@@ -55,10 +56,25 @@ public class DealerDAO {
 		    queryResult = session.createQuery("from Dealer");	
 			}
 		List<Dealer> allDealers = queryResult.list();
+		for(Dealer dealerobj:allDealers){
+			List<ProgressStatus> progressStatus=generateProgressStatus();
+			dealerobj.setProgressStatus(progressStatus);
+		}
 		session.getTransaction().commit();
 		return allDealers;
 
 	}
+	
+	public List<ProgressStatus> generateProgressStatus(){
+		 List<ProgressStatus> progressStatus=new ArrayList<ProgressStatus>();
+		 progressStatus.add(new ProgressStatus("2000",((int)(Math.random()*10))+""));
+		 progressStatus.add(new ProgressStatus("2002",((int)(Math.random()*10))+""));
+		 progressStatus.add(new ProgressStatus("2004",((int)(Math.random()*10))+""));
+		 progressStatus.add(new ProgressStatus("2006",((int)(Math.random()*10))+""));
+		 return progressStatus;
+	}
+	
+	
 	public List<Dealer> deleteAdvisor(Dealer object) {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();

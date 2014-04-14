@@ -54,9 +54,9 @@ public class AdvisorDAO {
 			}else{
 		    queryResult = session.createQuery("from Advisor");	
 			}
-		List<Advisor> allDealers = queryResult.list();
+		List<Advisor> allAdvisors = queryResult.list();
 		session.getTransaction().commit();
-		return allDealers;
+		return allAdvisors;
 
 	}
 	/*public List<Dealer> deleteAdvisor(Dealer object) {
