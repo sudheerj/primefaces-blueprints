@@ -20,7 +20,7 @@ public class AdvisorController implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private List<Advisor>  advisorInfo=new ArrayList<Advisor>();
 	
-	private Advisor advisorobj=new Advisor();
+    Advisor advisorobj=new Advisor();
 	AdvisorDAO dao = new AdvisorDAO();
 	
 	@PostConstruct
@@ -33,6 +33,7 @@ public class AdvisorController implements Serializable{
 		return "accountsinfo.xhtml?faces-redirect=true";
 	}
 
+	
 	public List<Advisor> getAdvisorInfo() {
 		return advisorInfo;
 	}

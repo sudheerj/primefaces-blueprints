@@ -28,8 +28,9 @@
 						<h:outputText value="#{advisor.advisornumber}" />
 						<h:outputText value="#{advisor.dor}" />
 
-						<p:commandLink actionListener="#{advisorController.selectRep(advisor)}"
-							oncomplete="PF('$repInfo').show()" title="View Detail">
+						<p:commandLink 
+							oncomplete="PF('$repInfo').show()" title="View Detail" update=":repDetails">
+							 <f:setPropertyActionListener target="#{advisorController.advisorobj}" value="#{advisor}" />
 							<h:outputText styleClass="ui-icon ui-icon-search"
 								style="margin:0 auto;" />
 						</p:commandLink>
@@ -42,14 +43,16 @@
 		
 		<p:dialog id="repInfo" header="Representative Information"
 			widgetVar="$repInfo" modal="true" resizable="false">
-				<h:panelGrid columns="1" cellpadding="5">
-						<h:outputText value="#{advisor.repname}" />
-						<h:outputText value="#{advisor.repnumber}" />
-						<p:graphicImage value="/resources/images/reps/#{advisor.repname}.png" />
-						<h:outputText value="#{advisor.advisornumber}" />
-						<h:outputText value="#{advisor.branch}" />
-						<h:outputText value="#{advisor.status}" />
+			<p:outputPanel id="repDetails" style="text-align:center;"> 
+				<h:panelGrid columns="1" cellpadding="5" >
+						<h:outputText value="Representative Name:#{advisorController.advisorobj.repname}" />
+						<h:outputText value="Representative Number:#{advisorController.advisorobj.repnumber}" />
+						<p:graphicImage value="/resources/images/reps/#{advisorController.advisorobj.repname}.png" />
+						<h:outputText value="Advisor Number:#{advisorController.advisorobj.advisornumber}" />
+						<h:outputText value="Branch: #{advisorController.advisorobj.branch}" />
+						<h:outputText value="Status: #{advisorController.advisorobj.status}" />
 				</h:panelGrid>
+			</p:outputPanel>
 		</p:dialog>
 		
 	</ui:define>
