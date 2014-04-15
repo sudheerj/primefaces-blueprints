@@ -17,22 +17,16 @@ public class LazyAccountSummaryDataModel extends LazyDataModel<AccountSummary> {
 	 * 
 	 */
 	private static final long serialVersionUID = -6407210686016928436L;
-	private List<AccountSummary> datasource;
-     
-    public LazyAccountSummaryDataModel(List<AccountSummary> datasource) {
-        this.datasource = datasource;
-    }
-    
+	private List<AccountSummary> accountsInfo=new ArrayList<AccountSummary>();
      
     public LazyAccountSummaryDataModel() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
 	@Override
     public AccountSummary getRowData(String rowKey) {
-        for(AccountSummary accountSummaryObj : datasource) {
+        for(AccountSummary accountSummaryObj : accountsInfo) {
             if(accountSummaryObj.getAccountNumber().equals(rowKey))
                 return accountSummaryObj;
         }
@@ -41,8 +35,8 @@ public class LazyAccountSummaryDataModel extends LazyDataModel<AccountSummary> {
     }
  
     @Override
-    public Object getRowKey(AccountSummary AccountSummary) {
-        return AccountSummary.getAccountNumber();
+    public Object getRowKey(AccountSummary accountSummaryobj) {
+        return accountSummaryobj.getAccountNumber();
     }
  
     @Override
@@ -50,7 +44,7 @@ public class LazyAccountSummaryDataModel extends LazyDataModel<AccountSummary> {
         List<AccountSummary> data = new ArrayList<AccountSummary>();
  
         //filter
-        for(AccountSummary accountSummaryObj : datasource) {
+        for(AccountSummary accountSummaryObj : accountsInfo) {
             boolean match = true;
  
             for(Iterator<String> it = filters.keySet().iterator(); it.hasNext();) {
