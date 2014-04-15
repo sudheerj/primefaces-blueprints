@@ -57,6 +57,11 @@ public class ServiceCenterController implements Serializable{
 		return "dealerinfo.xhtml?faces-redirect=true";
 	}
 	
+	public void updateDealerProfile(){
+		dao.updateDealerProfile(servicecenterobj);
+	}
+	
+	
 	public void onRowReorder(ReorderEvent event){
 		 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Row Moved", "From: " + event.getFromIndex() + ", To:" + event.getToIndex());
          FacesContext.getCurrentInstance().addMessage(null, msg);

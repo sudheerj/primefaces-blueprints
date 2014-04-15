@@ -44,6 +44,15 @@ public class ServiceCenterDAO {
 		return allDealers;
 
 	}
+	
+	public void updateDealerProfile(ServiceCenter serviceCenterObj){
+		sessionFactory = configureSessionFactory();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(serviceCenterObj); 
+		session.getTransaction().commit();
+		
+	}
 	public List<ServiceCenter> deleteDealer(ServiceCenter object) {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
