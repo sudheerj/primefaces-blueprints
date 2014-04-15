@@ -13,10 +13,10 @@
 				onclick="PF('$aboutusDialog').show()" styleClass="links"></p:commandLink>
 			<p:spacer width="20" />
 			<p:commandLink value="Contact Us"
-				oncomplete="$helpDialog.show()" styleClass="links"></p:commandLink>
+				oncomplete="PF('$contactDialog').show()" styleClass="links"></p:commandLink>
 			<p:spacer height="40" />
 			<p:commandLink value="Disclaimer"
-				oncomplete="$disclaimerDialog.show()" styleClass="links"></p:commandLink>
+				oncomplete="PF('$disclaimerDialog').show()" styleClass="links"></p:commandLink>
 			<p:spacer width="20" />
 			
 		</div>
@@ -29,7 +29,7 @@
 			<h:outputText value="#{adminController.aboutus}" />
 		</p:dialog>
 		
-		<p:dialog id="contactDialog" header="Contact us" widgetVar="$helpDialog"
+		<p:dialog id="contactDialog" header="Contact us" widgetVar="$contactDialog"
 			width="400" modal="true" dynamic="true">
 			<h:outputText value="#{adminController.contactus}" />
 		</p:dialog>
