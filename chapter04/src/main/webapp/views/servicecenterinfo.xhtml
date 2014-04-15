@@ -73,6 +73,9 @@
 						<h:outputText value="Status" />
 					</f:facet>
 					<h:outputText value="#{servicecenter.status}" />
+					<f:facet name="footer">
+						<h:outputText value="Total Advisors:" />
+					</f:facet>
 				</p:column>
 
 				<p:column sortBy="noofadvisors">
@@ -80,18 +83,11 @@
 						<h:outputText value="Number of Advisors" />
 					</f:facet>
 					<h:outputText value="#{servicecenter.noofadvisors}" />
+					<f:facet name="footer">
+						<h:outputText value="#{serviceCenterController.advisorsCount}" />
+					</f:facet>
 				</p:column>
 				
-				<p:summaryRow>
-				<p:column colspan="6" style="text-align:right">  
-                <h:outputText value="Total Advisors:"></h:outputText>  
-            	</p:column>
-
-				<p:column>  
-                #{serviceCenterController.advisorsCount}
-                </p:column>
-				</p:summaryRow>
-
 			</p:dataTable>
 
 
