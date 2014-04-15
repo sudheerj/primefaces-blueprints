@@ -40,9 +40,12 @@ public class AccountsDAO {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Query queryResult = session.createQuery("from AccountSummary WHERE id BETWEEN "+first+" AND "+(first+pageSize-1)+" ORDER BY "+sortField+" "+sortOrder);
+		String query="from AccountSummary WHERE id BETWEEN "+first+" AND "+(first+pageSize-1)+" ORDER BY "+sortField+" "+sortOrder;
+		System.out.println("query==="+query);
+		Query queryResult = session.createQuery(query);
 		List<AccountSummary> allAccounts = queryResult.list();
 		session.getTransaction().commit();
+		System.out.println("ACC SIZE=="+allAccounts.size());
 		return allAccounts;
 
 	}

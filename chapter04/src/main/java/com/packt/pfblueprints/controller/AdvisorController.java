@@ -17,9 +17,6 @@ import com.packt.pfblueprints.model.Advisor;
 @ViewScoped
 public class AdvisorController implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private List<Advisor>  advisorInfo=new ArrayList<Advisor>();
 	

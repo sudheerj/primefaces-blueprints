@@ -2,10 +2,12 @@ package com.packt.pfblueprints.controller;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import com.packt.pfblueprints.dao.LoginDAO;
@@ -20,7 +22,7 @@ public class LoginController implements Serializable {
 
 	private String username;
 	private String password;
-	private String userrole;
+	private String userrole="S";
 
 	public LoginController() {
 		super();
@@ -38,12 +40,18 @@ public class LoginController implements Serializable {
 
 		LoginDAO dao = new LoginDAO();
 		isValidUser = dao.validateUser(username, password,userrole);
-
+		
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		 
 		if (isValidUser) {
-			 if(userrole=="1"){
+			 if(userrole.equalsIgnoreCase("D")){
+				sessionMap.put("dealertinnumber", username);
 				return "/views/dealerinfo?faces-redirect=true";
 				}
 			else {
+				sessionMap.put("advisornumber", username);
+				System.out.println("advisor");
 				return "/views/advisorinfo?faces-redirect=true";
 				}
 			

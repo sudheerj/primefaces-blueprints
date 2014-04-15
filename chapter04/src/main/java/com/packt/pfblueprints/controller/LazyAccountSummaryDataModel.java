@@ -22,8 +22,15 @@ public class LazyAccountSummaryDataModel extends LazyDataModel<AccountSummary> {
     public LazyAccountSummaryDataModel(List<AccountSummary> datasource) {
         this.datasource = datasource;
     }
+    
      
-    @Override
+    public LazyAccountSummaryDataModel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	@Override
     public AccountSummary getRowData(String rowKey) {
         for(AccountSummary accountSummaryObj : datasource) {
             if(accountSummaryObj.getAccountNumber().equals(rowKey))

@@ -11,10 +11,10 @@
 				<h:panelGrid columns="3" cellpadding="5">
 				    <h:outputText value="LoginUser:"></h:outputText>
 					<p:selectOneMenu value="#{loginController.userrole}" label="LoginUser:">
-						<f:selectItem itemLabel="Service Center" itemValue="0" />
-						<f:selectItem itemLabel="Dealer" itemValue="1" />
-						<f:selectItem itemLabel="Advisor" itemValue="2" />
-						<f:selectItem itemLabel="Investor" itemValue="3" />
+						<f:selectItem itemLabel="Service Center" itemValue="S" />
+						<f:selectItem itemLabel="Dealer" itemValue="D" />
+						<f:selectItem itemLabel="Advisor" itemValue="A" />
+						<f:selectItem itemLabel="Investor" itemValue="I" />
 					</p:selectOneMenu>
 					<h:outputText/>
 					
@@ -26,7 +26,7 @@
 					<p:watermark for="username" value="Enter username" />
 
 					<h:outputLabel for="password" value="Password:" />
-					<p:keyboard value="#{loginController.password}" id="password"
+					<p:keyboard value="#{loginController.password}" id="password" 
 						required="true" requiredMessage="Password cannot be empty"
 						password="true" />
 					<p:watermark for="password" value="Enter password" />

@@ -43,11 +43,11 @@ public class LoginDAO {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 			String query=null;
-			if(userrole.equalsIgnoreCase("1")){
-		     query = "from Dealer  where dealernumber='" + userid + "' ";
+			if(userrole.equalsIgnoreCase("D")){
+		     query = "from Dealer where dealernumber='" + userid + "' ";
 			}
-			if(userrole.equalsIgnoreCase("2")){
-		     query = "from Advisor  where advisornumber='" + userid + "' ";	
+			if(userrole.equalsIgnoreCase("A")){
+		     query = "from Advisor where advisornumber='" + userid + "' ";	
 			}
 		    Query queryobj = session.createQuery(query);
 		    List<Object> list=queryobj.list();

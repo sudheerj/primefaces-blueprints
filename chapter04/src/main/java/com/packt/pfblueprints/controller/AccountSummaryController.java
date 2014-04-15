@@ -23,9 +23,7 @@ import com.packt.pfblueprints.model.Dealer;
 @ViewScoped
 public class AccountSummaryController  implements Serializable{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private List<AccountSummary> accountsInfo=new ArrayList<AccountSummary>();
 	
@@ -36,7 +34,7 @@ public class AccountSummaryController  implements Serializable{
 	@PostConstruct
 	public void init() { 
 		
-		lazyAccSummaryDataModel = new LazyAccountSummaryDataModel(accountsInfo){
+		lazyAccSummaryDataModel = new LazyAccountSummaryDataModel(){
 			@Override
 			public List<AccountSummary> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,Object> filters) {
 				String sortOrderValue=null;
