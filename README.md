@@ -4,7 +4,6 @@
 Aimed to educate the reader to full set of PrimeFaces Components with the help of various real time Application.
 Beginners to understand the ERP application and its standards.
 
-
 ##Description
 
 ***PrimeFaces Blueprints*** will guide you through the process of creating a wide range of rich UI web applications based on successful,
@@ -35,6 +34,33 @@ which enable to make the reader comfort with well known real time business examp
  6. Utilizing the various variety of input elements provided by PrimeFaces,
  7. The use of menu and its various variation to enable the fast responsive navigation system for each application.
  8. Enabling the application to interactive and non interactive mode to perform specified tasks like monitoring and alert system.
+
+
+##Projects Included
+
+    |-------------------|-------------------------------------------------------|
+    |   Chapter         |       Project Title                                   |
+    |-------------------|-------------------------------------------------------|
+    |   Chapter 01      |	Creating your own Simple Hello World Application    |
+    |-------------------|-------------------------------------------------------|
+    |   Chapter 02	    |   An Employee Registration Application                |
+    |-------------------|-------------------------------------------------------|
+    |   Chapter 03	    |   Restaurant POS Application                          |
+    |-------------------|-------------------------------------------------------|
+    |   Chapter 04	    |   Global Mutual Funds Tracking                        |
+    |-------------------|-------------------------------------------------------|
+    |   Chapter 05	    |   Global Investor information Analysis                |
+    |-------------------|-------------------------------------------------------|
+    |   Chapter 06	    |   Online Shopping Cart application                    |
+    |-------------------|-------------------------------------------------------|
+    |   Chapter 07	    |   Movie Portal application                            |
+    |-------------------|-------------------------------------------------------|
+    |   Chapter 08	    |   Online Printing Station                             |
+    |-------------------|-------------------------------------------------------|
+    |   Chapter 09	    |   Online Chat application                             |
+    |-------------------|-------------------------------------------------------|
+    |   Chapter 10	    |   Health Care Products application                    |
+    |-------------------|-------------------------------------------------------|
 
 
 ###Author : Ramkumar Pillai & Sudheer Jonna
