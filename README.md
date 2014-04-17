@@ -63,7 +63,7 @@ which enable to make the reader comfort with well known real time business examp
     |-------------------|-------------------------------------------------------|
 
 
-###Author : Ramkumar Pillai <psramkumar@gmail.com> & Sudheer Jonna <sudheerjonna@gmail.com>
+###Author : Ramkumar Pillai *(<psramkumar@gmail.com>)* & Sudheer Jonna *(<sudheerjonna@gmail.com>)*
 
 **Find Us:** <http://www.packtpub.com>
 
