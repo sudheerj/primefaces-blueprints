@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	
+	<title>JSF Demo</title>
+</h:head>
+<h:body style="font-size:9pt;">
+
+
+	<h:form>
+	 
+	<h:inputHidden value="#{editContactMB.bean.id}" />
+	 <h:panelGrid columns="4">
+		<h:outputLabel value="Name" for="name" />
+		<p:inputText id="name" value="#{editContactMB.bean.name}" 
+			required="true" label="Name" requiredMessage="Name cannot be empty" /><br/>
+		<p:message for="name" />
+		
+		<p:outputLabel value="Email" for="email"  />
+		<p:inputText id="email"  value="#{editContactMB.bean.email}" 
+			required="true" label="Email" requiredMessage="Email cannot be empty" /> <br/>
+    	<p:message for="email" />
+    	
+    	<f:facet name="footer">
+	    	<p:commandButton ajax="false" value="Save" action="#{editContactMB.save}">
+	    		<f:param name="id" value="#{editContactMB.bean.id}"/>
+	    	</p:commandButton>
+    	</f:facet>
+
+    </h:panelGrid>
+	</h:form>
+
+</h:body>
+</html>

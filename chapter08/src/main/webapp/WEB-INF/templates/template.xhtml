@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Bookmarks R' Us</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="css/screen.css" />
+</h:head>
+<h:body>
+	<h:outputScript name="jsf.js" library="javax.faces" target="head" />
+
+	<h:panelGroup id="page" layout="block">
+		<h:panelGroup id="header" layout="block">
+			<h1><a href="home.jsf">bookmarxrus</a></h1>
+			#{bookmarkCount} bookmarks and growing!
+		</h:panelGroup>
+		<h:panelGroup styleClass="linkHeader"
+			rendered="#{userSession.loggedIn}" layout="block">
+			<h:outputLink value="home.jsf?user=#{userSession.user.username}">Your Links</h:outputLink>
+			<h:outputLink value="add.jsf">Add New Link</h:outputLink>
+		</h:panelGroup>
+
+
+		<h:panelGroup id="container" layout="block">
+
+			<h:panelGroup id="sidebar" layout="block">
+				<h:form id="logInOutForm">
+					<h:panelGroup rendered="#{!userSession.loggedIn}">
+						<h:message for="username" style="color : red;font-weight : bold" />
+						<br />
+						<h:outputText value="Username" />
+						<br />
+						
+						<h:inputText value="#{loginBean.username}" id="username"
+							binding="#{loginBean.usernameEntry}" />
+						<br />
+						<br />
+						<h:outputText value="Password" />
+						<br />
+						<h:inputText value="#{loginBean.password}" />
+						<br />
+						<h:commandButton action="#{loginBean.login}" value="Login" />
+
+					</h:panelGroup>
+					<h:panelGroup rendered="#{userSession.loggedIn}">
+				You are logged in as #{userSession.user.firstName} #{userSession.user.lastName}<br />
+						<br />
+						<h:commandButton action="#{userSession.logout}" value="Logout" />
+					</h:panelGroup>
+				</h:form>
+				<br />
+				<br />
+
+				<h2>Available Users</h2>
+				<ui:repeat var="v_user" value="#{dataFactory.availableUsers}">
+#{v_user.username} / #{v_user.password}<br />
+				</ui:repeat>
+			</h:panelGroup>
+			<h:panelGroup id="content" layout="block">
+				<ui:insert name="content">Main Content</ui:insert>
+			</h:panelGroup>
+		</h:panelGroup>
+		<h:panelGroup id="footer" layout="block">Footer goes Here<br />Generated using the Knappsack Java EE Maven Archetypes from <a
+				href="http://www.AndyGibson.net">www.AndyGibson.net</a>
+		</h:panelGroup>
+	</h:panelGroup>
+
+</h:body>
+</html>

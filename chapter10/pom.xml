@@ -11,11 +11,11 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>chapter01</artifactId>
+    <artifactId>chapter10</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>PrimeFaces Blueprint's Chapter 01</name>
+    <name>PrimeFaces Blueprint's Chapter 10</name>
 
 
     <build>

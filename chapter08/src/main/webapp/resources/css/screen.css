@@ -1,0 +1,215 @@
+body {
+    margin-top: 0px;
+    background: url(../resources/images/back.gif) top left repeat-x;
+    background-color: #313131;
+    font-size: 10pt;
+}
+
+#header {
+	height: 120px;
+	border-bottom: 3px solid #c0c0c0;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+#header h1 {
+	padding-top: 24px;
+	font-size: 250%;
+}
+
+
+#page {
+	background: #ffffff;
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	border-right: solid 2px #a0a0a0;
+	border-bottom: solid 2px #a0a0a0;
+}
+
+#sidebar {
+	float: right;
+	width: 200px;
+	border: 1px solid #d0d0d0;
+	min-height: 240px;
+	padding: 4px;
+}
+
+#sidebar h1 {
+	display: block;
+	font-size: 120%;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+#container {
+	padding: 8px;
+}
+
+#content {
+	min-height: 320px;
+	font-size: 120%;
+	width: 720px;
+}
+
+#footer {
+	text-align: center;
+	padding: 8px;
+	margin: 18px;
+	clear: both;
+}
+
+.panel {
+	border: 1px solid #d0d0d0;
+	margin: 8px 4px 16px 4px;
+	background: #fafafa;
+}
+
+.panel h1 {
+	margin: 0;
+	padding: 6px;
+	font-size: 120%;
+	display: block;
+	background: #f0f0f0;
+	border-bottom: 1px solid #d0d0d0;
+	margin-bottom: 8px;
+}
+
+.contentBox {
+	padding: 8px;
+}
+
+.odd {
+	background: #f0f0f0;
+}
+
+.even {
+	background: #ffffff;
+}
+
+.dataTable {
+	border-collapse: collapse;;
+	width: 100%;
+}
+
+.dataTable th {
+	background: #204080;
+	color: #f0f0f0;
+	padding: 6px;
+	border: 1px solid #f0f0f0;
+}
+
+.dataTable td {
+	border: 1px solid #d0d0d0;
+	padding: 4px;
+}
+
+.caption {
+	float: left;
+	width: 70px;
+}
+
+.formCaption {
+	float: left;
+	width: 100px;
+	padding-top: 4px;
+}
+
+.value {
+	margin-right: 8px;
+}
+
+.errorMessage {
+	color: #ff0000;
+	font-weight: bold;
+	padding-left: 12px;
+}
+
+.property {
+	margin-bottom: 12px;
+}
+
+.bookmark {
+	margin: 12px;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+.bookmark h1 {
+	font-size: 140%;
+	margin: 0 0 4px 0;
+	padding: 0 0 4px 0;
+}
+
+.bookmark .meta {
+	padding: 4px;
+	font-size: 80%;
+	border-top: 1px solid #d0d0d0;
+	margin-top: 6px;
+}
+
+.bookmark a:visited,.bookmark a {
+	color: #204080;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.bookmark a:hover {
+	text-decoration: underline;
+}
+
+.linkHeader {
+	background: #f0f0f0;
+	padding: 8px;
+	clear: both;
+}
+
+.linkHeader a {
+	font-size: 120%;
+	padding-right: 18px;
+}
+
+#tagEditor {
+	
+}
+
+form h1 {
+	font-size: 120%;
+	background: #d0d0d0;
+	padding: 4px;
+}
+
+.tagListContainer {
+	margin: 8px 32px 12px 0;
+	float: left;
+	width: 200px;
+}
+
+.tagList {
+	border: 1px solid #d0d0d0;
+	background: #f0f0f0;
+	overflow: auto;
+	height: 160px;
+	padding: 4px;
+}
+
+.tagEditor h2 {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+}
+
+#inputForm input,#inputForm textarea {
+	width: 200px;
+}
+
+#addPostForm {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.paginator {
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+}

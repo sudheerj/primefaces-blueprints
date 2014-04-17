@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+    <title>Welcome</title>
+</h:head>
+
+<h:body style="font-size:9pt;">
+
+    <h:form>
+        <p:growl autoUpdate="true" globalOnly="true"/>
+
+        <p:dataTable value="#{contactMB.contacts}" var="contact" id="contacts">
+            <p:column headerText="id">
+                <p:outputLabel value="#{contact.id}"/>
+            </p:column>
+            <p:column headerText="Name">
+                <p:outputLabel value="#{contact.name}"/>
+            </p:column>
+            <p:column headerText="Email">
+                <p:outputLabel value="#{contact.email}"/>
+            </p:column>
+            <p:column>
+                <h:commandLink action="#{contactMB.edit}" value="Edit">
+                    <f:param name="id" value="#{contact.id}"/>
+                </h:commandLink>
+                &nbsp;&nbsp;
+                <p:commandLink oncomplete="confirmation.show()" value="Delete">
+                    <!-- setting the object's id to delete -->
+                    <f:setPropertyActionListener target="#{deleteContactMB.id}" value="#{contact.id}"/>
+                </p:commandLink>
+            </p:column>
+
+        </p:dataTable>
+
+        <p:commandButton action="#{contactMB.add}" ajax="false" value="Add Contact"/>
+
+        <p:confirmDialog id="confirmDialog" message="Delete this contact?"
+                         header="Delete Contact" severity="alert" widgetVar="confirmation">
+            <p:commandButton id="confirm" value="Yes" actionListener="#{deleteContactMB.remove}"
+                             update="contacts" oncomplete="confirmation.hide()"/>
+
+            <p:commandButton id="decline" value="No" onclick="confirmation.hide()" type="button"/>
+        </p:confirmDialog>
+
+    </h:form>
+</h:body>
+</html>
