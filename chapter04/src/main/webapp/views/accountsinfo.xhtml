@@ -9,7 +9,7 @@
 
 			 <p:contextMenu for="accountsummary">
 				<p:menuitem value="View Accounts Details"
-					icon="ui-icon-search" oncomplete="PF('$accountdetails').show()" />
+					icon="ui-icon-search" oncomplete="PF('$accountdetails').show()" update=":accountdetails" />
 			</p:contextMenu>
 
 			<p:dataTable id="accountsummary" var="account"

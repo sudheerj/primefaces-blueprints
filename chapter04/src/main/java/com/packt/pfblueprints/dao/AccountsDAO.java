@@ -40,7 +40,7 @@ public class AccountsDAO {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String query="from AccountSummary WHERE id BETWEEN "+first+" AND "+(first+pageSize-1)+" ORDER BY "+sortField+" "+sortOrder;
+		String query="from AccountSummary WHERE id BETWEEN "+(first+1)+" AND "+(first+pageSize)+" ORDER BY "+sortField+" "+sortOrder;
 		System.out.println("query==="+query);
 		Query queryResult = session.createQuery(query);
 		List<AccountSummary> allAccounts = queryResult.list();

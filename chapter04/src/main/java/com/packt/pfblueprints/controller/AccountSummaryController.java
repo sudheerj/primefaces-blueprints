@@ -51,7 +51,8 @@ public class AccountSummaryController  implements Serializable{
 					sortOrderValue="ASC";
 				}
 				
-				accountsInfo=dao.getAllAccounts(first,pageSize,sortField,sortOrderValue,filters);   
+				accountsInfo=dao.getAllAccounts(first,pageSize,sortField,sortOrderValue,filters); 
+				this.setRowCount(10);
 				return accountsInfo;
 			}
 		};
