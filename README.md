@@ -1,5 +1,5 @@
 #Primefaces Blueprints
-=====================
+====================================
 
 Aimed to educate the reader to full set of PrimeFaces Components with the help of various real time Application.
 Beginners to understand the ERP application and its standards.
@@ -15,16 +15,12 @@ customized web applications using the PrimeFaces components. The projects inside
 ##Highlite
 
 1. Learn to utilize the Rich UI Components of PrimeFaces and its robust  features of those components with the help of real time successful business model.
-
 2. Business models covers almost all major business requirements and almost all the major variation of PrimeFaces components
-which enable to make the reader comfort with well known real time business examples
-
+which enable to make the reader comfort with well known real time business examples.
 3. Step-by-step guide and line by line explanation of code and its functionality, makes the intermediate readers to get full confidants.
-
 4. Learning many business models in one place is a easy pick an go, which deliver the best learning experience to the readers.
 
-
-##What makes this book
+##What makes this book stand up
 
  1. One stop for learning 10 different successful real time business models.
  2. Creating rich UI application using industries best known UI Framework.
@@ -37,6 +33,7 @@ which enable to make the reader comfort with well known real time business examp
 
 
 ##Projects Included
+
 
     |-------------------|-------------------------------------------------------|
     |   Chapter         |       Project Title                                   |
@@ -63,11 +60,11 @@ which enable to make the reader comfort with well known real time business examp
     |-------------------|-------------------------------------------------------|
 
 
-###Author : Ramkumar Pillai *(<psramkumar@gmail.com>)* & Sudheer Jonna *(<sudheerjonna@gmail.com>)*
+**Author** : Ramkumar Pillai & Sudheer Jonna
 
 **Find Us:** <http://www.packtpub.com>
 
-Follow [@packtpub](http://twitter.com/packtpub) on Twitter for the latest news.
+**Follow** [@packtpub](http://twitter.com/packtpub) on Twitter for the latest news.
 
 [Packt Publishing]
 
