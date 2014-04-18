@@ -29,16 +29,7 @@
 					</f:facet>
 					<h:outputText value="#{account.investorName}" />
 				</p:column>
-
-
-				<p:column sortBy="registeredAccholderName"
-					filterBy="registeredAccholderName" id="registeredAccholderName">
-					<f:facet name="header">
-						<h:outputText value="Accountholder Name" />
-					</f:facet>
-					<h:outputText value="#{account.registeredAccholderName}" />
-				</p:column>
-
+				
 				<p:column sortBy="accountNumber" filterBy="accountNumber"
 					id="accountNumber">
 					<f:facet name="header">
@@ -47,14 +38,22 @@
 					<h:outputText value="#{account.accountNumber}" />
 				</p:column>
 
-				<p:column sortBy="accountType" filterBy="accountType"
+				<p:column sortBy="accountType" 
 					id="accountType">
 					<f:facet name="header">
 						<h:outputText value="accountType" />
 					</f:facet>
 					<h:outputText value="#{account.accountType}" />
 				</p:column>
-				
+
+				<p:column sortBy="registeredAccholderName"
+					 id="registeredAccholderName">
+					<f:facet name="header">
+						<h:outputText value="Accountholder Name" />
+					</f:facet>
+					<h:outputText value="#{account.registeredAccholderName}" />
+				</p:column>
+
 				<p:column sortBy="balanceUS" id="balanceUS">
 					<f:facet name="header">
 						<h:outputText value="balanceUS" />
