@@ -52,7 +52,7 @@ public class AccountSummaryController  implements Serializable{
 				}
 				
 				accountsInfo=dao.getAllAccounts(first,pageSize,sortField,sortOrderValue,filters); 
-				this.setRowCount(10);
+				this.setRowCount(accountsInfo.size());
 				return accountsInfo;
 			}
 		};
