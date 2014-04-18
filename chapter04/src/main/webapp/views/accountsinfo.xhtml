@@ -16,13 +16,13 @@
 				value="#{accountSummaryController.lazyAccSummaryDataModel}" paginator="true"
 				rows="5" paginatorPosition="bottom" lazy="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}"  
+				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}" filterEvent="enter" 
                  selection="#{accountSummaryController.accountobj}" selectionMode="single">
 				<f:facet name="header">
                   Account Summary
                 </f:facet>
 
-				<p:column sortBy="investorName" filterBy="investorName"
+				<p:column sortBy="investorName" filterBy="investorName" filterMatchMode="exact"
 					id="investorName">
 					<f:facet name="header">
 						<h:outputText value="Investor Name" />
@@ -30,7 +30,7 @@
 					<h:outputText value="#{account.investorName}" />
 				</p:column>
 				
-				<p:column sortBy="accountNumber" filterBy="accountNumber"
+				<p:column sortBy="accountNumber" filterBy="accountNumber" filterMatchMode="exact"
 					id="accountNumber">
 					<f:facet name="header">
 						<h:outputText value="accountNumber" />
@@ -76,31 +76,31 @@
 			widgetVar="$accountdetails" modal="true" resizable="false">
 
 				<h:panelGrid columns="2" cellpadding="5" id="details">
-					<h:outputLabel for="investorName" value="Investorname:" />
+					<h:outputLabel for="investorNameId" value="Investorname:" />
 					<h:outputText value="#{accountSummaryController.accountobj.investorName}"
-						id="investorName" />
-						<h:outputLabel for="accountnumber" value="Account Number:" />
+						id="investorNameId" />
+						<h:outputLabel for="accountnumberId" value="Account Number:" />
 					<h:outputText value="#{accountSummaryController.accountobj.accountNumber}"
-						id="investername" />
-						<h:outputLabel for="accounttype" value="Account Type:" />
+						id="accountnumberId" />
+						<h:outputLabel for="accounttypeId" value="Account Type:" />
 					<h:outputText value="#{accountSummaryController.accountobj.accountType}"
-						id="accounttype" />
-						<h:outputLabel for="status" value="Status:" />
+						id="accounttypeId" />
+						<h:outputLabel for="statusId" value="Status:" />
 					<h:outputText value="#{accountSummaryController.accountobj.status}"
-						id="status" />
+						id="statusId" />
 						
-						<h:outputLabel for="registrationdate" value="Registration Date:" />
+						<h:outputLabel for="registrationdateId" value="Registration Date:" />
 					<h:outputText value="#{accountSummaryController.accountobj.registrationDate}"
-						id="registrationdate" />
-						<h:outputLabel for="opendate" value="Open Date:" />
+						id="registrationdateId" />
+						<h:outputLabel for="opendateId" value="Open Date:" />
 					<h:outputText value="#{accountSummaryController.accountobj.openDate}"
-						id="opendate" />
-						<h:outputLabel for="closedate" value="Close Date:" />
+						id="opendateId" />
+						<h:outputLabel for="closedateId" value="Close Date:" />
 					<h:outputText value="#{accountSummaryController.accountobj.closeDate}"
-						id="closedate" />
-						<h:outputLabel for="jointaccount" value="Joint Account:" />
+						id="closedateId" />
+						<h:outputLabel for="jointaccountId" value="Joint Account:" />
 					<h:outputText value="#{accountSummaryController.accountobj.jointAccount}"
-						id="jointaccount" />
+						id="jointaccountId" />
 					
 				</h:panelGrid>
 		</p:dialog>

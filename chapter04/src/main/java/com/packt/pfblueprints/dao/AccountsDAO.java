@@ -1,6 +1,7 @@
 package com.packt.pfblueprints.dao;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +41,40 @@ public class AccountsDAO {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String query="from AccountSummary WHERE (id BETWEEN "+(first+1)+" AND "+(first+pageSize)+") ORDER BY "+sortField+" "+sortOrder;
+		
+		String investorname=null;
+		String accountnumber=null;
+		for(Iterator<String> it = filters.keySet().iterator(); it.hasNext();) {
+                String filterProperty = it.next();
+                if(filterProperty.equalsIgnoreCase("investorName")){
+                 investorname = (String)filters.get(filterProperty);
+                }
+                if(filterProperty.equalsIgnoreCase("accountNumber")){
+                 accountnumber = (String)filters.get(filterProperty);
+                }
+		}
+		String query=null;
+		int end=0;
+		if(sortOrder.equalsIgnoreCase("default")){
+			end=20;
+			sortOrder="ASC";
+		}
+		if(filters.isEmpty() ){
+			end=first+pageSize;}
+		else{
+			end=20;
+		}
+		
+		
+		if(investorname!=null && accountnumber!=null){
+		    query="from AccountSummary WHERE (id BETWEEN "+(first+1)+" AND "+end+") AND ((investorName="+investorname+") AND (accountNumber="+accountnumber+")) ORDER BY "+sortField+" "+sortOrder;
+		} else if(investorname!=null) {
+		    query="from AccountSummary WHERE (id BETWEEN "+(first+1)+" AND "+end+") AND (investorName="+investorname+") ORDER BY "+sortField+" "+sortOrder;	
+		} else if(accountnumber!=null) {
+		    query="from AccountSummary WHERE (id BETWEEN "+(first+1)+" AND "+end+") AND (accountNumber="+accountnumber+") ORDER BY "+sortField+" "+sortOrder;
+		} else{
+			query="from AccountSummary WHERE (id BETWEEN "+(first+1)+" AND "+end+") ORDER BY "+sortField+" "+sortOrder;
+		}
 		System.out.println("query==="+query);
 		Query queryResult = session.createQuery(query);
 		List<AccountSummary> allAccounts = queryResult.list();

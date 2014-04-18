@@ -37,6 +37,7 @@ public class AccountSummaryController  implements Serializable{
 		lazyAccSummaryDataModel = new LazyAccountSummaryDataModel(){
 			@Override
 			public List<AccountSummary> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,Object> filters) {
+				
 				String sortOrderValue=null;
 				if(sortField==null){
 					sortField="investorName";
@@ -48,11 +49,11 @@ public class AccountSummaryController  implements Serializable{
 					sortOrderValue="DSC";
 				}
 				else{
-					sortOrderValue="ASC";
+					sortOrderValue="default";
 				}
 				
 				accountsInfo=dao.getAllAccounts(first,pageSize,sortField,sortOrderValue,filters); 
-				this.setRowCount(accountsInfo.size());
+				this.setRowCount(20);
 				return accountsInfo;
 			}
 		};
