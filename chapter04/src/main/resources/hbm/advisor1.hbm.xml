@@ -4,28 +4,28 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-  <class name="com.packt.pfblueprints.model.Advisor" table="advisor">
+  <class name="com.packt.pfblueprints.model.Advisor" table="dealer">
    <id name="id" type="int" column="ID" >
    <generator class="increment"/>
   </id>
 
-  <property name="repnumber">
-    <column name="repnumber" />
+  <property name="dealernumber">
+    <column name="dealernumber" />
   </property>
-  <property name="repname">
-    <column name="repname" />
+  <property name="advisorname">
+    <column name="advisorname" />
   </property>
   <property name="advisornumber">
     <column name="advisornumber"/>
   </property>
-  <property name="dor">
-    <column name="dor" />
-  </property>
   <property name="branch">
-    <column name="branch"/>
+    <column name="branch" />
   </property>
-  <property name="status">
-    <column name="status" />
+  <property name="dor">
+    <column name="dor"/>
+  </property>
+   <property name="status">
+    <column name="status"/>
   </property>
   
  </class>
