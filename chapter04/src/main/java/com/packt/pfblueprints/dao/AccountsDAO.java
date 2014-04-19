@@ -1,6 +1,5 @@
 package com.packt.pfblueprints.dao;
 
-import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -30,12 +29,10 @@ public class AccountsDAO {
 		return sessionfactory;
 	}
 
-    
 	public AccountsDAO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public List<AccountSummary> getAllAccounts(int first,int pageSize,String sortField,String sortOrder,Map<String,Object> filters) {
 		sessionFactory = configureSessionFactory();
@@ -75,11 +72,9 @@ public class AccountsDAO {
 		} else{
 			query="from AccountSummary WHERE (id BETWEEN "+(first+1)+" AND "+end+") ORDER BY "+sortField+" "+sortOrder;
 		}
-		System.out.println("query==="+query);
 		Query queryResult = session.createQuery(query);
 		List<AccountSummary> allAccounts = queryResult.list();
 		session.getTransaction().commit();
-		System.out.println("ACC SIZE=="+allAccounts.size());
 		return allAccounts;
 
 	}

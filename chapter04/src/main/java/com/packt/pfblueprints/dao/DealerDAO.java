@@ -14,7 +14,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import com.packt.pfblueprints.model.Dealer;
+import com.packt.pfblueprints.model.Advisor;
 import com.packt.pfblueprints.model.ProgressStatus;
 
 public class DealerDAO {
@@ -32,7 +32,6 @@ public class DealerDAO {
 				.buildSessionFactory(builder.build());
 		return sessionfactory;
 	}
-
     
 	public DealerDAO() {
 		super();
@@ -43,26 +42,24 @@ public class DealerDAO {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public List<Dealer> getAllAdvisors() {
+	public List<Advisor> getAllAdvisors() {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query queryResult=null;
 		if(dealerNumber!=""){
-			queryResult = session.createQuery("from Dealer where dealernumber = :dealerNum");
+			queryResult = session.createQuery("from Advisor where dealernumber = :dealerNum");
 			queryResult.setParameter("dealerNum", dealerNumber);
 			}else{
-		    queryResult = session.createQuery("from Dealer");	
+		    queryResult = session.createQuery("from Advisor");	
 			}
-		List<Dealer> allDealers = queryResult.list();
-		for(Dealer dealerobj:allDealers){
+		List<Advisor> allDealers = queryResult.list();
+		for(Advisor dealerobj:allDealers){
 			List<ProgressStatus> progressStatus=generateProgressStatus();
 			dealerobj.setProgressStatus(progressStatus);
 		}
 		session.getTransaction().commit();
 		return allDealers;
-
 	}
 	
 	public List<ProgressStatus> generateProgressStatus(){
@@ -74,14 +71,13 @@ public class DealerDAO {
 		 return progressStatus;
 	}
 	
-	
-	public List<Dealer> deleteAdvisor(Dealer object) {
+	public List<Advisor> deleteAdvisor(Advisor object) {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.delete(object);
-		Query queryResult = session.createQuery("from Dealer");
-		List<Dealer> allDealers = queryResult.list();
+		Query queryResult = session.createQuery("from Advisor");
+		List<Advisor> allDealers = queryResult.list();
 		session.getTransaction().commit();
 		return allDealers;
 

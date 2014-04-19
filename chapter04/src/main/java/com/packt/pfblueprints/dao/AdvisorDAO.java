@@ -1,6 +1,5 @@
 package com.packt.pfblueprints.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +13,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import com.packt.pfblueprints.model.Advisor;
+import com.packt.pfblueprints.model.Representative;
 
 public class AdvisorDAO {
 
@@ -31,7 +30,6 @@ public class AdvisorDAO {
 				.buildSessionFactory(builder.build());
 		return sessionfactory;
 	}
-
     
 	public AdvisorDAO() {
 		super();
@@ -39,36 +37,22 @@ public class AdvisorDAO {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		advisorNumber=(String) sessionMap.get("advisornumber");
-		// TODO Auto-generated constructor stub
 	}
 
-
-	public List<Advisor> getAllRepresentatives() {
+	public List<Representative> getAllRepresentatives() {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query queryResult=null;
 		if(advisorNumber!=""){
-			queryResult = session.createQuery("from Advisor where advisornumber = :advisorNum");
+			queryResult = session.createQuery("from Representative where advisornumber = :advisorNum");
 			queryResult.setParameter("advisorNum", advisorNumber);
 			}else{
-		    queryResult = session.createQuery("from Advisor");	
+		    queryResult = session.createQuery("from Representative");	
 			}
-		List<Advisor> allAdvisors = queryResult.list();
+		List<Representative> allAdvisors = queryResult.list();
 		session.getTransaction().commit();
 		return allAdvisors;
-
 	}
-	/*public List<Dealer> deleteAdvisor(Dealer object) {
-		sessionFactory = configureSessionFactory();
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.delete(object);
-		Query queryResult = session.createQuery("from Advisor");
-		List<Dealer> allDealers = queryResult.list();
-		session.getTransaction().commit();
-		return allDealers;
-
-	}*/
 
 }

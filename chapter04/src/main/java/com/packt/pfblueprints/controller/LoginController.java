@@ -17,9 +17,7 @@ import com.packt.pfblueprints.dao.LoginDAO;
 @ViewScoped
 public class LoginController implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
-
 	private String username;
 	private String password;
 	private String userrole="S";
@@ -86,6 +84,5 @@ public class LoginController implements Serializable {
 	public void setUserrole(String userrole) {
 		this.userrole = userrole;
 	}
-
 
 }

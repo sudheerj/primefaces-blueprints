@@ -13,26 +13,26 @@
 					icon="ui-icon-search" />
 			</p:contextMenu>
 
-			<p:dataGrid id="advisorinfo" var="advisor" columns="3" rows="9"
+			<p:dataGrid id="advisorinfo" var="representative" columns="3" rows="9"
 				value="#{advisorController.advisorInfo}" paginator="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="4,6,9">
 				<f:facet name="header">
-           		 Advisor Information
+           		 Advisor Information-List of Representatives
       		    </f:facet>
 
-				<p:panel header="#{advisor.repname}" style="text-align:center">
+				<p:panel header="#{representative.repname}" style="text-align:center">
 					<h:panelGrid columns="1" style="width:100%">
 						<p:graphicImage
-							value="/resources/images/reps/#{advisor.repname}.png" />
-						<h:outputText value="#{advisor.repnumber}" />
-						<h:outputText value="#{advisor.advisornumber}" />
-						<h:outputText value="#{advisor.dor}" />
+							value="/resources/images/reps/#{representative.repname}.png" />
+						<h:outputText value="#{representative.repnumber}" />
+						<h:outputText value="#{representative.advisornumber}" />
+						<h:outputText value="#{representative.dor}" />
 
 						<p:commandLink oncomplete="PF('$repInfo').show()"
 							title="View Detail" update=":repDetails">
 							<f:setPropertyActionListener
-								target="#{advisorController.advisorobj}" value="#{advisor}" />
+								target="#{advisorController.representativeobj}" value="#{representative}" />
 							<h:outputText styleClass="ui-icon ui-icon-search"
 								style="margin:0 auto;" />
 						</p:commandLink>

@@ -8,7 +8,7 @@
 		<h:form id="servicecenterform">
 
 			<p:contextMenu for="servicecenterinfo">
-				<p:menuitem value="View Advisor List"
+				<p:menuitem value="View Advisors List"
 					action="#{serviceCenterController.storeSelectedDealer}"
 					ajax="false" icon="ui-icon-search" />
 				<p:menuitem value="Dealer Profile" update=":dealerprofileform"
@@ -18,79 +18,80 @@
 					actionListener="#{serviceCenterController.deleteDealer}" />
 			</p:contextMenu>
 			<p:growl id="messages" showDetail="true" />
-			<p:dataTable id="servicecenterinfo" widgetVar="$servicecenterinfo" var="servicecenter"
+			<p:dataTable id="servicecenterinfo" widgetVar="$servicecenterinfo"
+				var="dealer"
 				value="#{serviceCenterController.servicecenterInfo}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15" draggableColumns="true"
-				draggableRows="true" rowKey="#{servicecenter.dealertinnumber}"
+				draggableRows="true" rowKey="#{dealer.dealertinnumber}"
 				paginatorPosition="bottom" sortMode="multiple"
-				selection="#{serviceCenterController.servicecenterobj}"
+				selection="#{serviceCenterController.dealerobj}"
 				selectionMode="single">
 				<f:facet name="header">
-            Service Center Information
-        </f:facet>
+            		Service Center Information-List of Dealers
+                </f:facet>
 
 				<p:ajax event="rowReorder"
 					listener="#{serviceCenterController.onRowReorder}"
 					update=":servicecenterform:messages" />
-				<p:column sortBy="dealertinnumber" filterBy="dealertinnumber"
+				<p:column sortBy="#{dealer.dealertinnumber}" filterBy="#{dealer.dealertinnumber}"
 					id="dealertinnumber">
 					<f:facet name="header">
 						<h:outputText value="Dealer TIN/CST Number" />
 					</f:facet>
-					<h:outputText value="#{servicecenter.dealertinnumber}" />
+					<h:outputText value="#{dealer.dealertinnumber}" />
 				</p:column>
 
 				<p:column
-					sortBy="#{servicecenter.dealerfirstname} #{servicecenter.dealerlastname}"
-					filterBy="#{servicecenter.dealerfirstname} #{servicecenter.dealerlastname}"
+					sortBy="#{dealer.dealerfirstname} #{dealer.dealerlastname}"
+					filterBy="#{dealer.dealerfirstname} #{dealer.dealerlastname}"
 					id="dealername">
 					<f:facet name="header">
 						<h:outputText value="Dealer Name" />
 					</f:facet>
 					<h:outputText
-						value="#{servicecenter.dealerfirstname} #{servicecenter.dealerlastname}" />
+						value="#{dealer.dealerfirstname} #{dealer.dealerlastname}" />
 				</p:column>
 
 
-				<p:column sortBy="branchname" filterBy="branchname" id="branchname">
+				<p:column sortBy="#{dealer.branchname}" filterBy="#{dealer.branchname}" id="branchname">
 					<f:facet name="header">
 						<h:outputText value="Dealer Branch name" />
 					</f:facet>
-					<h:outputText value="#{servicecenter.branchname}" />
+					<h:outputText value="#{dealer.branchname}" />
 				</p:column>
 
-				<p:column sortBy="dor">
+				<p:column sortBy="#{dealer.dor}">
 					<f:facet name="header">
 						<h:outputText value="Date of registration" />
 					</f:facet>
-					<h:outputText value="#{servicecenter.dor}" />
+					<h:outputText value="#{dealer.dor}" />
 				</p:column>
 
 
-				<p:column sortBy="pan">
+				<p:column sortBy="#{dealer.pan}">
 					<f:facet name="header">
 						<h:outputText value="PAN Number" />
 					</f:facet>
-					<h:outputText value="#{servicecenter.pan}" />
+					<h:outputText value="#{dealer.pan}" />
 				</p:column>
 
-				<p:column sortBy="status">
+				<p:column sortBy="#{dealer.status}">
 					<f:facet name="header">
 						<h:outputText value="Status" />
 					</f:facet>
-					<h:outputText value="#{servicecenter.status}" />
+					<h:outputText value="#{dealer.status}" />
 					<f:facet name="footer">
 						<h:outputText value="Total Advisors:" />
 					</f:facet>
 				</p:column>
 
-				<p:column sortBy="noofadvisors">
+				<p:column sortBy="#{dealer.noofadvisors}">
 					<f:facet name="header">
 						<h:outputText value="Number of Advisors" />
 					</f:facet>
-					<h:outputText value="#{servicecenter.noofadvisors}" />
+					<h:outputText value="#{dealer.noofadvisors}" />
 					<f:facet name="footer">
 						<h:outputText value="#{serviceCenterController.advisorsCount}" />
 					</f:facet>
@@ -108,7 +109,7 @@
 				<h:panelGrid columns="3" cellpadding="5">
 					<h:outputLabel for="firstname" value="Firstname:" />
 					<p:inputText
-						value="#{serviceCenterController.servicecenterobj.dealerfirstname}"
+						value="#{serviceCenterController.dealerobj.dealerfirstname}"
 						id="firstname" required="true"
 						requiredMessage="Firstname cannot be empty" label="username">
 					</p:inputText>
@@ -116,7 +117,7 @@
 
 					<h:outputLabel for="lastname" value="Lastname:" />
 					<p:inputText
-						value="#{serviceCenterController.servicecenterobj.dealerlastname}"
+						value="#{serviceCenterController.dealerobj.dealerlastname}"
 						id="lastname" required="true"
 						requiredMessage="Firstname cannot be empty" label="username">
 					</p:inputText>
@@ -124,7 +125,7 @@
 
 					<h:outputLabel for="address1" value="Address1:" />
 					<p:inputText
-						value="#{serviceCenterController.servicecenterobj.address1}"
+						value="#{serviceCenterController.dealerobj.address1}"
 						id="address1" required="true"
 						requiredMessage="Address cannot be empty" label="Address">
 					</p:inputText>
@@ -132,32 +133,32 @@
 
 					<h:outputLabel for="address2" value="Address2:" />
 					<p:inputText
-						value="#{serviceCenterController.servicecenterobj.address2}"
+						value="#{serviceCenterController.dealerobj.address2}"
 						id="address2" label="Address">
 					</p:inputText>
 					<p:watermark for="address2" value="Enter address" />
 
 					<h:outputLabel for="country" value="Country:" />
 					<p:password
-						value="#{serviceCenterController.servicecenterobj.country}"
+						value="#{serviceCenterController.dealerobj.country}"
 						id="country" label="country" />
 					<p:watermark for="country" value="Enter Country" />
 
 					<h:outputLabel for="city" value="City:" />
 					<p:password
-						value="#{serviceCenterController.servicecenterobj.city}" id="city"
+						value="#{serviceCenterController.dealerobj.city}" id="city"
 						label="City" />
 					<p:watermark for="city" value="Enter City" />
 
 					<h:outputLabel for="contactnumber" value="Contact Number:" />
 					<p:password
-						value="#{serviceCenterController.servicecenterobj.contactnumber}"
+						value="#{serviceCenterController.dealerobj.contactnumber}"
 						id="contactnumber" label="Contact Number" />
 					<p:watermark for="contactnumber" value="Enter Contact number" />
 
 					<h:outputLabel for="postalcode" value="Postal Code:" />
 					<p:password
-						value="#{serviceCenterController.servicecenterobj.postalcode}"
+						value="#{serviceCenterController.dealerobj.postalcode}"
 						id="postalcode" label="Postal Code" />
 					<p:watermark for="postalcode" value="Enter Postal Code" />
 

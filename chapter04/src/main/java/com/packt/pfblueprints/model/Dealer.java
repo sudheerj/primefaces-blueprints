@@ -113,6 +113,4 @@ public class Dealer implements Serializable{
 		this.postalcode = postalcode;
 	}
 	
-	
-
 }

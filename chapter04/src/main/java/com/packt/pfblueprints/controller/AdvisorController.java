@@ -1,26 +1,23 @@
 package com.packt.pfblueprints.controller;
 
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 import com.packt.pfblueprints.dao.AdvisorDAO;
-import com.packt.pfblueprints.model.Advisor;
+import com.packt.pfblueprints.model.Representative;
 
 @ManagedBean
 @ViewScoped
 public class AdvisorController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private List<Advisor>  advisorInfo=new ArrayList<Advisor>();
+	private List<Representative>  advisorInfo=new ArrayList<Representative>();
 	
-    Advisor advisorobj=new Advisor();
+	Representative repobj=new Representative();
 	AdvisorDAO dao = new AdvisorDAO();
 	
 	@PostConstruct
@@ -32,33 +29,21 @@ public class AdvisorController implements Serializable{
 	public String navigateAccountSummary(){
 		return "accountsinfo.xhtml?faces-redirect=true";
 	}
-
 	
-	public List<Advisor> getAdvisorInfo() {
+	public List<Representative> getAdvisorInfo() {
 		return advisorInfo;
 	}
 
-	public void setAdvisorInfo(List<Advisor> advisorInfo) {
+	public void setAdvisorInfo(List<Representative> advisorInfo) {
 		this.advisorInfo = advisorInfo;
 	}
 
-	public Advisor getAdvisorobj() {
-		return advisorobj;
+	public Representative getRepobj() {
+		return repobj;
 	}
 
-	public void setAdvisorobj(Advisor advisorobj) {
-		this.advisorobj = advisorobj;
+	public void setRepobj(Representative repobj) {
+		this.repobj = repobj;
 	}
-	
-	/* public void deleteDealer(){
-		dealerInfo=dao.deleteDealer(dealerobj);
-	}
-
-	public dealer getDealerobj() {
-		return dealerobj;
-	} */
-
-	
-	
 
 }

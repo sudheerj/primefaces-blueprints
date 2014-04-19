@@ -10,12 +10,10 @@ public class ProgressStatus{
 		this.percentage = percentage;
 	}
 	
-	
 	public ProgressStatus() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public String getYear() {
 		return year;
@@ -29,6 +27,5 @@ public class ProgressStatus{
 	public void setPercentage(String percentage) {
 		this.percentage = percentage;
 	}
-	
 	
 }

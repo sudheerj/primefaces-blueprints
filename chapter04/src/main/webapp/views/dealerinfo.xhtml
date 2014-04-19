@@ -13,64 +13,97 @@
 					icon="ui-icon-search" />
 			</p:contextMenu>
 
-			<p:dataTable id="dealerinfo" var="dealer"
+			<p:dataTable id="dealerinfo" widgetVar="$dealerinfo" var="advisor"
 				value="#{dealerController.dealerInfo}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
-				rowKey="#{dealer.advisornumber}"
-				selection="#{dealerController.dealerobj}" selectionMode="single">
+				rowKey="#{advisor.advisornumber}"
+				selection="#{dealerController.advisorobj}" selectionMode="single">
 				<f:facet name="header">
-           		 Dealer Information
+           		 Dealer Information-List of Advisors
         		</f:facet>
 				<p:column style="width:2%">
 					<p:rowToggler />
 				</p:column>
-				<p:column sortBy="dealernumber" filterBy="dealernumber"
-					id="dealernumber">
+				<p:column id="dealernumber" sortBy="#{advisor.dealernumber}"
+					filterBy="#{advisor.dealernumber}" >
 					<f:facet name="header">
 						<h:outputText value="Dealer Number" />
 					</f:facet>
-					<h:outputText value="#{dealer.dealernumber}" />
+					<h:outputText value="#{advisor.dealernumber}" />
 				</p:column>
 
 
-				<p:column sortBy="advisorname" filterBy="advisorname"
-					id="advisorname">
+				<p:column id="advisorname" sortBy="#{advisor.advisorname}"
+					filterBy="#{advisor.advisorname}" >
 					<f:facet name="header">
 						<h:outputText value="Advisor Name" />
 					</f:facet>
-					<h:outputText value="#{dealer.advisorname}" />
+					<h:outputText value="#{advisor.advisorname}" />
 				</p:column>
 
-				<p:column sortBy="advisornumber" filterBy="advisornumber"
-					id="advisornumber">
+				<p:column id="advisornumber" sortBy="#{advisor.advisornumber}"
+					filterBy="#{advisor.advisornumber}" >
 					<f:facet name="header">
 						<h:outputText value="Advisor Number" />
 					</f:facet>
-					<h:outputText value="#{dealer.advisornumber}" />
+					<h:outputText value="#{advisor.advisornumber}" />
 				</p:column>
-				<p:column sortBy="branch" id="branch">
-					<f:facet name="header">
-						<h:outputText value="branch" />
+				<p:column id="managementcompany" 
+					filterBy="#{advisor.managementcompany}" filterMatchMode="exact"
+					headerText="Management Company" >
+					<f:facet name="filter">
+						<p:selectOneMenu onchange="PF('$dealerinfo').filter()">
+							<f:selectItems value="#{dealerController.managementcompanies}" />
+						</p:selectOneMenu>
 					</f:facet>
-					<h:outputText value="#{dealer.branch}" />
+					<h:outputText value="#{advisor.managementcompany}" />
 				</p:column>
-				<p:column sortBy="dor" id="dor">
-					<f:facet name="header">
-						<h:outputText value="Date of registration" />
+				<p:column id="branch"  filterBy="#{advisor.branch}"  headerText="Branch" filterMatchMode="in">
+					<f:facet name="filter">
+						<p:selectCheckboxMenu label="Branches"
+							onchange="PF('$dealerinfo').filter()" panelStyle="width:125px"
+							scrollHeight="150">
+							<f:selectItems value="#{dealerController.branches}" />
+						</p:selectCheckboxMenu>
 					</f:facet>
-					<h:outputText value="#{dealer.dor}" />
+					<h:outputText value="#{advisor.branch}" />
+				</p:column>
+				<p:column id="year"  filterBy="#{advisor.year}"  filterMatchMode="lte"
+					headerText="Year of registration">
+					<f:facet name="filter">
+						<p:spinner onchange="PF('$dealerinfo').filter()" min="2000" 
+							max="2010" size="5">
+							<f:converter converterId="javax.faces.Integer" />
+						</p:spinner>
+					</f:facet>
+					<h:outputText value="#{advisor.year}" />
 				</p:column>
 
-				<p:column sortBy="status" id="status">
-					<f:facet name="header">
-						<h:outputText value="Status" />
+				<p:column  id="status" filterBy="#{advisor.status}"  headerText="Status" filterMatchMode="equals">
+					<f:facet name="filter">
+						<p:selectOneButton onchange="PF('$dealerinfo').filter()">
+							<f:converter converterId="javax.faces.Boolean" />
+							<f:selectItem itemLabel="All" itemValue="" />
+							<f:selectItem itemLabel="ACTIVE" itemValue="true" />
+							<f:selectItem itemLabel="CLOSED" itemValue="false" />
+						</p:selectOneButton>
 					</f:facet>
-					<h:outputText value="#{dealer.status}" />
+					<h:outputText value="#{advisor.status}" />
+				</p:column>
+
+				<p:column  id="revenue" sortBy="#{advisor.revenue}" filterBy="#{advisor.revenue}"
+					filterFunction="#{dealerController.filterByRevenue}">
+					<f:facet name="header">
+						<h:outputText value="Revenue" />
+					</f:facet>
+					<h:outputText value="#{advisor.revenue}">
+						<f:convertNumber currencySymbol="$" type="currency" />
+					</h:outputText>
 				</p:column>
 
 				<p:rowExpansion>
-					<p:dataList value="#{dealer.progressStatus}" var="progress"
+					<p:dataList value="#{advisor.progressStatus}" var="progress"
 						paginator="true" rows="5"
 						paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15" type="none">  

@@ -1,7 +1,6 @@
 package com.packt.pfblueprints.controller;
 
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,19 +15,16 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.ReorderEvent;
 
 import com.packt.pfblueprints.dao.ServiceCenterDAO;
-import com.packt.pfblueprints.model.ServiceCenter;
+import com.packt.pfblueprints.model.Dealer;
 
 @ManagedBean
 @ViewScoped
 public class ServiceCenterController implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private List<ServiceCenter> servicecenterInfo=new ArrayList<ServiceCenter>();
+	private List<Dealer> servicecenterInfo=new ArrayList<Dealer>();
 	
-	private ServiceCenter servicecenterobj=new ServiceCenter();
+	private Dealer dealerobj=new Dealer();
 	ServiceCenterDAO dao = new ServiceCenterDAO();
 	private int advisorsCount=0;
 	
@@ -40,12 +36,12 @@ public class ServiceCenterController implements Serializable{
 	}
 	
 	public void deleteDealer(){
-		servicecenterInfo=dao.deleteDealer(servicecenterobj);
+		servicecenterInfo=dao.deleteDealer(dealerobj);
 	}
 	
 	public void advisorsCountCalc(){
 		
-		for(ServiceCenter obj:servicecenterInfo){
+		for(Dealer obj:servicecenterInfo){
 			advisorsCount+=new Integer(obj.getNoofadvisors());
 		}
 	}
@@ -53,12 +49,12 @@ public class ServiceCenterController implements Serializable{
 	public String storeSelectedDealer(){
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
-		sessionMap.put("dealertinnumber", servicecenterobj.getDealertinnumber());
+		sessionMap.put("dealertinnumber", dealerobj.getDealertinnumber());
 		return "dealerinfo.xhtml?faces-redirect=true";
 	}
 	
 	public void updateDealerProfile(){
-		dao.updateDealerProfile(servicecenterobj);
+		dao.updateDealerProfile(dealerobj);
 	}
 	
 	
@@ -67,19 +63,19 @@ public class ServiceCenterController implements Serializable{
          FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-	public ServiceCenter getServicecenterobj() {
-		return servicecenterobj;
+	public Dealer getDealerobj() {
+		return dealerobj;
 	}
 
-	public void setServicecenterobj(ServiceCenter servicecenterobj) {
-		this.servicecenterobj = servicecenterobj;
+	public void setDealerobj(Dealer dealerobj) {
+		this.dealerobj = dealerobj;
 	}
 
-	public List<ServiceCenter> getServicecenterInfo() {
+	public List<Dealer> getServicecenterInfo() {
 		return servicecenterInfo;
 	}
 
-	public void setServicecenterInfo(List<ServiceCenter> servicecenterInfo) {
+	public void setServicecenterInfo(List<Dealer> servicecenterInfo) {
 		this.servicecenterInfo = servicecenterInfo;
 	}
 
@@ -90,6 +86,5 @@ public class ServiceCenterController implements Serializable{
 	public void setAdvisorsCount(int advisorsCount) {
 		this.advisorsCount = advisorsCount;
 	}
-	
 	
 }

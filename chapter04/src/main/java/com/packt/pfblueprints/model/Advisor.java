@@ -5,19 +5,17 @@ import java.util.List;
 
 public class Advisor implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String dealernumber;
 	private String advisorname;
 	private String advisornumber;
-	private String dor;
+	private String managementcompany;
 	private String branch;
+	private int year;
 	private String status;
+	private int revenue;
 	private List<ProgressStatus> progressStatus;
-	
 	
 	public int getId() {
 		return id;
@@ -43,11 +41,24 @@ public class Advisor implements Serializable{
 	public void setAdvisornumber(String advisornumber) {
 		this.advisornumber = advisornumber;
 	}
-	public String getDor() {
-		return dor;
+	
+	public String getManagementcompany() {
+		return managementcompany;
 	}
-	public void setDor(String dor) {
-		this.dor = dor;
+	public void setManagementcompany(String managementcompany) {
+		this.managementcompany = managementcompany;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public int getRevenue() {
+		return revenue;
+	}
+	public void setRevenue(int revenue) {
+		this.revenue = revenue;
 	}
 	public String getBranch() {
 		return branch;
@@ -62,14 +73,11 @@ public class Advisor implements Serializable{
 		this.status = status;
 	}
 	
-	
 	public List<ProgressStatus> getProgressStatus() {
 		return progressStatus;
 	}
 	public void setProgressStatus(List<ProgressStatus> progressStatus) {
 		this.progressStatus = progressStatus;
 	}
-
-
 
 }

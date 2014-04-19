@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.packt.pfblueprints.model.Advisor" table="dealer">
+		<id name="id" type="int" column="ID">
+			<generator class="increment" />
+		</id>
+
+		<property name="dealernumber">
+			<column name="dealernumber" />
+		</property>
+		<property name="advisorname">
+			<column name="advisorname" />
+		</property>
+		<property name="advisornumber">
+			<column name="advisornumber" />
+		</property>
+		<property name="managementcompany">
+			<column name="managementcompany" />
+		</property>
+		<property name="branch">
+			<column name="branch" />
+		</property>
+		<property name="year">
+			<column name="year" />
+		</property>
+		<property name="status">
+			<column name="status" />
+		</property>
+		<property name="revenue">
+			<column name="revenue" />
+		</property>
+	</class>
+</hibernate-mapping>

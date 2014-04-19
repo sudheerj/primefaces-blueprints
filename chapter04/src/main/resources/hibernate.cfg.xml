@@ -13,9 +13,9 @@
   <property name="show_sql">true</property>
   <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
   <!-- Mapping files -->
-  <mapping resource="hbm/servicecenter.hbm.xml"/>
   <mapping resource="hbm/dealer.hbm.xml"/>
   <mapping resource="hbm/advisor.hbm.xml"/>
+  <mapping resource="hbm/representative.hbm.xml"/>
   <mapping resource="hbm/accountsinfo.hbm.xml"/>
   
 </session-factory>

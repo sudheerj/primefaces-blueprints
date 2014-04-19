@@ -2,7 +2,6 @@ package com.packt.pfblueprints.dao;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -26,7 +25,6 @@ public class LoginDAO {
 
 	public LoginDAO() throws SQLException {
 		super();
-
 	}
 
 	public boolean validateUser(String userid, String password, String userrole) {
@@ -66,7 +64,6 @@ public class LoginDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
 		return false;
 	}

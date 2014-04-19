@@ -1,8 +1,6 @@
 package com.packt.pfblueprints.dao;
 
-import java.sql.SQLException;
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -10,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import com.packt.pfblueprints.model.ServiceCenter;
+import com.packt.pfblueprints.model.Dealer;
 
 public class ServiceCenterDAO {
 
@@ -27,42 +25,38 @@ public class ServiceCenterDAO {
 		return sessionfactory;
 	}
 
-    
 	public ServiceCenterDAO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public List<ServiceCenter> getAllDealers() {
+	public List<Dealer> getAllDealers() {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Query queryResult = session.createQuery("from ServiceCenter");
-		List<ServiceCenter> allDealers = queryResult.list();
+		Query queryResult = session.createQuery("from Dealer");
+		List<Dealer> allDealers = queryResult.list();
 		session.getTransaction().commit();
 		return allDealers;
-
 	}
 	
-	public void updateDealerProfile(ServiceCenter serviceCenterObj){
+	public void updateDealerProfile(Dealer serviceCenterObj){
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.update(serviceCenterObj); 
 		session.getTransaction().commit();
-		
 	}
-	public List<ServiceCenter> deleteDealer(ServiceCenter object) {
+	
+	public List<Dealer> deleteDealer(Dealer object) {
 		sessionFactory = configureSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.delete(object);
 		Query queryResult = session.createQuery("from ServiceCenter");
-		List<ServiceCenter> allDealers = queryResult.list();
+		List<Dealer> allDealers = queryResult.list();
 		session.getTransaction().commit();
 		return allDealers;
-
 	}
 
 }

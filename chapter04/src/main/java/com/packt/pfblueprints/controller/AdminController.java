@@ -53,5 +53,4 @@ public class AdminController implements Serializable {
 		return images;
 	}
 	
-	
 }
