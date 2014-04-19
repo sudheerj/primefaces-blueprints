@@ -31,13 +31,6 @@ public class LoginController implements Serializable {
 	public String validateUser() throws SQLException {
 		FacesMessage msg = null;
 		boolean isValidUser = false;
-	    if (username.equalsIgnoreCase("servicecenter") && password.equalsIgnoreCase("servicecenter")) {
-			return "/views/servicecenterinfo?faces-redirect=true";
-		}
-	    if (username.equalsIgnoreCase("investor") && password.equalsIgnoreCase("investor")) {
-			return "/views/accountsinfo?faces-redirect=true";
-		}
-
 		LoginDAO dao = new LoginDAO();
 		isValidUser = dao.validateUser(username, password,userrole);
 		
@@ -45,14 +38,19 @@ public class LoginController implements Serializable {
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		 
 		if (isValidUser) {
-			 if(userrole.equalsIgnoreCase("D")){
+			if(userrole.equalsIgnoreCase("S")){
+				return "/views/servicecenterinfo?faces-redirect=true";
+				}
+			else if(userrole.equalsIgnoreCase("D")){
 				sessionMap.put("dealertinnumber", username);
 				return "/views/dealerinfo?faces-redirect=true";
 				}
-			else {
+			else if(userrole.equalsIgnoreCase("D")){
 				sessionMap.put("advisornumber", username);
-				System.out.println("advisor");
 				return "/views/advisorinfo?faces-redirect=true";
+				}
+			else {
+				return "/views/accountsinfo?faces-redirect=true";
 				}
 			
 		} else {
