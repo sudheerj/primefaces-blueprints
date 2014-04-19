@@ -62,7 +62,7 @@
 				<p:column id="branch"  filterBy="#{advisor.branch}"  headerText="Branch" filterMatchMode="in">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="Branches"
-							onchange="PF('$dealerinfo').filter()" panelStyle="width:125px"
+							onchange="PF('$dealerinfo').filter()" panelStyle="width:150px"
 							scrollHeight="150">
 							<f:selectItems value="#{dealerController.branches}" />
 						</p:selectCheckboxMenu>
@@ -80,13 +80,13 @@
 					<h:outputText value="#{advisor.year}" />
 				</p:column>
 
-				<p:column  id="status" filterBy="#{advisor.status}"  headerText="Status" filterMatchMode="equals">
+				<p:column  id="status" filterBy="#{advisor.status}"  headerText="Status" filterMatchMode="equals" width="290">
 					<f:facet name="filter">
-						<p:selectOneButton onchange="PF('$dealerinfo').filter()">
+						<p:selectOneButton onchange="PF('$dealerinfo').filter()" >
 							<f:converter converterId="javax.faces.Boolean" />
 							<f:selectItem itemLabel="All" itemValue="" />
-							<f:selectItem itemLabel="ACTIVE" itemValue="true" />
-							<f:selectItem itemLabel="CLOSED" itemValue="false" />
+							<f:selectItem itemLabel="ACTIVE" itemValue="ACTIVE" />
+							<f:selectItem itemLabel="CLOSED" itemValue="CLOSED" />
 						</p:selectOneButton>
 					</f:facet>
 					<h:outputText value="#{advisor.status}" />

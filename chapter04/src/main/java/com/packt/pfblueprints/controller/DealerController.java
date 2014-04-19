@@ -66,14 +66,12 @@ public class DealerController implements Serializable{
 	    }
 	 
 	 private void createFilterBranches()  {
-	        branches = new String[5];
+	        branches = new String[4];
 
-	        branches[0] = "";
-	        branches[1] = "California";
-	        branches[2] = "Washington";
-	        branches[3] = "Newyork";
-	        branches[4] = "Chestor";
-	        
+	        branches[0] = "California";
+	        branches[1] = "Washington";
+	        branches[2] = "Newyork";
+	        branches[3] = "Chestor";
 	        
 	    }
 	
@@ -109,6 +107,4 @@ public class DealerController implements Serializable{
 		this.branches = branches;
 	}
 
-	
-	
 }

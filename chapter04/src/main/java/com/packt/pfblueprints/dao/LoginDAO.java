@@ -42,10 +42,10 @@ public class LoginDAO {
 				return true;
 			}
 			else if (userrole.equalsIgnoreCase("D")) {
-				query = "from Dealer where dealernumber='" + userid + "' ";
+				query = "from Advisor where dealernumber='" + userid + "' ";
 			}
 			else if (userrole.equalsIgnoreCase("A")) {
-				query = "from Advisor where advisornumber='" + userid + "' ";
+				query = "from Representative where advisornumber='" + userid + "' ";
 			}
 			else {
 				return false;
