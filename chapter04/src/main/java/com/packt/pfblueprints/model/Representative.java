@@ -1,23 +1,17 @@
 package com.packt.pfblueprints.model;
 
 import java.io.Serializable;
-import java.util.List;
 
-public class Dealer implements Serializable{
+public class Representative implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
-	private String dealernumber;
-	private String advisorname;
+	private String repnumber;
+	private String repname;
 	private String advisornumber;
 	private String dor;
 	private String branch;
 	private String status;
-	private List<ProgressStatus> progressStatus;
-	
 	
 	public int getId() {
 		return id;
@@ -25,17 +19,18 @@ public class Dealer implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDealernumber() {
-		return dealernumber;
+	
+	public String getRepnumber() {
+		return repnumber;
 	}
-	public void setDealernumber(String dealernumber) {
-		this.dealernumber = dealernumber;
+	public void setRepnumber(String repnumber) {
+		this.repnumber = repnumber;
 	}
-	public String getAdvisorname() {
-		return advisorname;
+	public String getRepname() {
+		return repname;
 	}
-	public void setAdvisorname(String advisorname) {
-		this.advisorname = advisorname;
+	public void setRepname(String repname) {
+		this.repname = repname;
 	}
 	public String getAdvisornumber() {
 		return advisornumber;
@@ -62,14 +57,5 @@ public class Dealer implements Serializable{
 		this.status = status;
 	}
 	
-	
-	public List<ProgressStatus> getProgressStatus() {
-		return progressStatus;
-	}
-	public void setProgressStatus(List<ProgressStatus> progressStatus) {
-		this.progressStatus = progressStatus;
-	}
-
-
 
 }
