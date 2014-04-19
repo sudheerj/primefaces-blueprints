@@ -2,7 +2,7 @@ package com.packt.pfblueprints.model;
 
 import java.io.Serializable;
 
-public class Dealer1 implements Serializable{
+public class Dealer implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private int id;

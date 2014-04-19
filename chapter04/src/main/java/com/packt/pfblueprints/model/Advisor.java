@@ -3,7 +3,7 @@ package com.packt.pfblueprints.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class Advisor1 implements Serializable{
+public class Advisor implements Serializable{
 
 	/**
 	 * 
