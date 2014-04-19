@@ -8,8 +8,9 @@
 		<h:form id="servicecenterform">
 
 			<p:contextMenu for="servicecenterinfo">
-				<p:menuitem value="View Advisor List" action="#{serviceCenterController.storeSelectedDealer}" ajax="false"
-					 icon="ui-icon-search" />
+				<p:menuitem value="View Advisor List"
+					action="#{serviceCenterController.storeSelectedDealer}"
+					ajax="false" icon="ui-icon-search" />
 				<p:menuitem value="Dealer Profile" update=":dealerprofileform"
 					oncomplete="PF('$dealerprofile').show()" icon="ui-icon-close" />
 				<p:menuitem value="Delete Dealer" icon="ui-icon-close"
@@ -17,18 +18,22 @@
 					actionListener="#{serviceCenterController.deleteDealer}" />
 			</p:contextMenu>
 			<p:growl id="messages" showDetail="true" />
-			<p:dataTable id="servicecenterinfo" var="servicecenter"
+			<p:dataTable id="servicecenterinfo" widgetVar="$servicecenterinfo" var="servicecenter"
 				value="#{serviceCenterController.servicecenterInfo}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" draggableColumns="true" draggableRows="true"
-				rowKey="#{servicecenter.dealertinnumber}" paginatorPosition="bottom" sortMode="multiple"
+				rowsPerPageTemplate="5,10,15" draggableColumns="true"
+				draggableRows="true" rowKey="#{servicecenter.dealertinnumber}"
+				paginatorPosition="bottom" sortMode="multiple"
 				selection="#{serviceCenterController.servicecenterobj}"
 				selectionMode="single">
 				<f:facet name="header">
             Service Center Information
         </f:facet>
-				 <p:ajax event="rowReorder" listener="#{serviceCenterController.onRowReorder}" update=":servicecenterform:messages" />
+
+				<p:ajax event="rowReorder"
+					listener="#{serviceCenterController.onRowReorder}"
+					update=":servicecenterform:messages" />
 				<p:column sortBy="dealertinnumber" filterBy="dealertinnumber"
 					id="dealertinnumber">
 					<f:facet name="header">
@@ -37,7 +42,10 @@
 					<h:outputText value="#{servicecenter.dealertinnumber}" />
 				</p:column>
 
-				<p:column sortBy="dealername" filterBy="dealername" id="dealername">
+				<p:column
+					sortBy="#{servicecenter.dealerfirstname} #{servicecenter.dealerlastname}"
+					filterBy="#{servicecenter.dealerfirstname} #{servicecenter.dealerlastname}"
+					id="dealername">
 					<f:facet name="header">
 						<h:outputText value="Dealer Name" />
 					</f:facet>
@@ -87,7 +95,7 @@
 						<h:outputText value="#{serviceCenterController.advisorsCount}" />
 					</f:facet>
 				</p:column>
-				
+
 			</p:dataTable>
 
 

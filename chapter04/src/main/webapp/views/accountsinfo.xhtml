@@ -7,102 +7,114 @@
 	<ui:define name="content">
 		<h:form id="accountsform">
 
-			 <p:contextMenu for="accountsummary">
-				<p:menuitem value="View Accounts Details"
-					icon="ui-icon-search" oncomplete="PF('$accountdetails').show()" update=":accountdetails" />
+			<p:contextMenu for="accountsummary">
+				<p:menuitem value="View Accounts Details" icon="ui-icon-search"
+					oncomplete="PF('$accountdetails').show()" update=":accountdetails" />
 			</p:contextMenu>
 
 			<p:dataTable id="accountsummary" var="account"
-				value="#{accountSummaryController.lazyAccSummaryDataModel}" paginator="true"
-				rows="5" paginatorPosition="bottom" lazy="true"
+				value="#{accountSummaryController.lazyAccSummaryDataModel}"
+				paginator="true" rows="5" paginatorPosition="bottom" lazy="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}" filterEvent="enter" 
-                 selection="#{accountSummaryController.accountobj}" selectionMode="single">
+				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}"
+				filterEvent="enter"
+				selection="#{accountSummaryController.accountobj}"
+				selectionMode="single" dir="#{accountSummaryController.directionSupport}">
 				<f:facet name="header">
-                  Account Summary
-                </f:facet>
+                 <p:outputLabel for="direction" value="Do you want RTL Support?"/>
+                 <p:selectBooleanButton  id="direction" value="#{accountSummaryController.direction}" 
+						onLabel="Yes" offLabel="No" onIcon="ui-icon-check"
+						offIcon="ui-icon-close" >
+						<p:ajax update="accountsummary" listener="#{accountSummaryController.addRTLsupport}" />
+					</p:selectBooleanButton>
+				</f:facet>
+				<p:columnGroup type="header">
+				    <p:row>
+						<p:column colspan="6" headerText="Account Summary" />
+				    </p:row>
+					<p:row>
+						<p:column rowspan="2" headerText="InvestorName" />
+						<p:column colspan="3" headerText="Account Details" />
+						<p:column colspan="2" headerText="Market Value" />
+					</p:row>
 
-				<p:column sortBy="investorName" filterBy="investorName" filterMatchMode="exact"
-					id="investorName">
-					<f:facet name="header">
-						<h:outputText value="Investor Name" />
-					</f:facet>
+					<p:row>
+						<p:column headerText="Account Number" />
+						<p:column headerText="Account Type" />
+						<p:column headerText="Accountholder Name" />
+						<p:column headerText="Balance(US)" />
+						<p:column headerText="Balance(UK)" />
+					</p:row>
+				</p:columnGroup>
+				<p:ajax event="rowSelect" oncomplete="PF('$accountdetails').show()"
+					update=":accountdetails" />
+				<p:column sortBy="investorName" filterBy="investorName"
+					filterMatchMode="exact" id="investorName">
 					<h:outputText value="#{account.investorName}" />
 				</p:column>
-				
-				<p:column sortBy="accountNumber" filterBy="accountNumber" filterMatchMode="exact"
-					id="accountNumber">
-					<f:facet name="header">
-						<h:outputText value="accountNumber" />
-					</f:facet>
+
+				<p:column sortBy="accountNumber" filterBy="accountNumber"
+					filterMatchMode="exact" id="accountNumber">
 					<h:outputText value="#{account.accountNumber}" />
 				</p:column>
 
-				<p:column sortBy="accountType" 
-					id="accountType">
-					<f:facet name="header">
-						<h:outputText value="accountType" />
-					</f:facet>
+				<p:column sortBy="accountType" id="accountType">
 					<h:outputText value="#{account.accountType}" />
 				</p:column>
 
 				<p:column sortBy="registeredAccholderName"
-					 id="registeredAccholderName">
-					<f:facet name="header">
-						<h:outputText value="Accountholder Name" />
-					</f:facet>
+					id="registeredAccholderName">
 					<h:outputText value="#{account.registeredAccholderName}" />
 				</p:column>
 
 				<p:column sortBy="balanceUS" id="balanceUS">
-					<f:facet name="header">
-						<h:outputText value="balanceUS" />
-					</f:facet>
 					<h:outputText value="#{account.balanceUS}" />
 				</p:column>
 
 				<p:column sortBy="balanceUK" id="balanceUK">
-					<f:facet name="header">
-						<h:outputText value="balanceUK" />
-					</f:facet>
 					<h:outputText value="#{account.balanceUK}" />
 				</p:column>
 
 			</p:dataTable>
-
-
 		</h:form>
 		<p:dialog id="accountdetails" header="Account Details"
 			widgetVar="$accountdetails" modal="true" resizable="false">
 
-				<h:panelGrid columns="2" cellpadding="5" id="details">
-					<h:outputLabel for="investorNameId" value="Investorname:" />
-					<h:outputText value="#{accountSummaryController.accountobj.investorName}"
-						id="investorNameId" />
-						<h:outputLabel for="accountnumberId" value="Account Number:" />
-					<h:outputText value="#{accountSummaryController.accountobj.accountNumber}"
-						id="accountnumberId" />
-						<h:outputLabel for="accounttypeId" value="Account Type:" />
-					<h:outputText value="#{accountSummaryController.accountobj.accountType}"
-						id="accounttypeId" />
-						<h:outputLabel for="statusId" value="Status:" />
-					<h:outputText value="#{accountSummaryController.accountobj.status}"
-						id="statusId" />
-						
-						<h:outputLabel for="registrationdateId" value="Registration Date:" />
-					<h:outputText value="#{accountSummaryController.accountobj.registrationDate}"
-						id="registrationdateId" />
-						<h:outputLabel for="opendateId" value="Open Date:" />
-					<h:outputText value="#{accountSummaryController.accountobj.openDate}"
-						id="opendateId" />
-						<h:outputLabel for="closedateId" value="Close Date:" />
-					<h:outputText value="#{accountSummaryController.accountobj.closeDate}"
-						id="closedateId" />
-						<h:outputLabel for="jointaccountId" value="Joint Account:" />
-					<h:outputText value="#{accountSummaryController.accountobj.jointAccount}"
-						id="jointaccountId" />
-					
-				</h:panelGrid>
+			<h:panelGrid columns="2" cellpadding="5" id="details">
+				<h:outputLabel for="investorNameId" value="Investorname:" />
+				<h:outputText
+					value="#{accountSummaryController.accountobj.investorName}"
+					id="investorNameId" />
+				<h:outputLabel for="accountnumberId" value="Account Number:" />
+				<h:outputText
+					value="#{accountSummaryController.accountobj.accountNumber}"
+					id="accountnumberId" />
+				<h:outputLabel for="accounttypeId" value="Account Type:" />
+				<h:outputText
+					value="#{accountSummaryController.accountobj.accountType}"
+					id="accounttypeId" />
+				<h:outputLabel for="statusId" value="Status:" />
+				<h:outputText value="#{accountSummaryController.accountobj.status}"
+					id="statusId" />
+
+				<h:outputLabel for="registrationdateId" value="Registration Date:" />
+				<h:outputText
+					value="#{accountSummaryController.accountobj.registrationDate}"
+					id="registrationdateId" />
+				<h:outputLabel for="opendateId" value="Open Date:" />
+				<h:outputText
+					value="#{accountSummaryController.accountobj.openDate}"
+					id="opendateId" />
+				<h:outputLabel for="closedateId" value="Close Date:" />
+				<h:outputText
+					value="#{accountSummaryController.accountobj.closeDate}"
+					id="closedateId" />
+				<h:outputLabel for="jointaccountId" value="Joint Account:" />
+				<h:outputText
+					value="#{accountSummaryController.accountobj.jointAccount}"
+					id="jointaccountId" />
+
+			</h:panelGrid>
 		</p:dialog>
 	</ui:define>
 </ui:composition>
