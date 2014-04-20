@@ -53,7 +53,7 @@ public class ServiceCenterDAO {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.delete(object);
-		Query queryResult = session.createQuery("from ServiceCenter");
+		Query queryResult = session.createQuery("from Dealer");
 		List<Dealer> allDealers = queryResult.list();
 		session.getTransaction().commit();
 		return allDealers;

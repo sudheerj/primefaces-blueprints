@@ -70,17 +70,5 @@ public class DealerDAO {
 		 progressStatus.add(new ProgressStatus("2006",((int)(Math.random()*10))+""));
 		 return progressStatus;
 	}
-	
-	public List<Advisor> deleteAdvisor(Advisor object) {
-		sessionFactory = configureSessionFactory();
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.delete(object);
-		Query queryResult = session.createQuery("from Advisor");
-		List<Advisor> allDealers = queryResult.list();
-		session.getTransaction().commit();
-		return allDealers;
-
-	}
 
 }

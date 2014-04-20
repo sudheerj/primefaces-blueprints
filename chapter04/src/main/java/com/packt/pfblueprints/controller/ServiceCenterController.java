@@ -23,7 +23,6 @@ public class ServiceCenterController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private List<Dealer> servicecenterInfo=new ArrayList<Dealer>();
-	
 	private Dealer dealerobj=new Dealer();
 	ServiceCenterDAO dao = new ServiceCenterDAO();
 	private int advisorsCount=0;

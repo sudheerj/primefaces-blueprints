@@ -19,8 +19,7 @@
 			</p:contextMenu>
 			<p:growl id="messages" showDetail="true" />
 			<p:dataTable id="servicecenterinfo" widgetVar="$servicecenterinfo"
-				var="dealer"
-				value="#{serviceCenterController.servicecenterInfo}"
+				var="dealer" value="#{serviceCenterController.servicecenterInfo}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15" draggableColumns="true"
@@ -35,8 +34,9 @@
 				<p:ajax event="rowReorder"
 					listener="#{serviceCenterController.onRowReorder}"
 					update=":servicecenterform:messages" />
-				<p:column sortBy="#{dealer.dealertinnumber}" filterBy="#{dealer.dealertinnumber}"
-					id="dealertinnumber">
+
+				<p:column sortBy="#{dealer.dealertinnumber}"
+					filterBy="#{dealer.dealertinnumber}" id="dealertinnumber">
 					<f:facet name="header">
 						<h:outputText value="Dealer TIN/CST Number" />
 					</f:facet>
@@ -55,7 +55,8 @@
 				</p:column>
 
 
-				<p:column sortBy="#{dealer.branchname}" filterBy="#{dealer.branchname}" id="branchname">
+				<p:column sortBy="#{dealer.branchname}"
+					filterBy="#{dealer.branchname}" id="branchname">
 					<f:facet name="header">
 						<h:outputText value="Dealer Branch name" />
 					</f:facet>
@@ -99,7 +100,6 @@
 
 			</p:dataTable>
 
-
 		</h:form>
 		<p:dialog id="dealerprofile" header="Dealer Profile"
 			widgetVar="$dealerprofile" modal="true" resizable="false">
@@ -124,30 +124,26 @@
 					<p:watermark for="lastname" value="Enter lastname" />
 
 					<h:outputLabel for="address1" value="Address1:" />
-					<p:inputText
-						value="#{serviceCenterController.dealerobj.address1}"
+					<p:inputText value="#{serviceCenterController.dealerobj.address1}"
 						id="address1" required="true"
 						requiredMessage="Address cannot be empty" label="Address">
 					</p:inputText>
 					<p:watermark for="address1" value="Enter address" />
 
 					<h:outputLabel for="address2" value="Address2:" />
-					<p:inputText
-						value="#{serviceCenterController.dealerobj.address2}"
+					<p:inputText value="#{serviceCenterController.dealerobj.address2}"
 						id="address2" label="Address">
 					</p:inputText>
 					<p:watermark for="address2" value="Enter address" />
 
 					<h:outputLabel for="country" value="Country:" />
-					<p:password
-						value="#{serviceCenterController.dealerobj.country}"
+					<p:password value="#{serviceCenterController.dealerobj.country}"
 						id="country" label="country" />
 					<p:watermark for="country" value="Enter Country" />
 
 					<h:outputLabel for="city" value="City:" />
-					<p:password
-						value="#{serviceCenterController.dealerobj.city}" id="city"
-						label="City" />
+					<p:password value="#{serviceCenterController.dealerobj.city}"
+						id="city" label="City" />
 					<p:watermark for="city" value="Enter City" />
 
 					<h:outputLabel for="contactnumber" value="Contact Number:" />
@@ -157,8 +153,7 @@
 					<p:watermark for="contactnumber" value="Enter Contact number" />
 
 					<h:outputLabel for="postalcode" value="Postal Code:" />
-					<p:password
-						value="#{serviceCenterController.dealerobj.postalcode}"
+					<p:password value="#{serviceCenterController.dealerobj.postalcode}"
 						id="postalcode" label="Postal Code" />
 					<p:watermark for="postalcode" value="Enter Postal Code" />
 

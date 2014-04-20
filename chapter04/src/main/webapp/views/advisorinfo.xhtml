@@ -9,19 +9,20 @@
 
 			<p:contextMenu for="advisorinfo">
 				<p:menuitem value="View AccountSummary"
-					action="advisorinfo.xhtml?faces-redirect=true"
+					action="accountsinfo.xhtml?faces-redirect=true"
 					icon="ui-icon-search" />
 			</p:contextMenu>
 
-			<p:dataGrid id="advisorinfo" var="representative" columns="3" rows="9"
-				value="#{advisorController.advisorInfo}" paginator="true"
+			<p:dataGrid id="advisorinfo" var="representative" columns="3"
+				rows="9" value="#{advisorController.advisorInfo}" paginator="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="4,6,9">
 				<f:facet name="header">
            		 Advisor Information-List of Representatives
       		    </f:facet>
 
-				<p:panel header="#{representative.repname}" style="text-align:center">
+				<p:panel header="#{representative.repname}"
+					style="text-align:center">
 					<h:panelGrid columns="1" style="width:100%">
 						<p:graphicImage
 							value="/resources/images/reps/#{representative.repname}.png" />
@@ -32,7 +33,8 @@
 						<p:commandLink oncomplete="PF('$repInfo').show()"
 							title="View Detail" update=":repDetails">
 							<f:setPropertyActionListener
-								target="#{advisorController.representativeobj}" value="#{representative}" />
+								target="#{advisorController.repobj}"
+								value="#{representative}" />
 							<h:outputText styleClass="ui-icon ui-icon-search"
 								style="margin:0 auto;" />
 						</p:commandLink>
@@ -49,17 +51,17 @@
 			<p:outputPanel id="repDetails" style="text-align:center;">
 				<h:panelGrid columns="1" cellpadding="5">
 					<h:outputText
-						value="Representative Name:#{advisorController.advisorobj.repname}" />
+						value="Representative Name:#{advisorController.repobj.repname}" />
 					<h:outputText
-						value="Representative Number:#{advisorController.advisorobj.repnumber}" />
+						value="Representative Number:#{advisorController.repobj.repnumber}" />
 					<p:graphicImage
-						value="/resources/images/reps/#{advisorController.advisorobj.repname}.png" />
+						value="/resources/images/reps/#{advisorController.repobj.repname}.png" />
 					<h:outputText
-						value="Advisor Number:#{advisorController.advisorobj.advisornumber}" />
+						value="Advisor Number:#{advisorController.repobj.advisornumber}" />
 					<h:outputText
-						value="Branch: #{advisorController.advisorobj.branch}" />
+						value="Branch: #{advisorController.repobj.branch}" />
 					<h:outputText
-						value="Status: #{advisorController.advisorobj.status}" />
+						value="Status: #{advisorController.repobj.status}" />
 				</h:panelGrid>
 			</p:outputPanel>
 		</p:dialog>

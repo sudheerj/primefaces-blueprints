@@ -19,6 +19,7 @@
 				rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
 				rowKey="#{advisor.advisornumber}"
 				selection="#{dealerController.advisorobj}" selectionMode="single">
+				
 				<f:facet name="header">
            		 Dealer Information-List of Advisors
         		</f:facet>
@@ -107,15 +108,15 @@
 						paginator="true" rows="5"
 						paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15" type="none">  
+						<f:facet name="header">
+						     Progress Status
+						</f:facet>
    							 Year:#{progress.year},Profit percentage: #{progress.percentage}%
 						<br />
 					</p:dataList>
-
-
 				</p:rowExpansion>
 
 			</p:dataTable>
-
 
 		</h:form>
 

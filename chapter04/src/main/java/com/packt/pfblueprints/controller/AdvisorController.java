@@ -16,7 +16,6 @@ public class AdvisorController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private List<Representative>  advisorInfo=new ArrayList<Representative>();
-	
 	Representative repobj=new Representative();
 	AdvisorDAO dao = new AdvisorDAO();
 	
