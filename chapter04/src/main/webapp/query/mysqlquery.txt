@@ -38,65 +38,65 @@ CREATE TABLE  `blueprintsdb`.`servicecenter` (
   `managementcompany` VARCHAR(10),
   `branch` VARCHAR(15),
   `year` INT(4),
-  `status` VARCHAR(10),
+  `status` BOOLEAN,
   `revenue` INT(10),
   PRIMARY KEY (`id`))ENGINE=InnoDB DEFAULT CHARSET=utf8;
   
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Edmond','1111','M&M','California','2002','ACTIVE','21212');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Ricky','2222','M&M','Washington','2004','CLOSED','32323');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Mark','3333','JK','Newyork','2006','CLOSED','44343');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Columnbus','4444','JK','Newyork','2008','ACTIVE','66565');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Steyn','5555','M&M','California','2002','ACTIVE','74645');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Micheal','6666','JK','Washington','2004','CLOSED','85644');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Bond','7777','LPL','California','2006','CLOSED','35374');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Sunny','8888','IMI','Washington','2008','ACTIVE','86434');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Bond','9999','IMI','Chestor','2006','CLOSED','56565');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Sunny','10000','LPL','Newyork','2007','ACTIVE','74545');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Edmond','1111','M&M','California','2002','1','21212');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Ricky','2222','M&M','Washington','2004','0','32323');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Mark','3333','JK','Newyork','2006','0','44343');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Columnbus','4444','JK','Newyork','2008','1','66565');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Steyn','5555','M&M','California','2002','1','74645');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Micheal','6666','JK','Washington','2004','0','85644');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Bond','7777','LPL','California','2006','0','35374');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Sunny','8888','IMI','Washington','2008','1','86434');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Bond','9999','IMI','Chestor','2006','0','56565');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('111','Sunny','10000','LPL','Newyork','2007','1','74545');
   
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('222','Edmond','1111','LPL','Washington','2002','ACTIVE','22222');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('222','Ricky','2222','M&M','Washington','2004','CLOSED','34343');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('222','Mark','3333','JK','Washington','2006','CLOSED','54343');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('222','Columnbus','4444','IMI','Washington','2008','ACTIVE','64645');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('222','Edmond','1111','LPL','Washington','2002','1','22222');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('222','Ricky','2222','M&M','Washington','2004','0','34343');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('222','Mark','3333','JK','Washington','2006','0','54343');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('222','Columnbus','4444','IMI','Washington','2008','1','64645');
   
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('333','Edmond','1111','JK','Newyork','2002','ACTIVE','54545');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('333','Ricky','2222','IMI','Newyork','2004','CLOSED','34343');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('333','Mark','3333','LPL','Newyork','2006','CLOSED','65656');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('333','Columnbus','4444','IMI','Newyork','2008','ACTIVE','67675');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('333','Edmond','1111','JK','Newyork','2002','1','54545');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('333','Ricky','2222','IMI','Newyork','2004','0','34343');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('333','Mark','3333','LPL','Newyork','2006','0','65656');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('333','Columnbus','4444','IMI','Newyork','2008','1','67675');
   
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('444','Edmond','1111','JK','Chestor','2002','ACTIVE','55544');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('444','Ricky','2222','IMI','Chestor','2004','CLOSED','33333');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('444','Mark','3333','M&M','Chestor','2006','CLOSED','46454');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('444','Columnbus','4444','LPL','Chestor','2008','ACTIVE','77777');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('444','Edmond','1111','JK','Chestor','2002','1','55544');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('444','Ricky','2222','IMI','Chestor','2004','0','33333');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('444','Mark','3333','M&M','Chestor','2006','0','46454');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('444','Columnbus','4444','LPL','Chestor','2008','1','77777');
   
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('555','Edmond','1111','M&M','Washington','2002','ACTIVE','55555');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('555','Ricky','2222','JK','Washington','2004','CLOSED','76756');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('555','Mark','3333','LPL','Washington','2008','CLOSED','86766');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('555','Columnbus','4444','IMI','Washington','2009','ACTIVE','96685');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('555','Edmond','1111','M&M','Washington','2002','1','55555');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('555','Ricky','2222','JK','Washington','2004','0','76756');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('555','Mark','3333','LPL','Washington','2008','0','86766');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('555','Columnbus','4444','IMI','Washington','2009','1','96685');
   
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('666','Edmond','1111','LPL','Chestor','2001','ACTIVE','88888');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('666','Ricky','2222','JK','Chestor','2002','CLOSED','99999');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('666','Mark','3333','IMI','Chestor','2003','CLOSED','65644');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('666','Columnbus','4444','M&M','Chestor','2006','ACTIVE','85544');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('666','Edmond','1111','LPL','Chestor','2001','1','88888');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('666','Ricky','2222','JK','Chestor','2002','0','99999');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('666','Mark','3333','IMI','Chestor','2003','0','65644');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('666','Columnbus','4444','M&M','Chestor','2006','1','85544');
   
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('777','Edmond','1111','LPL','Newyork','2003','ACTIVE','33333');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('777','Ricky','2222','IMI','Newyork','2006','CLOSED','63334');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('777','Mark','3333','JK','Newyork','2005','CLOSED','35343');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('777','Columnbus','4444','M&M','Newyork','2008','ACTIVE','83443');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('777','Edmond','1111','LPL','Newyork','2003','1','33333');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('777','Ricky','2222','IMI','Newyork','2006','0','63334');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('777','Mark','3333','JK','Newyork','2005','0','35343');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('777','Columnbus','4444','M&M','Newyork','2008','1','83443');
   
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('888','Edmond','1111','JK','California','2001','ACTIVE','34434');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('888','Ricky','2222','M&M','California','2004','CLOSED','76767');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('888','Mark','3333','IMI','California','2006','CLOSED','55555');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('888','Columnbus','4444','LPL','California','2007','ACTIVE','54645');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('888','Edmond','1111','JK','California','2001','1','34434');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('888','Ricky','2222','M&M','California','2004','0','76767');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('888','Mark','3333','IMI','California','2006','0','55555');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('888','Columnbus','4444','LPL','California','2007','1','54645');
   
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('999','Edmond','1111','LPL','Washington','2001','ACTIVE','44444');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('999','Ricky','2222','IMI','Washington','2004','CLOSED','33534');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('999','Mark','3333','JK','Washington','2006','CLOSED','88778');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('999','Columnbus','4444','M&M','Washington','2007','ACTIVE','23232');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('999','Edmond','1111','LPL','Washington','2001','1','44444');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('999','Ricky','2222','IMI','Washington','2004','0','33534');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('999','Mark','3333','JK','Washington','2006','0','88778');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('999','Columnbus','4444','M&M','Washington','2007','1','23232');
   
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('1000','Edmond','1111','JK','Newyork','2002','ACTIVE','14232');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('1000','Ricky','2222','LPL','Newyork','2004','CLOSED','78687');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('1000','Mark','3333','M&M','Newyork','2006','CLOSED','35354');
-  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('1000','Columnbus','4444','IMI','Newyork','2008','ACTIVE','76767');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('1000','Edmond','1111','JK','Newyork','2002','1','14232');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('1000','Ricky','2222','LPL','Newyork','2004','0','78687');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('1000','Mark','3333','M&M','Newyork','2006','0','35354');
+  INSERT INTO blueprintsdb.dealer(dealernumber,advisorname,advisornumber,managementcompany,branch,year,status,revenue)VALUES('1000','Columnbus','4444','IMI','Newyork','2008','1','76767');
  
    DROP TABLE IF EXISTS `blueprintsdb`.`advisor`;
    CREATE TABLE  `blueprintsdb`.`advisor` (

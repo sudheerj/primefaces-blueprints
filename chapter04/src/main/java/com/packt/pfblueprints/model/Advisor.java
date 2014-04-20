@@ -13,7 +13,7 @@ public class Advisor implements Serializable{
 	private String managementcompany;
 	private String branch;
 	private int year;
-	private String status;
+	private boolean status;
 	private int revenue;
 	private List<ProgressStatus> progressStatus;
 	
@@ -66,13 +66,13 @@ public class Advisor implements Serializable{
 	public void setBranch(String branch) {
 		this.branch = branch;
 	}
-	public String getStatus() {
+	
+	public boolean isStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
 	public List<ProgressStatus> getProgressStatus() {
 		return progressStatus;
 	}

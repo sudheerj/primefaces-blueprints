@@ -85,11 +85,11 @@
 						<p:selectOneButton onchange="PF('$dealerinfo').filter()" >
 							<f:converter converterId="javax.faces.Boolean" />
 							<f:selectItem itemLabel="All" itemValue="" />
-							<f:selectItem itemLabel="ACTIVE" itemValue="ACTIVE" />
-							<f:selectItem itemLabel="CLOSED" itemValue="CLOSED" />
+							<f:selectItem itemLabel="ACTIVE" itemValue="true" />
+							<f:selectItem itemLabel="CLOSED" itemValue="false" />
 						</p:selectOneButton>
 					</f:facet>
-					<h:outputText value="#{advisor.status}" />
+					<h:outputText value="#{advisor.status? 'ACTIVE':'CLOSED'}" />
 				</p:column>
 
 				<p:column  id="revenue" sortBy="#{advisor.revenue}" filterBy="#{advisor.revenue}"
