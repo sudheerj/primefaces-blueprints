@@ -78,16 +78,5 @@ public class AccountsDAO {
 		return allAccounts;
 
 	}
-	public List<Dealer> deleteAdvisor(Dealer object) {
-		sessionFactory = configureSessionFactory();
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.delete(object);
-		Query queryResult = session.createQuery("from AccountSummary");
-		List<Dealer> allDealers = queryResult.list();
-		session.getTransaction().commit();
-		return allDealers;
-
-	}
 
 }

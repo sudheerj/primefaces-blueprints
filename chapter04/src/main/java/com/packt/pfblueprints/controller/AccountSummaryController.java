@@ -19,7 +19,6 @@ public class AccountSummaryController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private List<AccountSummary> accountsInfo = new ArrayList<AccountSummary>();
-
 	private AccountSummary accountobj = new AccountSummary();
 	AccountsDAO dao = new AccountsDAO();
 	private LazyDataModel<AccountSummary> lazyAccSummaryDataModel;
@@ -29,7 +28,7 @@ public class AccountSummaryController implements Serializable {
 	@PostConstruct
 	public void init() {
 
-		lazyAccSummaryDataModel = new LazyAccountSummaryDataModel() {
+		lazyAccSummaryDataModel = new LazyDataModel<AccountSummary>() {
 			@Override
 			public List<AccountSummary> load(int first, int pageSize,
 					String sortField, SortOrder sortOrder,
