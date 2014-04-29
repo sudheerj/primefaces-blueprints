@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/masterTemplate.xhtml">
+	<ui:define name="content">
+		<h:form id="loginform">
+			<p:panel id="panel" style="width:30%;height:30%;margin-left:35%">
+				<p:messages id="login"></p:messages>
+				<h:panelGrid columns="3" cellpadding="5">
+
+					<h:outputLabel for="username" value="Username:" />
+					<p:inputText value="#{loginController.username}" id="username"
+						required="true" requiredMessage="Username cannot be empty"
+						label="username">
+					</p:inputText>
+					<p:watermark for="username" value="Enter username" />
+
+					<h:outputLabel for="password" value="Password:" />
+					<p:password value="#{loginController.password}" id="password"
+						required="true" requiredMessage="Password cannot be empty"
+						password="true" />
+					<p:watermark for="password" value="Enter password" />
+
+					<h:outputText></h:outputText>
+					<p:commandButton id="loginButton" value="Login" update="login"
+						style="float:right" action="#{loginController.validateUser}"
+						ajax="false" />
+					<p:commandButton value="Reset" update="panel" process="@this">
+						<p:resetInput target="panel" />
+					</p:commandButton>
+					<h:outputText />
+
+				</h:panelGrid>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -20,7 +20,6 @@ public class LoginController implements Serializable {
 
 	private String username;
 	private String password;
-	private String newpassword;
 
 	public LoginController() {
 		super();
@@ -29,17 +28,11 @@ public class LoginController implements Serializable {
 	public String validateUser() throws SQLException {
 		FacesMessage msg = null;
 		boolean isValidUser = false;
-		if (username.equalsIgnoreCase("admin")
-				&& password.equalsIgnoreCase("admin")) {
-			return "/views/admin?faces-redirect=true";
+		if (username.equalsIgnoreCase("healthcare")
+				&& password.equalsIgnoreCase("healthcare")) {
+			return "/views/healthkart?faces-redirect=true";
 		}
-
-		LoginDAO dao = new LoginDAO();
-		isValidUser = dao.validateUser(username, password);
-
-		if (isValidUser) {
-			return "/views/jobposts?faces-redirect=true";
-		} else {
+		else {
 			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
 					"Invalid credentials");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -48,7 +41,7 @@ public class LoginController implements Serializable {
 
 	}
 
-	public void changepassword() throws SQLException {
+	/*public void changepassword() throws SQLException {
 		LoginDAO dao = new LoginDAO();
 		boolean confirm = false;
 		confirm = dao.changepassword(username, password, newpassword);
@@ -62,7 +55,7 @@ public class LoginController implements Serializable {
 					"Please try with valid data");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 		}
-	}
+	}*/
 
 	public String getUsername() {
 		return username;
@@ -78,14 +71,6 @@ public class LoginController implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getNewpassword() {
-		return newpassword;
-	}
-
-	public void setNewpassword(String newpassword) {
-		this.newpassword = newpassword;
 	}
 
 }

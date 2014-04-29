@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<p:panel>
+	<div style="height: 130px">
+		<h:form id="headerForm">
+			<h:panelGrid columns="5">
+				<p:graphicImage value="/resources/images/logo/logo.png" width="250"
+					height="95" />
+				<p:spacer width="120"></p:spacer>
+				<p:contentFlow value="#{adminController.images}" var="image"
+					style="margin-top:-15px;width:600px;height:150px">
+					<p:graphicImage value="/resources/images/gallery/#{image}"
+						styleClass="content" />
+					<div class="caption">#{image}</div>
+				</p:contentFlow>
+				<p:spacer width="120"></p:spacer>
+				<p:outputPanel style="margin-top:-80px;margin-left:100px"
+					rendered="#{view.viewId != '/views/login.xhtml'}">
+					<!-- <h:outputText value="Default Switcher:" />
+					<p:themeSwitcher style="width:165px" id="defaultSwitcher">
+						<f:selectItem itemLabel="Choose Theme" itemValue="" />
+						<f:selectItems value="#{themeSwitcherBean.themes}" />
+					</p:themeSwitcher> -->
+					<h:commandLink action="/views/login.xhtml?faces-redirect=true">
+						<p:graphicImage value="/resources/images/logout.png" />
+					</h:commandLink>
+				</p:outputPanel>
+			</h:panelGrid>
+
+		</h:form>
+	</div>
+</p:panel>
+
+</html>

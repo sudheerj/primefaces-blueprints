@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<p:panel>
+	<div style="height: 100px">
+		<h:form id="footerForm">
+<div style="margin-left: 40%;">
+			<p:commandLink value="About Us"
+				onclick="PF('$aboutusDialog').show()" styleClass="links"></p:commandLink>
+			<p:spacer width="20" />
+			<p:commandLink value="Contact Us"
+				oncomplete="PF('$contactDialog').show()" styleClass="links"></p:commandLink>
+			<p:spacer height="40" />
+			<p:commandLink value="Disclaimer"
+				oncomplete="PF('$disclaimerDialog').show()" styleClass="links"></p:commandLink>
+			<p:spacer width="20" />
+			
+		</div>
+		<p:separator style="margin-left:30%;margin-right:30%"></p:separator>
+		<div style="margin-left: 40%">@CopyRight 2014 All rights
+			reserved.</div>
+
+		<p:dialog id="aboutusDialog" header="About us"
+			widgetVar="$aboutusDialog" width="400" modal="true" dynamic="true">
+			<h:outputText value="#{adminController.aboutus}" />
+		</p:dialog>
+		
+		<p:dialog id="contactDialog" header="Contact us" widgetVar="$contactDialog"
+			width="400" modal="true" dynamic="true">
+			<h:outputText value="#{adminController.contactus}" />
+		</p:dialog>
+		
+		<p:dialog id="disclaimerDialog" header="Disclaimer"
+			widgetVar="$disclaimerDialog" width="400" modal="true" dynamic="true">
+			<h:outputText value="#{adminController.disclaimer}" />
+		</p:dialog>
+		
+		</h:form>
+	</div>
+</p:panel>
+</html>

@@ -41,7 +41,7 @@
                 <version>${jetty.version}</version>
                 <configuration>
                     <webAppConfig>
-                        <contextPath>/Chapter01</contextPath>
+                        <contextPath>/Chapter10</contextPath>
                     </webAppConfig>
                     <webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
                     <scanIntervalSeconds>1</scanIntervalSeconds>
