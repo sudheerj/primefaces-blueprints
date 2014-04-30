@@ -6,35 +6,174 @@
 	template="/templates/masterTemplate.xhtml">
 	<ui:define name="content">
 		<h:form id="loginform">
-			<p:panel style="width:30%;height:30%;margin-left:35%">
-				<p:messages id="login"></p:messages>
-				<h:panelGrid columns="3" cellpadding="5">
+			<p:megaMenu>
+				<p:submenu label="TV" icon="ui-icon-check">
+					<p:column>
+						<p:submenu label="TV.1">
+							<p:menuitem value="TV.1.1" url="#" />
+							<p:menuitem value="TV.1.2" url="#" />
+						</p:submenu>
+						<p:submenu label="TV.2">
+							<p:menuitem value="TV.2.1" url="#" />
+							<p:menuitem value="TV.2.2" url="#" />
+							<p:menuitem value="TV.2.3" url="#" />
+						</p:submenu>
+						<p:submenu label="TV.3">
+							<p:menuitem value="TV.3.1" url="#" />
+							<p:menuitem value="TV.3.2" url="#" />
+						</p:submenu>
+					</p:column>
 
-					<h:outputLabel for="username" value="Username:" />
-					<p:inputText value="#{loginController.username}" id="username"
-						required="true" requiredMessage="Username cannot be empty"
-						label="username">
-					</p:inputText>
-					<p:watermark for="username" value="Enter username" />
+					<p:column>
+						<p:submenu label="TV.4">
+							<p:menuitem value="TV.4.1" url="#" />
+							<p:menuitem value="TV.4.2" url="#" />
+						</p:submenu>
+						<p:submenu label="TV.5">
+							<p:menuitem value="TV.5.1" url="#" />
+							<p:menuitem value="TV.5.2" url="#" />
+							<p:menuitem value="TV.5.3" url="#" />
+						</p:submenu>
+					</p:column>
 
-					<h:outputLabel for="password" value="Password:" />
-					<p:password value="#{loginController.password}" id="password"
-						required="true" requiredMessage="Password cannot be empty"
-						password="true" />
-					<p:watermark for="password" value="Enter password" />
+					<p:column>
+						<strong>Sopranos</strong>
+						<p:graphicImage value="/images/sopranos/sopranos1.jpg" width="200" />
+					</p:column>
+				</p:submenu>
+ 
+        <p:submenu label="Sports" icon="ui-icon-document">
+ 
+            <p:column>
+                <p:submenu label="Sports.1">
+                    <p:menuitem value="Sports.1.1" url="#" />
+                    <p:menuitem value="Sports.1.2" url="#" />
+                </p:submenu>
+                <p:submenu label="Sports.2">
+                    <p:menuitem value="Sports.2.1" url="#" />
+                    <p:menuitem value="Sports.2.2" url="#" />
+                    <p:menuitem value="Sports.2.3" url="#" />
+                </p:submenu>
+                <p:submenu label="Sports.3">
+                    <p:menuitem value="Sports.3.1" url="#" />
+                    <p:menuitem value="Sports.3.2" url="#" />
+                </p:submenu>
+            </p:column>
+ 
+            <p:column>
+                <p:submenu label="Sports.4">
+                    <p:menuitem value="Sports.4.1" url="#" />
+                    <p:menuitem value="Sports.4.2" url="#" />
+                </p:submenu>
+                <p:submenu label="Sports.5">
+                    <p:menuitem value="Sports.5.1" url="#" />
+                    <p:menuitem value="Sports.5.2" url="#" />
+                    <p:menuitem value="Sports.5.3" url="#" />
+                </p:submenu>
+            </p:column>
+            <p:column>
+                <p:submenu label="Sports.7">
+                    <p:menuitem value="Sports.7.1" url="#" />
+                    <p:menuitem value="Sports.7.2" url="#" />
+                </p:submenu>
+                <p:submenu label="Sports.8">
+                    <p:menuitem value="Sports.8.1" url="#" />
+                    <p:menuitem value="Sports.8.2" url="#" />
+                    <p:menuitem value="Sports.8.3" url="#" />
+                    <p:menuitem value="Sports.8.4" url="#" />
+                    <p:menuitem value="Sports.8.5" url="#" />
+                    <p:menuitem value="Sports.8.6" url="#" />
+                </p:submenu>
+            </p:column>
+        </p:submenu>
+ 
+        <p:submenu label="Entertainment" icon="ui-icon-pencil">
+            <p:column>
+                <p:submenu label="Entertainment.1">
+                    <p:menuitem value="Entertainment.1.1" url="#" />
+                    <p:menuitem value="Entertainment.1.2" url="#" />
+                </p:submenu>
+                <p:submenu label="Entertainment.2">
+                    <p:menuitem value="Entertainment.2.1" url="#" />
+                    <p:menuitem value="Entertainment.2.2" url="#" />
+                    <p:menuitem value="Entertainment.2.3" url="#" />
+                </p:submenu>
+                <p:submenu label="Entertainment.3">
+                    <p:menuitem value="Entertainment.3.1" url="#" />
+                    <p:menuitem value="Entertainment.3.2" url="#" />
+                </p:submenu>
+            </p:column>
+ 
+            <p:column>
+                <p:submenu label="Entertainment.4" icon="ui-icon-help">
+                    <p:menuitem value="Entertainment.4.1" url="#" />
+                    <p:menuitem value="Entertainment.4.2" url="#" />
+                </p:submenu>
+                <p:submenu label="Entertainment.5">
+                    <p:menuitem value="Entertainment.5.1" url="#" />
+                    <p:menuitem value="Entertainment.5.2" url="#" />
+                    <p:menuitem value="Entertainment.5.3" url="#" />
+                </p:submenu>
+                <p:submenu label="Entertainment.6">
+                    <p:menuitem value="Entertainment.6.1" url="#" />
+                    <p:menuitem value="Entertainment.6.2" url="#" />
+                </p:submenu>
+            </p:column>
+        </p:submenu>
+ 
+ 
+        <p:submenu label="Tech" icon="ui-icon-contact">
+            <p:column>
+                <p:submenu label="Tech.1">
+                    <p:menuitem value="Tech.1.1" url="#" />
+                    <p:menuitem value="Tech.1.2" url="#" />
+                </p:submenu>
+                <p:submenu label="Tech.2">
+                    <p:menuitem value="Tech.2.1" url="#" />
+                    <p:menuitem value="Tech.2.2" url="#" />
+                    <p:menuitem value="Tech.2.3" url="#" />
+                </p:submenu>
+                <p:submenu label="Tech.3">
+                    <p:menuitem value="Tech.3.1" url="#" />
+                    <p:menuitem value="Tech.3.2" url="#" />
+                </p:submenu>
+            </p:column>
+ 
+            <p:column>
+                <p:submenu label="Tech.4">
+                    <p:menuitem value="Tech.4.1" url="#" />
+                    <p:menuitem value="Tech.4.2" url="#" />
+                </p:submenu>
+            </p:column>
+        </p:submenu>
+ 
+        <p:menuitem value="Quit" url="http://www.primefaces.org"
+					icon="ui-icon-close" />
+    </p:megaMenu>
+ <p:dataScroller value="#{tableBean.carsLarge}" var="car" chunkSize="10">
 
-					<h:outputText></h:outputText>
-					<p:commandButton id="loginButton" value="Login" update="login"
-						style="float:right" action="#{loginController.validateUser}"
-						ajax="false" />
-					<p:commandButton value="Reset Tag" update="panel" process="@this">
-						<p:resetInput target="panel" />
-					</p:commandButton>
-					<h:outputText />
+				<f:facet name="header">
+            Scroll Down to Load More Cars
+        </f:facet>
 
+				<h:panelGrid columns="2" style="width:100%"
+					columnClasses="logo,detail">
+					<p:graphicImage name="images/cars/#{car.manufacturer}-big.gif" />
+
+					<p:outputPanel>
+						<h:panelGrid columns="2">
+							<h:outputText value="Model:" />
+							<h:outputText value="#{car.model}" style="font-weight: bold" />
+
+							<h:outputText value="Year:" />
+							<h:outputText value="#{car.year}" style="font-weight: bold" />
+
+							<h:outputText value="Color:" />
+							<h:outputText value="#{car.color}" style="font-weight: bold" />
+						</h:panelGrid>
+					</p:outputPanel>
 				</h:panelGrid>
-
-			</p:panel>
+			</p:dataScroller>
 		</h:form>
 	</ui:define>
 </ui:composition>

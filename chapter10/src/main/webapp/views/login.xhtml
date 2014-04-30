@@ -6,7 +6,7 @@
 	template="/templates/masterTemplate.xhtml">
 	<ui:define name="content">
 		<h:form id="loginform">
-			<p:panel id="panel" style="width:30%;height:30%;margin-left:35%">
+			<p:panel id="panel" style="width:30%;height:50%;margin-left:33%">
 				<p:messages id="login"></p:messages>
 				<h:panelGrid columns="3" cellpadding="5">
 
@@ -16,25 +16,28 @@
 						label="username">
 					</p:inputText>
 					<p:watermark for="username" value="Enter username" />
-
+					
 					<h:outputLabel for="password" value="Password:" />
 					<p:password value="#{loginController.password}" id="password"
 						required="true" requiredMessage="Password cannot be empty"
 						password="true" />
 					<p:watermark for="password" value="Enter password" />
 
-					<h:outputText></h:outputText>
+					<h:outputText />
+					<p:outputPanel style="margin-left:12%">
 					<p:commandButton id="loginButton" value="Login" update="login"
-						style="float:right" action="#{loginController.validateUser}"
+						 action="#{loginController.validateUser}"
 						ajax="false" />
-					<p:commandButton value="Reset" update="panel" process="@this">
+					<p:commandButton id="resetButton" value="Reset" update="panel" process="@this">
 						<p:resetInput target="panel" />
 					</p:commandButton>
-					<h:outputText />
-
+					</p:outputPanel>
+					
 				</h:panelGrid>
 
 			</p:panel>
+			<p:defaultCommand target="loginButton" />
+			<p:blockUI block="panel" trigger="resetButton" />
 		</h:form>
 	</ui:define>
 </ui:composition>
