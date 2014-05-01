@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/masterTemplate.xhtml">
+	<ui:define name="content">
+		<h:form id="adminform">
+			<p:tabView id="tabView">
+
+				<p:tab id="tab1" title="Products Hierarchy">
+					<p:treeTable value="#{adminController.root}" var="product"
+						id="docs" selectionMode="single"
+						selection="#{adminController.selectedNode}">
+
+						<f:facet name="header">
+            Right-Click to See Options
+        </f:facet>
+
+						<p:column style="width:150px">
+							<f:facet name="header">
+                Name
+            </f:facet>
+							<h:outputText value="#{product.name}" />
+						</p:column>
+
+						<p:column style="width:100px">
+							<f:facet name="header">
+                Size
+            </f:facet>
+							<h:outputText value="#{product.size}" />
+						</p:column>
+
+						<p:column style="width:100px">
+							<f:facet name="header">
+                Type
+            </f:facet>
+							<h:outputText value="#{product.type}" />
+						</p:column>
+					</p:treeTable>
+				</p:tab>
+				<p:tab id="tab2" title="Product sales">
+					<p:tree id="treeSingle" value="#{adminController.root}" var="node"
+						selectionMode="single" orientation="horizontal"
+						selection="#{adminController.selectedNode}" dynamic="true">
+
+						<p:treeNode>
+							<h:outputText value="#{node}" />
+						</p:treeNode>
+					</p:tree>
+				</p:tab>
+
+			</p:tabView>
+		</h:form>
+	</ui:define>
+</ui:composition>
