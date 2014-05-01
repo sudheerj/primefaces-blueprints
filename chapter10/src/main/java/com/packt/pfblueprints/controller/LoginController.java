@@ -32,6 +32,10 @@ public class LoginController implements Serializable {
 				&& password.equalsIgnoreCase("healthcare")) {
 			return "/views/healthkart?faces-redirect=true";
 		}
+		else if (username.equalsIgnoreCase("admin")
+				&& password.equalsIgnoreCase("admin")) {
+			return "/views/admin?faces-redirect=true";
+		}
 		else {
 			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
 					"Invalid credentials");

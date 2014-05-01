@@ -8,9 +8,20 @@
 	<ui:define name="content">
 		<h:form id="adminform">
 			<p:tabView id="tabView">
-
+				
 				<p:tab id="tab1" title="Products Hierarchy">
-					<!-- <p:treeTable value="#{adminController.root}" var="product"
+					<p:tree id="treeSingle" value="#{adminController.productHierarchyRoot}" var="node"
+						selectionMode="single" orientation="horizontal"
+						selection="#{adminController.selectedNode}" dynamic="true">
+
+						<p:treeNode>
+							<h:outputText value="#{node}" />
+						</p:treeNode>
+					</p:tree>
+				</p:tab>
+				
+				<p:tab id="tab2" title="Product sales">
+					<!--   <p:treeTable value="#{adminController.root}" var="product"
 						id="docs" selectionMode="single"
 						selection="#{adminController.selectedNode}">
 
@@ -40,17 +51,7 @@
 						</p:column>
 					</p:treeTable> -->
 				</p:tab>
-				<p:tab id="tab2" title="Product sales">
-					<p:tree id="treeSingle" value="#{adminController.root}" var="node"
-						selectionMode="single" orientation="horizontal"
-						selection="#{adminController.selectedNode}" dynamic="true">
-
-						<p:treeNode>
-							<h:outputText value="#{node}" />
-						</p:treeNode>
-					</p:tree>
-				</p:tab>
-
+				
 			</p:tabView>
 		</h:form>
 	</ui:define>
