@@ -1,15 +1,7 @@
-package com.packt.pfblueprints.dao;
+package com.packt.pfblueprints.model;
 
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 public class Product implements Serializable{
 
@@ -21,7 +13,7 @@ public class Product implements Serializable{
 	private int rating;
 	private String discount;
 	
-	public Product(String prodname,String prodcat String model, int rating, String discount) {
+	public Product(String prodname,String prodcat, String model, int rating, String discount) {
 		super();
 		this.prodname = prodname;
 		this.prodcat = prodcat;
@@ -67,7 +59,7 @@ public class Product implements Serializable{
 		this.rating = rating;
 	}
 
-	public String getRating() {
+	public int getRating() {
 		return rating;
 	}
 }

@@ -1,38 +1,29 @@
-package com.packt.pfblueprints.dao;
+package com.packt.pfblueprints.model;
 
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
-import com.packt.pfblueprints.controller.Dobule;
 
 public class ProductSales implements Serializable {
 	
 
 	private static final long serialVersionUID = 1L;
 	private String prodtype;
-	private int qty;
-	private Dobule preYearSales;
-	private Dobule curYearSales;
+	private String qty1;
+	private String qty2;
+	private String preYearSales;
+	private String curYearSales;
 	private String gainloss;
 
-	public ProductSales(String prodtype, int qty, Dobule preYearSales,
-			Dobule curYearSales, String gainloss) {
+	public ProductSales(String prodtype, String qty1, String qty2,
+			String preYearSales, String curYearSales, String gainloss) {
 		super();
 		this.prodtype = prodtype;
-		this.qty = qty;
+		this.qty1 = qty1;
+		this.qty2 = qty2;
 		this.preYearSales = preYearSales;
 		this.curYearSales = curYearSales;
 		this.gainloss = gainloss;
 	}
-	
+
 	public String getProdtype() {
 		return prodtype;
 	}
@@ -41,27 +32,35 @@ public class ProductSales implements Serializable {
 		this.prodtype = prodtype;
 	}
 
-	public int getQty() {
-		return qty;
+	public String getQty1() {
+		return qty1;
 	}
 
-	public void setQty(int qty) {
-		this.qty = qty;
+	public void setQty1(String qty1) {
+		this.qty1 = qty1;
 	}
 
-	public Dobule getPreYearSales() {
+	public String getQty2() {
+		return qty2;
+	}
+
+	public void setQty2(String qty2) {
+		this.qty2 = qty2;
+	}
+
+	public String getPreYearSales() {
 		return preYearSales;
 	}
 
-	public void setPreYearSales(Dobule preYearSales) {
+	public void setPreYearSales(String preYearSales) {
 		this.preYearSales = preYearSales;
 	}
 
-	public Dobule getCurYearSales() {
+	public String getCurYearSales() {
 		return curYearSales;
 	}
 
-	public void setCurYearSales(Dobule curYearSales) {
+	public void setCurYearSales(String curYearSales) {
 		this.curYearSales = curYearSales;
 	}
 
@@ -72,4 +71,6 @@ public class ProductSales implements Serializable {
 	public void setGainloss(String gainloss) {
 		this.gainloss = gainloss;
 	}
+
+	
 }

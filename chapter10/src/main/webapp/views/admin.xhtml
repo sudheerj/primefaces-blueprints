@@ -8,9 +8,10 @@
 	<ui:define name="content">
 		<h:form id="adminform">
 			<p:tabView id="tabView">
-				
+
 				<p:tab id="tab1" title="Products Hierarchy">
-					<p:tree id="treeSingle" value="#{adminController.productHierarchyRoot}" var="node"
+					<p:tree id="treeSingle"
+						value="#{adminController.productHierarchyRoot}" var="node"
 						selectionMode="single" orientation="horizontal"
 						selection="#{adminController.selectedNode}" dynamic="true">
 
@@ -19,11 +20,15 @@
 						</p:treeNode>
 					</p:tree>
 				</p:tab>
-				
+
 				<p:tab id="tab2" title="Product sales">
-					<!--   <p:treeTable value="#{adminController.root}" var="product"
-						id="docs" selectionMode="single"
-						selection="#{adminController.selectedNode}">
+					<p:contextMenu for="productSales">
+						<p:menuitem value="View" update="productPanel"
+							icon="ui-icon-search" oncomplete="PF('productDialog').show()" />
+					</p:contextMenu>
+					<p:treeTable value="#{adminController.productSalesRoot}"
+						var="product" id="productSales" selectionMode="single"
+						selection="#{adminController.selectedProductNode}">
 
 						<f:facet name="header">
             Right-Click to See Options
@@ -31,27 +36,59 @@
 
 						<p:column style="width:150px">
 							<f:facet name="header">
-                Name
+               Product Type
             </f:facet>
-							<h:outputText value="#{product.name}" />
+							<h:outputText value="#{product.prodtype}" />
 						</p:column>
 
 						<p:column style="width:100px">
 							<f:facet name="header">
-                Size
+                Gain/Loss Percentage
             </f:facet>
-							<h:outputText value="#{product.size}" />
+							<h:outputText value="#{product.gainloss}" />
 						</p:column>
 
-						<p:column style="width:100px">
-							<f:facet name="header">
-                Type
-            </f:facet>
-							<h:outputText value="#{product.type}" />
-						</p:column>
-					</p:treeTable> -->
+					</p:treeTable>
+
+					<p:dialog header="Product Details" showEffect="fade"
+						widgetVar="productDialog" modal="true">
+						<p:outputPanel id="productPanel">
+							<h:panelGrid columns="2" cellpadding="5"
+								rendered="#{not empty adminController.selectedProductNode}">
+								<h:outputLabel for="prodtype" value="Product Type: " />
+								<h:outputText id="prodtype"
+									value="#{adminController.selectedProductNode.data.prodtype}"
+									style="font-weight:bold" />
+
+								<h:outputLabel for="preQty" value="Previous Year Quantity: " />
+								<h:outputText id="preQty"
+									value="#{adminController.selectedProductNode.data.qty1}"
+									style="font-weight:bold" />
+
+								<h:outputLabel for="curQty" value="Current Year Quantity: " />
+								<h:outputText id="curQty"
+									value="#{adminController.selectedProductNode.data.qty1}"
+									style="font-weight:bold" />
+									
+									<h:outputLabel for="preSales" value="Previous Year Sales: " />
+								<h:outputText id="preSales"
+									value="#{adminController.selectedProductNode.data.preYearSales}"
+									style="font-weight:bold" />
+
+								<h:outputLabel for="curSales" value="Current Year Sales: " />
+								<h:outputText id="curSales"
+									value="#{adminController.selectedProductNode.data.curYearSales}"
+									style="font-weight:bold" />
+									
+								<h:outputLabel for="gainloss" value="Gain/Loss Percentage: " />
+								<h:outputText id="gainloss"
+									value="#{adminController.selectedProductNode.data.gainloss}"
+									style="font-weight:bold" />
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
 				</p:tab>
-				
+
 			</p:tabView>
 		</h:form>
 	</ui:define>
