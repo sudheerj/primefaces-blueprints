@@ -5,11 +5,12 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/templates/masterTemplate.xhtml">
 	<ui:define name="content">
-		<h:form id="healthcart">
+		<h:form id="healthproductt">
+		<p:cache region="testcache" key="megaMenu">
 			<p:megaMenu>
 				<p:submenu label="Health Devices" icon="ui-icon-document">
 					<p:column>
-						<p:submenu label="Patient Care">
+						<p:submenu label="Patient producte">
 							<p:menuitem value="Mattress" url="#" />
 							<p:menuitem value="Wheel chairs" url="#" />
 							<p:menuitem value="Walking and Hearing aids" url="#" />
@@ -28,14 +29,14 @@
 							<p:menuitem value="Heating pads" url="#" />
 							<p:menuitem value="Body supports" url="#" />
 						</p:submenu>
-						<p:submenu label="Doctors Care">
+						<p:submenu label="Doctors producte">
 							<p:menuitem value="Stethescope" url="#" />
 							<p:menuitem value="Glucometers" url="#" />
 							<p:menuitem value="Blook pressure" url="#" />
 						</p:submenu>
 					</p:column>
 					<p:column>
-						<p:submenu label="Respiratory Care">
+						<p:submenu label="Respiratory producte">
 							<p:menuitem value="Vaporiser" url="#" />
 							<p:menuitem value="Oxygen concentrator" url="#" />
 						</p:submenu>
@@ -46,7 +47,7 @@
 					</p:column>
 				</p:submenu>
 				
-				<p:submenu label="Diabetes Care" icon="ui-icon-document">
+				<p:submenu label="Diabetes producte" icon="ui-icon-document">
 
 					<p:column>
 						<p:submenu label="Monitoring Devices">
@@ -71,15 +72,15 @@
 					
 				</p:submenu>
 				
-				<p:submenu label="Beauty Care" icon="ui-icon-document">
+				<p:submenu label="Beauty producte" icon="ui-icon-document">
 
 					<p:column>
-						<p:submenu label="Hair care">
+						<p:submenu label="Hair producte">
 							<p:menuitem value="Shampoo and Conditioners" url="#" />
 							<p:menuitem value="Hair fall and dandruf treatment" url="#" />
 							<p:menuitem value="Hair oils" url="#" />
 						</p:submenu>
-						<p:submenu label="Face Care">
+						<p:submenu label="Face producte">
 							<p:menuitem value="Creams and locations" url="#" />
 							<p:menuitem value="Sun protection" url="#" />
 							<p:menuitem value="Cleaners" url="#" />
@@ -88,13 +89,13 @@
 					</p:column>
 
 					<p:column>
-						<p:submenu label="MakeUp-Care">
+						<p:submenu label="MakeUp-producte">
 							<p:menuitem value="Facial parts" url="#" />
 							<p:menuitem value="Nails" url="#" />
 						</p:submenu>
 						<p:submenu label="Grooming">
-							<p:menuitem value="Face care" url="#" />
-							<p:menuitem value="Hair care" url="#" />
+							<p:menuitem value="Face producte" url="#" />
+							<p:menuitem value="Hair producte" url="#" />
 							<p:menuitem value="Perfumes" url="#" />
 						</p:submenu>
 					</p:column>
@@ -154,26 +155,29 @@
 				</p:submenu>
 
 			</p:megaMenu>
- <!-- <p:dataScroller value="#{tableBean.carsLarge}" var="car" chunkSize="10">
+  <p:dataScroller value="#{healthkartController.lazyLoad}" var="product" chunkSize="10">
 
 				<f:facet name="header">
-            Scroll Down to Load More Cars
+            Scroll Down to Load More Products
         </f:facet>
 
 				<h:panelGrid columns="2" style="width:100%"
 					columnClasses="logo,detail">
-					<p:graphicImage name="images/cars/#{car.manufacturer}-big.gif" />
+					<p:graphicImage name="images/products/#{product.productImage}.gif" />
 
 					<p:outputPanel>
 						<h:panelGrid columns="2">
+							<h:outputText value="Product Name:" />
+							<h:outputText value="#{product.prodname}" style="font-weight: bold" />
+							
 							<h:outputText value="Model:" />
-							<h:outputText value="#{car.model}" style="font-weight: bold" />
+							<h:outputText value="#{product.model}" style="font-weight: bold" />
 
-							<h:outputText value="Year:" />
-							<h:outputText value="#{car.year}" style="font-weight: bold" />
+							<h:outputText value="Rating:" />
+							<h:outputText value="#{product.rating}" style="font-weight: bold" />
 
-							<h:outputText value="Color:" />
-							<h:outputText value="#{car.color}" style="font-weight: bold" />
+							<h:outputText value="Discount:" />
+							<h:outputText value="#{product.discount}" style="font-weight: bold" />
 						</h:panelGrid>
 					</p:outputPanel>
 				</h:panelGrid>
