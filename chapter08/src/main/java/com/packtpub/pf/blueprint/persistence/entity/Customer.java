@@ -2,11 +2,10 @@ package com.packtpub.pf.blueprint.persistence.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by psramkumar on 4/21/14.
@@ -26,6 +25,9 @@ public class Customer implements Serializable {
     private String email;
     private String password;
     private String phoneNumber;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    private Set<PrintJobs> jobs = new HashSet<>();
 
 
 }

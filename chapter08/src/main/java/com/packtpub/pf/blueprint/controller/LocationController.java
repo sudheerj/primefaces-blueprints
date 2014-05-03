@@ -4,7 +4,6 @@ import com.packtpub.pf.blueprint.persistence.entity.Location;
 import com.packtpub.pf.blueprint.service.DAOService;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.log4j.Logger;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -16,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,21 +24,24 @@ import java.util.List;
  * Time: 7:50 PM
  * To change this template use File | Settings | File Templates.
  */
+
 @ManagedBean
 @SessionScoped
 public class LocationController implements Serializable {
 
-    private static final Logger log = Logger.getLogger(LocationController.class);
+    private static final Logger log = Logger.getLogger(LocationController.class.getName());
 
-    DAOService ds = new DAOService();
     @PostConstruct
     public void init() {
         log.info ("Current Lati & longi : $currentLati  &  $currentLong" );
         populateLocationCoordinates();
     }
 
+    DAOService ds = new DAOService();
+
     public void onMarkerSelect(OverlaySelectEvent event) {
         marker = (Marker) event.getOverlay();
+        location = ds.getLocationByFranchiseeNo((Long) marker.getData());
     }
 
     private void populateLocationCoordinates(){
@@ -64,5 +67,17 @@ public class LocationController implements Serializable {
     @Getter @Setter MapModel locationMap;
 
     @Getter @Setter Marker marker;
+
+    @Getter @Setter Location newLocation;
+
+    public void prepareNewLocation(){
+        newLocation = new Location();
+
+    }
+
+    public void addNewLocation(){
+        ds.addOrUpdateEntity(newLocation);
+    }
+
 
 }

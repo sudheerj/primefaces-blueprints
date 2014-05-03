@@ -1,23 +1,85 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Created by IntelliJ IDEA.
-  User: psramkumar
-  Date: 4/14/14
-  Time: 8:30 PM
--->
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+<ui:composition template="/template/template.xhtml">
+    <ui:define name="head">
+        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    </ui:define>
+    <ui:define name="menuleft">
+        <p:commandButton icon="ui-icon-map" value="Add New Location"
+                         oncomplete="PF('$itemDetail').show()"
+                actionListener="#{locationController.prepareNewLocation}"
+                rendered="#{customerController.customer.email == 'admin@admin.com'}"/>
+        <p:dialog id="itemDetail" widgetVar="$itemDetail"
+                  hideEffect="explode" appendTo="@(body)"
+                  resizable="false" draggable="false"
+                  closeOnEscape="true">
+            <h:form>
+                <h:inputHidden value="#{locationController.newLocation.id}"/>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Id"/>  #{locationController.newLocation.id}
 
-<h:head>
-    <title>Simple JSF Facelets page</title>
-</h:head>
+                    <p:outputLabel value="Street"/>
+                    <p:inputText value="#{locationController.newLocation.street1}"/>
 
-<h:body>
-    Place your content here
-</h:body>
 
+                    <p:outputLabel value="City"/>
+                    <p:inputText label="City" value="#{locationController.newLocation.city}"
+                                 placeholder="City"/>
+
+                    <p:outputLabel value="State"/>
+                    <p:inputText label="State" value="#{locationController.newLocation.state}"
+                                 placeholder="State"/>
+
+                    <p:outputLabel value="Country"/>
+                    <p:inputText value="#{locationController.newLocation.country}"/>
+
+                    <p:outputLabel value="ZipCode"/>
+                    <p:inputText value="#{locationController.newLocation.zipcode}"/>
+
+
+                    <p:outputLabel value="Franchisee No"/>
+                    <p:inputText value="#{locationController.newLocation.franchiseeNo}"/>
+
+                    <p:outputLabel value="Latitude"/>
+                    <p:inputText value="#{locationController.newLocation.latitude}"/>
+
+                    <p:outputLabel value="Longitude"/>
+                    <p:inputText value="#{locationController.newLocation.longitude}"/>
+
+                    <p:commandButton value="Submit" ajax="true"
+                                     update=":mapform:gmap"
+                                     action="#{locationController.addNewLocation}"
+                                     oncomplete="PF('$itemDetail').hide()"/>
+                </p:panelGrid>
+            </h:form>
+
+        </p:dialog>
+    </ui:define>
+    <ui:define name="bodyContent">
+        <h:form styleClass="form-inline" prependId="false" id="mapform">
+
+            <p:gmap center="32.658669, -97.134435" zoom="13" type="ROADMAP" id="gmap"
+                    mapTypeControl="false" navigationControl="false"
+                    widgetVar="gmap" model="#{locationController.locationMap}"
+                    style="width:100%;  height:600px;" streetView="true">
+                <p:ajax event="overlaySelect" listener="#{locationController.onMarkerSelect}"/>
+
+                <p:gmapInfoWindow>
+                    <p:outputPanel id="col1" class="twoCols" style="text-align:center;display:block;margin:auto;">
+                        <p>#{locationController.marker.title}</p>
+                        <hr/>
+                        <p>#{locationController.marker.data.toString()}</p>
+                        <hr/>
+                        <h4>#{locationController.marker.latlng.lat}, #{locationController.marker.latlng.lng}</h4>
+                        <p:commandButton action="/printjobs.jsf?faces-redirect=true" value="Order Now"/>
+                    </p:outputPanel>
+                </p:gmapInfoWindow>
+            </p:gmap>
+        </h:form>
+    </ui:define>
+</ui:composition>
 </html>

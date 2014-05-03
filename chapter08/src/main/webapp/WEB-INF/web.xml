@@ -53,7 +53,7 @@
         </init-param>
         <init-param>
             <param-name>uploadDirectory</param-name>
-            <param-value>~/</param-value>
+            <param-value>C:\etc</param-value>
         </init-param>
     </filter>
     <filter-mapping>

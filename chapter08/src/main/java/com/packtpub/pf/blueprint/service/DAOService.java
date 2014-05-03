@@ -6,7 +6,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.CriteriaSpecification;
-import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
@@ -46,21 +45,6 @@ public class DAOService {
         getSession().close();
         _log.info("Listed Successfully....");
         return list;
-    }
-
-    public Location getLocationByFranchiseeNo(Long franchiseeNo){
-        Location loc = null;
-        if (franchiseeNo != null) {
-            org.hibernate.Transaction tx = getSession().beginTransaction();
-            Criteria criteria = getSession().createCriteria(Location.class);
-            criteria.add(Restrictions.eq("franchiseeNo", franchiseeNo));
-            loc = (Location) criteria.uniqueResult();
-            tx.commit();
-            getSession().close();
-            _log.info("Added Successfully....");
-        }
-        return loc;
-
     }
 
 
