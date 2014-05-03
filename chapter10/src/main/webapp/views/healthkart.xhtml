@@ -6,182 +6,190 @@
 	template="/templates/masterTemplate.xhtml">
 	<ui:define name="content">
 		<h:form id="healthproductt">
-		<p:cache region="testcache" key="megaMenu">
-			<p:megaMenu>
-				<p:submenu label="Health Devices" icon="ui-icon-document">
-					<p:column>
-						<p:submenu label="Patient producte">
-							<p:menuitem value="Mattress" url="#" />
-							<p:menuitem value="Wheel chairs" url="#" />
-							<p:menuitem value="Walking and Hearing aids" url="#" />
-						</p:submenu>
-						<p:submenu label="Monitoring Devices">
-							<p:menuitem value="Thermometer" url="#" />
-							<p:menuitem value="Blood pressure" url="#" />
-							<p:menuitem value="Weighing scales" url="#" />
-						</p:submenu>
-						
-					</p:column>
+			<p:cache region="testcache" key="megaMenu">
+				<p:megaMenu>
+					<p:submenu label="Health Devices" icon="ui-icon-document">
+						<p:column>
+							<p:submenu label="Patient producte">
+								<p:menuitem value="Mattress" url="#" />
+								<p:menuitem value="Wheel chairs" url="#" />
+								<p:menuitem value="Walking and Hearing aids" url="#" />
+							</p:submenu>
+							<p:submenu label="Monitoring Devices">
+								<p:menuitem value="Thermometer" url="#" />
+								<p:menuitem value="Blood pressure" url="#" />
+								<p:menuitem value="Weighing scales" url="#" />
+							</p:submenu>
 
-					<p:column>
-						<p:submenu label="Pain Management">
-							<p:menuitem value="Massagers" url="#" />
-							<p:menuitem value="Heating pads" url="#" />
-							<p:menuitem value="Body supports" url="#" />
-						</p:submenu>
-						<p:submenu label="Doctors producte">
-							<p:menuitem value="Stethescope" url="#" />
-							<p:menuitem value="Glucometers" url="#" />
-							<p:menuitem value="Blook pressure" url="#" />
-						</p:submenu>
-					</p:column>
-					<p:column>
-						<p:submenu label="Respiratory producte">
-							<p:menuitem value="Vaporiser" url="#" />
-							<p:menuitem value="Oxygen concentrator" url="#" />
-						</p:submenu>
-						<p:submenu label="Weight Management">
-							<p:menuitem value="Weighing scales" url="#" />
-							<p:menuitem value="Body fat monitor" url="#" />
-						</p:submenu>
-					</p:column>
-				</p:submenu>
-				
-				<p:submenu label="Diabetes producte" icon="ui-icon-document">
+						</p:column>
 
-					<p:column>
-						<p:submenu label="Monitoring Devices">
-							<p:menuitem value="Gluco meters" url="#" />
-							<p:menuitem value="Lancets" url="#" />
-						</p:submenu>
-						<p:submenu label="Weight management">
-							<p:menuitem value="Weighing scales" url="#" />
-							<p:menuitem value="Body fat monitor" url="#" />
-							<p:menuitem value="Treadmills" url="#" />
-						</p:submenu>
-						
-					</p:column>
+						<p:column>
+							<p:submenu label="Pain Management">
+								<p:menuitem value="Massagers" url="#" />
+								<p:menuitem value="Heating pads" url="#" />
+								<p:menuitem value="Body supports" url="#" />
+							</p:submenu>
+							<p:submenu label="Doctors producte">
+								<p:menuitem value="Stethescope" url="#" />
+								<p:menuitem value="Glucometers" url="#" />
+								<p:menuitem value="Blood pressure" url="#" />
+							</p:submenu>
+						</p:column>
+						<p:column>
+							<p:submenu label="Respiratory producte">
+								<p:menuitem value="Vaporiser" url="#" />
+								<p:menuitem value="Oxygen concentrator" url="#" />
+							</p:submenu>
+							<p:submenu label="Weight Management">
+								<p:menuitem value="Weighing scales" url="#" />
+								<p:menuitem value="Body fat monitor" url="#" />
+							</p:submenu>
+						</p:column>
+					</p:submenu>
 
-					<p:column>
-						<p:submenu label="Diabetic Food">
-							<p:menuitem value="Sugar free food" url="#" />
-							<p:menuitem value="Sugar free drinks" url="#" />
-						</p:submenu>
-						
-					</p:column>
-					
-				</p:submenu>
-				
-				<p:submenu label="Beauty producte" icon="ui-icon-document">
+					<p:submenu label="Diabetes producte" icon="ui-icon-document">
 
-					<p:column>
-						<p:submenu label="Hair producte">
-							<p:menuitem value="Shampoo and Conditioners" url="#" />
-							<p:menuitem value="Hair fall and dandruf treatment" url="#" />
-							<p:menuitem value="Hair oils" url="#" />
-						</p:submenu>
-						<p:submenu label="Face producte">
-							<p:menuitem value="Creams and locations" url="#" />
-							<p:menuitem value="Sun protection" url="#" />
-							<p:menuitem value="Cleaners" url="#" />
-						</p:submenu>
-						
-					</p:column>
+						<p:column>
+							<p:submenu label="Monitoring Devices">
+								<p:menuitem value="Gluco meters" url="#" />
+								<p:menuitem value="Lancets" url="#" />
+							</p:submenu>
+							<p:submenu label="Weight management">
+								<p:menuitem value="Weighing scales" url="#" />
+								<p:menuitem value="Body fat monitor" url="#" />
+								<p:menuitem value="Treadmills" url="#" />
+							</p:submenu>
 
-					<p:column>
-						<p:submenu label="MakeUp-producte">
-							<p:menuitem value="Facial parts" url="#" />
-							<p:menuitem value="Nails" url="#" />
-						</p:submenu>
-						<p:submenu label="Grooming">
-							<p:menuitem value="Face producte" url="#" />
-							<p:menuitem value="Hair producte" url="#" />
-							<p:menuitem value="Perfumes" url="#" />
-						</p:submenu>
-					</p:column>
-					
-				</p:submenu>
-				
-				<p:submenu label="Vitamins and Suplements" icon="ui-icon-document">
+						</p:column>
 
-					<p:column>
-						<p:submenu label="Ayurveda and Herbs">
-							<p:menuitem value="Face,hair and nails" url="#" />
-							<p:menuitem value="Herbs" url="#" />
-						</p:submenu>
-						<p:submenu label="Weight Management">
-							<p:menuitem value="Weight loss" url="#" />
-							<p:menuitem value="Weight gain" url="#" />
-						</p:submenu>
-						
-					</p:column>
-					
-				</p:submenu>
-				
-				<p:submenu label="Sports and Fitness" icon="ui-icon-document">
+						<p:column>
+							<p:submenu label="Diabetic Food">
+								<p:menuitem value="Sugar free food" url="#" />
+								<p:menuitem value="Sugar free drinks" url="#" />
+							</p:submenu>
 
-					<p:column>
-						<p:submenu label="FootWear">
-							<p:menuitem value="Fitness shoes" url="#" />
-							<p:menuitem value="Sports shoes" url="#" />
-						</p:submenu>
-						<p:submenu label="Sports Appearal">
-							<p:menuitem value="T-Shirts and Jackets" url="#" />
-							<p:menuitem value="Tracks and bags" url="#" />
-							<p:menuitem value="Caps and Sunglasses" url="#" />
-						</p:submenu>
-						<p:submenu label="Team Sports">
-							<p:menuitem value="Cricket" url="#" />
-							<p:menuitem value="Football" url="#" />
-						</p:submenu>
-					</p:column>
+						</p:column>
 
-					<p:column>
-						<p:submenu label="Gym Equipments">
-							<p:menuitem value="Gloves and Belts" url="#" />
-							<p:menuitem value="Clothing and Bags" url="#" />
-						</p:submenu>
-						<p:submenu label="Muscle Building">
-							<p:menuitem value="Dumbells and Weights" url="#" />
-							<p:menuitem value="Pushup bars" url="#" />
-						</p:submenu>
-					</p:column>
-					<p:column>
-						<p:submenu label="Weight Loss equipments">
-							<p:menuitem value="Yoga mats" url="#" />
-							<p:menuitem value="Steppers" url="#" />
-						</p:submenu>
-					</p:column>
-				</p:submenu>
+					</p:submenu>
 
-			</p:megaMenu>
-  <p:dataScroller value="#{healthkartController.lazyLoad}" var="product" chunkSize="10">
+					<p:submenu label="Beauty products" icon="ui-icon-document">
+
+						<p:column>
+							<p:submenu label="Hair products">
+								<p:menuitem value="Shampoo and Conditioners" url="#" />
+								<p:menuitem value="Hair fall and dandruf treatment" url="#" />
+								<p:menuitem value="Hair oils" url="#" />
+							</p:submenu>
+							<p:submenu label="Face products">
+								<p:menuitem value="Creams and locations" url="#" />
+								<p:menuitem value="Sun protection" url="#" />
+								<p:menuitem value="Cleaners" url="#" />
+							</p:submenu>
+
+						</p:column>
+
+						<p:column>
+							<p:submenu label="MakeUp-products">
+								<p:menuitem value="Facial parts" url="#" />
+								<p:menuitem value="Nails" url="#" />
+							</p:submenu>
+							<p:submenu label="Grooming">
+								<p:menuitem value="Face products" url="#" />
+								<p:menuitem value="Hair products" url="#" />
+								<p:menuitem value="Perfumes" url="#" />
+							</p:submenu>
+						</p:column>
+
+					</p:submenu>
+
+					<p:submenu label="Vitamins and Suplements" icon="ui-icon-document">
+
+						<p:column>
+							<p:submenu label="Ayurveda and Herbs">
+								<p:menuitem value="Face,hair and nails" url="#" />
+								<p:menuitem value="Herbs" url="#" />
+							</p:submenu>
+							<p:submenu label="Weight Management">
+								<p:menuitem value="Weight loss" url="#" />
+								<p:menuitem value="Weight gain" url="#" />
+							</p:submenu>
+
+						</p:column>
+
+					</p:submenu>
+
+					<p:submenu label="Sports and Fitness" icon="ui-icon-document">
+
+						<p:column>
+							<p:submenu label="FootWear">
+								<p:menuitem value="Fitness shoes" url="#" />
+								<p:menuitem value="Sports shoes" url="#" />
+							</p:submenu>
+							<p:submenu label="Sports Appearal">
+								<p:menuitem value="T-Shirts and Jackets" url="#" />
+								<p:menuitem value="Tracks and bags" url="#" />
+								<p:menuitem value="Caps and Sunglasses" url="#" />
+							</p:submenu>
+							<p:submenu label="Team Sports">
+								<p:menuitem value="Cricket" url="#" />
+								<p:menuitem value="Football" url="#" />
+							</p:submenu>
+						</p:column>
+
+						<p:column>
+							<p:submenu label="Gym Equipments">
+								<p:menuitem value="Gloves and Belts" url="#" />
+								<p:menuitem value="Clothing and Bags" url="#" />
+							</p:submenu>
+							<p:submenu label="Muscle Building">
+								<p:menuitem value="Dumbells and Weights" url="#" />
+								<p:menuitem value="Pushup bars" url="#" />
+							</p:submenu>
+						</p:column>
+						<p:column>
+							<p:submenu label="Weight Loss equipments">
+								<p:menuitem value="Yoga mats" url="#" />
+								<p:menuitem value="Steppers" url="#" />
+							</p:submenu>
+						</p:column>
+					</p:submenu>
+
+				</p:megaMenu>
+			</p:cache>
+  <p:dataScroller value="#{healthkartController.lazyModel}"
+				var="product" chunkSize="5" lazy="true">
 
 				<f:facet name="header">
-            Scroll Down to Load More Products
+           Products Summary  (Scroll Down to Load More Products)
         </f:facet>
 
-				<h:panelGrid columns="2" style="width:100%"
-					columnClasses="logo,detail">
-					<p:graphicImage name="images/products/#{product.productImage}.gif" />
+				<h:panelGrid rows="2" style="width:100%" columnClasses="logo,detail">
 
-					<p:outputPanel>
+					<p:graphicImage
+						value="/resources/images/products/#{product.prodcat}/#{product.prodimage}.jpg"
+						width="200" height="100" style="margin-left:300px" />
+					<p:outputPanel style="margin-left:300px">
 						<h:panelGrid columns="2">
 							<h:outputText value="Product Name:" />
-							<h:outputText value="#{product.prodname}" style="font-weight: bold" />
-							
-							<h:outputText value="Model:" />
-							<h:outputText value="#{product.model}" style="font-weight: bold" />
+							<h:outputText value="#{product.prodname}"
+								style="font-weight: bold" />
 
 							<h:outputText value="Rating:" />
 							<h:outputText value="#{product.rating}" style="font-weight: bold" />
 
 							<h:outputText value="Discount:" />
-							<h:outputText value="#{product.discount}" style="font-weight: bold" />
+							<h:outputText value="#{product.discount}"
+								style="font-weight: bold" />
+
+							<h:outputText value="Price:" />
+							<h:outputText value="#{product.price}" style="font-weight: bold" />
 						</h:panelGrid>
 					</p:outputPanel>
+
+
 				</h:panelGrid>
-			</p:dataScroller> -->
+				<p:separator />
+			</p:dataScroller> 
 		</h:form>
 	</ui:define>
 </ui:composition>

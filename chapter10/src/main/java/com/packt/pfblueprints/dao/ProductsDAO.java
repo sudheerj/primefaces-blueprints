@@ -14,9 +14,9 @@ import com.packt.pfblueprints.model.Product;
 
 public class ProductsDAO {
 
-	private  SessionFactory sessionFactory;
+	//private  SessionFactory sessionFactory;
 
-	private  SessionFactory configureSessionFactory()
+	/*private  SessionFactory configureSessionFactory()
 			throws HibernateException {
 		Configuration configuration = new Configuration();
 		configuration.configure();
@@ -26,15 +26,15 @@ public class ProductsDAO {
 				.buildSessionFactory(builder.build());
 		return sessionfactory;
 	}
-
+*/
 	public ProductsDAO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public List<Product> getAllProducts(int first,int pageSize,String sortField,String sortOrderValue,Map<String,Object> filters) {
-		sessionFactory = configureSessionFactory();
-		Session session = sessionFactory.openSession();
+		//sessionFactory = configureSessionFactory();
+		Session session = getSession();//sessionFactory.openSession();
 		session.beginTransaction();
 		
 		String query=null;
@@ -71,12 +71,18 @@ public class ProductsDAO {
 		} else{
 			query="from AccountSummary WHERE (id BETWEEN "+(first+1)+" AND "+end+") ORDER BY "+sortField+" "+sortOrder;
 		}*/
-		query="from Products";// WHERE (id BETWEEN "+(first+1)+" AND "+end+") ORDER BY "+sortField+" "+sortOrder;
+		query="from Product";// WHERE (id BETWEEN "+(first+1)+" AND "+end+") ORDER BY "+sortField+" "+sortOrder;
 		Query queryResult = session.createQuery(query);
 		List<Product> allProducts = queryResult.list();
+		System.out.println("list size=="+allProducts.size());
 		session.getTransaction().commit();
 		return allProducts;
 
 	}
+	 private Session getSession() {
+	        SessionFactory sf = HibernateUtil.getSessionFactory();
+	        return sf.isClosed() ? sf.openSession() : sf.getCurrentSession();
+	    }
+
 
 }

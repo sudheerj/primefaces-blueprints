@@ -36,7 +36,7 @@ public class HealthkartController implements Serializable {
 			public List<Product> load(int first, int pageSize,
 					String sortField, SortOrder sortOrder,
 					Map<String, Object> filters) {
-
+				System.out.println("lazy loading begin");
 				String sortOrderValue = null;
 				/*if (sortField == null) {
 					sortField = "investorName";
@@ -51,7 +51,7 @@ public class HealthkartController implements Serializable {
 
 				productsInfo = dao.getAllProducts(first, pageSize, sortField,
 						sortOrderValue, filters);
-				//this.setRowCount(20);
+				this.setRowCount(productsInfo.size());
 				return productsInfo;
 			}
 		};
