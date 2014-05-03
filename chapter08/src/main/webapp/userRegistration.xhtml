@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+<ui:composition template="/template/template.xhtml">
+    <ui:define name="head">
+        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    </ui:define>
+    <ui:define name="bodyContent">
+        <h:form styleClass="form-inline" prependId="false">
+            <p:fieldset rendered="#{not customerController.loggedIn}"
+                        style="margin: 0 auto; text-align: center; text-align: -webkit-center;">
+                <p:panelGrid columns="2">
+                    <p:outputLabel for="txtFname" value="FirstName"/>
+                    <p:inputText id="txtFname" value="#{customerController.newCustomer.firstName}"/>
+
+                    <p:outputLabel for="txtLname" value="LastName"/>
+                    <p:inputText id="txtLname" value="#{customerController.newCustomer.lastName}"/>
+
+                    <p:outputLabel for="txtemail" value="Email"/>
+                    <p:inputText id="txtemail" value="#{customerController.newCustomer.email}"/>
+
+                    <p:outputLabel for="txtpasswd" value="Password"/>
+                    <h:inputSecret id="txtpasswd" value="#{customerController.newCustomer.password}"/>
+
+                    <p:outputLabel for="txtPhoneNumber" value="Phone Number"/>
+                    <p:inputMask id="txtPhoneNumber" value="#{customerController.newCustomer.phoneNumber}" mask="(999) 999-9999"/>
+
+                </p:panelGrid>
+                <p:commandButton value="Submit" ajax="false"
+                                 action="#{customerController.saveCustomerInfo}"/>
+            </p:fieldset>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

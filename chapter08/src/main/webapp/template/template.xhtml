@@ -20,33 +20,29 @@
     </h:head>
 
     <h:body>
-        <!--<p:layout widgetVar="layoutit" fullPage="true">
-            <p:layoutUnit position="center">   -->
-                <div id="header">
-                    <p:graphicImage name="logo.png" library="images" style="float: left;"/>
-                </div>
-                <h:form>
-                    <p:toolbar style="background-color: rgba(255, 0, 0, 0.5); height: 48px;">
-                        <p:toolbarGroup align="left">
-                            <p:commandButton icon="ui-icon-home" value="Home"
-                                             action="/welcome.jsf?faces-redirect=true"/>
-                            <p:commandButton icon="ui-icon-calculator" value="Schedules"
-                                             action="schedule.jsf?faces-redirect=true"/>
-                            <p:commandButton icon="ui-icon-map" value="Location"
-                                             action="location.jsf?faces-redirect=true"/>
-                        </p:toolbarGroup>
-                        <p:toolbarGroup align="right">
-                            <p:commandButton icon="ui-icon-locked" value="Login"
-                                             action="/logmein.jsf?faces-redirect=true"/>
-                            <p:commandButton icon="ui-icon-unlocked" value="Logout"/>
-                            <p:commandButton icon="ui-icon-unlocked" value="User Dashboard"
-                                             action="dashboard.jsf?faces-redirect=true"/>
-                        </p:toolbarGroup>
-                    </p:toolbar>
-                </h:form>
-                <ui:insert name="bodyContent"/>
-           <!-- </p:layoutUnit>
-        </p:layout> -->
+        <div id="header">
+            <p:graphicImage name="logo.png" library="images" style="float: left;"/>
+        </div>
+        <h:form>
+            <p:toolbar style="background-color: rgba(255, 0, 0, 0.5); height: 48px;">
+                <f:facet name="left">
+                    <p:commandButton icon="ui-icon-home" value="Home"
+                                     action="/index.jsf?faces-redirect=true"/>
+                    <p:commandButton icon="ui-icon-map" value="Location"
+                                     action="location.jsf?faces-redirect=true"/>
+                    <ui:insert name="menuleft"/>
+                </f:facet>
+                <f:facet name="right">
+                    <p:commandButton icon="ui-icon-locked" value="Login" rendered="#{!customerController.loggedIn}"
+                                     action="/logmein.jsf?faces-redirect=true"/>
+                    <p:commandButton icon="ui-icon-unlocked" value="Logout" rendered="#{customerController.loggedIn}"
+                                     action="#{customerController.loginMeOut}"/>
+                    <p:commandButton icon="ui-icon-unlocked" value="User Dashboard" rendered="#{customerController.loggedIn}"
+                                     action="dashboard.jsf?faces-redirect=true"/>
+                </f:facet>
+            </p:toolbar>
+        </h:form>
+        <ui:insert name="bodyContent"/>
     </h:body>
 
 </f:view>

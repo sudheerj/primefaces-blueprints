@@ -8,20 +8,48 @@
     </ui:define>
     <ui:define name="bodyContent">
         <h:form>
-            <p:growl id="msg" showDetail="true" />
-            <p:tagCloud model="#{genericController.model}">
-                <p:ajax event="select" update="msg" listener="#{genericController.onSelect}" />
-            </p:tagCloud>
-            <br/>
-            <p:scrollPanel mode="native" style="width:250px;height:200px">
-                <ul>
-                    <li><p>Fabulas place got your printing job done, for affordable price with high efficient printers available in the world.</p></li>
-                    <li><p>Drive through printer station near your town. we have 10 Million printing location through out the world, you are the one to gain all fullest advantages.</p></li>
-                    <li><p>Sign up you user id and get your and just upload ans choose your nearest available location from the list and get your printing job in minutes, your job will ready to pickup when you reach their, it is similat to the printer in your own home..</p></li>
-                    <li><p>Sed tincidunt urna quis metus lacinia commodo. Praesent convallis eros vel quam scelerisque bibendum. Mauris eget dignissim libero. Pellentesque sagittis sem quis ipsum viverra, sed consequat mi consectetur. Donec facilisis dapibus ultrices. Donec luctus auctor lacus, at congue nisi aliquet eu. Praesent in justo at risus faucibus ultricies. Fusce et libero lectus. Donec elementum pharetra sapien, at placerat purus sodales et. Vivamus iaculis lacus sed placerat rhoncus. Mauris iaculis sit amet nunc at placerat. Donec consequat euismod lacinia. Etiam nec quam vehicula, cursus massa in, ullamcorper erat.</p></li>
-                    <li><p>Praesent volutpat scelerisque vestibulum. In eu massa non neque rutrum commodo. Nunc vel enim nisi. Aenean leo ipsum, molestie vel justo nec, pharetra luctus dui. Nunc rhoncus turpis id lorem luctus consequat. Nulla condimentum adipiscing turpis consequat semper. Etiam ullamcorper velit nec hendrerit malesuada. Praesent venenatis leo sit amet arcu commodo, sit amet porta tellus suscipit. Quisque mi tortor, vestibulum in arcu non, pretium auctor libero. In commodo luctus placerat.</p></li>
-                </ul>
-            </p:scrollPanel>
+            <p:growl id="msg" showDetail="true"/>
+            <p:panelGrid columns="3">
+                <p:panelGrid columns="1">
+                    <p:tagCloud model="#{genericController.model}">
+                        <p:ajax event="select" update="msg" listener="#{genericController.onSelect}"/>
+                    </p:tagCloud>
+                    <p:scrollPanel mode="native" style="width:250px;height:200px">
+                        <ul>
+                            <li>
+                                <p>Fabulas place got your printing job done, for affordable price with high efficient printers available in the world.</p>
+                            </li>
+                            <li>
+                                <p>Drive through printer station near your town. we have 10 Million printing location through out the world, you are the one to gain all fullest advantages.</p>
+                            </li>
+                            <li>
+                                <p>Sign up you user id and get your and just upload ans choose your nearest available location from the list and get your printing job in minutes, your job will ready to pickup when you reach their, it is similat to the printer in your own home..</p>
+                            </li>
+                            <li>
+                                <p>Sed tincidunt urna quis metus lacinia commodo. Praesent convallis eros vel quam scelerisque bibendum. Mauris eget dignissim libero. Pellentesque sagittis sem quis ipsum viverra, sed consequat mi consectetur. Donec facilisis dapibus ultrices. Donec luctus auctor lacus, at congue nisi aliquet eu. Praesent in justo at risus faucibus ultricies. Fusce et libero lectus. Donec elementum pharetra sapien, at placerat purus sodales et. Vivamus iaculis lacus sed placerat rhoncus. Mauris iaculis sit amet nunc at placerat. Donec consequat euismod lacinia. Etiam nec quam vehicula, cursus massa in, ullamcorper erat.</p>
+                            </li>
+                            <li>
+                                <p>Praesent volutpat scelerisque vestibulum. In eu massa non neque rutrum commodo. Nunc vel enim nisi. Aenean leo ipsum, molestie vel justo nec, pharetra luctus dui. Nunc rhoncus turpis id lorem luctus consequat. Nulla condimentum adipiscing turpis consequat semper. Etiam ullamcorper velit nec hendrerit malesuada. Praesent venenatis leo sit amet arcu commodo, sit amet porta tellus suscipit. Quisque mi tortor, vestibulum in arcu non, pretium auctor libero. In commodo luctus placerat.</p>
+                            </li>
+                        </ul>
+                    </p:scrollPanel>
+                    <p:chart type="metergauge" model="#{genericController.meterGaugeModel}"
+                             style="width:250;height:250px"/>
+                </p:panelGrid>
+            <p:panelGrid columns="1">
+                <p:contentFlow value="#{genericController.images}" var="image" style="width: 815px;">
+                    <p:graphicImage library="images" name="#{image}" styleClass="content"/>
+                </p:contentFlow>
+                <div>Photo's used in this sample are form Google Search for keyword Primefaces</div>
+            </p:panelGrid>
+                <p:panelGrid columns="1">
+                    <p:commandLink action="/logmein.jsf?faces-redirect=true">
+                        <p:graphicImage name="25PercentOffBanner.jpg" library="images" style="float: left;"/>
+                    </p:commandLink>
+                    <p:graphicImage name="photo-printing-online_0.jpg" library="images"/>
+                </p:panelGrid>
+
+            </p:panelGrid>
         </h:form>
     </ui:define>
 </ui:composition>
