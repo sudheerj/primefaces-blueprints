@@ -51,8 +51,21 @@ public class HealthkartController implements Serializable {
 
 				productsInfo = dao.getAllProducts(first, pageSize, sortField,
 						sortOrderValue, filters);
-				this.setRowCount(productsInfo.size());
-				return productsInfo;
+				//rowCount
+				int dataSize = productsInfo.size();
+				this.setRowCount(dataSize);
+				//paginate
+				if(dataSize > pageSize) {
+				try {
+				  return productsInfo.subList(first, first + pageSize);
+				 }
+				catch(IndexOutOfBoundsException e) {
+					return productsInfo.subList(first, first + (dataSize % pageSize));
+				 }
+				 }
+				else {
+					return productsInfo;
+				}
 			}
 		};
 	}
