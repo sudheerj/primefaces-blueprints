@@ -9,6 +9,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.LazyDataModel;
@@ -26,12 +28,27 @@ public class HealthkartController implements Serializable {
 
 	private LazyDataModel<Product> lazyModel;
 	private List<Product> productsInfo = new ArrayList<Product>();
+	private int chunkSize=5;
 	ProductsDAO dao=new ProductsDAO();
+	
 	
 	@PostConstruct
 	public void init() {
-
-			lazyModel = new LazyDataModel<Product>() {
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("productCategory", "");
+		lazyLoad();
+	}
+	
+	public void selectCategory(String category){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("productCategory", category);
+		System.out.println("selected category=="+category);
+	}
+	
+	public void lazyLoad(){
+		lazyModel = new LazyDataModel<Product>() {
 			@Override
 			public List<Product> load(int first, int pageSize,
 					String sortField, SortOrder sortOrder,
@@ -51,16 +68,25 @@ public class HealthkartController implements Serializable {
 
 				productsInfo = dao.getAllProducts(first, pageSize, sortField,
 						sortOrderValue, filters);
+				//chunkSize =productsInfo.size();
+				List<Product> filteredProductsInfo=new ArrayList<Product>();
 				//rowCount
 				int dataSize = productsInfo.size();
 				this.setRowCount(dataSize);
+				System.out.println("data size&page size=="+dataSize+"++"+pageSize);
 				//paginate
 				if(dataSize > pageSize) {
 				try {
-				  return productsInfo.subList(first, first + pageSize);
+				   filteredProductsInfo=productsInfo.subList(first, first + pageSize);
+				  /* chunkSize=filteredProductsInfo.size();
+				   this.setRowCount(chunkSize);*/
+				   return filteredProductsInfo;
 				 }
 				catch(IndexOutOfBoundsException e) {
-					return productsInfo.subList(first, first + (dataSize % pageSize));
+				   filteredProductsInfo=productsInfo.subList(first, first + (dataSize % pageSize));
+				   /*chunkSize=filteredProductsInfo.size();
+				   this.setRowCount(chunkSize);*/
+				   return filteredProductsInfo;
 				 }
 				 }
 				else {
@@ -84,6 +110,14 @@ public class HealthkartController implements Serializable {
 
 	public void setProductsInfo(List<Product> productsInfo) {
 		this.productsInfo = productsInfo;
+	}
+
+	public int getChunkSize() {
+		return chunkSize;
+	}
+
+	public void setChunkSize(int chunkSize) {
+		this.chunkSize = chunkSize;
 	}
 
 	

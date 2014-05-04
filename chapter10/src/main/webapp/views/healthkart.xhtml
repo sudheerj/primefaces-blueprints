@@ -11,7 +11,7 @@
 					<p:submenu label="Health Devices" icon="ui-icon-document">
 						<p:column>
 							<p:submenu label="Patient producte">
-								<p:menuitem value="Mattress" url="#" />
+								<p:menuitem value="Mattress" actionListener="#{healthkartController.selectCategory('mattress')}" update="productsList" />
 								<p:menuitem value="Wheel chairs" url="#" />
 								<p:menuitem value="Walking and Hearing aids" url="#" />
 							</p:submenu>
@@ -156,8 +156,8 @@
 
 				</p:megaMenu>
 			</p:cache>
-  <p:dataScroller value="#{healthkartController.lazyModel}"
-				var="product" chunkSize="10" lazy="true">
+  <p:dataScroller id="productsList" value="#{healthkartController.lazyModel}"
+				var="product" chunkSize="5"  lazy="true">
 
 				<f:facet name="header">
            Products Summary  (Scroll Down to Load More Products)
