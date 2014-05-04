@@ -33,23 +33,18 @@ public class ProductsDAO {
 				.getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		productCategory = (String) sessionMap.get("productCategory");
-		System.out.println("PRODUCTDAO called"+productCategory);
 		String query = null;
 		
 		Query queryResult=null;
-		System.out.println("productCategory=="+productCategory);
 		if (productCategory != "") {
-			System.out.println("if block");
-			query = "from Product where prodcat = :productCategory ";
+			query = "from Product where prodcat = :productCategory ORDER BY "+sortField+" "+sortOrderValue;
 			queryResult = session.createQuery(query);
 			queryResult.setParameter("productCategory", productCategory);
 		} else {
-			System.out.println("else block");
-			query = "from Product";
+			query = "from Product ORDER BY "+sortField+" "+sortOrderValue;
 		    queryResult = session.createQuery(query);
 		}
 		List<Product> allProducts = queryResult.list();
-		System.out.println("list size==" + allProducts.size());
 		session.getTransaction().commit();
 		return allProducts;
 

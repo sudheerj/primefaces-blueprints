@@ -39,10 +39,14 @@ INSERT INTO Product (prodname, prodimage, prodcat, rating, discount, price) VALU
 ('ActiveHeat Orthopaedic Clinical Heating Mat, Universal', 'heatingpad1', 'heatingpads', 9, '30%', '150$'), 
 ('Deluxe Heating Pad, Universal', 'heatingpad2', 'heatingpads', 6, '30%', '120$'), 
 ('Heating Pad, 10 in X 12 In', 'heatingpad3', 'heatingpads', 8, '20%', '110$'), 
+('Deluxe Heating Pad, Universal-Model2', 'heatingpad2', 'heatingpads', 6, '30%', '130$'), 
+('Heating Pad, 10 in X 12 In-Model2', 'heatingpad3', 'heatingpads', 8, '20%', '120$'),
 
 ('HealthViva Elbow Support, Medium', 'bodysupport1', 'bodysupports', 8, '25%', '100$'), 
 ('HealthViva Ankle Support, Medium', 'bodysupport2', 'bodysupports', 9, '50%', '210$'),
 ('Tynor Knee Cap (Pair) D 04, Medium', 'bodysupport3', 'bodysupports', 9, '50%', '210$'),
+('HealthViva Ankle Support, Medium-Model2', 'bodysupport2', 'bodysupports', 9, '50%', '240$'),
+('Tynor Knee Cap (Pair) D 04, Medium-Model2', 'bodysupport3', 'bodysupports', 9, '50%', '220$'),
 
 ('Littmann Acoustic Stethoscope Pediatric, Black', 'stethescope1', 'stethescope', 6, '30%', '120$'), 
 ('Pulse Wave Rappaport Acoustic Stethoscope, Blue', 'stethescope2', 'stethescope', 8, '20%', '110$'), 
@@ -64,6 +68,9 @@ INSERT INTO Product (prodname, prodimage, prodcat, rating, discount, price) VALU
 
 ('Equinox Oxygen Concentrator', 'oxygenconcentrator1', 'oxygenconcentrator', 9, '50%', '210$'),
 ('Nidek Nuvo Oxygen Concentrator', 'oxygenconcentrator2', 'oxygenconcentrator', 9, '50%', '210$'),
+('Equinox Oxygen Concentrator-Model2', 'oxygenconcentrator1', 'oxygenconcentrator', 9, '50%', '210$'),
+('Nidek Nuvo Oxygen Concentrator-Model2', 'oxygenconcentrator2', 'oxygenconcentrator', 9, '50%', '220$'),
+('Equinox Oxygen Concentrator-Model3', 'oxygenconcentrator1', 'oxygenconcentrator', 9, '50%', '250$'),
 
 ('Omron Body composition monitor', 'bodyfatmonitor1', 'bodyfatmonitor', 6, '30%', '120$'), 
 ('Equinox Body Fat Monitor', 'bodyfatmonitor2', 'bodyfatmonitor', 8, '20%', '110$'), 
@@ -74,6 +81,8 @@ INSERT INTO Product (prodname, prodimage, prodcat, rating, discount, price) VALU
 ('ASCENSIA Microlet Lancet, 100 piece(s)/pack', 'lancet1', 'lancets', 6, '30%', '20$'), 
 ('Accu-Chek Soft Clix Lancets, 25 piece(s)/pack', 'lancet2', 'lancets', 8, '20%', '10$'), 
 ('SB Flat Blood Lancets, 100 piece(s)/pack', 'lancet3', 'lancets', 8, '25%', '10$'),
+('Accu-Chek Soft Clix Lancets, 25 piece(s)/pack-Advanced', 'lancet2', 'lancets', 8, '20%', '20$'), 
+('SB Flat Blood Lancets, 100 piece(s)/pack-Advanced', 'lancet3', 'lancets', 8, '25%', '30$'),
 
 ('Cosco CMTM 4600 B Treadmill', 'treadmill1', 'treadmills', 6, '30%', '120$'), 
 ('Aquafit AQ 425 Treadmill', 'treadmill2', 'treadmills', 8, '20%', '110$'), 
@@ -82,10 +91,16 @@ INSERT INTO Product (prodname, prodimage, prodcat, rating, discount, price) VALU
 ('Iso Solid T6 Treadmill', 'treadmill5', 'treadmills', 9, '50%', '210$'),
 
 ('Herbacure for Diabetes Diabetes, Neem & Jamun', 'sugarfreefood1', 'sugarfreefoods', 6, '30%', '120$'),
+('Herbacure for Diabetes Diabetes-Medium, Neem & Jamun', 'sugarfreefood1', 'sugarfreefoods', 6, '30%', '140$'),
+('Herbacure for Diabetes Diabetes-Advanced, Neem & Jamun', 'sugarfreefood1', 'sugarfreefoods', 6, '30%', '150$'),
+('Herbacure for Diabetes Diabetes-Low, Neem & Jamun', 'sugarfreefood1', 'sugarfreefoods', 6, '30%', '160$'),
+('Herbacure for Diabetes Diabetes-High, Neem & Jamun', 'sugarfreefood1', 'sugarfreefoods', 6, '30%', '170$'),
 
 ('SeriCha Mulberry Drink Sachets, Apple', 'sugarfreedrink1', 'sugarfreedrinks', 8, '25%', '100$'), 
 ('Tonico Juice, Aloe Vera & Amla', 'sugarfreedrink2', 'sugarfreedrinks', 9, '50%', '210$'),
 ('Tonico Juice, Aloe Vera Natural', 'sugarfreedrink3', 'sugarfreedrinks', 9, '50%', '210$'),
+('Tonico Juice, Aloe Vera & Amla-Medium', 'sugarfreedrink2', 'sugarfreedrinks', 9, '50%', '220$'),
+('Tonico Juice, Aloe Vera Natural-Advanced', 'sugarfreedrink3', 'sugarfreedrinks', 9, '50%', '240$'),
 
 
 ('Lass Naturals Shampoo, 200 ml Anti Hair Loss', 'shampoo1', 'shampoo_conditioner', 6, '30%', '120$'), 
@@ -97,10 +112,14 @@ INSERT INTO Product (prodname, prodimage, prodcat, rating, discount, price) VALU
 ('Oriyanna Hair Essentials, Hair Fall Control 30 g', 'hairfall1', 'hairfall_dandruff', 8, '25%', '100$'), 
 ('Lass Naturals IHT 9 Oil, Anti Hair Loss Therapy 200 ml', 'hairfall2', 'hairfall_dandruff', 9, '50%', '210$'),
 ('Shahnaz Husain Hair Treatment Powder, Shacare 200 g', 'hairfall3', 'hairfall_dandruff', 9, '50%', '210$'),
+('Lass Naturals IHT 9 Oil, Anti Hair Loss Therapy 200 ml-Low', 'hairfall2', 'hairfall_dandruff', 9, '50%', '170$'),
+('Shahnaz Husain Hair Treatment Powder, Shacare 200 g-High', 'hairfall3', 'hairfall_dandruff', 9, '50%', '230$'),
 
 ('Dove Hair Oil 1, Lavender & Olive 90 ml', 'hairoil1', 'hairoils', 8, '25%', '100$'), 
 ('LOreal Paris Serum, Total Repair 5 Instant Smoothing & Nourishing Oil 40 ml', 'hairoil2', 'hairoils', 9, '50%', '210$'),
 ('Jiva Hair Oil 14, Amla Non Sticky 60 ml', 'hairoil3', 'hairoils', 9, '50%', '210$'),
+('LOreal Paris Serum, Total Repair 5 Instant Smoothing & Nourishing Oil 40 ml-Medium', 'hairoil2', 'hairoils', 9, '50%', '220$'),
+('Jiva Hair Oil 14, Amla Non Sticky 60 ml-Large', 'hairoil3', 'hairoils', 9, '50%', '280$'),
 
 ('Olay Instant Glowing Fairness Cream, Natural White 40 g', 'cream1', 'creams_lotions', 6, '30%', '120$'), 
 ('Jiva Cream, Saffron 50 g', 'cream1', 'creams_lotions', 8, '20%', '110$'), 
@@ -111,81 +130,138 @@ INSERT INTO Product (prodname, prodimage, prodcat, rating, discount, price) VALU
 ('VLCC Sun Defense Sun Block Lotion, SPF-30 100 g', 'sunprotection1', 'sunprotection', 8, '25%', '100$'), 
 ('Just Herbs Sun Protection Lotion, UV protect 100 g', 'sunprotection2', 'sunprotection', 9, '50%', '210$'),
 ('SebaMed Q10 Protection Cream, Anti-Aging 50 ml', 'sunprotection3', 'sunprotection', 9, '50%', '210$'),
+('Just Herbs Sun Protection Lotion, UV protect 100 g-Medium', 'sunprotection2', 'sunprotection', 9, '50%', '220$'),
+('SebaMed Q10 Protection Cream, Anti-Aging 50 ml-High', 'sunprotection3', 'sunprotection', 9, '50%', '250$'),
 
 ('SebaMed Clear Face Care Gel, Oil free 50 ml', 'cleaner1', 'cleaners', 8, '25%', '100$'), 
 ('SebaMed Clear Face, Cleansing Bar 100 g', 'cleaner2', 'cleaners', 9, '50%', '210$'),
 ('Neutrogena Cleanser, Deep Clean Foaming 100 g', 'cleaner3', 'cleaners', 9, '50%', '210$'),
+('SebaMed Clear Face, Cleansing Bar 100 g-Imported', 'cleaner2', 'cleaners', 9, '50%', '220$'),
+('Neutrogena Cleanser, Deep Clean Foaming 100 g-Advanced', 'cleaner3', 'cleaners', 9, '50%', '230$'),
 
 ('LOreal Paris Dermo Expertise Make Up Remover', 'facial1', 'facialparts', 8, '25%', '100$'), 
 ('Olay Touch Of Foundation Day Cream, Natural Beige Mattifying', 'facial2', 'facialparts', 9, '50%', '210$'),
 ('Maybelline Cheeky Glow Blush, Fresh Coral Long Lasting', 'facial3', 'facialparts', 9, '50%', '210$'),
+('Olay Touch Of Foundation Day Cream, Natural Beige Mattifying-Medium', 'facial2', 'facialparts', 9, '50%', '220$'),
+('Maybelline Cheeky Glow Blush, Fresh Coral Long Lasting-Advanced', 'facial3', 'facialparts', 9, '50%', '230$'),
 
 ('Audrey Large Nail Clipper in Chrome finish NCL-1', 'nails1', 'nails', 9, '50%', '210$'),
 ('Bare Essentials Nail Polish Remover, 35 g Standard', 'nails2', 'nails', 9, '50%', '210$'),
+('Audrey Large Nail Clipper in Chrome finish NCL-1-Low', 'nails1', 'nails', 9, '50%', '210$'),
+('Bare Essentials Nail Polish Remover, 35 g Standard-Medium', 'nails2', 'nails', 9, '50%', '240$'),
+('Audrey Large Nail Clipper in Chrome finish NCL-1-High', 'nails1', 'nails', 9, '50%', '270$'),
 
 ('Fair & Lovely Max Fairness, 25 g UV Protection', 'facecare1', 'faceproducts', 9, '50%', '210$'),
 ('LOreal Paris Whitening Active Moisturiser SPF 20, 50 ml Men Expert', 'facecare2', 'faceproducts', 9, '50%', '210$'),
+('Fair & Lovely Max Fairness, 25 g UV Protection-Low', 'facecare1', 'faceproducts', 9, '50%', '210$'),
+('LOreal Paris Whitening Active Moisturiser SPF 20, 50 ml Men Expert-Medium', 'facecare2', 'faceproducts', 9, '50%', '220$'),
+('Fair & Lovely Max Fairness, 25 g UV Protection-High', 'facecare1', 'faceproducts', 9, '50%', '250$'),
 
 ('Garnier Fructis Style Gel 1, 125 g Wet Shine, Strong', 'haircare1', 'hairproducts', 9, '50%', '210$'),
 ('Toni&Guy Fix It Hair Spray, 300 ml Fix It', 'haircare2', 'hairproducts', 9, '50%', '210$'),
+('Garnier Fructis Style Gel 1, 125 g Wet Shine, Strong-Low', 'haircare1', 'hairproducts', 9, '50%', '210$'),
+('Toni&Guy Fix It Hair Spray, 300 ml Fix It-Medium', 'haircare2', 'hairproducts', 9, '50%', '220$'),
+('Garnier Fructis Style Gel 1, 125 g Wet Shine, Strong-High', 'haircare1', 'hairproducts', 9, '50%', '250$'),
 
 ('Playboy EDT For Men, 100 ml Vegas', 'perfume1', 'perfumes', 9, '50%', '210$'),
 ('Colour Me EDT, 50 ml Gold, 35 g Standard', 'perfume2', 'perfumes', 9, '50%', '210$'),
+('Playboy EDT For Men, 100 ml Vegas-Low', 'perfume1', 'perfumes', 9, '50%', '210$'),
+('Colour Me EDT, 50 ml Gold, 35 g Standard-Medium', 'perfume2', 'perfumes', 9, '50%', '220$'),
+('Playboy EDT For Men, 100 ml Vegas-High', 'perfume1', 'perfumes', 9, '50%', '230$'),
 
 ('LOreal Paris Dermo Expertise Make Up Remover', 'facemakeup1', 'face_eyes_nails-makeup', 8, '25%', '100$'), 
 ('Maybelline The Colossal Kajal, Black', 'eyesmakeup1', 'face_eyes_nails-makeup', 9, '50%', '210$'),
 ('Audreys Large Nail Clipper in Chrome finish NCL-1', 'nailsmakeup1', 'face_eyes_nails-makeup', 9, '50%', '210$'),
+('Maybelline The Colossal Kajal, Black-Medium', 'eyesmakeup1', 'face_eyes_nails-makeup', 9, '50%', '220$'),
+('Audreys Large Nail Clipper in Chrome finish NCL-1-High', 'nailsmakeup1', 'face_eyes_nails-makeup', 9, '50%', '230$'),
 
 ('Jiva Amla Juice, 500 ml', 'herbs1', 'herbs', 8, '25%', '100$'), 
 ('Ranbaxy Garlic Pearls, 100 piece(s)/pack', 'herbs2', 'herbs', 9, '50%', '210$'),
 ('Herbal Hills Aloe Vera Juice, 500 ml', 'herbs3', 'herbs', 9, '50%', '210$'),
+('Ranbaxy Garlic Pearls, 100 piece(s)/pack-Medium', 'herbs2', 'herbs', 9, '50%', '230$'),
+('Herbal Hills Aloe Vera Juice, 500 ml-High', 'herbs3', 'herbs', 9, '50%', '250$'),
 
 ('Bio Food Hip Tea (Diet Tea), 10 piece(s)/pack Standard', 'weightloss1', 'weightloss', 9, '50%', '210$'),
 ('HealthViva Apple Cider Vinegar, 500 ml', 'weightloss2', 'weightloss', 9, '50%', '210$'),
+('Bio Food Hip Tea (Diet Tea), 10 piece(s)/pack Standard-Low', 'weightloss1', 'weightloss', 9, '50%', '210$'),
+('HealthViva Apple Cider Vinegar, 500 ml-Medium', 'weightloss2', 'weightloss', 9, '50%', '220$'),
+('Bio Food Hip Tea (Diet Tea), 10 piece(s)/pack Standard-High', 'weightloss1', 'weightloss', 9, '50%', '250$'),
 
 ('Abbott Ensure, 1 kg Vanilla', 'weightgain1', 'weightgain', 9, '50%', '210$'),
 ('Nestle Nutrition Resource High Protein, 200 g Vanilla', 'weightgain2', 'weightgain', 9, '50%', '210$'),
+('Abbott Ensure, 1 kg Vanilla-Low', 'weightgain1', 'weightgain', 9, '50%', '210$'),
+('Nestle Nutrition Resource High Protein, 200 g Vanilla-Medium', 'weightgain2', 'weightgain', 9, '50%', '220$'),
+('Abbott Ensure, 1 kg Vanilla-High', 'weightgain1', 'weightgain', 9, '50%', '240$'),
 
 ('Newfeel Many Shoes (Black/Silver), Black/Silver 5.5', 'fitnessshoes1', 'fitness-shoes', 9, '50%', '210$'),
 ('Newfeel Many Shoes (Orange/Navy), Orange/Navy ', 'fitnessshoes2', 'fitness-shoes', 9, '50%', '210$'),
+('Newfeel Many Shoes (Black/Silver), Black/Silver 5.5-Low', 'fitnessshoes1', 'fitness-shoes', 9, '50%', '210$'),
+('Newfeel Many Shoes (Orange/Navy), Orange/Navy-Medium', 'fitnessshoes2', 'fitness-shoes', 9, '50%', '220$'),
+('Newfeel Many Shoes (Black/Silver), Black/Silver 5.5-High', 'fitnessshoes1', 'fitness-shoes', 9, '50%', '230$'),
 
 ('Slazenger Sussex Cricket Shoes, 8 White/Grey/Red', 'sportsshoes1', 'sports-shoes', 9, '50%', '210$'),
 ('Slazenger Elite Pro Cricket Shoes, White/Black 9', 'sportsshoes2', 'sports-shoes', 9, '50%', '210$'),
+('Slazenger Sussex Cricket Shoes, 8 White/Grey/Red-Low', 'sportsshoes1', 'sports-shoes', 9, '50%', '210$'),
+('Slazenger Elite Pro Cricket Shoes, White/Black 9-Medium', 'sportsshoes2', 'sports-shoes', 9, '50%', '220$'),
+('Slazenger Sussex Cricket Shoes, 8 White/Grey/Red-High', 'sportsshoes1', 'sports-shoes', 9, '50%', '230$'),
 
 ('MuscleBlaze Logo T Shirt, Burgundy Large', 'tshirt1', 'tshirts_jackets', 9, '50%', '210$'),
 ('Invincible T-3 T Shirt, Medium Grey', 'tshirt2', 'tshirts_jackets', 9, '50%', '210$'),
 ('Domyos Sportee T Shirt, Medium Dark Blue', 'tshirt3', 'tshirts_jackets', 9, '50%', '210$'),
+('Invincible T-3 T Shirt, Medium Grey-Low', 'tshirt2', 'tshirts_jackets', 9, '50%', '220$'),
+('Domyos Sportee T Shirt, Medium Dark Blue-High', 'tshirt3', 'tshirts_jackets', 9, '50%', '240$'),
 
 ('STAG ZingTracksuit, Blue Medium', 'track1', 'tracks_bags', 9, '50%', '210$'),
 ('STAG ZingTracksuit, Grey Large', 'track2', 'tracks_bags', 9, '50%', '210$'),
 ('Kaizen Gym Bag, Blue Round Shape', 'bag1', 'tracks_bags', 9, '50%', '210$'),
+('STAG ZingTracksuit, Grey Large-Basic', 'track2', 'tracks_bags', 9, '50%', '220$'),
+('Kaizen Gym Bag, Blue Round Shape-Advanced', 'bag1', 'tracks_bags', 9, '50%', '240$'),
 
 ('Garnier Fructis Style Gel 1, 125 g Wet Shine, Strong', 'cap1', 'caps_sunglasses', 9, '50%', '210$'),
 ('Fastrack Sunglass P191BR1F, Brown', 'sunglass1', 'caps_sunglasses', 9, '50%', '210$'),
 ('Fastrack Sunglass P205BR1, Black', 'sunglass2', 'caps_sunglasses', 9, '50%', '210$'),
+('Fastrack Sunglass P191BR1F, Brown-Basic', 'sunglass1', 'caps_sunglasses', 9, '50%', '220$'),
+('Fastrack Sunglass P205BR1, Black-Advanced', 'sunglass2', 'caps_sunglasses', 9, '50%', '230$'),
 
 ('Cosco County Batting Legguards, 2.4 cm', 'cricket1', 'cricket', 9, '50%', '210$'),
 ('Cosco County Cricket Helmet, Standard', 'cricket2', 'cricket', 9, '50%', '210$'),
 ('Cosco Mexico Football, Silver/Blue 5', 'football1', 'football', 9, '50%', '210$'),
 ('Cosco Kicker Shin Guard (Standard), Red Senior size', 'football2', 'football', 9, '50%', '210$'),
+('Cosco Mexico Football, Silver/Blue 5-Advanced', 'football1', 'football', 9, '50%', '220$'),
 
 ('Nivia Leather Gym Gloves with Wrist Band, Ocean Grey / Black Large', 'gloves1', 'gloves_belts', 9, '50%', '210$'),
 ('MuscleBlaze Washable Leather Weight Lifting Gloves, Black Large', 'gloves2', 'gloves_belts', 9, '50%', '210$'),
 ('Nivia Supreme Gym Belt, Brown Free Size', 'belt1', 'gloves_belts', 9, '50%', '210$'),
+('MuscleBlaze Washable Leather Weight Lifting Gloves, Black Large-Basic', 'gloves2', 'gloves_belts', 9, '50%', '220$'),
+('Nivia Supreme Gym Belt, Brown Free Size-Advanced', 'belt1', 'gloves_belts', 9, '50%', '230$'),
 
 ('MusclePharm Weak Ends Here T Shirt, White Medium', 'clothing1', 'clothing_bags', 9, '50%', '210$'),
 ('MusclePharm Performance T Shirt, White Medium', 'clothing2', 'clothing_bags', 9, '50%', '210$'),
 ('MuscleBlaze Gym Carry Bag, Black/Orange Side Bag', 'gymbag1', 'clothing_bags', 9, '50%', '210$'),
+('MusclePharm Performance T Shirt, White Medium-Low', 'clothing2', 'clothing_bags', 9, '50%', '220$'),
+('MuscleBlaze Gym Carry Bag, Black/Orange Side Bag-High', 'gymbag1', 'clothing_bags', 9, '50%', '230$'),
 
 ('Nivia Vinyl Dipping Dumbbell, Purple 3kg', 'dumbells1', 'dumbells_weights', 9, '50%', '210$'),
 ('Cosco Hexagonal Rubber Dumbbell, Black 10 Kg', 'dumbells2', 'dumbells_weights', 9, '50%', '210$'),
+('Nivia Vinyl Dipping Dumbbell, Purple 3kg', 'dumbells1', 'dumbells_weights', 9, '50%', '210$'),
+('Cosco Hexagonal Rubber Dumbbell, Black 10 Kg-Low', 'dumbells2', 'dumbells_weights', 9, '50%', '213$'),
+('Nivia Vinyl Dipping Dumbbell, Purple 3kg-High', 'dumbells1', 'dumbells_weights', 9, '50%', '215$'),
 
 ('Nivia Push Up Bars', 'pushupbars1', 'pushupbars', 9, '50%', '210$'),
 ('USI Push Up Bars', 'pushupbars2', 'pushupbars', 9, '50%', '210$'),
+('Nivia Push Up Bars', 'pushupbars1', 'pushupbars', 9, '50%', '210$'),
+('USI Push Up Bars-Basic', 'pushupbars2', 'pushupbars', 9, '50%', '215$'),
+('Nivia Push Up Bars-Advanced', 'pushupbars1', 'pushupbars', 9, '50%', '230$'),
 
 ('Co-Fit Yoga Mat, Green/Brown 61cmx173cmx3.5mm gauge', 'yogamats1', 'yogamats', 9, '50%', '210$'),
 ('HealthViva Triple Layer Yoga Mat, Orange + Grey 6 mm', 'yogamats2', 'yogamats', 9, '50%', '210$'),
+('Co-Fit Yoga Mat, Green/Brown 61cmx173cmx3.5mm gauge', 'yogamats1', 'yogamats', 9, '50%', '210$'),
+('HealthViva Triple Layer Yoga Mat, Orange + Grey 6 mm-Medium', 'yogamats2', 'yogamats', 9, '50%', '215$'),
+('Co-Fit Yoga Mat, Green/Brown 61cmx173cmx3.5mm gauge-High', 'yogamats1', 'yogamats', 9, '50%', '220$'),
 
 ('Co-Fit Slanted Raiser Ab Stepper, Large', 'steppers1', 'steppers', 9, '50%', '210$'),
-('Tunturi Aerobic Stepper, Medium', 'steppers2', 'steppers', 9, '50%', '210$');
+('Tunturi Aerobic Stepper, Medium', 'steppers2', 'steppers', 9, '50%', '210$'),
+('Co-Fit Slanted Raiser Ab Stepper, Medium', 'steppers1', 'steppers', 9, '50%', '210$'),
+('Tunturi Aerobic Stepper, Medium-Basic level', 'steppers2', 'steppers', 9, '50%', '220$'),
+('Tunturi Aerobic Stepper, Low', 'steppers2', 'steppers', 9, '50%', '210$');
 

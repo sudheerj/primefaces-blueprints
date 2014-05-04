@@ -10,7 +10,7 @@ import javax.faces.bean.ManagedBean;
 @SessionScoped
 public class GuestPreferences implements Serializable {
 
-	private String theme = "aristo"; //default
+	private String theme = "home"; //default
 
 	public String getTheme() {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();

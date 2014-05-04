@@ -53,39 +53,32 @@ public class HealthkartController implements Serializable {
 			public List<Product> load(int first, int pageSize,
 					String sortField, SortOrder sortOrder,
 					Map<String, Object> filters) {
-				System.out.println("lazy loading begin");
 				String sortOrderValue = null;
-				/*if (sortField == null) {
-					sortField = "investorName";
-				}*/
+				if (sortField == null) {
+					sortField = "prodname";
+				}
 				if (sortOrder.ASCENDING.equals("A")) {
 					sortOrderValue = "ASC";
 				} else if (sortOrder.DESCENDING.equals("D")) {
 					sortOrderValue = "DSC";
 				} else {
-					sortOrderValue = "default";
+					sortOrderValue = "ASC";
 				}
 
 				productsInfo = dao.getAllProducts(first, pageSize, sortField,
 						sortOrderValue, filters);
-				//chunkSize =productsInfo.size();
 				List<Product> filteredProductsInfo=new ArrayList<Product>();
 				//rowCount
 				int dataSize = productsInfo.size();
 				this.setRowCount(dataSize);
-				System.out.println("data size&page size=="+dataSize+"++"+pageSize);
 				//paginate
 				if(dataSize > pageSize) {
 				try {
 				   filteredProductsInfo=productsInfo.subList(first, first + pageSize);
-				  /* chunkSize=filteredProductsInfo.size();
-				   this.setRowCount(chunkSize);*/
 				   return filteredProductsInfo;
 				 }
 				catch(IndexOutOfBoundsException e) {
 				   filteredProductsInfo=productsInfo.subList(first, first + (dataSize % pageSize));
-				   /*chunkSize=filteredProductsInfo.size();
-				   this.setRowCount(chunkSize);*/
 				   return filteredProductsInfo;
 				 }
 				 }
