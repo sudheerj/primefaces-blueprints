@@ -12,37 +12,37 @@
 						<p:column>
 							<p:submenu label="Patient producte">
 								<p:menuitem value="Mattress" actionListener="#{healthkartController.selectCategory('mattress')}" update="productsList" />
-								<p:menuitem value="Wheel chairs" url="#" />
-								<p:menuitem value="Walking and Hearing aids" url="#" />
+								<p:menuitem value="Wheel chairs" actionListener="#{healthkartController.selectCategory('wheelchair')}" update="productsList"/>
+								<p:menuitem value="Walking and Hearing aids" actionListener="#{healthkartController.selectCategory('walking-hearing')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Monitoring Devices">
-								<p:menuitem value="Thermometer" url="#" />
-								<p:menuitem value="Blood pressure" url="#" />
-								<p:menuitem value="Weighing scales" url="#" />
+								<p:menuitem value="Thermometer" actionListener="#{healthkartController.selectCategory('thermometer')}" update="productsList" />
+								<p:menuitem value="Blood pressure" actionListener="#{healthkartController.selectCategory('bloodpressure')}" update="productsList" />
+								<p:menuitem value="Weighing scales" actionListener="#{healthkartController.selectCategory('weighingscales')}" update="productsList" />
 							</p:submenu>
 
 						</p:column>
 
 						<p:column>
 							<p:submenu label="Pain Management">
-								<p:menuitem value="Massagers" url="#" />
-								<p:menuitem value="Heating pads" url="#" />
-								<p:menuitem value="Body supports" url="#" />
+								<p:menuitem value="Massagers" actionListener="#{healthkartController.selectCategory('massagers')}" update="productsList" />
+								<p:menuitem value="Heating pads" actionListener="#{healthkartController.selectCategory('heatingpads')}" update="productsList" />
+								<p:menuitem value="Body supports" actionListener="#{healthkartController.selectCategory('bodysupports')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Doctors producte">
-								<p:menuitem value="Stethescope" url="#" />
-								<p:menuitem value="Glucometers" url="#" />
-								<p:menuitem value="Blood pressure" url="#" />
+								<p:menuitem value="Stethescope" actionListener="#{healthkartController.selectCategory('stethescope')}" update="productsList" />
+								<p:menuitem value="Glucometers" actionListener="#{healthkartController.selectCategory('glucometers')}" update="productsList" />
+								<p:menuitem value="Blood pressure" actionListener="#{healthkartController.selectCategory('bloodpressure')}" update="productsList" />
 							</p:submenu>
 						</p:column>
 						<p:column>
 							<p:submenu label="Respiratory producte">
-								<p:menuitem value="Vaporiser" url="#" />
-								<p:menuitem value="Oxygen concentrator" url="#" />
+								<p:menuitem value="Vaporiser" actionListener="#{healthkartController.selectCategory('vaporiser')}" update="productsList" />
+								<p:menuitem value="Oxygen concentrator" actionListener="#{healthkartController.selectCategory('oxygenconcentrator')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Weight Management">
-								<p:menuitem value="Weighing scales" url="#" />
-								<p:menuitem value="Body fat monitor" url="#" />
+								<p:menuitem value="Weighing scales" actionListener="#{healthkartController.selectCategory('weighingscales')}" update="productsList" />
+								<p:menuitem value="Body fat monitor" actionListener="#{healthkartController.selectCategory('bodyfatmonitor')}" update="productsList" />
 							</p:submenu>
 						</p:column>
 					</p:submenu>
@@ -51,21 +51,21 @@
 
 						<p:column>
 							<p:submenu label="Monitoring Devices">
-								<p:menuitem value="Gluco meters" url="#" />
-								<p:menuitem value="Lancets" url="#" />
+								<p:menuitem value="Gluco meters" actionListener="#{healthkartController.selectCategory('glucometers')}" update="productsList" />
+								<p:menuitem value="Lancets" actionListener="#{healthkartController.selectCategory('lancets')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Weight management">
-								<p:menuitem value="Weighing scales" url="#" />
-								<p:menuitem value="Body fat monitor" url="#" />
-								<p:menuitem value="Treadmills" url="#" />
+								<p:menuitem value="Weighing scales" actionListener="#{healthkartController.selectCategory('weighingscales')}" update="productsList"" />
+								<p:menuitem value="Body fat monitor" actionListener="#{healthkartController.selectCategory('bodyfatmonitor')}" update="productsList" />
+								<p:menuitem value="Treadmills" actionListener="#{healthkartController.selectCategory('treadmills')}" update="productsList" />
 							</p:submenu>
 
 						</p:column>
 
 						<p:column>
 							<p:submenu label="Diabetic Food">
-								<p:menuitem value="Sugar free food" url="#" />
-								<p:menuitem value="Sugar free drinks" url="#" />
+								<p:menuitem value="Sugar free food" actionListener="#{healthkartController.selectCategory('sugarfreefood')}" update="productsList" />
+								<p:menuitem value="Sugar free drinks" actionListener="#{healthkartController.selectCategory('sugarfreedrinks')}" update="productsList" />
 							</p:submenu>
 
 						</p:column>
@@ -76,27 +76,27 @@
 
 						<p:column>
 							<p:submenu label="Hair products">
-								<p:menuitem value="Shampoo and Conditioners" url="#" />
-								<p:menuitem value="Hair fall and dandruf treatment" url="#" />
-								<p:menuitem value="Hair oils" url="#" />
+								<p:menuitem value="Shampoo and Conditioners" actionListener="#{healthkartController.selectCategory('shampoo_conditioner')}" update="productsList" />
+								<p:menuitem value="Hair fall and dandruf treatment" actionListener="#{healthkartController.selectCategory('hairfall')}" update="productsList" />
+								<p:menuitem value="Hair oils" actionListener="#{healthkartController.selectCategory('hairoils')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Face products">
-								<p:menuitem value="Creams and locations" url="#" />
-								<p:menuitem value="Sun protection" url="#" />
-								<p:menuitem value="Cleaners" url="#" />
+								<p:menuitem value="Creams and locations" actionListener="#{healthkartController.selectCategory('creams_lotions')}" update="productsList" />
+								<p:menuitem value="Sun protection" actionListener="#{healthkartController.selectCategory('sunprotection')}" update="productsList" />
+								<p:menuitem value="Cleaners" actionListener="#{healthkartController.selectCategory('cleaners')}" update="productsList" />
 							</p:submenu>
 
 						</p:column>
 
 						<p:column>
 							<p:submenu label="MakeUp-products">
-								<p:menuitem value="Facial parts" url="#" />
-								<p:menuitem value="Nails" url="#" />
+								<p:menuitem value="Facial parts" actionListener="#{healthkartController.selectCategory('facialparts')}" update="productsList" />
+								<p:menuitem value="Nails" actionListener="#{healthkartController.selectCategory('nails')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Grooming">
-								<p:menuitem value="Face products" url="#" />
-								<p:menuitem value="Hair products" url="#" />
-								<p:menuitem value="Perfumes" url="#" />
+								<p:menuitem value="Face products" actionListener="#{healthkartController.selectCategory('faceproducts')}" update="productsList" />
+								<p:menuitem value="Hair products" actionListener="#{healthkartController.selectCategory('hairproducts')}" update="productsList" />
+								<p:menuitem value="Perfumes" actionListener="#{healthkartController.selectCategory('perfumes')}" update="productsList" />
 							</p:submenu>
 						</p:column>
 
@@ -106,12 +106,12 @@
 
 						<p:column>
 							<p:submenu label="Ayurveda and Herbs">
-								<p:menuitem value="Face,hair and nails" url="#" />
-								<p:menuitem value="Herbs" url="#" />
+								<p:menuitem value="Face,hair and nails" actionListener="#{healthkartController.selectCategory('face_eyes_nails-makeup')}" update="productsList" />
+								<p:menuitem value="Herbs" actionListener="#{healthkartController.selectCategory('herbs')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Weight Management">
-								<p:menuitem value="Weight loss" url="#" />
-								<p:menuitem value="Weight gain" url="#" />
+								<p:menuitem value="Weight loss" actionListener="#{healthkartController.selectCategory('weightloss')}" update="productsList" />
+								<p:menuitem value="Weight gain" actionListener="#{healthkartController.selectCategory('weightgain')}" update="productsList" />
 							</p:submenu>
 
 						</p:column>
@@ -122,34 +122,34 @@
 
 						<p:column>
 							<p:submenu label="FootWear">
-								<p:menuitem value="Fitness shoes" url="#" />
-								<p:menuitem value="Sports shoes" url="#" />
+								<p:menuitem value="Fitness shoes" actionListener="#{healthkartController.selectCategory('fitness-shoes')}" update="productsList" />
+								<p:menuitem value="Sports shoes" actionListener="#{healthkartController.selectCategory('sports-shoes')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Sports Appearal">
-								<p:menuitem value="T-Shirts and Jackets" url="#" />
-								<p:menuitem value="Tracks and bags" url="#" />
-								<p:menuitem value="Caps and Sunglasses" url="#" />
+								<p:menuitem value="T-Shirts and Jackets" actionListener="#{healthkartController.selectCategory('tshirts_jackets')}" update="productsList" />
+								<p:menuitem value="Tracks and bags" actionListener="#{healthkartController.selectCategory('tracks_bags')}" update="productsList" />
+								<p:menuitem value="Caps and Sunglasses" actionListener="#{healthkartController.selectCategory('caps_sunglasses')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Team Sports">
-								<p:menuitem value="Cricket" url="#" />
-								<p:menuitem value="Football" url="#" />
+								<p:menuitem value="Cricket" actionListener="#{healthkartController.selectCategory('cricket')}" update="productsList" />
+								<p:menuitem value="Football" actionListener="#{healthkartController.selectCategory('football')}" update="productsList" />
 							</p:submenu>
 						</p:column>
 
 						<p:column>
 							<p:submenu label="Gym Equipments">
-								<p:menuitem value="Gloves and Belts" url="#" />
-								<p:menuitem value="Clothing and Bags" url="#" />
+								<p:menuitem value="Gloves and Belts" actionListener="#{healthkartController.selectCategory('gloves_belts')}" update="productsList" />
+								<p:menuitem value="Clothing and Bags" actionListener="#{healthkartController.selectCategory('clothing_bags')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Muscle Building">
-								<p:menuitem value="Dumbells and Weights" url="#" />
-								<p:menuitem value="Pushup bars" url="#" />
+								<p:menuitem value="Dumbells and Weights" actionListener="#{healthkartController.selectCategory('dumbells_weights')}" update="productsList" />
+								<p:menuitem value="Pushup bars" actionListener="#{healthkartController.selectCategory('pushupbars')}" update="productsList" />
 							</p:submenu>
 						</p:column>
 						<p:column>
 							<p:submenu label="Weight Loss equipments">
-								<p:menuitem value="Yoga mats" url="#" />
-								<p:menuitem value="Steppers" url="#" />
+								<p:menuitem value="Yoga mats" actionListener="#{healthkartController.selectCategory('yogamats')}" update="productsList" />
+								<p:menuitem value="Steppers" actionListener="#{healthkartController.selectCategory('steppers')}" update="productsList" />
 							</p:submenu>
 						</p:column>
 					</p:submenu>
