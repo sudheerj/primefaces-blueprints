@@ -75,7 +75,9 @@
                         <p>#{locationController.marker.data.toString()}</p>
                         <hr/>
                         <h4>#{locationController.marker.latlng.lat}, #{locationController.marker.latlng.lng}</h4>
-                        <p:commandButton action="/printjobs.jsf?faces-redirect=true" value="Order Now"/>
+                        <p:commandButton action="/joborder.jsf?faces-redirect=true"
+                                         rendered="#{customerController.loggedIn}"
+                                         value="Order Now"/>
                     </p:outputPanel>
                 </p:gmapInfoWindow>
             </p:gmap>

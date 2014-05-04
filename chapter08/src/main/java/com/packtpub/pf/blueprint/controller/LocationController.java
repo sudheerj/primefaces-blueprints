@@ -77,6 +77,7 @@ public class LocationController implements Serializable {
 
     public void addNewLocation(){
         ds.addOrUpdateEntity(newLocation);
+        prepareNewLocation();
     }
 
 

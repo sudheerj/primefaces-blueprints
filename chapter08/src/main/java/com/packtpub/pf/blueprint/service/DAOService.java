@@ -1,5 +1,6 @@
 package com.packtpub.pf.blueprint.service;
 
+import com.packtpub.pf.blueprint.JobStatus;
 import com.packtpub.pf.blueprint.persistence.entity.*;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
@@ -74,13 +75,39 @@ public class DAOService {
         org.hibernate.Transaction tx = getSession().beginTransaction();
         List list = getSession().createCriteria(PrintJobs.class)
                 .add(Restrictions.eq("customer", c))
-                .addOrder(Order.desc("createdDate")).list();
+                .addOrder(Order.desc("createDate")).list();
         tx.commit();
         getSession().close();
         _log.info("Listed Successfully....");
         return list;
     }
 
+    public List<PrintJobs> getJobsBySubmittedStatus() {
+        org.hibernate.Transaction tx = getSession().beginTransaction();
+        List list = getSession().createCriteria(PrintJobs.class)
+                .add(Restrictions.eq("status", JobStatus.SUBMITTED))
+                .addOrder(Order.desc("createDate")).list();
+        tx.commit();
+        getSession().close();
+        _log.info("Listed Successfully....");
+        return list;
+    }
+
+
+    public Location getLocationByFranchiseeNo(Long franchiseeNo){
+        Location loc = null;
+        if (franchiseeNo != null) {
+            org.hibernate.Transaction tx = getSession().beginTransaction();
+            Criteria criteria = getSession().createCriteria(Location.class);
+            criteria.add(Restrictions.eq("franchiseeNo", franchiseeNo));
+            loc = (Location) criteria.uniqueResult();
+            tx.commit();
+            getSession().close();
+            _log.info("Added Successfully....");
+        }
+        return loc;
+
+    }
 
     private Session getSession() {
         SessionFactory sf = com.packtpub.pf.blueprint.persistence.HibernateUtil.getSessionFactory();

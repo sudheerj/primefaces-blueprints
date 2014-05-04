@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="template/template.xhtml">
+    <ui:define name="header">
+        <script type="text/javascript">
+            function start() {
+                PF('statusDialog').show();
+            }
+
+            function stop() {
+                PF('statusDialog').hide();
+            }
+        </script>
+    </ui:define>
+    <ui:define name="bodyContent">
+        <h:form id="centerForm" enctype="multipart/form-data">
+            <h:inputHidden value="#{locationController.location}"/>
+
+            <p:panel>
+                <p>
+                    Customer "#{customerController.customer.firstName}",
+                    Ordered a Pringing Job in the Location "#{locationController.location.street1}"
+                    process his/her order by the expected date.
+                    <br/>
+                    Download the file from the below Button and make the Print Copy ready ASAP.
+                </p>
+                <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+                    <p:graphicImage library="images" name="ajaxloadingbar.gif" />
+                </p:dialog>
+
+                <p:commandButton id="downloadLink" value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop)"
+                                 icon="ui-icon-arrowthichk-s">
+                    <p:fileDownload value="#{fileUploadController.getFileforJobId(fileUploadController.jobId)}" />
+                </p:commandButton>
+
+            </p:panel>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

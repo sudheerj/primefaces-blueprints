@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="template/template.xhtml">
+    <ui:define name="header">
+        <script type="text/javascript">
+            function start() {
+                PF('statusDialog').show();
+            }
+
+            function stop() {
+                PF('statusDialog').hide();
+            }
+        </script>
+    </ui:define>
+    <ui:define name="bodyContent">
+        <h:form id="centerForm">
+
+            <p:panel id="jobPanel">
+                <p:fieldset style="margin: 0 auto; text-align: center; text-align: -webkit-center;">
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="Enter Job Name"/>
+                        <p:inputText value="#{fileUploadController.jobs.jobName}"/>
+
+                        <p:outputLabel value="Enter Job Description"/>
+                        <p:inputTextarea value="#{fileUploadController.jobs.jobDescription}"/>
+
+                        <p:outputLabel value="Number of Copies"/>
+                        <h:panelGrid columns="1" style="margin-bottom:10px">
+                            <p:inputText id="txt1" value="#{fileUploadController.jobs.noOfPrints}"/>
+                            <p:slider for="txt1"/>
+                        </h:panelGrid>
+
+                        <h:inputHidden id="txtstart" value="#{fileUploadController.jobs.pageStart}"/>
+                        <h:inputHidden id="txtend" value="#{fileUploadController.jobs.pageEnd}"/>
+                        <p:outputLabel value="Page Range"/>
+                        <h:selectBooleanCheckbox value="#{fileUploadController.jobs.pageRange}"/>
+                        <h:panelGrid columns="1" style="margin-bottom:10px">                   
+                                    <h:outputText id="displayRange"
+                                                  value="Between #{fileUploadController.jobs.pageStart} and #{fileUploadController.jobs.pageEnd}"/>                   
+                                    <p:slider for="txtstart,txtend" display="displayRange" style="width:400px"
+                                              range="true" displayTemplate="Between {min} and {max}"/>
+                                </h:panelGrid>
+
+                        <p:commandButton action="#{fileUploadController.savePrintJobs}" update="jobPanel" value="Submit"/>
+                    </p:panelGrid>
+                </p:fieldset>
+            </p:panel>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

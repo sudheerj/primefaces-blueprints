@@ -29,10 +29,19 @@ public class PrintJobs implements java.io.Serializable {
 
     private int noOfPrints;
 
+    private int pageStart = 1;
+
+    private int pageEnd;
+
+    private boolean pageRange;
+
     private JobStatus status;
 
     @Temporal(TemporalType.DATE)
     private Date createDate;
+
+    @OneToOne
+    private Location location;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Customer customer;

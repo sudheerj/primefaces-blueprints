@@ -23,7 +23,7 @@ public class Location implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private Long id;
     @NaturalId
     @Basic(optional = false)
     @Column(name = "franchisee_no")
