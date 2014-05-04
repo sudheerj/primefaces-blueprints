@@ -12,8 +12,7 @@
     <ui:define name="bodyContent">
         <h:form id="centerForm">
             <div style="margin: 0 auto; text-align: center; text-align: -webkit-center;">
-            <p:dashboard id="board" model="#{dashboardController.model}"
-                         rendered="#{customerController.customer.email == 'admin@admin.com'}">
+            <p:dashboard id="board" model="#{dashboardController.model}">
                 <p:ajax event="reorder" listener="#{dashboardController.handleReorder}"/>
 
                 <c:forEach items="#{dashboardController.jobList}" var="job">

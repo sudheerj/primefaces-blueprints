@@ -9,7 +9,7 @@
     <ui:define name="bodyContent">
         <h:form>
             <p:growl id="msg" showDetail="true"/>
-            <p:panelGrid columns="3">
+            <p:panelGrid columns="3" style="margin: 0 auto; text-align: center; text-align: -webkit-center;">
                 <p:panelGrid columns="1">
                     <p:tagCloud model="#{genericController.model}">
                         <p:ajax event="select" update="msg" listener="#{genericController.onSelect}"/>

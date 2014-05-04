@@ -50,7 +50,7 @@
                     <p:outputLabel value="Longitude"/>
                     <p:inputText value="#{locationController.newLocation.longitude}"/>
 
-                    <p:commandButton value="Submit" ajax="true"
+                    <p:commandButton value="Submit"
                                      update=":mapform:gmap"
                                      action="#{locationController.addNewLocation}"
                                      oncomplete="PF('$itemDetail').hide()"/>

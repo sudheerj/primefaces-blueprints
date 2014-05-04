@@ -39,22 +39,6 @@ public class DashboardController implements Serializable {
         if(customer != null) {
             populatePrintJobList();
         }
-
-        model = new DefaultDashboardModel();
-
-        if(jobList != null && !jobList.isEmpty()){
-
-            for(int i=0;i<jobList.size();i++) {
-                DashboardColumn column = new DefaultDashboardColumn();
-                for(int j=0;j<4;j++) {
-                    if(i < jobList.size()) {
-                        column.addWidget(jobList.get(i).getJobRefId());
-                        i++;
-                    }
-                }
-                model.addColumn(column);
-            }
-        }
     }
 
     public void handleReorder(DashboardReorderEvent event) {
@@ -86,6 +70,22 @@ public class DashboardController implements Serializable {
             jobList = ds.getJobsBySubmittedStatus();
         }else{
             jobList = ds.getJobsByCustomerId(customer);
+        }
+
+        model = new DefaultDashboardModel();
+
+        if(jobList != null && !jobList.isEmpty()){
+
+            for(int i=0;i<jobList.size();i++) {
+                DashboardColumn column = new DefaultDashboardColumn();
+                for(int j=0;j<4;j++) {
+                    if(i < jobList.size()) {
+                        column.addWidget(jobList.get(i).getJobRefId());
+                        i++;
+                    }
+                }
+                model.addColumn(column);
+            }
         }
 
     }

@@ -116,6 +116,7 @@ public class FileUploadController implements Serializable {
     public String savePrintJobs(){
         jobs.setCustomer(customer);
         jobs.setLocation(location);
+        jobs.setJobRefId(jobs.getJobName()+"12");
         jobs.setCreateDate(new Date());
         jobs.setStatus(JobStatus.SUBMITTED);
         ds.addOrUpdateEntity(jobs);
