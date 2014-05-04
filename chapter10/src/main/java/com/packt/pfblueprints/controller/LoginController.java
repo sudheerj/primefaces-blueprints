@@ -7,8 +7,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.bean.ViewScoped;
 import javax.faces.bean.ManagedBean;
 
-import com.packt.pfblueprints.dao.LoginDAO;
-
 @ManagedBean
 @ViewScoped
 public class LoginController implements Serializable {
@@ -44,22 +42,6 @@ public class LoginController implements Serializable {
 		}
 
 	}
-
-	/*public void changepassword() throws SQLException {
-		LoginDAO dao = new LoginDAO();
-		boolean confirm = false;
-		confirm = dao.changepassword(username, password, newpassword);
-
-		if (confirm) {
-			FacesMessage msg = new FacesMessage("change password is successful");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} else {
-			FacesMessage msg = new FacesMessage(
-					"change password is unsuccessful",
-					"Please try with valid data");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
-	}*/
 
 	public String getUsername() {
 		return username;

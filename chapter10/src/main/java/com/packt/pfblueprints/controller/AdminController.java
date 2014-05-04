@@ -29,11 +29,9 @@ public class AdminController implements Serializable {
 	private TreeNode productSalesRoot;
     private TreeNode selectedNode;
     private TreeNode selectedProductNode;
-    private Map<String, String> themes;
 
 	public AdminController() {
 		init();
-		setThemes();
 		productTree();
 		productSales();
 	}
@@ -50,41 +48,7 @@ public class AdminController implements Serializable {
 		disclaimer = "The information contained in this website is for information purposes only, and does not constitute, nor is it intended to constitute, the provision of health care product advice.";
 	}
 	
-	public void setThemes(){
-		themes = new TreeMap<String, String>();
-        themes.put("Aristo", "aristo");
-        themes.put("Black-Tie", "black-tie");
-        themes.put("Blitzer", "blitzer");
-        themes.put("Bluesky", "bluesky");
-        themes.put("Casablanca", "casablanca");
-        themes.put("Cupertino", "cupertino");
-        themes.put("Dark-Hive", "dark-hive");
-        themes.put("Dot-Luv", "dot-luv");
-        themes.put("Eggplant", "eggplant");
-        themes.put("Excite-Bike", "excite-bike");
-        themes.put("Flick", "flick");
-        themes.put("Glass-X", "glass-x");
-        themes.put("Hot-Sneaks", "hot-sneaks");
-        themes.put("Humanity", "humanity");
-        themes.put("Le-Frog", "le-frog");
-        themes.put("Midnight", "midnight");
-        themes.put("Mint-Choc", "mint-choc");
-        themes.put("Overcast", "overcast");
-        themes.put("Pepper-Grinder", "pepper-grinder");
-        themes.put("Redmond", "redmond");
-        themes.put("Rocket", "rocket");
-        themes.put("Sam", "sam");
-        themes.put("Smoothness", "smoothness");
-        themes.put("South-Street", "south-street");
-        themes.put("Start", "start");
-        themes.put("Sunny", "sunny");
-        themes.put("Swanky-Purse", "swanky-purse");
-        themes.put("Trontastic", "trontastic");
-        themes.put("UI-Darkness", "ui-darkness");
-        themes.put("UI-Lightness", "ui-lightness");
-        themes.put("Vader", "vader");
-	}
-
+	
 	public void productTree() {
 		productHierarchyRoot = new DefaultTreeNode("HealthCare Products", null);
 		TreeNode node0 = new DefaultTreeNode("Health Devices", productHierarchyRoot);
@@ -174,91 +138,88 @@ public class AdminController implements Serializable {
 		    productSalesRoot = new DefaultTreeNode("root", null);
          
 		    TreeNode node0 = new DefaultTreeNode(new ProductSales("Health Devices", "80k","90k","1billion","2billion","+40%"), productSalesRoot);
-			TreeNode node1 = new DefaultTreeNode(new ProductSales("Diabetes Care", "80k","90k","1billion","2billion","+40%"),productSalesRoot);
-			TreeNode node2 = new DefaultTreeNode(new ProductSales("Beauty Care", "80k","90k","1billion","2billion","+40%"), productSalesRoot);
-			TreeNode node3 = new DefaultTreeNode(new ProductSales("Vitamins and Supplements", "80k","90k","1billion","2billion","+40%"), productSalesRoot);
-			TreeNode node4 = new DefaultTreeNode(new ProductSales("Sports and Fitness", "80k","90k","1billion","2billion","+40%"), productSalesRoot);
+			TreeNode node1 = new DefaultTreeNode(new ProductSales("Diabetes Care", "60k","80k","1.5billion","2.5billion","+30%"),productSalesRoot);
+			TreeNode node2 = new DefaultTreeNode(new ProductSales("Beauty Care", "80k","90k","2billion","3billion","+20%"), productSalesRoot);
+			TreeNode node3 = new DefaultTreeNode(new ProductSales("Vitamins and Supplements", "70k","80k","1billion","3billion","+30%"), productSalesRoot);
+			TreeNode node4 = new DefaultTreeNode(new ProductSales("Sports and Fitness", "50k","80k","2billion","3billion","+40%"), productSalesRoot);
 
-			TreeNode node00 = new DefaultTreeNode(new ProductSales("Patient Care", "80k","90k","1billion","2billion","+40%"), node0);
-			TreeNode node01 = new DefaultTreeNode(new ProductSales("Monitoring Devices", "80k","90k","1billion","2billion","+40%"), node0);
-			TreeNode node02 = new DefaultTreeNode(new ProductSales("Pain Managements", "80k","90k","1billion","2billion","+40%"), node0);
-			TreeNode node03 = new DefaultTreeNode(new ProductSales("Doctors Care", "80k","90k","1billion","2billion","+40%"), node0);
-			TreeNode node04 = new DefaultTreeNode(new ProductSales("Repository Care", "80k","90k","1billion","2billion","+40%"), node0);
-			TreeNode node05 = new DefaultTreeNode(new ProductSales("Weight Management", "80k","90k","1billion","2billion","+40%"), node0);
-			TreeNode node10 = new DefaultTreeNode(new ProductSales("Monitoring Devices", "80k","90k","1billion","2billion","+40%"), node1);
-			TreeNode node11 = new DefaultTreeNode(new ProductSales("Weight management", "80k","90k","1billion","2billion","+40%"), node1);
-			TreeNode node12 = new DefaultTreeNode(new ProductSales("Diabetic Food", "80k","90k","1billion","2billion","+40%"), node1);
-			TreeNode node20 = new DefaultTreeNode(new ProductSales("Hair Care", "80k","90k","1billion","2billion","+40%"), node2);
-			TreeNode node21 = new DefaultTreeNode(new ProductSales("Face Care", "80k","90k","1billion","2billion","+40%"), node2);
-			TreeNode node22 = new DefaultTreeNode(new ProductSales("Make-up Care", "80k","90k","1billion","2billion","+40%"), node2);
-			TreeNode node23 = new DefaultTreeNode(new ProductSales("Grooming", "80k","90k","1billion","2billion","+40%"), node2);
-			TreeNode node30 = new DefaultTreeNode(new ProductSales("Ayurveda and Herbs", "80k","90k","1billion","2billion","+40%"), node3);
-			TreeNode node31 = new DefaultTreeNode(new ProductSales("Weight Management", "80k","90k","1billion","2billion","+40%"), node3);
-			TreeNode node40 = new DefaultTreeNode(new ProductSales("Foot Wear", "80k","90k","1billion","2billion","+40%"), node4);
-			TreeNode node41 = new DefaultTreeNode(new ProductSales("Sports appearal", "80k","90k","1billion","2billion","+40%"), node4);
-			TreeNode node42 = new DefaultTreeNode(new ProductSales("Team Sports", "80k","90k","1billion","2billion","+40%"), node4);
-			TreeNode node43 = new DefaultTreeNode(new ProductSales("Gym Equipments", "80k","90k","1billion","2billion","+40%"), node4);
-			TreeNode node44 = new DefaultTreeNode(new ProductSales("Muscle Building", "80k","90k","1billion","2billion","+40%"), node4);
-			TreeNode node45 = new DefaultTreeNode(new ProductSales("Weight Loss Equipments", "80k","90k","1billion","2billion","+40%"), node4);
+			TreeNode node00 = new DefaultTreeNode(new ProductSales("Patient Care", "10k","10k","200million","400million","+30%"), node0);
+			TreeNode node01 = new DefaultTreeNode(new ProductSales("Monitoring Devices", "10k","10k","200billion","400million","+50%"), node0);
+			TreeNode node02 = new DefaultTreeNode(new ProductSales("Pain Managements", "10k","10k","200million","400million","+20%"), node0);
+			TreeNode node03 = new DefaultTreeNode(new ProductSales("Doctors Care", "10k","20k","200million","400million","+60%"), node0);
+			TreeNode node04 = new DefaultTreeNode(new ProductSales("Repository Care", "20k","20k","100million","200million","+40%"), node0);
+			TreeNode node05 = new DefaultTreeNode(new ProductSales("Weight Management", "20k","20k","100million","200million","+40%"), node0);
+			TreeNode node10 = new DefaultTreeNode(new ProductSales("Monitoring Devices", "20k","25k","0.5billion","1billion","+25%"), node1);
+			TreeNode node11 = new DefaultTreeNode(new ProductSales("Weight management", "20k","25k","0.5billion","1billion","+25%"), node1);
+			TreeNode node12 = new DefaultTreeNode(new ProductSales("Diabetic Food", "20k","30k","0.5billion","1.5billion","+40%"), node1);
+			TreeNode node20 = new DefaultTreeNode(new ProductSales("Hair Care", "20k","20k","0.5billion","0.5billion","+20%"), node2);
+			TreeNode node21 = new DefaultTreeNode(new ProductSales("Face Care", "20k","25k","0.5billion","0.5billion","+15%"), node2);
+			TreeNode node22 = new DefaultTreeNode(new ProductSales("Make-up Care", "20k","25k","0.5billion","0.5billion","+20%"), node2);
+			TreeNode node23 = new DefaultTreeNode(new ProductSales("Grooming", "20k","20k","0.5billion","1.5billion","+25%"), node2);
+			TreeNode node30 = new DefaultTreeNode(new ProductSales("Ayurveda and Herbs", "30k","30k","0.5billion","1billion","+10%"), node3);
+			TreeNode node31 = new DefaultTreeNode(new ProductSales("Weight Management", "40k","50k","0.5billion","2billion","+50%"), node3);
+			TreeNode node40 = new DefaultTreeNode(new ProductSales("Foot Wear", "5k","10k","250million","500million","+40%"), node4);
+			TreeNode node41 = new DefaultTreeNode(new ProductSales("Sports appearal", "5k","10k","250million","500million","+40%"), node4);
+			TreeNode node42 = new DefaultTreeNode(new ProductSales("Team Sports", "5k","10k","250million","500million","+40%"), node4);
+			TreeNode node43 = new DefaultTreeNode(new ProductSales("Gym Equipments", "10k","10k","250million","500million","+40%"), node4);
+			TreeNode node44 = new DefaultTreeNode(new ProductSales("Muscle Building", "10k","20k","500million","500million","+40%"), node4);
+			TreeNode node45 = new DefaultTreeNode(new ProductSales("Weight Loss Equipments", "15k","20k","500million","500million","+40%"), node4);
 			
 			
-			TreeNode node000 = new DefaultTreeNode(new ProductSales("Mattress", "80k","90k","1billion","2billion","+40%"), node00);
-			TreeNode node001 = new DefaultTreeNode(new ProductSales("Wheelchairs", "80k","90k","1billion","2billion","+40%"), node00);
-			TreeNode node002 = new DefaultTreeNode(new ProductSales("Walking and Hearing aids", "80k","90k","1billion","2billion","+40%"), node00);
-			TreeNode node003 = new DefaultTreeNode(new ProductSales("Thermometer", "80k","90k","1billion","2billion","+40%"), node01);
-			TreeNode node004 = new DefaultTreeNode(new ProductSales("Blood pressure", "80k","90k","1billion","2billion","+40%"), node01);
-			TreeNode node005 = new DefaultTreeNode(new ProductSales("Weighing scales", "80k","90k","1billion","2billion","+40%"), node01);
-			TreeNode node006 = new DefaultTreeNode(new ProductSales("Massagers", "80k","90k","1billion","2billion","+40%"), node02);
-			TreeNode node007 = new DefaultTreeNode(new ProductSales("Heating pads", "80k","90k","1billion","2billion","+40%"), node02);
-			TreeNode node008 = new DefaultTreeNode(new ProductSales("Body supports", "80k","90k","1billion","2billion","+40%"), node02);
-			TreeNode node009 = new DefaultTreeNode(new ProductSales("Stethescope", "80k","90k","1billion","2billion","+40%"), node03);
-			TreeNode node010 = new DefaultTreeNode(new ProductSales("Glucometers", "80k","90k","1billion","2billion","+40%"), node03);
-			TreeNode node011 = new DefaultTreeNode(new ProductSales("Blook pressure", "80k","90k","1billion","2billion","+40%"), node03);
-			TreeNode node012 = new DefaultTreeNode(new ProductSales("Vaporiser", "80k","90k","1billion","2billion","+40%"), node04);
-			TreeNode node013 = new DefaultTreeNode(new ProductSales("Oxygen concentrator", "80k","90k","1billion","2billion","+40%"), node04);
-			TreeNode node014 = new DefaultTreeNode(new ProductSales("Weighing scales", "80k","90k","1billion","2billion","+40%"), node05);
-			TreeNode node015 = new DefaultTreeNode(new ProductSales("Body fat monitor", "80k","90k","1billion","2billion","+40%"), node05);
-			TreeNode node100 = new DefaultTreeNode(new ProductSales("Gluco meters", "80k","90k","1billion","2billion","+40%"), node10);
-			TreeNode node101 = new DefaultTreeNode(new ProductSales("Lancets", "80k","90k","1billion","2billion","+40%"), node10);
-			TreeNode node102 = new DefaultTreeNode(new ProductSales("Weighing scales", "80k","90k","1billion","2billion","+40%"), node11);
-			TreeNode node103 = new DefaultTreeNode(new ProductSales("Body fat monitor", "80k","90k","1billion","2billion","+40%"), node11);
-			TreeNode node104 = new DefaultTreeNode(new ProductSales("Treadmills", "80k","90k","1billion","2billion","+40%"), node11);
-			TreeNode node105 = new DefaultTreeNode(new ProductSales("Sugar free food", "80k","90k","1billion","2billion","+40%"), node12);
-			TreeNode node106 = new DefaultTreeNode(new ProductSales("Sugar free drinks", "80k","90k","1billion","2billion","+40%"), node12);
-			TreeNode node200 = new DefaultTreeNode(new ProductSales("Shampoo and Conditioners", "80k","90k","1billion","2billion","+40%"), node20);
-			TreeNode node201 = new DefaultTreeNode(new ProductSales("Hair fall and dandruf treatment", "80k","90k","1billion","2billion","+40%"), node20);
-			TreeNode node202 = new DefaultTreeNode(new ProductSales("Hair oils", "80k","90k","1billion","2billion","+40%"), node21);
-			TreeNode node203 = new DefaultTreeNode(new ProductSales("Creams and locations", "80k","90k","1billion","2billion","+40%"), node21);
-			TreeNode node204 = new DefaultTreeNode(new ProductSales("Sun protection", "80k","90k","1billion","2billion","+40%"), node21);
-			TreeNode node205 = new DefaultTreeNode(new ProductSales("Cleaners", "80k","90k","1billion","2billion","+40%"), node21);
-			TreeNode node206 = new DefaultTreeNode(new ProductSales("Facial parts", "80k","90k","1billion","2billion","+40%"), node22);
-			TreeNode node207 = new DefaultTreeNode(new ProductSales("Nails", "80k","90k","1billion","2billion","+40%"), node22);
-			TreeNode node208 = new DefaultTreeNode(new ProductSales("Face care", "80k","90k","1billion","2billion","+40%"), node23);
-			TreeNode node209 = new DefaultTreeNode(new ProductSales("Hair care", "80k","90k","1billion","2billion","+40%"), node23);
-			TreeNode node210 = new DefaultTreeNode(new ProductSales("Perfumes", "80k","90k","1billion","2billion","+40%"), node23);
-			TreeNode node300 = new DefaultTreeNode(new ProductSales("Face,hair and nails", "80k","90k","1billion","2billion","+40%"), node30);
-			TreeNode node301 = new DefaultTreeNode(new ProductSales("Herbs", "80k","90k","1billion","2billion","+40%"), node30);
-			TreeNode node302 = new DefaultTreeNode(new ProductSales("Weight loss", "80k","90k","1billion","2billion","+40%"), node31);
-			TreeNode node313 = new DefaultTreeNode(new ProductSales("Weight gain", "80k","90k","1billion","2billion","+40%"), node31);
-			TreeNode node400 = new DefaultTreeNode(new ProductSales("Fitness shoes", "80k","90k","1billion","2billion","+40%"), node40);
-			TreeNode node401 = new DefaultTreeNode(new ProductSales("Sports shoes", "80k","90k","1billion","2billion","+40%"), node40);
-			TreeNode node402 = new DefaultTreeNode(new ProductSales("T-Shirts and Jackets", "80k","90k","1billion","2billion","+40%"), node41);
-			TreeNode node403 = new DefaultTreeNode(new ProductSales("Tracks and bags", "80k","90k","1billion","2billion","+40%"), node41);
-			TreeNode node404 = new DefaultTreeNode(new ProductSales("Caps and Sunglasses", "80k","90k","1billion","2billion","+40%"), node41);
-			TreeNode node405 = new DefaultTreeNode(new ProductSales("Cricket", "80k","90k","1billion","2billion","+40%"), node42);
-			TreeNode node406 = new DefaultTreeNode(new ProductSales("Football", "80k","90k","1billion","2billion","+40%"), node42);
-			TreeNode node407 = new DefaultTreeNode(new ProductSales("Gloves and Belts", "80k","90k","1billion","2billion","+40%"), node43);
-			TreeNode node408 = new DefaultTreeNode(new ProductSales("Clothing and Bags", "80k","90k","1billion","2billion","+40%"), node43);
-			TreeNode node409 = new DefaultTreeNode(new ProductSales("Dumbells and Weights", "80k","90k","1billion","2billion","+40%"), node44);
-			TreeNode node410 = new DefaultTreeNode(new ProductSales("Pushup bars", "80k","90k","1billion","2billion","+40%"), node44);
-			TreeNode node411 = new DefaultTreeNode(new ProductSales("Yoga mats", "80k","90k","1billion","2billion","+40%"), node45);
-			TreeNode node412 = new DefaultTreeNode(new ProductSales("Steppers", "80k","90k","1billion","2billion","+40%"), node45);
+			TreeNode node000 = new DefaultTreeNode(new ProductSales("Mattress", "3k","3k","50million","100illion","+20%"), node00);
+			TreeNode node001 = new DefaultTreeNode(new ProductSales("Wheelchairs", "3k","3k","50million","100million","+30%"), node00);
+			TreeNode node002 = new DefaultTreeNode(new ProductSales("Walking and Hearing aids", "4k","3k","100million","200million","+40%"), node00);
+			TreeNode node003 = new DefaultTreeNode(new ProductSales("Thermometer", "3k","3k","50million","100million","+50%"), node01);
+			TreeNode node004 = new DefaultTreeNode(new ProductSales("Blood pressure", "4k","4k","100million","200million","+50%"), node01);
+			TreeNode node005 = new DefaultTreeNode(new ProductSales("Weighing scales", "3k","3k","50million","100million","+50%"), node01);
+			TreeNode node006 = new DefaultTreeNode(new ProductSales("Massagers", "4k","4k","100million","200million","+20%"), node02);
+			TreeNode node007 = new DefaultTreeNode(new ProductSales("Heating pads", "3k","3k","50million","100million","+20%"), node02);
+			TreeNode node008 = new DefaultTreeNode(new ProductSales("Body supports", "3k","3k","50million","100million","+20%"), node02);
+			TreeNode node009 = new DefaultTreeNode(new ProductSales("Stethescope", "3k","6k","50million","100million","+60%"), node03);
+			TreeNode node010 = new DefaultTreeNode(new ProductSales("Glucometers", "3k","6k","50million","100million","+60%"), node03);
+			TreeNode node011 = new DefaultTreeNode(new ProductSales("Blook pressure", "4k","8k","100million","200million","+60%"), node03);
+			TreeNode node012 = new DefaultTreeNode(new ProductSales("Vaporiser", "10k","10k","50million","100million","+40%"), node04);
+			TreeNode node013 = new DefaultTreeNode(new ProductSales("Oxygen concentrator", "10k","10k","50million","100million","+40%"), node04);
+			TreeNode node014 = new DefaultTreeNode(new ProductSales("Weighing scales", "10k","10k","50million","100million","+40%"), node05);
+			TreeNode node015 = new DefaultTreeNode(new ProductSales("Body fat monitor", "10k","10k","50million","100million","+40%"), node05);
+			TreeNode node100 = new DefaultTreeNode(new ProductSales("Gluco meters", "10k","10k","250million","0.5billion","+25%"), node10);
+			TreeNode node101 = new DefaultTreeNode(new ProductSales("Lancets", "10k","15k","250million","0.5billion","+25%"), node10);
+			TreeNode node102 = new DefaultTreeNode(new ProductSales("Weighing scales", "5k","5k","150million","0.25billion","+25%"), node11);
+			TreeNode node103 = new DefaultTreeNode(new ProductSales("Body fat monitor", "5k","5k","150million","0.25billion","+25%"), node11);
+			TreeNode node104 = new DefaultTreeNode(new ProductSales("Treadmills", "10k","20k","200million","0.5billion","+25%"), node11);
+			TreeNode node105 = new DefaultTreeNode(new ProductSales("Sugar free food", "10k","10k","0.25billion","0.5billion","+40%"), node12);
+			TreeNode node106 = new DefaultTreeNode(new ProductSales("Sugar free drinks", "10k","20k","0.25billion","1billion","+40%"), node12);
+			TreeNode node200 = new DefaultTreeNode(new ProductSales("Shampoo and Conditioners", "10k","10k","0.25billion","0.25billion","+20%"), node20);
+			TreeNode node201 = new DefaultTreeNode(new ProductSales("Hair fall and dandruf treatment", "10k","10k","0.25billion","0.25billion","+20%"), node20);
+			TreeNode node202 = new DefaultTreeNode(new ProductSales("Hair oils", "5k","5k","100million","100million","+15%"), node21);
+			TreeNode node203 = new DefaultTreeNode(new ProductSales("Creams and locations", "5k","5k","100million","100million","+15%"), node21);
+			TreeNode node204 = new DefaultTreeNode(new ProductSales("Sun protection", "5k","5k","100illion","100million","+15%"), node21);
+			TreeNode node205 = new DefaultTreeNode(new ProductSales("Cleaners", "5k","10k","200million","200million","+15%"), node21);
+			TreeNode node206 = new DefaultTreeNode(new ProductSales("Facial parts", "10k","10k","250million","250million","+20%"), node22);
+			TreeNode node207 = new DefaultTreeNode(new ProductSales("Nails", "10k","15k","250million","250million","+20%"), node22);
+			TreeNode node208 = new DefaultTreeNode(new ProductSales("Face care", "5k","5k","100million","250million","+25%"), node23);
+			TreeNode node209 = new DefaultTreeNode(new ProductSales("Hair care", "5k","5k","200million","250million","+25%"), node23);
+			TreeNode node210 = new DefaultTreeNode(new ProductSales("Perfumes", "10k","10k","200million","250million","+25%"), node23);
+			TreeNode node300 = new DefaultTreeNode(new ProductSales("Face,hair and nails", "10k","10k","250illion","0.5billion","+10%"), node30);
+			TreeNode node301 = new DefaultTreeNode(new ProductSales("Herbs", "20k","20k","250million","0.5billion","+10%"), node30);
+			TreeNode node302 = new DefaultTreeNode(new ProductSales("Weight loss", "20k","20k","250illion","1billion","+50%"), node31);
+			TreeNode node313 = new DefaultTreeNode(new ProductSales("Weight gain", "20k","30k","250illion","1billion","+50%"), node31);
+			TreeNode node400 = new DefaultTreeNode(new ProductSales("Fitness shoes", "2k","5k","100million","250illion","+40%"), node40);
+			TreeNode node401 = new DefaultTreeNode(new ProductSales("Sports shoes", "3k","5k","150million","250million","+40%"), node40);
+			TreeNode node402 = new DefaultTreeNode(new ProductSales("T-Shirts and Jackets", "2k","3k","100illion","100illion","+40%"), node41);
+			TreeNode node403 = new DefaultTreeNode(new ProductSales("Tracks and bags", "1k","2k","150million","200million","+40%"), node41);
+			TreeNode node404 = new DefaultTreeNode(new ProductSales("Caps and Sunglasses", "2k","5k","250million","200million","+40%"), node41);
+			TreeNode node405 = new DefaultTreeNode(new ProductSales("Cricket", "2k","5k","100illion","250million","+40%"), node42);
+			TreeNode node406 = new DefaultTreeNode(new ProductSales("Football", "3k","5k","150illion","250million","+40%"), node42);
+			TreeNode node407 = new DefaultTreeNode(new ProductSales("Gloves and Belts", "5k","5k","100million","250million","+40%"), node43);
+			TreeNode node408 = new DefaultTreeNode(new ProductSales("Clothing and Bags", "5k","5k","150million","250million","+40%"), node43);
+			TreeNode node409 = new DefaultTreeNode(new ProductSales("Dumbells and Weights", "5k","10k","250million","250million","+40%"), node44);
+			TreeNode node410 = new DefaultTreeNode(new ProductSales("Pushup bars", "5k","10k","250million","250million","+40%"), node44);
+			TreeNode node411 = new DefaultTreeNode(new ProductSales("Yoga mats", "5k","10k","250million","250million","+40%"), node45);
+			TreeNode node412 = new DefaultTreeNode(new ProductSales("Steppers", "10k","10k","250million","250million","+40%"), node45);
 	        
 	}
 	
-	public Map<String, String> getThemes() {
-        return themes;
-    }
 
 	public String getAboutus() {
 		return aboutus;

@@ -10,7 +10,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
-        <primefaces.version>5.0.RC2</primefaces.version>
+        <primefaces.version>5.0-SNAPSHOT</primefaces.version>
         <primefaces.ext.version>1.1.0</primefaces.ext.version>
         <jsf.version>2.2.6</jsf.version>
         <log4j.version>1.2.17</log4j.version>

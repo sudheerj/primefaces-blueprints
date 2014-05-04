@@ -18,25 +18,32 @@
 						styleClass="content" />
 					<div class="caption">#{image}</div>
 				</p:contentFlow>
-				<p:spacer width="100"/>
+				<p:spacer width="100" />
 				<h:panelGrid rows="3">
-				<h:outputText/>
-				<p:outputPanel style="margin-top:-50px;float:right"
-					rendered="#{view.viewId != '/views/login.xhtml'}">
-					<h:commandLink action="/views/login.xhtml?faces-redirect=true">
-						<p:graphicImage value="/resources/images/logout.png" />
-					</h:commandLink>
-				</p:outputPanel>
-		   <p:outputPanel style="width:200px">	
-		   <h:outputText value="Choose Theme:" />
-			<p:themeSwitcher id="defaultSwitcher">
-				<f:selectItem itemLabel="Choose Theme" itemValue="" />
-				<f:selectItems value="#{adminController.themes}" />
-			</p:themeSwitcher>
-			</p:outputPanel>
+					<h:outputText />
+					<p:outputPanel style="margin-top:-50px;float:right"
+						rendered="#{view.viewId != '/views/login.xhtml'}">
+						<h:commandLink action="/views/login.xhtml?faces-redirect=true">
+							<p:graphicImage value="/resources/images/logout.png" />
+						</h:commandLink>
+					</p:outputPanel>
+					<p:outputPanel style="width:200px">
+						<h:outputText value="Choose Theme:" />
+						<p:themeSwitcher value="#{guestPreferences.theme}"
+							style="width:165px" effect="fade" id="statefulSwitcher">
+							<f:selectItem itemLabel="Choose Theme" itemValue="" />
+							<f:selectItems value="#{themeSwitcherBean.themes}" />
+							<p:ajax listener="#{themeSwitcherBean.saveTheme}" />
+						</p:themeSwitcher>
+						<!-- <h:outputText value="Choose Theme:" />
+						<p:themeSwitcher id="defaultSwitcher">
+							<f:selectItem itemLabel="Choose Theme" itemValue="" />
+							<f:selectItems value="#{adminController.themes}" />
+						</p:themeSwitcher> -->
+					</p:outputPanel>
+				</h:panelGrid>
 			</h:panelGrid>
-			</h:panelGrid>
-			
+
 		</h:form>
 	</div>
 </p:panel>

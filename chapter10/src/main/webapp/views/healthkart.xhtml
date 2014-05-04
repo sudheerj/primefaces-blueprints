@@ -55,7 +55,7 @@
 								<p:menuitem value="Lancets" actionListener="#{healthkartController.selectCategory('lancets')}" update="productsList" />
 							</p:submenu>
 							<p:submenu label="Weight management">
-								<p:menuitem value="Weighing scales" actionListener="#{healthkartController.selectCategory('weighingscales')}" update="productsList"" />
+								<p:menuitem value="Weighing scales" actionListener="#{healthkartController.selectCategory('weighingscales')}" update="productsList" />
 								<p:menuitem value="Body fat monitor" actionListener="#{healthkartController.selectCategory('bodyfatmonitor')}" update="productsList" />
 								<p:menuitem value="Treadmills" actionListener="#{healthkartController.selectCategory('treadmills')}" update="productsList" />
 							</p:submenu>
@@ -157,7 +157,7 @@
 				</p:megaMenu>
 			</p:cache>
   <p:dataScroller id="productsList" value="#{healthkartController.lazyModel}"
-				var="product" chunkSize="5"  lazy="true">
+				var="product" chunkSize="4"  lazy="true">
 
 				<f:facet name="header">
            Products Summary  (Scroll Down to Load More Products)
