@@ -10,7 +10,7 @@
 			<p:tabView id="tabView">
 
 				<p:tab id="tab1" title="Products Hierarchy">
-					<p:tree id="treeSingle"
+					<p:tree id="productsHierarchy"
 						value="#{adminController.productHierarchyRoot}" var="node"
 						selectionMode="single" orientation="horizontal"
 						selection="#{adminController.selectedNode}" dynamic="true">
@@ -31,20 +31,20 @@
 						selection="#{adminController.selectedProductNode}">
 
 						<f:facet name="header">
-            Right-Click to See Options
-        </f:facet>
+            				Right-Click to See Options
+      				    </f:facet>
 
 						<p:column style="width:150px">
 							<f:facet name="header">
-               Product Type
-            </f:facet>
+             					  Product Type
+            				</f:facet>
 							<h:outputText value="#{product.prodtype}" />
 						</p:column>
 
 						<p:column style="width:100px">
 							<f:facet name="header">
-                Gain/Loss Percentage
-            </f:facet>
+                				Gain/Loss Percentage
+            				</f:facet>
 							<h:outputText value="#{product.gainloss}" />
 						</p:column>
 
