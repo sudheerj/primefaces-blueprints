@@ -32,7 +32,8 @@
                     <p:graphicImage library="images" name="ajaxloadingbar.gif" />
                 </p:dialog>
 
-                <p:commandButton id="downloadLink" value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop)"
+                <p:commandButton id="downloadLink" value="Download" ajax="false"
+                                 onclick="PrimeFaces.monitorDownload(start, stop)"
                                  icon="ui-icon-arrowthichk-s">
                     <p:fileDownload value="#{fileUploadController.getFileforJobId(fileUploadController.jobId)}" />
                 </p:commandButton>

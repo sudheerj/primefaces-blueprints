@@ -112,12 +112,6 @@
             <version>${log4j.version}</version>
         </dependency>
 
-        <dependency>
-            <artifactId>support-pac</artifactId>
-            <groupId>${project.groupId}</groupId>
-            <version>${project.version}</version>
-        </dependency>
-
         <!-- MySQL database driver -->
         <dependency>
             <groupId>mysql</groupId>

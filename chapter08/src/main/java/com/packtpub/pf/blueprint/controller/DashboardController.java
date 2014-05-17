@@ -1,5 +1,6 @@
 package com.packtpub.pf.blueprint.controller;
 
+import com.packtpub.pf.blueprint.JobStatus;
 import com.packtpub.pf.blueprint.persistence.entity.Customer;
 import com.packtpub.pf.blueprint.persistence.entity.PrintJobs;
 import com.packtpub.pf.blueprint.service.DAOService;
@@ -19,6 +20,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,6 +39,20 @@ public class DashboardController implements Serializable {
     public void init() {
         System.out.println("Creating Dashboards");
         if(customer != null) {
+            for(int i=0;i<20;i++){
+                PrintJobs p = new PrintJobs();
+                p.setCustomer(customer);
+                p.setJobRefId("jobid" + i);
+                p.setPageEnd(0);
+                p.setJobName("Jobname" + i);
+                p.setStatus(JobStatus.SUBMITTED);
+                p.setNoOfPrints(2);
+                p.setCreateDate(new Date());
+                p.setJobDescription("Description jaofdklj"+i);
+                p.setFileName("one.txt");
+                ds.addOrUpdateEntity(p);
+            }
+
             populatePrintJobList();
         }
     }
@@ -71,6 +87,8 @@ public class DashboardController implements Serializable {
         }else{
             jobList = ds.getJobsByCustomerId(customer);
         }
+
+        System.out.println(jobList);
 
         model = new DefaultDashboardModel();
 

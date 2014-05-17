@@ -8,5 +8,17 @@ package com.packtpub.pf.blueprint;
  * To change this template use File | Settings | File Templates.
  */
 public enum JobStatus {
-    SUBMITTED, REJECTED, CANCELED, PROCESS, COMPLETED
+    SUBMITTED("SUBMITTED"), REJECTED("REJECTED"), CANCELED("CANCELED"), PROCESS("PROCESS"), COMPLETED("COMPLETED");
+
+
+    private final String name;
+
+    JobStatus(final String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

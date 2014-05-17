@@ -2,6 +2,8 @@ package com.packtpub.pf.blueprint.persistence.entity;
 
 import com.packtpub.pf.blueprint.JobStatus;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,39 +14,39 @@ import java.util.Date;
 
 @Entity
 @Table
-@Data
+
 public class PrintJobs implements java.io.Serializable {
 
     @Id
     @GeneratedValue
-    private Long id;
+    @Getter @Setter private Long id;
 
-    private String jobRefId;
+    @Getter @Setter private String jobRefId;
 
-    private String jobName;
+    @Getter @Setter private String jobName;
 
-    private String jobDescription;
+    @Getter @Setter private String jobDescription;
 
-    private String fileName;
+    @Getter @Setter private String fileName;
 
-    private int noOfPrints;
+    @Getter @Setter private int noOfPrints;
 
-    private int pageStart = 1;
+    @Getter @Setter private int pageStart = 1;
 
-    private int pageEnd;
+    @Getter @Setter private int pageEnd;
 
-    private boolean pageRange;
+    @Getter @Setter private boolean pageRange;
 
-    private JobStatus status;
+    @Getter @Setter private JobStatus status;
 
     @Temporal(TemporalType.DATE)
-    private Date createDate;
+    @Getter @Setter private Date createDate;
 
     @OneToOne
-    private Location location;
+    @Getter @Setter private Location location;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Customer customer;
+    @Getter @Setter private Customer customer;
 
 
 }

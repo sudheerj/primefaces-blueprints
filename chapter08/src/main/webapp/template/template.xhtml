@@ -38,7 +38,7 @@
                     <p:commandButton icon="ui-icon-unlocked" value="Logout" rendered="#{customerController.loggedIn}"
                                      action="#{customerController.loginMeOut}"/>
                     <p:commandButton icon="ui-icon-unlocked" value="User Dashboard" rendered="#{customerController.loggedIn}"
-                                     action="dashboard.jsf?faces-redirect=true"/>
+                                     action="dashboard.jsf?faces-redirect=true" actionListener="#{dashboardController.populatePrintJobList}"/>
                 </f:facet>
             </p:toolbar>
         </h:form>

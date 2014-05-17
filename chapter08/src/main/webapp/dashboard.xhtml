@@ -12,17 +12,17 @@
     <ui:define name="bodyContent">
         <h:form id="centerForm">
             <div style="margin: 0 auto; text-align: center; text-align: -webkit-center;">
-            <p:dashboard id="board" model="#{dashboardController.model}">
+            <p:dashboard id="board" model="#{dashboardController.model}" >
                 <p:ajax event="reorder" listener="#{dashboardController.handleReorder}"/>
 
                 <c:forEach items="#{dashboardController.jobList}" var="job">
-
                     <p:panel id="#{job.jobRefId}" header="#{job.jobName}" style="width: 250px; height: 150px;">
                         <h:outputText value="#{job.createDate}" />
                     </p:panel>
                 </c:forEach>
 
             </p:dashboard>
+
             </div>
         </h:form>
     </ui:define>

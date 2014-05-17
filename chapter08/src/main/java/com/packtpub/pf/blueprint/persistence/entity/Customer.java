@@ -4,7 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -26,8 +28,8 @@ public class Customer implements Serializable {
     private String password;
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-    private Set<PrintJobs> jobs = new HashSet<>();
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    private List<PrintJobs> jobs = new ArrayList<>();
 
 
 }
