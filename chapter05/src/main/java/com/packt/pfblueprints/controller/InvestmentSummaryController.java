@@ -42,7 +42,7 @@ import org.apache.poi.util.IOUtils;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.chart.CartesianChartModel;
-import org.primefaces.model.chart.CategoryChartModel;
+import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
 import com.lowagie.text.BadElementException;
@@ -66,7 +66,7 @@ public class InvestmentSummaryController implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private List<InvestmentSummary> investmentsInfo=new ArrayList<InvestmentSummary>();
 	private InvestmentSummary investmentobj=new InvestmentSummary();
-	private CartesianChartModel lineModel; 
+	private LineChartModel lineModel; 
 	private String base64Str;
 	private StreamedContent file;
 	ServletContext servletContext = (ServletContext) FacesContext
@@ -133,7 +133,7 @@ public class InvestmentSummaryController implements Serializable{
 	}
 
 	 private void createLinearModel() {  
-		 lineModel = new CategoryChartModel(); 
+		 lineModel = new LineChartModel(); 
 	        
 	        for(InvestmentSummary obj:investmentsInfo){
 	        	if((chartMap.keySet()).contains(obj.getFundname())){
@@ -275,7 +275,7 @@ public class InvestmentSummaryController implements Serializable{
 		return lineModel;
 	}
 
-	public void setLineModel(CartesianChartModel lineModel) {
+	public void setLineModel(LineChartModel lineModel) {
 		this.lineModel = lineModel;
 	}
 
