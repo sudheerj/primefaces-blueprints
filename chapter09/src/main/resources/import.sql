@@ -1,0 +1,1 @@
+INSERT INTO profile (email, firstName, lastName, password) VALUES ('admin@admin.com', 'Admin', 'Admin', 'admin'),('ram@ram.com', 'Ram', 'Pillai', 'ram');

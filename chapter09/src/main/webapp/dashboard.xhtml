@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="templates/template.xhtml">
+    <ui:define name="header">
+
+    </ui:define>
+    <ui:define name="bodyContent">
+        <p:dialog id="itemDetail" widgetVar="$itemDetail"
+                  hideEffect="explode" appendTo="@(body)"
+                  resizable="false" draggable="false"
+                  closeOnEscape="true">
+            <h:form id="dialogForm">
+                <h:inputHidden value="#{movieController.movie.id}"/>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Id"/>  #{movieController.movie.id}
+                    <p:outputLabel value="Movie Title"/>
+                    <p:inputText label="Movie Title" value="#{movieController.movie.title}"
+                                 placeholder="Movie Title"/>
+
+                    <p:outputLabel value="Movie Description"/>
+                    <p:inputTextarea label="Movie Description" value="#{movieController.movie.description}"
+                                 placeholder="Movie Discription"/>
+
+                    <p:outputLabel value="Movie Rating"/>
+                   <p:rating value="#{movieController.movie.rating}"/>
+
+                    <p:outputLabel value="Movie Type"/>
+                    <h:selectOneMenu value="#{movieController.movie.movieType}" >
+                        <f:selectItems value="#{movieController.getMovieTypes()}" />
+                    </h:selectOneMenu>
+
+                    <p:outputLabel value="Youtube URl"/>
+                    <p:inputText label="Movie URL" value="#{movieController.movie.movieUrl}"
+                                 placeholder="Movie URL"/>
+
+                    <p:outputLabel value="Tags" for="tags"/>
+                    <p:autoComplete id="tags" multiple="true"
+                            value="#{movieController.selectedTags}"
+                            completeMethod="#{movieController.complete}" />
+
+
+                    <p:commandButton value="Submit" ajax="true"
+                                     update=":centerForm"
+                                     action="#{movieController.addOrUpdateMovie}"
+                                     oncomplete="PF('$itemDetail').hide()"/>
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+        <h:form id="centerForm">
+            <p:dataTable value="#{userController.allMyMovies}" var="movs" styleClass="twoCols center_align"
+                         style="float: center;">
+                <f:facet name="header">
+                    <p:commandButton value="Add New" update=":itemDetail"
+                                     actionListener="#{movieController.prepareNew}"
+                                     oncomplete="PF('$itemDetail').show()"/>
+                </f:facet>
+                <p:column headerText="Title">
+                    <h:outputText value="#{movs.title}"/>
+                </p:column>
+
+                <p:column headerText="Image">
+                    <p style="text-align: center;">
+                        <p:graphicImage library="images" name="#{movs.image}" style="width: 90%;"/>
+                    </p>
+                </p:column>
+
+                <p:column headerText="Description">
+                    <p>#{movs.description}</p>
+                </p:column>
+
+                <p:column headerText="Action">
+                    <p:commandButton actionListener="#{movieController.setMovie(movs)}" title="Edit"
+                                     update=":itemDetail"
+                                     icon="ui-icon-pencil" oncomplete="PF('$itemDetail').show()"/>
+                    <p:commandButton actionListener="#{movieController.deleteMovie(movs)}" title="Edit"
+                                     icon="ui-icon-close" oncomplete="PF('$itemDetail').show()"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Add New" update=":itemDetail"
+                                     actionListener="#{movieController.prepareNew}"
+                                     oncomplete="PF('$itemDetail').show()"/>
+                </f:facet>
+            </p:dataTable>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.archive.autodetection">class</property>
+
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pocketdb?createDatabaseIfNotExist=true
+        </property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+
+        <property name="hibernate.connection.autocommit">true</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hbm2ddl.import_files">import.sql</property>
+
+        <property name="hibernate.current_session_context_class">
+            org.hibernate.context.internal.ThreadLocalSessionContext
+        </property>
+
+        <mapping class="com.packtpub.pf.blueprint.persistence.entity.Profile"/>
+        <mapping class="com.packtpub.pf.blueprint.persistence.entity.UserPost"/>
+        <mapping class="com.packtpub.pf.blueprint.persistence.entity.Comment"/>
+
+    </session-factory>
+</hibernate-configuration>
