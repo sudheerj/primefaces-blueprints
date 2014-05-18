@@ -97,6 +97,7 @@ h3 {
 
 .center_align {
     margin: 0 auto;
+    text-align: center;
     text-align: -webkit-center;
 }
 
@@ -118,4 +119,9 @@ h3 {
 .no-margin-no-padding {
     padding: 0;
     margin: 0;
+}
+
+.base-color-panel{
+    min-height: 450px;
+    background-color: rgba(17, 195, 133, 0.76);
 }

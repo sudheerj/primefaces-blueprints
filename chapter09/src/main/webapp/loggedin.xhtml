@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:form id="forFocus" prependId="false">
+        <p:focus />
+        <p:fieldset widgetVar="fieldsets" styleClass="center_align no-margin-no-padding-no-border">
+            <p:panelGrid columns="1" style="float: right;" styleClass="no-margin-no-padding-no-border">
+                <p:outputLabel value="Sign Up" style="font-size: 48px;"/>
+                <p:outputLabel value="It is always FREEEEE!..." style="text-align: right; margin-left: 130px;"/>
+                <h:panelGrid columns="2" columnClasses="no-margin-no-padding-no-border" cellpadding="0">
+                    <p:inputText id="txtFname" value="#{userController.user.firstName}" size="23"
+                                 placeholder="First Name"/>
+                    <p:inputText id="txtLname" value="#{userController.user.lastName}" size="22"
+                                 placeholder="Last Name"/>
+                </h:panelGrid>
+                <p:inputText value="#{userController.user.email}" size="49"
+                             placeholder="Email Id" autocomplete="false"/>
+                <p:inputText value="#{userController.re_email}"  size="49"
+                             placeholder="Re-Enter Email Id" autocomplete="false"/>
+                <p:password value="#{userController.user.password}" size="49"
+                            placeholder="Password " feedback="true" aautocomplete="false"/>
+
+                <p:calendar value="#{userController.user.dateOfBirth}" size="49" placeholder="Select your Date Of Birth"/>
+                <h:panelGrid columns="3">
+                    <p:outputLabel value="Gender" style="padding-right: 90px;"/>
+                    <p:separator/>
+                    <p:selectOneButton value="#{userController.user.gender}" style="float: right;">
+                        <f:selectItem itemLabel="Male" itemValue="male" />
+                        <f:selectItem itemLabel="Female" itemValue="female" />
+                    </p:selectOneButton>
+                </h:panelGrid>
+                <p:outputLabel value="Tell about you"/>
+                <p:editor id="editor" value="#{userController.user.aboutme}" width="500" height="150"/>
+                <p:scrollPanel mode="native" style="height:100px; width: 500px;">
+                    <p style="padding-left: 10px;"><i>By clicking Sign Up, you agree to our Terms and that you have
+                        read our Data Use Policy, including our Cookie Use.
+                    </i></p>
+                </p:scrollPanel>
+                <p:commandButton value="Sign Up" style="height: 70px; font-size: 32px;"/>
+                <p:commandButton resetValues="true" value="Reset" update="forFocus"
+                                 action="#{userController.prepareAddNewUser}"/>
+            </p:panelGrid>
+        </p:fieldset>
+    </h:form>
+</ui:composition>

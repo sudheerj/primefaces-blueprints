@@ -1,54 +1,31 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition template="templates/template.xhtml">
     <ui:define name="head">
     </ui:define>
     <ui:define name="bodyContent">
-        <p:panel style="min-height: 450px; background-color: rgba(17, 195, 133, 0.76);" styleClass="no-margin-no-padding" rendered="#{userController.loggedIn}">
-        </p:panel>
-        <p:panel style="min-height: 450px; background-color: rgba(17, 195, 133, 0.76);" styleClass="no-margin-no-padding" rendered="#{not userController.loggedIn}">
-            <h:form id="forFocus" prependId="false">
+        <p:panel styleClass="base-color-panel no-margin-no-padding" rendered="#{userController.loggedIn}">
+            <h:form id="form" styleClass="center_align">
                 <p:focus/>
-                <p:fieldset style="margin: 0 auto; text-align: center; text-align: -webkit-center;" widgetVar="fieldsets" styleClass="no-margin-no-padding-no-border">
-                    <p:panelGrid columns="1" style="float: right;" styleClass="no-margin-no-padding-no-border">
-                        <p:outputLabel value="Sign Up" style="font-size: 48px;"/>
-                        <p:outputLabel value="It is always FREEEEE!..." style="text-align: right; margin-left: 130px;"/>
-                        <h:panelGrid columns="2" columnClasses="no-margin-no-padding-no-border" cellpadding="0">
-                            <p:inputText id="txtFname" value="#{userController.user.firstName}" size="23"
-                                         placeholder="First Name"/>
-                            <p:inputText id="txtLname" value="#{userController.user.lastName}" size="22"
-                                         placeholder="Last Name"/>
-                        </h:panelGrid>
-                        <p:inputText id="txtemail" value="#{userController.user.email}" size="49"
-                                     placeholder="Email Id"/>
-                        <p:inputText id="txtremail" value="#{userController.re_email}"  size="49"
-                                     placeholder="Re-Enter Email Id"/>
-                        <p:password id="feedback" value="#{userController.user.password}" size="49"
-                                    placeholder="Password " feedback="true"/>
+                <p:inputTextarea value="#{userController.userPost.postText}" cols="100"/>
 
-                        <p:calendar value="#{userController.user.dateOfBirth}" size="49" placeholder="Select your Date Of Birth"/>
-                        <p:panelGrid columns="4" style="margin: 0 auto; text-align: center; text-align: -webkit-center;">
-                            <p:outputLabel value="Male" for="boolmale"/>
-                            <p:selectBooleanButton id="boolmale" value="#{userController.male}" onLabel="Yes" offLabel="No"  label="Male"/>
-                            <p:outputLabel value="Female" for="boolfemale"/>
-                            <p:selectBooleanButton id="boolfemale" value="#{userController.female}" onLabel="Yes" offLabel="No" label="Female"/>
-                        </p:panelGrid>
-                        <p:outputLabel value="Tell about you"/>
-                        <p:editor id="editor" value="#{userController.user.aboutme}" width="500" height="150"/>
-                        <p:scrollPanel mode="native" style="height:100px; width: 500px;">
-                            <p style="padding-left: 10px;"><i>By clicking Sign Up, you agree to our Terms and that you have
-                                read our Data Use Policy, including our Cookie Use.
-                            </i></p>
-                        </p:scrollPanel>
-                        <p:commandButton value="Sign Up" style="height: 70px; font-size: 32px;"/>
-                        <p:commandButton resetValues="true" value="Reset" update="forFocus"
-                                         action="#{userController.prepareAddNewUser}"/>
-                    </p:panelGrid>
-                </p:fieldset>
+                <p:commandButton id="btnPost" value="Post" actionListener="#{userController.saveUserPost}" update=":form:datascroll"/>
+                <p:defaultCommand target="btnPost"/>
+                #{userController.myPosts.size()}
+                <p:dataScroller value="#{userController.myPosts}" var="post" chunkSize="10" id="datascroll">
+                    <div style="width: 300px; height: 200px; background-color: #1ad6ff; border: 1px;">
+                        "#{post}"
+                    </div>
+                </p:dataScroller>
+
             </h:form>
+        </p:panel>
+        <p:panel styleClass="base-color-panel no-margin-no-padding" rendered="#{not userController.loggedIn}">
+            <ui:include src="loggedin.xhtml"/>
         </p:panel>
     </ui:define>
 </ui:composition>

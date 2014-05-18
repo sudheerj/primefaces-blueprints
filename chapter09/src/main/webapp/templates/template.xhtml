@@ -24,66 +24,44 @@
     <h:body style="margin: 0 auto; padding: 0;">
 
         <p:layout widgetVar="layoutit" fullPage="true">
-            <h:form>
-                <p:layoutUnit position="north"  resizable="false" collapsible="false" size="70" gutter="1"
-                              style="background-color: rgba(17, 195, 133, 0.76);">
-                    <h:form>
-                        <div style="float: left;">
-                            <p:commandButton icon="ui-icon-home" value="Home"
-                                             action="/welcome.jsf?faces-redirect=true"/>
-                        </div>
-                        <div style="float:right;">
-                            <h:panelGrid id="loginBox" columns="3" cellpadding="0"
-                                         rendered="#{ not userController.loggedIn}">
-                                <p:inputText value="#{userController.username}" placeholder="Email Id"/>
-                                <p:password id="password" value="#{userController.password}" placeholder="Password"/>
-                                <p:commandButton id="loginBtn" value="Log In" ajax="false"
-                                                 action="#{userController.loginMeIn()}"/>
-                                <p:defaultCommand target="loginBtn"/>
-                            </h:panelGrid>
-                        </div>
-                    </h:form>
-                    <ui:insert name="headerContent"/>
-                </p:layoutUnit>
-                <p:layoutUnit position="center" gutter="1"
-                              style="background-color: rgba(196, 204, 196, 0.76);">
-                    <ui:insert name="bodyContent"/>
-                </p:layoutUnit>
-                <p:layoutUnit position="south" resizable="false" collapsible="false"
-                              size="100" gutter="1"
-                              style="background-color: rgba(1, 14, 24, 0.76);">
-                    <ui:insert name="footerContent"/>
-                </p:layoutUnit>
-            </h:form>
-        </p:layout>
+            <p:layoutUnit position="north" resizable="false" collapsible="false" size="70" gutter="0"
+                          style="background-color: rgba(1, 14, 24, 0.76);">
+                <div style="float:right;">
+                    <h:panelGrid id="loginBox" columns="3" cellpadding="0"
+                                 rendered="#{ not userController.loggedIn}">
+                        <h:form>
+                            <p:inputText value="#{userController.username}" placeholder="Email Id"/>
+                            <p:password id="password" value="#{userController.password}" placeholder="Password"/>
+                            <p:commandButton id="loginBtn" value="Log In" ajax="false"
+                                             action="#{userController.loginMeIn()}"/>
+                            <p:defaultCommand target="loginBtn"/>
+                        </h:form>
+                    </h:panelGrid>
+                    <h:panelGrid id="loggedInBox" columns="3" cellpadding="0"
+                                 rendered="#{userController.loggedIn}">
+                        <span>Welcome #{userController.userNow.firstName}, #{userController.userNow.lastName} | </span>
+                        <p:separator />
+                        <h:form>
 
-<!--
-        <p:layout widgetVar="layoutit" fullPage="true">
-            <p:layoutUnit position="center">
-                <h:form>
-                    <p:toolbar style="height: 48px;">
-                        <p:toolbarGroup align="left">
-                            <p:commandButton icon="ui-icon-home" value="Home"
-                                             action="/welcome.jsf?faces-redirect=true"/>
-                            <p:commandButton icon="ui-icon-calculator" value="Schedules"
-                                             action="schedule.jsf?faces-redirect=true"/>
-                            <p:commandButton icon="ui-icon-map" value="Location"
-                                             action="location.jsf?faces-redirect=true"/>
-                        </p:toolbarGroup>
-                        <p:toolbarGroup align="right">
-                            <p:commandButton icon="ui-icon-locked" value="Login"
-                                             rendered="#{not userController.loggedIn}"
-                                             action="/logmein.jsf?faces-redirect=true"/>
+                            <p:menuButton value="Settings">
+                                <p:menuitem value="Home"  icon="ui-icon-disk" action="/welcome.jsf?faces-redirect=true"/>
+                                <p:menuitem value="Profile" icon="ui-icon-arrowrefresh-1-w" action="/userRegistration.jsf?faces-redirect=true"/>
+                                <p:menuitem value="Chat" icon="ui-icon-close" action="/chatroom.jsf?faces-redirect=true"/>
+                                <p:separator />
+                                <p:menuitem value="Sign Off" action="#{userController.loginMeOut()}" icon="ui-icon-extlink"/>
+                            </p:menuButton>
+                        </h:form>
 
-                            <p:commandButton icon="ui-icon-unlocked" value="User Dashboard"
-                                             rendered="#{userController.loggedIn}"
-                                             action="dashboard.jsf?faces-redirect=true"/>
-                        </p:toolbarGroup>
-                    </p:toolbar>
-                </h:form>
-
+                    </h:panelGrid>
+                </div>
+                <ui:insert name="headerContent"/>
             </p:layoutUnit>
-        </p:layout> -->
+            <p:layoutUnit position="center" gutter="0" resizable="false" collapsible="false"
+                          style="background-color: rgba(17, 195, 133, 0.76);">
+                <ui:insert name="bodyContent"/>
+            </p:layoutUnit>
+
+        </p:layout>
     </h:body>
 
 </f:view>

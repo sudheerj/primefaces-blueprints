@@ -36,6 +36,8 @@ public class Profile implements java.io.Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
 
+    private String gender;
+
     private String aboutme;
 
     private String avatar = "no_image_available";

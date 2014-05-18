@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="rolling" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="my-app.log" />
+        <param name="DatePattern" value=".yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss} %-5p [%C] [IP=%X{ipAddress}] [user=%X{user}] %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss} %-5p [%C] [user=%X{user}] %m%n" />
+        </layout>
+    </appender>
+
+    <root>
+        <priority value="info" />
+        <appender-ref ref="console" />
+        <appender-ref ref="rolling" />
+    </root>
+
+</log4j:configuration>

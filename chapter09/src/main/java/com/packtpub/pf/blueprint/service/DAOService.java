@@ -67,7 +67,7 @@ public class DAOService {
         org.hibernate.Transaction tx = getSession().beginTransaction();
         List list = getSession().createCriteria(UserPost.class)
                 .add(Restrictions.eq("user", u))
-                .addOrder(Order.desc("releaseDate")).list();
+                .addOrder(Order.desc("createDate")).list();
         tx.commit();
         getSession().close();
         _log.info("Listed Successfully....");

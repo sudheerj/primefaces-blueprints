@@ -6,22 +6,17 @@ import com.packtpub.pf.blueprint.service.DAOService;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.log4j.Logger;
-import org.primefaces.event.CaptureEvent;
 
 import javax.annotation.PostConstruct;
-import javax.faces.FacesException;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.imageio.stream.FileImageOutputStream;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,27 +50,36 @@ public class UserController implements Serializable {
     private String password;
     @Getter
     @Setter
-    private List<String> photos = new ArrayList<String>();
+    private List<UserPost> myPosts = new ArrayList<>();
     @Getter
     @Setter
-    private boolean male;
+    private LazyDataUserPostModel lazyModel;
     @Getter
     @Setter
-    private boolean female;
+    private UserPost userPost = new UserPost();
 
     private static DAOService ds = new DAOService();
 
+    public void saveUserPost(){
+        userPost.setUser(userNow);
+        userPost.setCreateDate(new Date());
+        userPost.setPostType("Type");
+        ds.addOrUpdateEntity(userPost);
+        userPost = new UserPost();
+        myPosts = getAllMyPosts();
+    }
+
     @PostConstruct
     public void dummyData() {
-        Profile us = new Profile();
-        us.setEmail("admin@admin.com");
-        us.setPassword("admin");
-        us.setFirstName("Ram");
-        us.setLastName("Pillai");
-        Profile ut = ds.validateUser("admin@admin.com", "admin");
-        if(ut == null){
-            ds.addOrUpdateEntity(us);
+        if(loggedIn) {
+            myPosts = getAllMyPosts();
+        }else{
+            ds.validateUser("admin", "admin");
         }
+        prepareAddNewUser();
+        _log.info("done with sample data...");
+        myPosts = getAllMyPosts();
+        lazyModel = new LazyDataUserPostModel(myPosts);
     }
 
     Object request = FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -103,24 +107,6 @@ public class UserController implements Serializable {
         return "/welcome.jsf?faces-redirect=true";
     }
 
-    public void oncapture(CaptureEvent captureEvent) {
-        String photo = getRandomImageName();
-        this.user.setAvatar(photo);
-        byte[] data = captureEvent.getData();
-
-        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-        String newFileName = servletContext.getRealPath("") + File.separator + "photocam" + File.separator + photo + ".png";
-
-        FileImageOutputStream imageOutput;
-        try {
-            imageOutput = new FileImageOutputStream(new File(newFileName));
-            imageOutput.write(data, 0, data.length);
-            imageOutput.close();
-        } catch (Exception e) {
-            throw new FacesException("Error in writing captured image.");
-        }
-    }
-
     private String getRandomImageName() {
         int i = (int) (Math.random() * 10000000);
         return String.valueOf(i);
@@ -128,8 +114,6 @@ public class UserController implements Serializable {
 
     public void submit(ActionEvent event) {
         ds.addOrUpdateEntity(user);
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "User Successfully added...", "User Successfully added...");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
         _log.info("Done ....");
         prepareAddNewUser();
 
@@ -142,8 +126,13 @@ public class UserController implements Serializable {
 
     public List<UserPost> getAllMyPosts() {
         _log.info("Current User ID here --> " + userNow.getId());
-        return ds.getUserPostForUser(userNow);
+        List<UserPost> list = new ArrayList<>();
+        for(long i = 0; i<300; i++){
+            list.add(new UserPost(i, getRandomImageName(), getRandomImageName(), getRandomImageName(), new Date(), null));
+        }
+        return list; //ds.getUserPostForUser(userNow);
     }
+
 
 }
 
