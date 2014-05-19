@@ -1,4 +1,4 @@
-package com.packt.blueprints.controller;
+package com.packt.pfblueprints.controller;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.packt.pfblueprints.dao;
+package com.packt.pfblueprints.dao.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
