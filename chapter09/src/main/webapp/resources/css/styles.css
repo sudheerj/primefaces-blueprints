@@ -125,3 +125,7 @@ h3 {
     min-height: 450px;
     background-color: rgba(17, 195, 133, 0.76);
 }
+
+.no-border div{
+    border: none;
+}

@@ -6,6 +6,8 @@ import com.packtpub.pf.blueprint.service.DAOService;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.log4j.Logger;
+import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortOrder;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -18,6 +20,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -53,7 +56,7 @@ public class UserController implements Serializable {
     private List<UserPost> myPosts = new ArrayList<>();
     @Getter
     @Setter
-    private LazyDataUserPostModel lazyModel;
+    private LazyDataModel<UserPost> lazyModel;
     @Getter
     @Setter
     private UserPost userPost = new UserPost();
@@ -66,20 +69,18 @@ public class UserController implements Serializable {
         userPost.setPostType("Type");
         ds.addOrUpdateEntity(userPost);
         userPost = new UserPost();
-        myPosts = getAllMyPosts();
+
     }
 
     @PostConstruct
     public void dummyData() {
-        if(loggedIn) {
-            myPosts = getAllMyPosts();
-        }else{
+
+        prepareAddNewUser();
+        if(!loggedIn) {
             ds.validateUser("admin", "admin");
         }
-        prepareAddNewUser();
         _log.info("done with sample data...");
-        myPosts = getAllMyPosts();
-        lazyModel = new LazyDataUserPostModel(myPosts);
+        lazyLoad();
     }
 
     Object request = FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -126,11 +127,48 @@ public class UserController implements Serializable {
 
     public List<UserPost> getAllMyPosts() {
         _log.info("Current User ID here --> " + userNow.getId());
+        //Use database call instead.
         List<UserPost> list = new ArrayList<>();
         for(long i = 0; i<300; i++){
             list.add(new UserPost(i, getRandomImageName(), getRandomImageName(), getRandomImageName(), new Date(), null));
         }
         return list; //ds.getUserPostForUser(userNow);
+    }
+
+    public void lazyLoad() {
+        lazyModel = new LazyDataModel<UserPost>() {
+            @Override
+            public List<UserPost> load(int first, int pageSize,
+                                      String sortField, SortOrder sortOrder,
+                                      Map<String, Object> filters) {
+                String sortOrderValue = null;
+                if (sortField == null) {
+                    sortField = "prodname";
+                }
+                if (sortOrder.ASCENDING.equals("A")) {
+                    sortOrderValue = "ASC";
+                } else if (sortOrder.DESCENDING.equals("D")) {
+                    sortOrderValue = "DSC";
+                } else {
+                    sortOrderValue = "ASC";
+                }
+                myPosts = getAllMyPosts();
+                //productsInfo = dao.getAllProducts(first, pageSize, sortField, sortOrderValue, filters);
+                // rowCount
+                int dataSize = myPosts.size();
+                this.setRowCount(dataSize);
+                // paginate
+                if (dataSize > pageSize) {
+                    try {
+                        return myPosts.subList(first,first + pageSize);
+                    } catch (IndexOutOfBoundsException e) {
+                        return myPosts.subList(first,first + (dataSize % pageSize));
+                    }
+                } else {
+                    return myPosts;
+                }
+            }
+        };
     }
 
 

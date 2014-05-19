@@ -11,6 +11,17 @@
     <ui:define name="bodyContent">
         <h:form id="centerForm">
 
+           <p:panel header="Chat Rooms" style="width: 400px;" closable="true">
+               <p:draggable dragOnly="true"/>
+           </p:panel>
+
+            <p:panelGrid id="myPanelGrid" columns="3">
+
+            </p:panelGrid>
+
+            <h:form>
+                <p:commandButton value="Add Panel" actionListener="#{chatController.addPanel}" update=":myPanelGrid" />
+            </h:form>
 
         </h:form>
     </ui:define>
