@@ -46,7 +46,7 @@
                             <p:menuButton value="Settings">
                                 <p:menuitem value="Home"  icon="ui-icon-disk" action="/welcome.jsf?faces-redirect=true"/>
                                 <p:menuitem value="Profile" icon="ui-icon-arrowrefresh-1-w" action="/userRegistration.jsf?faces-redirect=true"/>
-                                <p:menuitem value="Chat" icon="ui-icon-close" action="/chatroom.jsf?faces-redirect=true"/>
+                                <p:menuitem value="Chat" icon="ui-icon-close" action="/chat.jsf?faces-redirect=true" onsuccess="#{chatView.loginNow(userController.username)}" />
                                 <p:separator />
                                 <p:menuitem value="Sign Off" action="#{userController.loginMeOut()}" icon="ui-icon-extlink"/>
                             </p:menuButton>

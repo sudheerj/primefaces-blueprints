@@ -25,7 +25,6 @@ public class HibernateUtilTest {
         u.setCreateDate(new Date());
         u.setFirstName("firstName");
         u.setLastName("lastNAme");
-        u.setUsername("uname1");
         u.setPassword("password1");
 
         session.save(u);
@@ -33,7 +32,6 @@ public class HibernateUtilTest {
         u.setCreateDate(new Date());
         u.setFirstName("firstName");
         u.setLastName("lastNAme");
-        u.setUsername("uname1");
         u.setPassword("password1");
         session.save(u);
 

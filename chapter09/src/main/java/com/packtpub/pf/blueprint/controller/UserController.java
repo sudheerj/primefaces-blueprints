@@ -92,6 +92,7 @@ public class UserController implements Serializable {
         if (request instanceof HttpServletRequest) {
             HttpServletRequest rq = (HttpServletRequest) request;
             rq.setAttribute("username", username);
+
         }
         return this.loggedIn ? "/welcome.jsf?faces-redirect=true" : "/welcome.jsf?error=true";
     }
