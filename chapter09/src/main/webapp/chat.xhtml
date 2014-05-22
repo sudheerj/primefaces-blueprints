@@ -1,0 +1,132 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="templates/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .messageInput {
+                width: 400px;
+            }
+
+            .publicColumn {
+                width: 80%;
+            }
+
+            .usersColumn {
+                width: 20%;
+            }
+
+            .vtop {
+                vertical-align: top;
+            }
+
+            .chatlogs {
+                height: 200px;
+                overflow: auto;
+                padding: 0.5em 1em 0.5em 0.5em;
+            }
+
+            .usersList {
+                height: 200px;
+                overflow: auto;
+            }
+
+            .usersList ul {
+                list-style-type: none;
+                padding-left: 10px;
+            }
+
+            .usersList ul li {
+                margin-bottom: 2px;
+            }
+
+            .usersList .ui-button-text {
+                padding: 0;
+            }
+        </style>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            function handleMessage(message) {
+                var chatContent = $(PrimeFaces.escapeClientId('form:public')),
+                        text = (message.user) ? message.user + ':' + message.text : message.text;
+
+                chatContent.append(text + '<br />');
+
+                //keep scroll
+                chatContent.scrollTop(chatContent.height());
+
+                if (message.updateList) {
+                    updateList();
+                }
+            }
+            //]]>
+        </script>
+    </ui:define>
+
+    <ui:define name="bodyContent">
+
+        <h1 class="title ui-widget-header ui-corner-all">PrimePush - Chat</h1>
+
+        <div class="entry">
+            <p>Chat sample utilizes advanced features such as custom decoder-encoder, P2P messaging and dependency injection.</p>
+
+            <p:growl id="growl" showDetail="true"/>
+
+            <h:form id="form">
+
+                <p:remoteCommand name="updateList" update="users" process="@this"/>
+
+                <p:fieldset id="container" legend="PrimeChat" toggleable="true">
+
+                    <h:panelGroup rendered="#{chatView.loggedIn}">
+                        <h:panelGrid columns="2" columnClasses="publicColumn,usersColumn" style="width:100%">
+                            <p:outputPanel id="public" layout="block" styleClass="ui-corner-all ui-widget-content chatlogs"/>
+
+                            <p:dataList id="users" var="user" value="#{chatUsers.users}" styleClass="usersList">
+                                <f:facet name="header">
+                                    Users
+                                </f:facet>
+
+                                <p:commandButton title="Chat" icon="ui-icon-comment" oncomplete="PF('pChat').show()" update=":form:privateChatContainer">
+                                    <f:setPropertyActionListener value="#{user}" target="#{chatView.privateUser}"/>
+                                </p:commandButton>
+                                #{user}
+                            </p:dataList>
+                        </h:panelGrid>
+
+                        <p:separator/>
+
+                        <p:inputText value="#{chatView.globalMessage}" styleClass="messageInput"/>
+                        <p:spacer width="5"/>
+                        <p:commandButton value="Send" actionListener="#{chatView.sendGlobal}" oncomplete="$('.messageInput').val('').focus()"/>
+                        <p:spacer width="5"/>
+                        <p:commandButton value="Disconnect" actionListener="#{chatView.disconnect}" global="false" update="container"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup rendered="#{not chatView.loggedIn}">
+                        Username: <p:inputText value="#{chatView.username}"/>
+
+                        <p:spacer width="5"/>
+                        <p:commandButton value="Login" actionListener="#{chatView.login}" update="container" icon="ui-icon-person"/>
+                    </h:panelGroup>
+
+                </p:fieldset>
+
+                <p:dialog widgetVar="pChat" header="Private Chat" modal="false" showEffect="fade" hideEffect="fade">
+                    <h:panelGrid id="privateChatContainer" columns="2" columnClasses="vtop,vtop">
+                        <p:outputLabel for="pChatInput" value="To: #{chatView.privateUser}"/>
+                        <p:inputTextarea id="pChatInput" value="#{chatView.privateMessage}" rows="5" cols="30"/>
+                        <p:spacer/>
+                        <p:commandButton value="Send" actionListener="#{chatView.sendPrivate}" oncomplete="PF('pChat').hide()"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+            </h:form>
+            <p:socket onMessage="handleMessage" channel="/{room}" autoConnect="false" widgetVar='subscriber'/>
+        </div>
+    </ui:define>
+</ui:composition>
