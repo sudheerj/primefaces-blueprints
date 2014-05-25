@@ -13,13 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.packtpub.pf.blueprint.chat;
+package com.packtpub.pf.blueprint.controller;
 
 import java.io.Serializable;
 
-import com.packtpub.pf.blueprint.controller.UserController;
-import lombok.Getter;
-import lombok.Setter;
 import org.primefaces.context.RequestContext;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.EventBusFactory;
@@ -33,7 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean
 @ViewScoped
-public class ChatView implements Serializable {
+public class ChatController implements Serializable {
     
     //private final PushContext pushContext = PushContextFactory.getDefault().getPushContext();
 
@@ -117,7 +114,6 @@ public class ChatView implements Serializable {
 	}
     
     public void sendPrivate() {
-        privateMessage ="pvt"+privateMessage;
         eventBus.publish(CHANNEL + privateUser, "[PM] " + username + ": " + privateMessage);
         
         privateMessage = null;

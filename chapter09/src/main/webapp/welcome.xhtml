@@ -34,14 +34,24 @@
                 #{userController.lazyModel.rowCount}
                 <p:dataScroller value="#{userController.lazyModel}" var="post" lazy="true"
                                 chunkSize="10" id="datascroll" styleClass="no-border no-margin-no-padding-no-border">
-                    <div style="width: 300px; height: 200px; background-color: #1ad6ff; border: 1px;">
+                    <div style="width: 100%; height: 200px; background-color: #1ad6ff; border: 1px;">
                         "#{post}"
+                        <ui:repeat value="#{userController.getAllCommentForPostId(post)}" var="c">
+                            "#{c}
+                            <hr/>
+                        </ui:repeat>
+                        <hr/>
+                        <p:inputText value="#{userController.userComment.comment}"/>
+
+                        <p:commandButton value="Post" update=":form:datascroll"
+                                         actionListener="#{userController.saveUserComment(post)}"/>
                     </div>
                 </p:dataScroller>
 
             </h:form>
         </p:panel>
         <p:panel styleClass="base-color-panel no-margin-no-padding" rendered="#{not userController.loggedIn}">
+            <h:inputHidden value="#{chatUsers.users}"/>
             <ui:include src="loggedin.xhtml"/>
         </p:panel>
     </ui:define>

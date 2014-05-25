@@ -13,8 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.packtpub.pf.blueprint.chat;
+package com.packtpub.pf.blueprint.controller;
 
+import com.packtpub.pf.blueprint.chat.Message;
+import com.packtpub.pf.blueprint.chat.MessageDecoder;
+import com.packtpub.pf.blueprint.chat.MessageEncoder;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.RemoteEndpoint;
 import org.primefaces.push.annotation.OnClose;

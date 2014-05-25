@@ -82,7 +82,7 @@
 
                 <p:fieldset id="container" legend="PrimeChat" toggleable="true">
 
-                    <h:panelGroup rendered="#{chatView.loggedIn}">
+                    <h:panelGroup rendered="#{chatController.loggedIn}">
                         <h:panelGrid columns="2" columnClasses="publicColumn,usersColumn" style="width:100%">
                             <p:outputPanel id="public" layout="block" styleClass="ui-corner-all ui-widget-content chatlogs"/>
 
@@ -92,7 +92,7 @@
                                 </f:facet>
 
                                 <p:commandButton title="Chat" icon="ui-icon-comment" oncomplete="PF('pChat').show()" update=":form:privateChatContainer">
-                                    <f:setPropertyActionListener value="#{user}" target="#{chatView.privateUser}"/>
+                                    <f:setPropertyActionListener value="#{user}" target="#{chatController.privateUser}"/>
                                 </p:commandButton>
                                 #{user}
                             </p:dataList>
@@ -100,28 +100,28 @@
 
                         <p:separator/>
 
-                        <p:inputText value="#{chatView.globalMessage}" styleClass="messageInput"/>
+                        <p:inputText value="#{chatController.globalMessage}" styleClass="messageInput"/>
                         <p:spacer width="5"/>
-                        <p:commandButton value="Send" actionListener="#{chatView.sendGlobal}" oncomplete="$('.messageInput').val('').focus()"/>
+                        <p:commandButton value="Send" actionListener="#{chatController.sendGlobal}" oncomplete="$('.messageInput').val('').focus()"/>
                         <p:spacer width="5"/>
-                        <p:commandButton value="Disconnect" actionListener="#{chatView.disconnect}" global="false" update="container"/>
+                        <p:commandButton value="Disconnect" actionListener="#{chatController.disconnect}" global="false" update="container"/>
                     </h:panelGroup>
 
-                    <h:panelGroup rendered="#{not chatView.loggedIn}">
-                        Username: <p:inputText value="#{chatView.username}"/>
+                    <h:panelGroup rendered="#{not chatController.loggedIn}">
+                        Username: <p:inputText value="#{chatController.username}"/>
 
                         <p:spacer width="5"/>
-                        <p:commandButton value="Login" actionListener="#{chatView.login}" update="container" icon="ui-icon-person"/>
+                        <p:commandButton value="Login" actionListener="#{chatController.login}" update="container" icon="ui-icon-person"/>
                     </h:panelGroup>
 
                 </p:fieldset>
 
                 <p:dialog widgetVar="pChat" header="Private Chat" modal="false" showEffect="fade" hideEffect="fade">
                     <h:panelGrid id="privateChatContainer" columns="2" columnClasses="vtop,vtop">
-                        <p:outputLabel for="pChatInput" value="To: #{chatView.privateUser}"/>
-                        <p:inputTextarea id="pChatInput" value="#{chatView.privateMessage}" rows="5" cols="30"/>
+                        <p:outputLabel for="pChatInput" value="To: #{chatController.privateUser}"/>
+                        <p:inputTextarea id="pChatInput" value="#{chatController.privateMessage}" rows="5" cols="30"/>
                         <p:spacer/>
-                        <p:commandButton value="Send" actionListener="#{chatView.sendPrivate}" oncomplete="PF('pChat').hide()"/>
+                        <p:commandButton value="Send" actionListener="#{chatController.sendPrivate}" oncomplete="PF('pChat').hide()"/>
                     </h:panelGrid>
                 </p:dialog>
 

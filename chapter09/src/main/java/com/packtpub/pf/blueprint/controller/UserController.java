@@ -1,5 +1,6 @@
 package com.packtpub.pf.blueprint.controller;
 
+import com.packtpub.pf.blueprint.persistence.entity.Comment;
 import com.packtpub.pf.blueprint.persistence.entity.Profile;
 import com.packtpub.pf.blueprint.persistence.entity.UserPost;
 import com.packtpub.pf.blueprint.service.DAOService;
@@ -61,6 +62,13 @@ public class UserController implements Serializable {
     @Setter
     private UserPost userPost = new UserPost();
 
+    @Getter
+    @Setter
+    private List<Comment> userComments = new ArrayList<>();
+    @Getter
+    @Setter
+    private Comment userComment = new Comment();
+
     private static DAOService ds = new DAOService();
 
     public void saveUserPost(){
@@ -69,6 +77,14 @@ public class UserController implements Serializable {
         userPost.setPostType("Type");
         ds.addOrUpdateEntity(userPost);
         userPost = new UserPost();
+
+    }
+
+    public void saveUserComment(UserPost p){
+        userComment.setUser(userNow);
+        userComment.setCreateDate(new Date());
+        userComment.setPost(p);
+        ds.addOrUpdateEntity(userComment);
 
     }
 
@@ -81,6 +97,10 @@ public class UserController implements Serializable {
         }
         _log.info("done with sample data...");
         lazyLoad();
+    }
+
+    public List<Comment> getAllCommentForPostId(UserPost p){
+        return ds.getAllCommentsForUserPost(p);
     }
 
     Object request = FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -142,32 +162,32 @@ public class UserController implements Serializable {
             public List<UserPost> load(int first, int pageSize,
                                       String sortField, SortOrder sortOrder,
                                       Map<String, Object> filters) {
-                String sortOrderValue = null;
-                if (sortField == null) {
-                    sortField = "prodname";
+            String sortOrderValue = null;
+            if (sortField == null) {
+                sortField = "prodname";
+            }
+            if (sortOrder.ASCENDING.equals("A")) {
+                sortOrderValue = "ASC";
+            } else if (sortOrder.DESCENDING.equals("D")) {
+                sortOrderValue = "DSC";
+            } else {
+                sortOrderValue = "ASC";
+            }
+            myPosts = getAllMyPosts();
+            //productsInfo = dao.getAllProducts(first, pageSize, sortField, sortOrderValue, filters);
+            // rowCount
+            int dataSize = myPosts.size();
+            this.setRowCount(dataSize);
+            // paginate
+            if (dataSize > pageSize) {
+                try {
+                    return myPosts.subList(first,first + pageSize);
+                } catch (IndexOutOfBoundsException e) {
+                    return myPosts.subList(first,first + (dataSize % pageSize));
                 }
-                if (sortOrder.ASCENDING.equals("A")) {
-                    sortOrderValue = "ASC";
-                } else if (sortOrder.DESCENDING.equals("D")) {
-                    sortOrderValue = "DSC";
-                } else {
-                    sortOrderValue = "ASC";
-                }
-                myPosts = getAllMyPosts();
-                //productsInfo = dao.getAllProducts(first, pageSize, sortField, sortOrderValue, filters);
-                // rowCount
-                int dataSize = myPosts.size();
-                this.setRowCount(dataSize);
-                // paginate
-                if (dataSize > pageSize) {
-                    try {
-                        return myPosts.subList(first,first + pageSize);
-                    } catch (IndexOutOfBoundsException e) {
-                        return myPosts.subList(first,first + (dataSize % pageSize));
-                    }
-                } else {
-                    return myPosts;
-                }
+            } else {
+                return myPosts;
+            }
             }
         };
     }
