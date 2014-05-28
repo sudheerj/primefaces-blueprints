@@ -41,15 +41,10 @@ public class LoginDAO {
 			PreparedStatement ps = con
 					.prepareStatement("UPDATE blueprintsdb.employee SET password='"
 							+ newpassword
-							+ "' "
-							+ " WHERE userid=(select userid FROM (select * FROM blueprintsdb.employee) as useralias WHERE userid='"
-							+ userid + "'  and password='" + oldpassword + "')");
+							+ "' WHERE userid='"
+							+ userid + "'  and password='" + oldpassword + "'");
 			int count = ps.executeUpdate();
-			if (count > 0) {
-				return true;
-			} else {
-				return false;
-			}
+			return (count > 0);
 		} catch (SQLException e) {
 			e.printStackTrace();
 
@@ -63,20 +58,17 @@ public class LoginDAO {
 
 	public boolean validateUser(String userid, String password) {
 		try {
-			//Check the logged jobseeker is valid or not
+			// Check the logged jobseeker is valid user or not
 			PreparedStatement ps = con
-					.prepareStatement("select count(*) FROM (select * FROM blueprintsdb.employee) as useralias WHERE userid='"
+					.prepareStatement("select * FROM blueprintsdb.employee WHERE userid='"
 							+ userid + "'  and password='" + password + "'");
 			ResultSet resultSet = ps.executeQuery();
-			int count = 0;
-			while (resultSet.next()) {
-				count++;
-			}
-			if (count > 0) {
+			if (resultSet.next()) {
 				return true;
 			} else {
 				return false;
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 

@@ -70,28 +70,28 @@
 						<h:panelGrid columns="2" columnClasses="label, value"
 							styleClass="grid">
 
-							<h:outputText value="UserID: *" />
-							<p:inputText required="true" label="UserID"
+							<p:outputLabel for="userid" value="UserID: " />
+							<p:inputText id="userid" required="true"
 								requiredMessage="UserID shouldn't be empty"
 								value="#{registrationController.employee.userid}" />
 
-							<h:outputText value="Firstname: *" />
-							<p:inputText required="true" label="Firstname"
+							<p:outputLabel for="firstname"  value="Firstname: " />
+							<p:inputText id="firstname" required="true"
 								requiredMessage="Firstname shouldn't be empty"
 								value="#{registrationController.employee.firstname}" />
 
-							<h:outputText value="Lastname:" />
+							<h:outputText value="Lastname: " />
 							<p:inputText label="Lastname"
 								value="#{registrationController.employee.lastname}" />
 
-							<h:outputText value="Date of birth: *" />
-							<p:calendar value="#{registrationController.employee.dob}"
+							<p:outputLabel for="dob" value="Date of birth: " />
+							<p:calendar id="dob" value="#{registrationController.employee.dob}"
 								required="true" pattern="dd/MM/yyyy" effect="slideDown"
 								navigator="true" showButtonPanel="true" yearRange="c-50:c+50" />
 
-							<h:outputText value="Sex: " />
-							<p:selectOneRadio id="sex"
-								value="#{registrationController.employee.sex}">
+							<h:outputText value="Gender: " />
+							<p:selectOneRadio id="gender"
+								value="#{registrationController.employee.gender}">
 								<f:selectItem itemLabel="Male" itemValue="1" />
 								<f:selectItem itemLabel="Felmale" itemValue="2" />
 							</p:selectOneRadio>
@@ -178,9 +178,9 @@
 				<p:tab id="education" title="Education">
 					<p:panel header="Education">
 						<h:messages errorClass="error" />
-						<h:panelGrid columns="2" cellspacing="10" Classes="label, value">
-							<h:outputText value="University: *" />
-							<p:inputText required="true"
+						<h:panelGrid columns="2" cellspacing="10"  columnClasses="label, value">
+							<p:outputLabel for="university" value="University:" />
+							<p:inputText id="university" required="true"
 								requiredMessage="University cannot be empty" label="University"
 								value="#{registrationController.employee.university}" />
 
@@ -212,14 +212,14 @@
 					<p:panel header="Profession">
 						<h:messages errorClass="error" />
 						<h:panelGrid columns="2" columnClasses="label, value">
-							<h:outputText value="Profession: *" />
-							<p:inputText required="true"
-								requiredMessage="Profession can't be empty" label="profession"
+							<p:outputLabel for="profession" value="Profession:" />
+							<p:inputText id="profession" required="true"
+								requiredMessage="Profession can't be empty"
 								value="#{registrationController.employee.profession}" />
 
-							<h:outputText value="Experience: *" />
-							<p:spinner id="spinnerStep" required="true"
-								requiredMessage="Experience can't be empty" label="experience"
+							<p:outputLabel for="experience" value="Experience:" />
+							<p:spinner id="experience" required="true"
+								requiredMessage="Experience can't be empty"
 								min="2" value="#{registrationController.employee.experience}" />
 
 							<h:outputText value="Company: " />
@@ -227,20 +227,19 @@
 								value="#{registrationController.employee.company}" effect="fade"
 								completeMethod="#{registrationController.complete}" />
 
-							<h:outputText value="Current Package: *" />
+							<p:outputLabel for="current" value="Current Package:" />
 							<p:spinner id="current" required="true"
-								requiredMessage="Current package can't be empty" prefix="$"
-								label="current" min="3"
+								requiredMessage="Current package can't be empty" prefix="$" min="3"
 								value="#{registrationController.employee.currentPack}" />
 
-							<h:outputText value="Expected Package: *" />
+							<p:outputLabel for="expected" value="Expected Package:" />
 							<p:spinner id="expected" required="true"
 								requiredMessage="Expected package can't be empty" prefix="$"
-								label="expected" min="3" max="20"
+								 min="3" max="20"
 								value="#{registrationController.employee.expectedPack}" />
 
-							<h:outputText value="Joined Date: *" />
-							<p:calendar value="#{registrationController.employee.joinedDate}"
+							<p:outputLabel for="jod" value="Joined Date:" />
+							<p:calendar id="jod" value="#{registrationController.employee.joinedDate}"
 								required="true" requiredMessage="Joined date can't be empty"
 								showOn="button" mode="popup" pattern="dd/MM/yyyy" />
 
@@ -255,10 +254,10 @@
 					<p:panel header="Skills">
 						<h:messages errorClass="error" />
 						<h:panelGrid columns="2" columnClasses="label, value">
-							<h:outputText value="Frameworks: *" />
-							<p:selectCheckboxMenu
+							<p:outputLabel for="frameworks" value="Frameworks:" />
+							<p:selectCheckboxMenu id="frameworks"
 								value="#{registrationController.employee.selectedFrameworks}"
-								label="Frameworks" filter="true" filterText="Filter"
+							    filter="true" 
 								filterMatchMode="startsWith">
 								<f:selectItems value="#{registrationController.allFrameworks}" />
 							</p:selectCheckboxMenu>

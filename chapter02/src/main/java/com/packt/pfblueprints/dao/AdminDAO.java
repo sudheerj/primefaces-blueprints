@@ -53,7 +53,7 @@ public class AdminDAO {
 
 			employee.setFirstname(result.getString("firstname"));
 			employee.setLastname(result.getString("lastname"));
-			employee.setSex(result.getString("sex"));
+			employee.setGender(result.getString("sex"));
 			employee.setCountry(result.getString("country"));
 			employee.setCity(result.getString("city"));
 			employee.setCompany(result.getString("company"));

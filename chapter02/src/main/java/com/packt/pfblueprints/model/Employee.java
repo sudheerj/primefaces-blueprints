@@ -23,7 +23,7 @@ public class Employee implements Serializable {
 
 	private Date dob;
 
-	private String sex="1";
+	private String gender="1";
 
 	private String maritalStatus;
 	
@@ -115,12 +115,12 @@ public class Employee implements Serializable {
 		this.dob = dob;
 	}
 
-	public String getSex() {
-		return sex;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public String getMaritalStatus() {
