@@ -22,10 +22,11 @@
                         <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
                         <p:commandButton type="button" title="Print" icon="ui-icon-print"/>
                     </p:toolbarGroup>
+
                 </p:toolbar>
-                <p:sticky target=":form:tb" />
+                <p:sticky target="tb"/>
                 <p:focus/>
-                <p:inputTextarea value="#{userController.userPost.postText}" cols="100"/>
+                <p:inputTextarea value="#{userController.userPost.postText}" cols="100" placeholder="What is up now ?"/>
 
                 <p:commandButton id="btnPost" value="Post" style="height: 75px; vertical-align: top;"
                                  actionListener="#{userController.saveUserPost}"
@@ -34,18 +35,21 @@
                 #{userController.lazyModel.rowCount}
                 <p:dataScroller value="#{userController.lazyModel}" var="post" lazy="true"
                                 chunkSize="10" id="datascroll" styleClass="no-border no-margin-no-padding-no-border">
-                    <div style="width: 100%; height: 200px; background-color: #1ad6ff; border: 1px;">
-                        "#{post}"
+                    <div class="panelpost">
+                        #{post.user.firstName} #{post.createDate}
+                        <div class="bubble" style="color: #000;">"#{post.postText}"</div>
                         <ui:repeat value="#{userController.getAllCommentForPostId(post)}" var="c">
-                            "#{c}
+                            <ul >
+                                "#{c.comment}"
+                            </ul>
                             <hr/>
                         </ui:repeat>
-                        <hr/>
                         <p:inputText value="#{userController.userComment.comment}"/>
 
-                        <p:commandButton value="Post" update=":form:datascroll"
+                        <p:commandButton value="Comment" update=":form:datascroll"
                                          actionListener="#{userController.saveUserComment(post)}"/>
                     </div>
+                    <hr/>
                 </p:dataScroller>
 
             </h:form>

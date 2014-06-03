@@ -150,8 +150,11 @@ public class UserController implements Serializable {
         _log.info("Current User ID here --> " + userNow.getId());
         //Use database call instead.
         List<UserPost> list = new ArrayList<>();
+        Profile p = new Profile();
+        p.setFirstName("Ramkumar");
+        p.setLastName("Pillai");
         for(long i = 0; i<300; i++){
-            list.add(new UserPost(i, getRandomImageName(), getRandomImageName(), getRandomImageName(), new Date(), null));
+            list.add(new UserPost(i, getRandomImageName(), getRandomImageName(), getRandomImageName(), new Date(), p));
         }
         return list; //ds.getUserPostForUser(userNow);
     }

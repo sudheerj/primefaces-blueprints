@@ -13,6 +13,7 @@ import org.hibernate.criterion.Restrictions;
 
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -79,6 +80,10 @@ public class DAOService {
         List list = getSession().createCriteria(Comment.class)
                 .add(Restrictions.eq("post", p))
                 .addOrder(Order.desc("createDate")).list();
+        Comment c = new Comment();
+        c.setComment("Testing Comments");
+        c.setCreateDate(new Date());
+        list.add(c);
         tx.commit();
         getSession().close();
         _log.info("Listed Successfully....");

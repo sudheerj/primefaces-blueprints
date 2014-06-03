@@ -129,3 +129,38 @@ h3 {
 .no-border div{
     border: none;
 }
+
+.bubble
+{
+    position: relative;
+    width: 645px;
+    height: 60px;
+    padding: 12px;
+    background: #999;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+}
+
+.panelpost{
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    background-color: #61dcb0;
+    border: 1px;
+    min-width: 500px;
+}
+
+.bubble:after
+{
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: -28px;
+    border-style: solid;
+    border-width: 8px 28px 8px 0;
+    border-color: transparent #999;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
