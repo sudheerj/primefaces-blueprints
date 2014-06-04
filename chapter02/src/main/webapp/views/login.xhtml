@@ -36,7 +36,7 @@
 							</p:outputPanel>
 							<p:spacer width="10" />
 							<p:commandLink value="#{msg['login.changpasswd']}"
-								onclick="$changepwd.show();"></p:commandLink>
+								onclick="PF('$changepwd').show();"></p:commandLink>
 						</h:panelGrid>
 					</f:facet>
 
@@ -66,7 +66,7 @@
 					<p:watermark for="oldpassword" value="Enter old password" />
 
 					<h:outputLabel for="newpassword" value="New password:" />
-					<p:password value="#{loginController.newpassword}" id="newpassword"
+					<p:password value="#{loginController.newpassword}" match="confirmpassword" id="newpassword"
 						required="true" requiredMessage="New password cannot be empty"
 						label="newpassword" />
 					<p:watermark for="newpassword" value="Enter new password" />

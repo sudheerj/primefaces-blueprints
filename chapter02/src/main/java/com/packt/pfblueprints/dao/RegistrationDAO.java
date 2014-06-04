@@ -43,13 +43,10 @@ public class RegistrationDAO {
 		   SimpleDateFormat formatter = new SimpleDateFormat(pattern);
 		   // Register employee
 			PreparedStatement ps = con.prepareStatement(
-					   "INSERT INTO blueprintsdb.employee(userid,firstname,lastname,dob,sex,maritalstatus,address,country,city,phone,postalcode,email,university,qualification,percentage,profession,experience,company,currentpack,expectedpack,joineddate,frameworks,dbs,servers,ides,password)VALUES('"+employee.getUserid()+"','"+employee.getFirstname()+"','"+employee.getLastname()+"','"+formatter.format(employee.getDob())+"','"+employee.getSex()+"','"+employee.getMaritalStatus()+"','"+employee.getAddress()+"','"+employee.getCountry()+"','"+employee.getCity()+"','"+employee.getPhone()+"','"+employee.getPostalCode()+"','"+employee.getEmail()+"','"+employee.getUniversity()+"','"+employee.getQualification()+"','"+employee.getPercentage()+"','"+employee.getProfession()+"',"+employee.getExperience()+",'"+employee.getCompany()+"',"+employee.getCurrentPack()+","+employee.getExpectedPack()+",'"+formatter.format(employee.getJoinedDate())+"','"+employee.getSelectedFrameworks()+"','"+employee.getSelectedDBs()+"','"+employee.getSelectedServer()+"','"+employee.getSelectedIDE()+"','"+uniqueID+"')"); 
+					   "INSERT INTO blueprintsdb.employee(userid,firstname,lastname,dob,sex,maritalstatus,address,country,city,phone,postalcode,email,university,qualification,percentage,profession,experience,company,currentpack,expectedpack,joineddate,frameworks,dbs,servers,ides,password)VALUES('"+employee.getUserid()+"','"+employee.getFirstname()+"','"+employee.getLastname()+"','"+formatter.format(employee.getDob())+"','"+employee.getGender()+"','"+employee.getMaritalStatus()+"','"+employee.getAddress()+"','"+employee.getCountry()+"','"+employee.getCity()+"','"+employee.getPhone()+"','"+employee.getPostalCode()+"','"+employee.getEmail()+"','"+employee.getUniversity()+"','"+employee.getQualification()+"','"+employee.getPercentage()+"','"+employee.getProfession()+"',"+employee.getExperience()+",'"+employee.getCompany()+"',"+employee.getCurrentPack()+","+employee.getExpectedPack()+",'"+formatter.format(employee.getJoinedDate())+"','"+employee.getSelectedFrameworks()+"','"+employee.getSelectedDBs()+"','"+employee.getSelectedServer()+"','"+employee.getSelectedIDE()+"','"+uniqueID+"')"); 
 			int count=ps.executeUpdate();
 			if(count>0){
 				return true;
-			}
-			else{
-				return false;
 			}
 	   }catch(SQLException e){
 		   e.printStackTrace();
