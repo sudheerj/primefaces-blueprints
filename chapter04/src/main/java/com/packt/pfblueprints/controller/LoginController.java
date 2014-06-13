@@ -43,7 +43,7 @@ public class LoginController implements Serializable {
 				sessionMap.put("dealertinnumber", username);
 				return "/views/dealerinfo?faces-redirect=true";
 				}
-			else if(userrole.equalsIgnoreCase("D")){
+			else if(userrole.equalsIgnoreCase("A")){
 				sessionMap.put("advisornumber", username);
 				return "/views/advisorinfo?faces-redirect=true";
 				}
