@@ -42,16 +42,16 @@ public class LoginDAO {
 				return true;
 			}
 			else if (userrole.equalsIgnoreCase("D")) {
-				query = "from Advisor where dealernumber='" + userid + "' ";
+				query = "from Advisor where dealernumber='" + userid + "' and dealernumber='" + password + "' ";
 			}
 			else if (userrole.equalsIgnoreCase("A")) {
-				query = "from Representative where advisornumber='" + userid + "' ";
+				query = "from Representative where advisornumber='" + userid + "' and advisornumber='" + password + "' ";
 			}
 			else {
 				return false;
 			}
-			Query queryobj = session.createQuery(query);
-			List<Object> list = queryobj.list();
+			Query queryObj = session.createQuery(query);
+			List<Object> list = queryObj.list();
 			int count = 0;
 			if (list != null) {
 				count = list.size();
@@ -63,8 +63,7 @@ public class LoginDAO {
 				return false;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 }
