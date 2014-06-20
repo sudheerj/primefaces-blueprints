@@ -65,7 +65,7 @@ public class AccountSummaryController implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private List<AccountSummary> accountsInfo=new ArrayList<AccountSummary>();
 	
-	private AccountSummary accountobj=new AccountSummary();
+	private AccountSummary accountObj=new AccountSummary();
 	AccountSummaryDAO dao = new AccountSummaryDAO();
 	private PieChartModel pieModelUS;
 	private PieChartModel pieModelUK;
@@ -198,7 +198,7 @@ public class AccountSummaryController implements Serializable{
 	public String storeSelectedAccount(){
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
-		sessionMap.put("accountNumber", accountobj.getAccountNumber());
+		sessionMap.put("accountNumber", accountObj.getAccountNumber());
 		return "investmentsummary.xhtml?faces-redirect=true";
 	}
 	
@@ -302,12 +302,12 @@ public class AccountSummaryController implements Serializable{
 		this.pieModelUK = pieModelUK;
 	}
 
-	public AccountSummary getAccountobj() {
-		return accountobj;
+	public AccountSummary getAccountObj() {
+		return accountObj;
 	}
 
-	public void setAccountobj(AccountSummary accountobj) {
-		this.accountobj = accountobj;
+	public void setAccountObj(AccountSummary accountObj) {
+		this.accountObj = accountObj;
 	}
 
 	public String getBase64Str1() {

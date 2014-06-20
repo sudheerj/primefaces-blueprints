@@ -18,7 +18,7 @@
 				rows="5" paginatorPosition="bottom"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15" rowKey="#{account.id}"
-				selection="#{accountSummaryController.accountobj}"
+				selection="#{accountSummaryController.accountObj}"
 				selectionMode="single">
 				<f:facet name="header">
                   Account Summary
@@ -48,7 +48,7 @@
 				<p:column sortBy="accountNumber" filterBy="accountNumber"
 					toggleable="false" id="accountNumber">
 					<f:facet name="header">
-						<h:outputText value="accountNumber" />
+						<h:outputText value="Account Number" />
 					</f:facet>
 					<h:outputText value="#{account.accountNumber}" />
 				</p:column>
@@ -56,7 +56,7 @@
 				<p:column sortBy="accountType" filterBy="accountType"
 					toggleable="false" id="accountType">
 					<f:facet name="header">
-						<h:outputText value="accountType" />
+						<h:outputText value="Account Type" />
 					</f:facet>
 					<h:outputText value="#{account.accountType}" />
 				</p:column>
@@ -64,49 +64,49 @@
 				<p:column sortBy="status" filterBy="status" id="status"
 					toggleable="false">
 					<f:facet name="header">
-						<h:outputText value="status" />
+						<h:outputText value="Status" />
 					</f:facet>
 					<h:outputText value="#{account.status}" />
 				</p:column>
 
 				<p:column sortBy="registrationDate" id="registrationDate">
 					<f:facet name="header">
-						<h:outputText value="registrationDate" />
+						<h:outputText value="Registration Date" />
 					</f:facet>
 					<h:outputText value="#{account.registrationDate}" />
 				</p:column>
 
 				<p:column sortBy="openDate" id="openDate">
 					<f:facet name="header">
-						<h:outputText value="OpenDate" />
+						<h:outputText value="Open Date" />
 					</f:facet>
 					<h:outputText value="#{account.openDate}" />
 				</p:column>
 
 				<p:column sortBy="closeDate" id="closeDate">
 					<f:facet name="header">
-						<h:outputText value="closeDate" />
+						<h:outputText value="Close Date" />
 					</f:facet>
 					<h:outputText value="#{account.closeDate}" />
 				</p:column>
 
 				<p:column sortBy="jointAccount" id="jointAccount">
 					<f:facet name="header">
-						<h:outputText value="jointAccount" />
+						<h:outputText value="Joint Account" />
 					</f:facet>
 					<h:outputText value="#{account.jointAccount}" />
 				</p:column>
 
 				<p:column sortBy="balanceUS" id="balanceUS" toggleable="false">
 					<f:facet name="header">
-						<h:outputText value="balanceUS" />
+						<h:outputText value="Balance US" />
 					</f:facet>
 					<h:outputText value="#{account.balanceUS}" />
 				</p:column>
 
 				<p:column sortBy="balanceUK" id="balanceUK" toggleable="false">
 					<f:facet name="header">
-						<h:outputText value="balanceUK" />
+						<h:outputText value="Balance UK" />
 					</f:facet>
 					<h:outputText value="#{account.balanceUK}" />
 				</p:column>
