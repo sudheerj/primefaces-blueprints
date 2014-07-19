@@ -55,7 +55,7 @@ public class StoreController implements java.io.Serializable {
 
     private void addItemNow(Product p) {
         cartProducts.add(p);
-        productTotal += p.getPrice() * 1;
+        productTotal += p.getPrice();
         _log.info("Product Name: " + p.getName() + " is added Successfully, Total is: " + productTotal);
     }
 

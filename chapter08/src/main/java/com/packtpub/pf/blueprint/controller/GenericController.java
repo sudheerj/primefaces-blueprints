@@ -39,16 +39,16 @@ public class GenericController implements Serializable{
     @PostConstruct
     public void init() {
         model = new DefaultTagCloudModel();
-        model.addTag(new DefaultTagCloudItem("Transformers", 1));
-        model.addTag(new DefaultTagCloudItem("RIA", "/ui/tagCloud.jsf", 3));
-        model.addTag(new DefaultTagCloudItem("AJAX", 2));
-        model.addTag(new DefaultTagCloudItem("jQuery", "/ui/tagCloud.jsf", 5));
-        model.addTag(new DefaultTagCloudItem("NextGen", 4));
-        model.addTag(new DefaultTagCloudItem("JSF 2.0", "/ui/tagCloud.jsf", 2));
-        model.addTag(new DefaultTagCloudItem("FCB", 5));
-        model.addTag(new DefaultTagCloudItem("Mobile",  3));
-        model.addTag(new DefaultTagCloudItem("Themes", "/ui/tagCloud.jsf", 4));
-        model.addTag(new DefaultTagCloudItem("Rocks", "/ui/tagCloud.jsf", 1));
+        model.addTag(new DefaultTagCloudItem("Book Printing", 1));
+        model.addTag(new DefaultTagCloudItem("Print Now", "location.jsf?faces-redirect=true", 3));
+        model.addTag(new DefaultTagCloudItem("Ink Jet ", 2));
+        model.addTag(new DefaultTagCloudItem("Dot Matrix", "location.jsf?faces-redirect=true", 5));
+        model.addTag(new DefaultTagCloudItem("NextGen Printing", 4));
+        model.addTag(new DefaultTagCloudItem("Printing Orders", "location.jsf?faces-redirect=true", 2));
+        model.addTag(new DefaultTagCloudItem("Laser Print", 5));
+        model.addTag(new DefaultTagCloudItem("Flex Printing",  3));
+        model.addTag(new DefaultTagCloudItem("Vinyl Printing", "location.jsf?faces-redirect=true", 4));
+        model.addTag(new DefaultTagCloudItem("Request Print", "location.jsf?faces-redirect=true", 1));
 
         createMeterGaugeModels();
 
