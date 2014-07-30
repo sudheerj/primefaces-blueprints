@@ -41,7 +41,7 @@ public class AdminDAO {
 
 	public List<Employee> getEmployeeList() throws SQLException {
 		PreparedStatement ps = con
-				.prepareStatement("select firstname,lastname,sex,country,city,company from blueprintsdb.employee");
+				.prepareStatement("select firstname,lastname,gender,country,city,company from blueprintsdb.employee");
 
 		// get jobposts data from database
 		ResultSet result = ps.executeQuery();
@@ -53,7 +53,7 @@ public class AdminDAO {
 
 			employee.setFirstname(result.getString("firstname"));
 			employee.setLastname(result.getString("lastname"));
-			employee.setGender(result.getString("sex"));
+			employee.setGender(result.getString("gender"));
 			employee.setCountry(result.getString("country"));
 			employee.setCity(result.getString("city"));
 			employee.setCompany(result.getString("company"));

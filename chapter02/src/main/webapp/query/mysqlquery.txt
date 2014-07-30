@@ -5,7 +5,7 @@ CREATE TABLE  `blueprintsdb`.`employee` (
   `firstname` VARCHAR(30) NOT NULL,
   `lastname` VARCHAR(30),
   `dob` VARCHAR(20),
-  `sex` VARCHAR(1),
+  `gender` VARCHAR(1),
   `maritalstatus` VARCHAR(7),
   `address` VARCHAR(100),
   `country` VARCHAR(20),
@@ -47,4 +47,4 @@ CREATE TABLE  `blueprintsdb`.`employee` (
   `disclaimer` text)ENGINE=InnoDB DEFAULT CHARSET=utf8;
   INSERT INTO blueprintsdb.adminconfig(adminID,aboutus,contactus,disclaimer)VALUES('admin','This employee registration application is used to register the new employees to apply the jobs','The employee hub site,packt team,UK','All copy rights reserved for packt publishing');
   ////////////////
-INSERT INTO blueprintsdb.employee(userid,firstname,lastname,dob,sex,maritalstatus,address,country,city,phone,postalcode,email,university,qualification,percentage,profession,experience,company,currentpack,expectedpack,joineddate,frameworks,dbs,servers,ides,password)VALUES('111','john','smith','14/12/1986','m','married','AK apartements','US','NewYork','22335566','1666555','john.smith@gmail.com','Harward','MS','89','Software',8,'Tech Fast',15,20,'06/06/2006','jsf','oracle','websphere','eclipse','');
+INSERT INTO blueprintsdb.employee(userid,firstname,lastname,dob,gender,maritalstatus,address,country,city,phone,postalcode,email,university,qualification,percentage,profession,experience,company,currentpack,expectedpack,joineddate,frameworks,dbs,servers,ides,password)VALUES('111','john','smith','14/12/1986','m','married','AK apartements','US','NewYork','22335566','1666555','john.smith@gmail.com','Harward','MS','89','Software',8,'Tech Fast',15,20,'06/06/2006','jsf','oracle','websphere','eclipse','');
