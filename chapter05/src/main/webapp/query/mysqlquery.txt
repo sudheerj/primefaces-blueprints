@@ -48,7 +48,7 @@ CREATE TABLE  `blueprintsdb`.`investorslist` (
   CREATE TABLE  `blueprintsdb`.`InvestmentSummary` (
    id INT NOT NULL auto_increment,
   `accountNumber` VARCHAR(10), 
-  `fundname` VARCHAR(20),
+  `fundname` VARCHAR(50),
   `investmentNumber` VARCHAR(10),
   `investmentManager` VARCHAR(20),
   `marketingCompany` VARCHAR(20),
