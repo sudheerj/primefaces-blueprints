@@ -99,9 +99,9 @@
 							<h:outputText value="Marital Status: " />
 							<p:selectOneButton
 								value="#{registrationController.employee.maritalStatus}">
-								<f:selectItem itemLabel="Single" itemValue="1" />
-								<f:selectItem itemLabel="Married" itemValue="2" />
-								<f:selectItem itemLabel="Divorced" itemValue="3" />
+								<f:selectItem itemLabel="Single" itemValue="Single" />
+								<f:selectItem itemLabel="Married" itemValue="Married" />
+								<f:selectItem itemLabel="Divorced" itemValue="Divorced" />
 							</p:selectOneButton>
 							<h:outputText value="Skip to last step: " />
 							<p:selectBooleanCheckbox value="#{registrationController.skip}" />
@@ -187,9 +187,9 @@
 							<h:outputText value="Qualification: " />
 							<p:selectManyButton
 								value="#{registrationController.employee.qualification}">
-								<f:selectItem itemLabel="BTech" itemValue="1" />
-								<f:selectItem itemLabel="MTech" itemValue="2" />
-								<f:selectItem itemLabel="MS" itemValue="3" />
+								<f:selectItem itemLabel="BTech" itemValue="BTech" />
+								<f:selectItem itemLabel="MTech" itemValue="MTech" />
+								<f:selectItem itemLabel="MS" itemValue="MS" />
 							</p:selectManyButton>
 
 							<h:outputText id="output"
